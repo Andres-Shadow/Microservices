@@ -73,6 +73,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnSuccess'
+  /upate:
+    post:
+      tags:
+        - user
+      summary: "Add an user"
+      parameters:
+        - $ref: '#/components/parameters/token' 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserBodyPost'
+        required: true
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPostSucces'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnSuccess'
+        '404':
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnSuccess'
   /delete:
     delete:
       tags:
