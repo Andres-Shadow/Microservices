@@ -1,16 +1,19 @@
-openapi: '3.0.1'
+openapi: "3.0.1"
 info:
   title: "API Documentation"
   description: "User jwt vaildation"
   version: "1.0.0"
 servers:
-- url: http://localhot:9090/api/v1/user
+  - url: http://localhot:9090/api/v1/user
+
 tags:
   - name: user
     description: "User that can access to the system"
 paths:
-  /all: 
+  /users:
     get:
+      security:
+        - BearerAuth: []
       tags:
         - user
       summary: "Get all users"
@@ -18,127 +21,133 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserBodyGet'
+              $ref: "#/components/schemas/UserBodyGet"
+            
         required: true
-      responses: 
-        '200':
+      responses:
+        "200":
           description: "Success"
           content:
             application/json:
               schema:
                 type: "array"
                 items:
-                  $ref: '#/components/schemas/UserSuccesGetAll'
-        '403':
+                  $ref: "#/components/schemas/UserSuccesGetAll"
+        "403":
           description: "Forbidden"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-        '404':
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
           description: "Not Found"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-  /add:
+                $ref: "#/components/schemas/UnSuccess"
+  /newUser:
     post:
+      security:
+        - BearerAuth: []
       tags:
         - user
       summary: "Add an user"
       parameters:
-        - $ref: '#/components/parameters/token' 
+        - $ref: "#/components/parameters/token"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserBodyPost'
+              $ref: "#/components/schemas/UserBodyPost"
         required: true
       responses:
-        '200':
+        "200":
           description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserPostSucces'
-        '403':
+                $ref: "#/components/schemas/UserPostSucces"
+        "403":
           description: "Forbidden"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-        '404':
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
           description: "Not Found"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-  /upate:
+                $ref: "#/components/schemas/UnSuccess"
+  /updateUser:
     put:
+      security:
+        - BearerAuth: []
       tags:
         - user
       summary: "Add an user"
       parameters:
-        - $ref: '#/components/parameters/token' 
+        - $ref: "#/components/parameters/token"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserBodyPost'
+              $ref: "#/components/schemas/UserBodyPost"
         required: true
       responses:
-        '200':
+        "200":
           description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserPostSucces'
-        '403':
+                $ref: "#/components/schemas/UserPostSucces"
+        "403":
           description: "Forbidden"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-        '404':
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
           description: "Not Found"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-  /delete:
+                $ref: "#/components/schemas/UnSuccess"
+  /deleteUser:
     delete:
+      security:
+        - BearerAuth: []
       tags:
         - user
       summary: Deletes an user record
       parameters:
-        - $ref: '#/components/parameters/token' 
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/token"
+        - $ref: "#/components/parameters/id"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserDeleteUser'
+              $ref: "#/components/schemas/UserDeleteUser"
         required: true
       responses:
-        '200':
+        "200":
           description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserDeleteSucces'
-        '403':
+                $ref: "#/components/schemas/UserDeleteSucces"
+        "403":
           description: "Forbidden"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-        '404':
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
           description: "Not Found"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnSuccess'
-
+                $ref: "#/components/schemas/UnSuccess"
 
 components:
   parameters:
@@ -158,7 +167,7 @@ components:
         type: integer
 
   schemas:
-    UserBodyGet: 
+    UserBodyGet:
       type: object
       properties:
         token:
@@ -194,7 +203,7 @@ components:
     UserDeleteSucces:
       type: object
       properties:
-        response: 
+        response:
           type: string
           description: deletion confirmation message
     UserPostSucces:
@@ -203,7 +212,7 @@ components:
         id:
           type: integer
           description: new user id
-        
+
     UnSuccess:
       type: object
       properties:
