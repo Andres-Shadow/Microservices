@@ -53,9 +53,6 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//BORRA PERO DEJA LA FECHA DE ELIMINADO
-	//db.DB.Delete(&user)
-	//BORRA DE VERDAD
 	DataBase.DB.Unscoped().Delete(&user)
 	w.WriteHeader(http.StatusOK)
 }

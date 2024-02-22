@@ -1,7 +1,13 @@
 package handlers
 
-import "net/http"
+import (
+	"encoding/json"
+	"net/http"
+	"taller_apirest/models"
+)
 
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello World!"))
+func RegisterHandler(w http.ResponseWriter, r *http.Request) {
+	var user models.User
+	json.NewDecoder(r.Body).Decode(&user)
+
 }

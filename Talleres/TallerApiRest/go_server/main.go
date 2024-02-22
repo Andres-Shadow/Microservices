@@ -18,7 +18,7 @@ func main() {
 	r := mux.NewRouter()
 
 	//login route
-	r.HandleFunc("/login", handlers.HomeHandler).Methods("POST")
+	defineLoginRegisterEndpoints(r.PathPrefix("/api/v1").Subrouter())
 
 	//user routes
 	//creating route prefix
@@ -36,4 +36,8 @@ func defineUserEndpoints(userRouter *mux.Router) {
 	userRouter.HandleFunc("/add", handlers.PostUserHandler).Methods("POST")
 	userRouter.HandleFunc("/delete", handlers.DeleteUserHandler).Methods("DELETE")
 	userRouter.HandleFunc("/update", handlers.PostUserHandler).Methods("PUT")
+}
+
+func defineLoginRegisterEndpoints(loginRouter *mux.Router) {
+	loginRouter.HandleFunc("/register", handlers.RegisterHandler).Methods("POST")
 }
