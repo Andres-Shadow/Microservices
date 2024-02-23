@@ -1,14 +1,14 @@
 openapi: "3.0.1"
 info:
-  title: "API Documentation"
-  description: "User jwt vaildation"
+  title: "User Management API Documentation" 
+  description: "User API that allows to manage users in a system, registering them into a postgresql database and providing the elemental REST operations with classic endpoints."
   version: "1.0.0"
 servers:
-  - url: http://localhot:9090/api/v1/user
+  - url: http://localhot:9090/api/v1/
 
 tags:
   - name: user
-    description: "User that can access to the system"
+    description: "User sub-route where an authenticated user can use the differrent operations supported by the API"
 paths:
   /users:
     get:
@@ -17,6 +17,8 @@ paths:
       tags:
         - user
       summary: "Get all users"
+      parameters:
+        - $ref: "#/components/parameters/token"
       requestBody:
         content:
           application/json:
@@ -45,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UnSuccess"
-  /newUser:
+  /user:
     post:
       security:
         - BearerAuth: []
@@ -79,7 +81,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UnSuccess"
-  /updateUser:
     put:
       security:
         - BearerAuth: []
@@ -113,7 +114,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UnSuccess"
-  /deleteUser:
     delete:
       security:
         - BearerAuth: []
@@ -122,7 +122,6 @@ paths:
       summary: Deletes an user record
       parameters:
         - $ref: "#/components/parameters/token"
-        - $ref: "#/components/parameters/id"
       requestBody:
         content:
           application/json:
@@ -169,22 +168,19 @@ components:
   schemas:
     UserBodyGet:
       type: object
-      properties:
-        token:
-          type: string
-          description: user token
+
     UserBodyPost:
       type: object
       properties:
-        name:
-          type: string
-          description: username
-        password:
-          type: string
-          description: user password
+        id:
+          type: integer
+          description: user id
     UserSuccesGetAll:
       type: object
       properties:
+        id:
+          type: integer
+          description: user id
         name:
           type: string
           description: username
@@ -197,9 +193,6 @@ components:
         id:
           type: integer
           description: user id for deletion
-        token:
-          type: string
-          description: user jwt token
     UserDeleteSucces:
       type: object
       properties:
