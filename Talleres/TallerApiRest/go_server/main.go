@@ -28,9 +28,8 @@ func main() {
 	http.ListenAndServe(":9090", r)
 }
 
-
-//defineUserEndpoints is a function that defines the user subroutes
-//user the prefix "/api/v1/user"
+// defineUserEndpoints is a function that defines the user subroutes
+// user the prefix "/api/v1/user"
 func defineUserEndpoints(userRouter *mux.Router) {
 	userRouter.HandleFunc("/users", handlers.GetUsersHandler).Methods("GET")
 	userRouter.HandleFunc("/user", handlers.PostUserHandler).Methods("POST")
@@ -40,4 +39,5 @@ func defineUserEndpoints(userRouter *mux.Router) {
 
 func defineLoginRegisterEndpoints(loginRouter *mux.Router) {
 	loginRouter.HandleFunc("/register", handlers.RegisterHandler).Methods("POST")
+	loginRouter.HandleFunc("/login", handlers.LoginHandler).Methods("POST")
 }

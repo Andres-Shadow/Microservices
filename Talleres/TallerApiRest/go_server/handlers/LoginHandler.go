@@ -12,14 +12,30 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	//decode user from json
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
-	//creating the user
-	err := utilities.CreateUser(user)
+	createdUser, err := utilities.PostUser(user)
 
-	//user creation error handling
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Ocurrio un error al crear el usuario"))
+		return
 	}
+
+	//user creation success
+	json.NewEncoder(w).Encode(&createdUser)
+}
+
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	//decode user from json
+	var user models.User
+	json.NewDecoder(r.Body).Decode(&user)
+	_, err := utilities.SearchUser(&user)
+
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("User not found"))
+		return
+	}
+
 	//user creation success
 	json.NewEncoder(w).Encode(&user)
 }
