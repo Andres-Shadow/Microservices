@@ -31,6 +31,7 @@ func main() {
 // defineUserEndpoints is a function that defines the user subroutes
 // user the prefix "/api/v1/user"
 func defineUserEndpoints(userRouter *mux.Router) {
+
 	userRouter.HandleFunc("/users", handlers.GetUsersHandler).Methods("GET")
 	userRouter.HandleFunc("/user", handlers.PostUserHandler).Methods("POST")
 	userRouter.HandleFunc("/user", handlers.DeleteUserHandler).Methods("DELETE")

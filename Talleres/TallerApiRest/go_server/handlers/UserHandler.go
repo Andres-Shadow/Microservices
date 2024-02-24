@@ -3,23 +3,62 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	DataBase "taller_apirest/Database"
+	"strings"
 	"taller_apirest/models"
+	"taller_apirest/security"
 	"taller_apirest/utilities"
 
 	"github.com/gorilla/mux"
 )
 
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
+
+	authHeader := r.Header.Get("Authorization")
+	var user models.User
+	json.NewDecoder(r.Body).Decode(&user)
+
+	if authHeader == "" {
+		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
+		return
+	}
+
+	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
+
+	verified := security.VerifyToken(tokenString, &user)
+
+	if !verified {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
 	var users []models.User
-	users,_ = utilities.GetUsers()
+	users, _ = utilities.GetUsers()
 	json.NewEncoder(w).Encode(&users)
 }
 
 func GetUserHandler(w http.ResponseWriter, r *http.Request) {
+
+	authHeader := r.Header.Get("Authorization")
+	var userAux models.User
+	json.NewDecoder(r.Body).Decode(&userAux)
+
+	if authHeader == "" {
+		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
+		return
+	}
+
+	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
+
+	verified := security.VerifyToken(tokenString, &userAux)
+
+	if !verified {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
 	params := mux.Vars(r)
 	var user *models.User
-	user,_ = utilities.GetUserById(params["id"])
+	user, _ = utilities.GetUserById(params["id"])
 
 	if user == nil {
 		w.WriteHeader(http.StatusNotFound)
@@ -31,9 +70,28 @@ func GetUserHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostUserHandler(w http.ResponseWriter, r *http.Request) {
+
+	authHeader := r.Header.Get("Authorization")
+	var userAux models.User
+	json.NewDecoder(r.Body).Decode(&userAux)
+
+	if authHeader == "" {
+		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
+		return
+	}
+
+	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
+
+	verified := security.VerifyToken(tokenString, &userAux)
+
+	if !verified {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
-	_,err := utilities.PostUser(user)
+	_, err := utilities.PostUser(user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Ocurrio un error al crear el usuario"))
@@ -42,6 +100,25 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
+
+	authHeader := r.Header.Get("Authorization")
+	var userAux models.User
+	json.NewDecoder(r.Body).Decode(&userAux)
+
+	if authHeader == "" {
+		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
+		return
+	}
+
+	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
+
+	verified := security.VerifyToken(tokenString, &userAux)
+
+	if !verified {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
 	params := mux.Vars(r)
 	err := utilities.DeleteUser(params["id"])
 	if err != nil {
@@ -49,56 +126,5 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("User not found"))
 		return
 	}
-	w.WriteHeader(http.StatusOK)
-}
-
-//inherited functions
-
-
-func GetUsersHandlerx(w http.ResponseWriter, r *http.Request) {
-	var users []models.User
-	DataBase.DB.Find(&users)
-	json.NewEncoder(w).Encode(&users)
-}
-
-func GetUserHandlerx(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	var user models.User
-	DataBase.DB.First(&user, params["id"])
-
-	if user.ID == 0 {
-		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte("Usuario no encontrado"))
-		return
-	}
-
-	json.NewEncoder(w).Encode(&user)
-}
-
-
-func PostUserHandlerx(w http.ResponseWriter, r *http.Request) {
-	var user models.User
-	json.NewDecoder(r.Body).Decode(&user)
-	createdUser := DataBase.DB.Create(&user)
-	err := createdUser.Error
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("Ocurrio un error al crear el usuario"))
-	}
-	json.NewEncoder(w).Encode(&user)
-}
-
-func DeleteUserHandlerx(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	var user models.User
-	DataBase.DB.First(&user, params["id"])
-
-	if user.ID == 0 {
-		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte("User not found"))
-		return
-	}
-
-	DataBase.DB.Unscoped().Delete(&user)
 	w.WriteHeader(http.StatusOK)
 }

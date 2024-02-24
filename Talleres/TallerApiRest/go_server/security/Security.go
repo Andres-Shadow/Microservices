@@ -1,10 +1,11 @@
 package security
 
 import (
+	"fmt"
 	"taller_apirest/models"
 	"time"
 
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 )
 
 // Manejador para la ruta /login
@@ -21,4 +22,34 @@ func LoginHandler(user *models.User) string {
 	tokenString, _ := token.SignedString([]byte("contraseña_super_secreta_100%_real_no_fake"))
 
 	return tokenString
+}
+
+// Verifiy the token
+func VerifyToken(token string, user *models.User) bool {
+	// Parsear y verificar el token JWT
+	tokenV, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+		// Verificar el algoritmo de firma
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Método de firma inesperado: %v", token.Header["alg"])
+		}
+		// Deberías tener tu clave secreta aquí, asegúrate de que sea la misma utilizada para firmar el token en la ruta de login
+		return []byte("contraseña_super_secreta_100%_real_no_fake"), nil
+	})
+
+	// Verificar errores en el token JWT
+	if err != nil {
+		return false
+	}
+
+	// Verificar si el token es válido
+	if !tokenV.Valid {
+		return false
+	}
+
+	// Verificar si el emisor del token es correcto
+	claims, ok := tokenV.Claims.(jwt.MapClaims)
+	if !ok || claims["iss"] != "ingesis.uniquindio.edu.co" {
+		return false
+	}
+	return true
 }
