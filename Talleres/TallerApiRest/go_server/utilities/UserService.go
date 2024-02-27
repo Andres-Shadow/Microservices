@@ -8,7 +8,18 @@ import (
 
 func GetUsers() ([]models.User, error) {
 	var users []models.User
-	DataBase.DB.Find(&users)
+	page := 1      // Número de página predeterminado
+	pageSize := 10 // Tamaño de página predeterminado
+
+	// Calcula el desplazamiento basado en la página y el tamaño de la página
+	offset := (page - 1) * pageSize
+
+	// Realiza la consulta con el desplazamiento y el tamaño de página adecuados
+	err := DataBase.DB.Offset(offset).Limit(pageSize).Find(&users).Error
+	if err != nil {
+		return nil, err
+	}
+
 	return users, nil
 }
 
@@ -57,11 +68,11 @@ func DeleteUser(id string) error {
 	return nil
 }
 
-func UpdateUserPassword(user models.User, id string) (*models.User, error) {
+func UpdateUserPassword(user models.User, email string) (*models.User, error) {
 	var userToUpdate models.User
-	DataBase.DB.First(&userToUpdate, id)
+	DataBase.DB.Where("email = ?", email).First(&userToUpdate)
 
-	if userToUpdate.ID == 0 {
+	if userToUpdate.Password == "" {
 		return nil, errors.New("user not found")
 	}
 
@@ -74,9 +85,8 @@ func RecoverPassword(email string) (string, error) {
 	var userToUpdate models.User
 	DataBase.DB.Where("email = ?", email).First(&userToUpdate)
 
-	if userToUpdate.ID == 0 {
+	if userToUpdate.Password == "" {
 		return "", errors.New("user not found")
 	}
-
 	return userToUpdate.Password, nil
 }

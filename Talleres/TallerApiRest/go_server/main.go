@@ -31,11 +31,16 @@ func main() {
 // defineUserEndpoints is a function that defines the user subroutes
 // user the prefix "/api/v1/user"
 func defineUserEndpoints(userRouter *mux.Router) {
-
+	//RESTful API endpoints for crud
 	userRouter.HandleFunc("/", handlers.GetUsersHandler).Methods("GET")
+	userRouter.HandleFunc("/{id}", handlers.GetUserHandlerById).Methods("GET")
 	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("POST")
 	userRouter.HandleFunc("/", handlers.DeleteUserHandler).Methods("DELETE")
 	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("PUT")
+
+	//RESTful API endpoints for user recover and update password
+	userRouter.HandleFunc("/password/{email}", handlers.RecoverPassword).Methods("GET")
+	userRouter.HandleFunc("/password/{email}", handlers.UpdateUserPassword).Methods("POST")
 }
 
 func defineLoginRegisterEndpoints(loginRouter *mux.Router) {

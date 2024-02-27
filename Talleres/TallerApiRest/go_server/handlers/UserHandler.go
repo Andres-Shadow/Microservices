@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 	"taller_apirest/models"
@@ -23,12 +24,13 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&users)
 }
 
-func GetUserHandler(w http.ResponseWriter, r *http.Request) {
+func GetUserHandlerById(w http.ResponseWriter, r *http.Request) {
 
 	if !verifyTokenPresency(r) {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
 		return
 	}
+	
 	params := mux.Vars(r)
 	var user *models.User
 	user, _ = utilities.GetUserById(params["id"])
@@ -81,29 +83,26 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
-	
-	err,_ := utilities.UpdateUserPassword(user, params["id"])
+
+	err, _ := utilities.UpdateUserPassword(user, params["email"])
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
 		return
 	}
 	w.WriteHeader(http.StatusOK)
-	
+
 }
 
 func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 
-	if !verifyTokenPresency(r) {
-		http.Error(w, "Token no valido", http.StatusUnauthorized)
-		return
-	}
-
 	params := mux.Vars(r)
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
-	
-	password,err := utilities.RecoverPassword(params["email"])
+
+	fmt.Println("el email recibido es: ", params["email"])
+
+	password, err := utilities.RecoverPassword(params["email"])
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
