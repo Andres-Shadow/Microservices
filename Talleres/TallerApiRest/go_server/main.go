@@ -23,7 +23,7 @@ func main() {
 	//user routes
 	//creating route prefix
 	//and delegating a function subroutes responsability
-	defineUserEndpoints(r.PathPrefix("/api/v1/user").Subrouter())
+	defineUserEndpoints(r.PathPrefix("/api/v1/users").Subrouter())
 
 	http.ListenAndServe(":9090", r)
 }
@@ -32,10 +32,10 @@ func main() {
 // user the prefix "/api/v1/user"
 func defineUserEndpoints(userRouter *mux.Router) {
 
-	userRouter.HandleFunc("/users", handlers.GetUsersHandler).Methods("GET")
-	userRouter.HandleFunc("/user", handlers.PostUserHandler).Methods("POST")
-	userRouter.HandleFunc("/user", handlers.DeleteUserHandler).Methods("DELETE")
-	userRouter.HandleFunc("/user", handlers.PostUserHandler).Methods("PUT")
+	userRouter.HandleFunc("/", handlers.GetUsersHandler).Methods("GET")
+	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("POST")
+	userRouter.HandleFunc("/", handlers.DeleteUserHandler).Methods("DELETE")
+	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("PUT")
 }
 
 func defineLoginRegisterEndpoints(loginRouter *mux.Router) {

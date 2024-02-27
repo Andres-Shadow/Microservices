@@ -96,6 +96,7 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Ocurrio un error al crear el usuario"))
 	}
+
 	json.NewEncoder(w).Encode(&user)
 }
 

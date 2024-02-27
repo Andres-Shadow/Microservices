@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UnSuccess"
-  /user:
+  
     post:
       security:
         - BearerAuth: []
