@@ -56,3 +56,27 @@ func DeleteUser(id string) error {
 	DataBase.DB.Unscoped().Delete(&user)
 	return nil
 }
+
+func UpdateUserPassword(user models.User, id string) (*models.User, error) {
+	var userToUpdate models.User
+	DataBase.DB.First(&userToUpdate, id)
+
+	if userToUpdate.ID == 0 {
+		return nil, errors.New("user not found")
+	}
+
+	userToUpdate.Password = user.Password
+	DataBase.DB.Save(&userToUpdate)
+	return &userToUpdate, nil
+}
+
+func RecoverPassword(email string) (string, error) {
+	var userToUpdate models.User
+	DataBase.DB.Where("email = ?", email).First(&userToUpdate)
+
+	if userToUpdate.ID == 0 {
+		return "", errors.New("user not found")
+	}
+
+	return userToUpdate.Password, nil
+}

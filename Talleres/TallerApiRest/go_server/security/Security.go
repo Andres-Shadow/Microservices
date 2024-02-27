@@ -25,7 +25,7 @@ func LoginHandler(user *models.User) string {
 }
 
 // Verifiy the token
-func VerifyToken(token string, user *models.User) bool {
+func VerifyToken(token string) bool {
 	// Parsear y verificar el token JWT
 	tokenV, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
 		// Verificar el algoritmo de firma

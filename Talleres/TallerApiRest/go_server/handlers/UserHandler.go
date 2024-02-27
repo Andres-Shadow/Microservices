@@ -13,20 +13,7 @@ import (
 
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 
-	authHeader := r.Header.Get("Authorization")
-	var user models.User
-	json.NewDecoder(r.Body).Decode(&user)
-
-	if authHeader == "" {
-		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
-		return
-	}
-
-	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
-
-	verified := security.VerifyToken(tokenString, &user)
-
-	if !verified {
+	if !verifyTokenPresency(r) {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
 		return
 	}
@@ -38,24 +25,10 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 
 func GetUserHandler(w http.ResponseWriter, r *http.Request) {
 
-	authHeader := r.Header.Get("Authorization")
-	var userAux models.User
-	json.NewDecoder(r.Body).Decode(&userAux)
-
-	if authHeader == "" {
-		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
-		return
-	}
-
-	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
-
-	verified := security.VerifyToken(tokenString, &userAux)
-
-	if !verified {
+	if !verifyTokenPresency(r) {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
 		return
 	}
-
 	params := mux.Vars(r)
 	var user *models.User
 	user, _ = utilities.GetUserById(params["id"])
@@ -71,51 +44,19 @@ func GetUserHandler(w http.ResponseWriter, r *http.Request) {
 
 func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 
-	authHeader := r.Header.Get("Authorization")
-	var userAux models.User
-	json.NewDecoder(r.Body).Decode(&userAux)
-
-	if authHeader == "" {
-		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
-		return
-	}
-
-	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
-
-	verified := security.VerifyToken(tokenString, &userAux)
-
-	if !verified {
-		http.Error(w, "Token no valido", http.StatusUnauthorized)
-		return
-	}
-
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
-	_, err := utilities.PostUser(user)
+	createdUser, err := utilities.PostUser(user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Ocurrio un error al crear el usuario"))
 	}
-
-	json.NewEncoder(w).Encode(&user)
+	json.NewEncoder(w).Encode(&createdUser)
 }
 
 func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 
-	authHeader := r.Header.Get("Authorization")
-	var userAux models.User
-	json.NewDecoder(r.Body).Decode(&userAux)
-
-	if authHeader == "" {
-		http.Error(w, "Token de autorización faltante", http.StatusUnauthorized)
-		return
-	}
-
-	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
-
-	verified := security.VerifyToken(tokenString, &userAux)
-
-	if !verified {
+	if !verifyTokenPresency(r) {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
 		return
 	}
@@ -128,4 +69,56 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusOK)
+}
+
+func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
+
+	if !verifyTokenPresency(r) {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
+	params := mux.Vars(r)
+	var user models.User
+	json.NewDecoder(r.Body).Decode(&user)
+	
+	err,_ := utilities.UpdateUserPassword(user, params["id"])
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("User not found"))
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	
+}
+
+func RecoverPassword(w http.ResponseWriter, r *http.Request) {
+
+	if !verifyTokenPresency(r) {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
+	params := mux.Vars(r)
+	var user models.User
+	json.NewDecoder(r.Body).Decode(&user)
+	
+	password,err := utilities.RecoverPassword(params["email"])
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("User not found"))
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(password))
+}
+
+func verifyTokenPresency(r *http.Request) bool {
+
+	authHeader := r.Header.Get("Authorization")
+
+	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
+
+	verified := security.VerifyToken(tokenString)
+	return verified
 }

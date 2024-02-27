@@ -39,6 +39,5 @@ func defineUserEndpoints(userRouter *mux.Router) {
 }
 
 func defineLoginRegisterEndpoints(loginRouter *mux.Router) {
-	loginRouter.HandleFunc("/register", handlers.RegisterHandler).Methods("POST")
 	loginRouter.HandleFunc("/login", handlers.LoginHandler).Methods("POST")
 }
