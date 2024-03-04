@@ -40,7 +40,7 @@ func defineUserEndpoints(userRouter *mux.Router) {
 
 	//RESTful API endpoints for user recover and update password
 	userRouter.HandleFunc("/password/{email}", handlers.RecoverPassword).Methods("GET")
-	userRouter.HandleFunc("/password/{email}", handlers.UpdateUserPassword).Methods("POST")
+	userRouter.HandleFunc("/password", handlers.UpdateUserPassword).Methods("PATCH")
 }
 
 func defineLoginRegisterEndpoints(loginRouter *mux.Router) {

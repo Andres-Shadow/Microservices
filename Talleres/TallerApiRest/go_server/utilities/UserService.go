@@ -4,12 +4,11 @@ import (
 	"errors"
 	DataBase "taller_apirest/Database"
 	"taller_apirest/models"
+	"taller_apirest/security"
 )
 
-func GetUsers() ([]models.User, error) {
+func GetUsers(page, pageSize int) ([]models.User, error) {
 	var users []models.User
-	page := 1      // Número de página predeterminado
-	pageSize := 10 // Tamaño de página predeterminado
 
 	// Calcula el desplazamiento basado en la página y el tamaño de la página
 	offset := (page - 1) * pageSize
@@ -68,9 +67,9 @@ func DeleteUser(id string) error {
 	return nil
 }
 
-func UpdateUserPassword(user models.User, email string) (*models.User, error) {
+func UpdateUserPassword(user models.User) (*models.User, error) {
 	var userToUpdate models.User
-	DataBase.DB.Where("email = ?", email).First(&userToUpdate)
+	DataBase.DB.Where("email = ?", user.Email).First(&userToUpdate)
 
 	if userToUpdate.Password == "" {
 		return nil, errors.New("user not found")
@@ -88,5 +87,8 @@ func RecoverPassword(email string) (string, error) {
 	if userToUpdate.Password == "" {
 		return "", errors.New("user not found")
 	}
-	return userToUpdate.Password, nil
+
+	token := security.LoginHandler(&userToUpdate)
+
+	return token, nil
 }

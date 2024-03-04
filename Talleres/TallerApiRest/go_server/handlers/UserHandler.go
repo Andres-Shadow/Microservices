@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
+	DataBase "taller_apirest/Database"
 	"taller_apirest/models"
 	"taller_apirest/security"
 	"taller_apirest/utilities"
@@ -12,16 +14,40 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type UsersResponse struct {
+	Clients   []models.User `json:"clients"`
+	Registros int64           `json:"registros"`
+}
+
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 
+	query := r.URL.Query()
+	page, _ := strconv.Atoi(query.Get("page"))
+	pageSize, _ := strconv.Atoi(query.Get("pageSize"))
+
 	if !verifyTokenPresency(r) {
-		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		http.Error(w, "Token no válido", http.StatusUnauthorized)
 		return
 	}
 
-	var users []models.User
-	users, _ = utilities.GetUsers()
-	json.NewEncoder(w).Encode(&users)
+	if query.Get("page") == "" && query.Get("pageSize") == "" {
+		page = 1
+		pageSize = 10
+	}
+
+	users, _ := utilities.GetUsers(page, pageSize)
+
+	var totalCount int64
+
+	DataBase.DB.Raw("SELECT COUNT(*) FROM users").Scan(&totalCount)
+
+	response := UsersResponse{
+		Clients:   users,
+		Registros: totalCount,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
 }
 
 func GetUserHandlerById(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +56,7 @@ func GetUserHandlerById(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
 		return
 	}
-	
+
 	params := mux.Vars(r)
 	var user *models.User
 	user, _ = utilities.GetUserById(params["id"])
@@ -80,11 +106,10 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	params := mux.Vars(r)
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
 
-	err, _ := utilities.UpdateUserPassword(user, params["email"])
+	err, _ := utilities.UpdateUserPassword(user)
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
@@ -97,8 +122,6 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
-	var user models.User
-	json.NewDecoder(r.Body).Decode(&user)
 
 	fmt.Println("el email recibido es: ", params["email"])
 
