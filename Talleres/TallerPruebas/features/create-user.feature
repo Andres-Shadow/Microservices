@@ -1,9 +1,9 @@
 Feature: La API proporsional al usuario la funcinalidad de registrase
 
   Background: 
-  Given un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación
-  And pepe ingresa los siguientes datos:
-      | Name   | Email       | Password |
+    Given un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación
+    And pepe ingresa los siguientes datos:
+      | Name | Email       | Password |
       | pepe | a@gmail.com |     1234 |
 
   Scenario: pepe intenta registrarse en la base de datos
