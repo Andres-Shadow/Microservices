@@ -16,7 +16,7 @@ import (
 
 type UsersResponse struct {
 	Clients   []models.User `json:"clients"`
-	Registros int64           `json:"registros"`
+	Registros int64         `json:"registros"`
 }
 
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
@@ -90,7 +90,8 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	params := mux.Vars(r)
-	err := utilities.DeleteUser(params["id"])
+	err := utilities.DeleteUser(params["email"])
+
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
@@ -109,10 +110,10 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
 
-	err, _ := utilities.UpdateUserPassword(user)
+	_, err := utilities.UpdateUserPassword(user)
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte("User not found"))
+		w.Write([]byte("User not found 2"))
 		return
 	}
 	w.WriteHeader(http.StatusOK)

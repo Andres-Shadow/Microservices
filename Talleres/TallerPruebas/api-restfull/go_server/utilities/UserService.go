@@ -55,11 +55,11 @@ func PostUser(user models.User) (*models.User, error) {
 	return &user, nil
 }
 
-func DeleteUser(id string) error {
+func DeleteUser(email string) error {
 	var user models.User
-	DataBase.DB.First(&user, id)
+	DataBase.DB.Where("email = ?", email).First(&user)
 
-	if user.ID == 0 {
+	if user.Email == "" {
 		return errors.New("user not found")
 	}
 
@@ -71,7 +71,7 @@ func UpdateUserPassword(user models.User) (*models.User, error) {
 	var userToUpdate models.User
 	DataBase.DB.Where("email = ?", user.Email).First(&userToUpdate)
 
-	if userToUpdate.Password == "" {
+	if userToUpdate.Password == "" || userToUpdate.Email != user.Email {
 		return nil, errors.New("user not found")
 	}
 

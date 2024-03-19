@@ -35,7 +35,7 @@ func defineUserEndpoints(userRouter *mux.Router) {
 	userRouter.HandleFunc("/", handlers.GetUsersHandler).Methods("GET")
 	userRouter.HandleFunc("/{id}", handlers.GetUserHandlerById).Methods("GET")
 	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("POST")
-	userRouter.HandleFunc("/{id}", handlers.DeleteUserHandler).Methods("DELETE")
+	userRouter.HandleFunc("/{email}", handlers.DeleteUserHandler).Methods("DELETE")
 	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("PUT")
 
 	//RESTful API endpoints for user recover and update password
