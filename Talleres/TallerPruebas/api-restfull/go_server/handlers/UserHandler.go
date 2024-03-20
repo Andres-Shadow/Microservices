@@ -74,6 +74,12 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
+
+	if user.Email == "" || user.Username == "" || user.Password == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("El email, password y nombre son obligatorios"))
+		return
+	}
 	createdUser, err := utilities.PostUser(user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
