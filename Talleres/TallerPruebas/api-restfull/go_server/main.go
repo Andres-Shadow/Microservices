@@ -18,7 +18,7 @@ func main() {
 	r := mux.NewRouter()
 
 	//cargado de datos de prueba
-	users := []models.User{
+	/*users := []models.User{
 		{Username: "pepe", Email: "a@gmail.com", Password: "12345"},
 		{Username: "pepe2", Email: "b@gmail.com", Password: "12345"},
 		{Username: "pepe3", Email: "c@gmail.com", Password: "12345"},
@@ -29,7 +29,7 @@ func main() {
 
 	for _, user := range users {
 		DataBase.DB.Create(&user)
-	}
+	}*/
 
 	//login route
 	defineLoginRegisterEndpoints(r.PathPrefix("/api/v1").Subrouter())
@@ -49,11 +49,11 @@ func defineUserEndpoints(userRouter *mux.Router) {
 	userRouter.HandleFunc("/", handlers.GetUsersHandler).Methods("GET")
 	userRouter.HandleFunc("/{id}", handlers.GetUserHandlerById).Methods("GET")
 	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("POST")
-	userRouter.HandleFunc("/{email}", handlers.DeleteUserHandler).Methods("DELETE")
-	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("PUT")
+	userRouter.HandleFunc("/", handlers.DeleteUserHandler).Methods("DELETE")
+	userRouter.HandleFunc("/", handlers.UpdateUserHandler).Methods("PUT")
 
 	//RESTful API endpoints for user recover and update password
-	userRouter.HandleFunc("/password/{email}", handlers.RecoverPassword).Methods("GET")
+	userRouter.HandleFunc("/password/", handlers.RecoverPassword).Methods("GET")
 	userRouter.HandleFunc("/password", handlers.UpdateUserPassword).Methods("PATCH")
 }
 

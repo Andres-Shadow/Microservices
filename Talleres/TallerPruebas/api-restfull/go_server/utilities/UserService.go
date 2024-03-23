@@ -2,6 +2,7 @@ package utilities
 
 import (
 	"errors"
+	"fmt"
 	DataBase "taller_apirest/Database"
 	"taller_apirest/models"
 	"taller_apirest/security"
@@ -53,6 +54,21 @@ func PostUser(user models.User) (*models.User, error) {
 		return nil, err
 	}
 	return &user, nil
+}
+
+func UpdateUser(user models.User) (*models.User, error) {
+	var userToUpdate models.User
+	DataBase.DB.Where("email = ?", user.Email).First(&userToUpdate)
+
+	if userToUpdate.Id == 0 || user.Password == "" {
+		fmt.Println("user not found")
+		return nil, errors.New("user not found")
+	}
+
+	userToUpdate.Username = user.Username
+	userToUpdate.Password = user.Password
+	DataBase.DB.Save(&userToUpdate)
+	return &userToUpdate, nil
 }
 
 func DeleteUser(email string) error {

@@ -88,6 +88,29 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&createdUser)
 }
 
+func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
+
+	if !verifyTokenPresency(r) {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
+	var user models.User
+	json.NewDecoder(r.Body).Decode(&user)
+
+	_, err := utilities.UpdateUser(user)
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Println("entro aqui")
+		w.Write([]byte("User not found"))
+		
+	}else{
+		w.WriteHeader(http.StatusOK)
+	}
+	
+
+}
+
 func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 
 	if !verifyTokenPresency(r) {
@@ -95,8 +118,9 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	params := mux.Vars(r)
-	err := utilities.DeleteUser(params["email"])
+	query := r.URL.Query()
+	email := query.Get("email")
+	err := utilities.DeleteUser(email)
 
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
@@ -104,6 +128,7 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Usuario eliminado"))
 }
 
 func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
@@ -128,11 +153,10 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 
 func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 
-	params := mux.Vars(r)
+	query := r.URL.Query()
+	email := query.Get("email")
 
-	fmt.Println("el email recibido es: ", params["email"])
-
-	password, err := utilities.RecoverPassword(params["email"])
+	password, err := utilities.RecoverPassword(email)
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
