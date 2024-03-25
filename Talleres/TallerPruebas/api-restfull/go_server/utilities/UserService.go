@@ -88,6 +88,7 @@ func UpdateUserPassword(user models.User) (*models.User, error) {
 	DataBase.DB.Where("email = ?", user.Email).First(&userToUpdate)
 
 	if userToUpdate.Password == "" || userToUpdate.Email != user.Email {
+		fmt.Println("user not found aqui")
 		return nil, errors.New("user not found")
 	}
 

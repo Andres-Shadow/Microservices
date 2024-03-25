@@ -54,18 +54,6 @@ Then(
 
 When("pepe realiza una petición PUT a \\/api\\/v1\\/users", async function () {
   // Write code here that turns the phrase above into concrete actions
-  /*console.log(userData.email);
-  axios
-    .put(baseUrl, userData, config)
-    .then((respuesta) => {
-      // Manejar la respuesta
-      response = respuesta.data();
-      console.log("funciona");
-    })
-    .catch((error) => {
-      response = error.response;
-      console.log(response.data);
-    });*/
 
   try {
     respuesta = await axios.put(baseUrl, userData, config);
@@ -73,7 +61,7 @@ When("pepe realiza una petición PUT a \\/api\\/v1\\/users", async function () {
     statusCode = response.status;
   } catch (error) {
     response = error.response;
-    statusCode = error.response.status;
+    //statusCode = error.response.status;
   }
 });
 

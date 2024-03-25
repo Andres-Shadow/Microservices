@@ -18,7 +18,7 @@ func main() {
 	r := mux.NewRouter()
 
 	//cargado de datos de prueba
-	/*users := []models.User{
+	users := []models.User{
 		{Username: "pepe", Email: "a@gmail.com", Password: "12345"},
 		{Username: "pepe2", Email: "b@gmail.com", Password: "12345"},
 		{Username: "pepe3", Email: "c@gmail.com", Password: "12345"},
@@ -29,7 +29,7 @@ func main() {
 
 	for _, user := range users {
 		DataBase.DB.Create(&user)
-	}*/
+	}
 
 	//login route
 	defineLoginRegisterEndpoints(r.PathPrefix("/api/v1").Subrouter())
