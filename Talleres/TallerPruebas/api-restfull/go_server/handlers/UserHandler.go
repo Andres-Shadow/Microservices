@@ -106,6 +106,7 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 		
 	}else{
 		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("Usuario was updated"))
 	}
 	
 
@@ -148,6 +149,7 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Password updated"))
 
 }
 

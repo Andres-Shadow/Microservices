@@ -2,6 +2,9 @@ const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
 const faker = require("@faker-js/faker");
+const messageSchema = require("../../schemas/message-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 
 let baseUrl = "http://localhost:9090/api/v1/users/?email=";
 let loginUrl = "http://localhost:9090/api/v1/login";
@@ -20,8 +23,7 @@ let userData = {
   password: faker.fakerAR.internet.password(),
 };
 
-Before(async function () {
-});
+Before(async function () {});
 
 Given(
   "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
@@ -84,12 +86,14 @@ When("pepe hace una petición DELETE a \\/api\\/v1\\/users", async function () {
 });
 
 When("la aplicación encuentra su registro", function () {
-  if (!response.data) {
+  if (response.data) {
+    valid = ajv.validate(messageSchema, response);
+    assert.ok(valid);
   }
 });
 
 Then("la aplicación elimina el registro de la base de datos", function () {
-  if (response.data) {
+  if (!response.data) {
   }
 });
 
@@ -127,7 +131,9 @@ Given("pepe ingresa un correo electrónico diferente al suyo", function () {
 
 When("la aplicación no encuentra un registro con ese correo", function () {
   // Write code here that turns the phrase above into concrete actions
-  if (!response.data) {
+  if (response.data) {
+    valid = ajv.validate(messageSchema, response);
+    assert.ok(valid);
   }
 });
 

@@ -1,7 +1,10 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
-const faker = require("@faker-js/faker");
+const messageSchema = require("../../schemas/message-schema");
+const userListSchema = require("../../schemas/userlist-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 
 let loginUrl = "http://localhost:9090/api/v1/login";
 let baseUrl = "http://localhost:9090/api/v1/users/";
@@ -61,7 +64,6 @@ When(
       // Capturar cualquier error en la solicitud y manejarlo
       response2 = error.response;
       statusCode2 = error.response.status;
-      console.error("fallo 1"); // Imprimir el error en la consola
     }
   }
 );
@@ -70,8 +72,9 @@ Then(
   "la API le responde con una lista de usuarios registrados en la base de datos con paginación",
   function () {
     // Write code here that turns the phrase above into concrete actions
-    if (!response2.data) {
-      return;
+    if (response2.data) {
+      valid = ajv.validate(userListSchema, response2.data);
+      assert.ok(valid);
     }
   }
 );
@@ -128,7 +131,8 @@ Then("la API le responde con una lista vacía", function () {
 // scenario 4
 
 Then("la API le responde con un mensaje de error", function () {
-  if (!response2.data) {
-    return;
+  if (response2.data) {
+    valid = ajv.validate(messageSchema, response2);
+    assert.ok(valid);
   }
 });

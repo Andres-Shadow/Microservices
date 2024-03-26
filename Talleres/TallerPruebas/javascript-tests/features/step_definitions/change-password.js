@@ -2,6 +2,9 @@ const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
 const faker = require("@faker-js/faker");
+const messageSchema = require("../../schemas/message-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 
 let baseUrl = "http://localhost:9090/api/v1/users/password";
 let loginUrl = "http://localhost:9090/api/v1/login";
@@ -74,8 +77,9 @@ When(
   async function () {
     try {
       respuesta = await axios.patch(baseUrl, userData, config);
-      response = respuesta.data;
+      response = respuesta;
       statusCode = respuesta.status;
+      // assert.equal(mensajeRespuesta.username, userData.username);
     } catch (error) {
       response = error.response;
       statusCode = error.response.status;
@@ -97,6 +101,11 @@ Then(
 );
 
 Then("el servidor retorna un codigo de estado {int}", function (int) {
+  valid = ajv.validate(messageSchema, response);
+  assert.strictEqual(valid, true);
+  // if (int == 200) {
+  //   console.log(response);
+  // }
   assert.equal(statusCode, int);
 });
 

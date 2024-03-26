@@ -1,6 +1,9 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
+const messageSchema = require("../../schemas/message-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 
 let baseUrl = "http://localhost:9090/api/v1/users/password/";
 
@@ -43,9 +46,9 @@ When(
 );
 
 Then("si existe un registro con ese correo", function () {
-    if(statusCode != 200){
-        return;
-    }
+  if (statusCode != 200) {
+    return;
+  }
 });
 
 Then(
@@ -53,6 +56,9 @@ Then(
   function (int) {
     if (!response.data) {
       return;
+    }else{
+      valid = ajv.validate(messageSchema, response);
+      assert.ok(valid)
     }
   }
 );

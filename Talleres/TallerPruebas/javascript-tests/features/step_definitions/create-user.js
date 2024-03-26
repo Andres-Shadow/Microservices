@@ -3,7 +3,7 @@ const assert = require("assert");
 const axios = require("axios");
 const faker = require("@faker-js/faker");
 const userSchema = require("../../schemas/user-schema");
-const errorSchema = require("../../schemas/error-schema");
+const messageSchema = require("../../schemas/message-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
@@ -113,7 +113,7 @@ Then(
       // return;
       const mensajeRespuesta = response.data;
       // assert.equal(mensajeRespuesta.username, userData.username);
-      valid = ajv.validate(errorSchema, mensajeRespuesta);
+      valid = ajv.validate(messageSchema, mensajeRespuesta);
       assert.strictEqual(valid, true);
     }
   }

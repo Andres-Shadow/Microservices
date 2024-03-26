@@ -2,6 +2,9 @@ const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
 const faker = require("@faker-js/faker");
+const messageSchema = require("../../schemas/message-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 
 let loginUrl = "http://localhost:9090/api/v1/login";
 let baseUrl = "http://localhost:9090/api/v1/users/";
@@ -81,7 +84,10 @@ Then("el servidor actualiza los datos del usuario", function () {
 Then("el servidor responde con un mensaje de éxito", function () {
   // Write code here that turns the phrase above into concrete actions
   if (!response.data) {
+    console.log("entro aqui")
     return;
+  }else{
+    console.log(response.data);
   }
 });
 
@@ -98,8 +104,9 @@ Given(
 
 Then("el servidor responde con un json con un mensaje de error", function () {
   // Write code here that turns the phrase above into concrete actions
-  if (!response.data) {
-    return;
+  if (response.data) {
+    valid = ajv.validate(messageSchema, response);
+    assert.ok(valid);
   }
 });
 

@@ -1,8 +1,11 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
-
+const messageSchema = require("../../schemas/message-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 let loginUrl = "http://localhost:9090/api/v1/login";
+
 
 //usuario precargado en la base de datos
 let userData = {
@@ -11,18 +14,12 @@ let userData = {
   password: "12345",
 };
 
-let config;
 
 let response;
 
 let statusCode;
 
 Before(async function () {
-  config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
 });
 
 Given(
@@ -57,6 +54,9 @@ Then("se obtiene el mensaje de respuesta {int}", function (int) {
 Then("se obtiene el token jwt de autenticación", function () {
   if (!response.data) {
     assert.fail("No se obtuvo el token de autenticación");
+  }else{
+    valid = ajv.validate(messageSchema, response);
+    assert.ok(valid)
   }
 });
 
@@ -78,7 +78,10 @@ Given(
     userData.password = "1234-fake-ekis-de";
   }
 );
-Given("los datos diligenciados no cumplen con el formato esperado", function () {
-  // Write code here that turns the phrase above into concrete actions
-  userData.username = 23464;
-});
+Given(
+  "los datos diligenciados no cumplen con el formato esperado",
+  function () {
+    // Write code here that turns the phrase above into concrete actions
+    userData.username = 23464;
+  }
+);
