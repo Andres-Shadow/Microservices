@@ -1,7 +1,7 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
-const { stat } = require("fs");
+const faker = require("@faker-js/faker");
 
 let baseUrl = "http://localhost:9090/api/v1/users/password";
 let loginUrl = "http://localhost:9090/api/v1/login";
@@ -16,21 +16,16 @@ let config = {};
 let token;
 
 let userData = {
-  username: "andres",
-  email: "andres@gmail.com",
-  password: "12345",
-};
-
-let userDataPrueba = {
-  username: "andres",
-  email: "andres@gmail.com",
-  password: "12345",
+  username: faker.fakerAR.internet.userName(),
+  email: faker.fakerAR.internet.email(),
+  password: faker.fakerAR.internet.password(),
 };
 
 Before(async function () {
   //primero lo creamos
-  const timestamp = new Date().getTime();
-  userData.email = userData.username + timestamp + "@gmail.com";
+  // const timestamp = new Date().getTime();
+  // userData.email = userData.username + timestamp + "@gmail.com";
+  userData.email = faker.fakerAR.internet.email();
 
   try {
     respuesta = await axios.post(registerUrl, userData);
@@ -44,7 +39,6 @@ Before(async function () {
     respuesta = await axios.post(loginUrl, userData);
     response = respuesta;
     token = response.data;
-    console.log("registrado");
     config = {
       headers: {
         Authorization: `Bearer ${token}`, // Agregar el token JWT en el encabezado Authorization
@@ -85,7 +79,6 @@ When(
     } catch (error) {
       response = error.response;
       statusCode = error.response.status;
-      
     }
   }
 );
@@ -112,7 +105,7 @@ Then("el servidor retorna un codigo de estado {int}", function (int) {
 Given(
   "pepe diligencia un correo que no está registrado en la base de datos",
   function () {
-    userData.email = "correosuperfalsoekisde";
+    userData.email = faker.fakerAR.internet.email();
   }
 );
 

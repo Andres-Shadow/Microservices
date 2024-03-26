@@ -1,13 +1,14 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
+const faker = require("@faker-js/faker");
 
 let baseURL = "http://localhost:9090/api/v1/users/";
 
 let userData = {
-  username: "pepe",
-  email: "a@gmail.com",
-  password: "1234",
+  username: faker.fakerAR.internet.userName(),
+  email: faker.fakerAR.internet.email(),
+  password: faker.fakerAR.internet.password(),
 };
 
 let response;
@@ -46,8 +47,9 @@ When(
   "el cliente envia una solicitud POST a \\/api\\/v1\\/users",
   async function () {
     let respuesta;
-    const timestamp = new Date().getTime();
-    userData.email = userData.username + timestamp + "@gmail.com";
+    // const timestamp = new Date().getTime();
+    // userData.email = userData.username + timestamp + "@gmail.com";
+    userData.email = faker.fakerAR.internet.email();
     //console.log(userData.email);
     try {
       respuesta = await axios.post(baseURL, userData);

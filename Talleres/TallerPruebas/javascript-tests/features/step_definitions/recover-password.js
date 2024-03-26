@@ -1,7 +1,6 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
-const { stat } = require("fs");
 
 let baseUrl = "http://localhost:9090/api/v1/users/password/";
 

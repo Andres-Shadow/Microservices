@@ -1,6 +1,7 @@
 const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
+const faker = require("@faker-js/faker");
 
 let loginUrl = "http://localhost:9090/api/v1/login";
 let baseUrl = "http://localhost:9090/api/v1/users/";
@@ -89,8 +90,9 @@ Then("el servidor responde con un mensaje de éxito", function () {
 Given(
   "el cuerpo de la petición corresponde a los datos de un usuario que no existe",
   function () {
-    const timestamp = new Date().getTime();
-    userData.email = userData.username + timestamp + "@gmail.com";
+    // const timestamp = new Date().getTime();
+    // userData.email = userData.username + timestamp + "@gmail.com";
+    userData.email = faker.fakerAR.internet.email();
   }
 );
 
