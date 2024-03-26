@@ -2,6 +2,10 @@ const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
 const faker = require("@faker-js/faker");
+const userSchema = require("../../schemas/user-schema");
+const errorSchema = require("../../schemas/error-schema");
+const Ajv = require("ajv");
+const ajv = new Ajv();
 
 let baseURL = "http://localhost:9090/api/v1/users/";
 
@@ -55,12 +59,22 @@ When(
       respuesta = await axios.post(baseURL, userData);
       response = respuesta;
       statusCode = response.status;
+
+      //console.log(valid)
     } catch (error) {
       response = error.response;
       statusCode = error.response.status;
     }
 
     //console.log(statusCode);
+
+    // Validar el objeto de datos contra el esquema
+
+    // Verificar si la validación fue exitosa
+    // if (!valid) {
+    //   console.log("Errores de validación:", ajv.errors);
+    //   throw new Error("El objeto de datos no coincide con el esquema.");
+    // }
   }
 );
 
@@ -77,9 +91,9 @@ Then(
     if (response && response.data) {
       // Acceder al cuerpo de la respuesta utilizando la propiedad data
       const mensajeRespuesta = response.data;
-      assert.equal(mensajeRespuesta.username, userData.username);
-    } else {
-      console.error("No se ha recibido una respuesta válida");
+      // assert.equal(mensajeRespuesta.username, userData.username);
+      valid = ajv.validate(userSchema, mensajeRespuesta);
+      assert.strictEqual(valid, true);
     }
   }
 );
@@ -95,8 +109,12 @@ Then(
   "el cuerpo de la respuesta debe contener un mensaje de error",
   function () {
     if (!response && !response.data) {
-      console.error("No se ha recibido una respuesta válida");
-      return;
+      // console.error("No se ha recibido una respuesta válida");
+      // return;
+      const mensajeRespuesta = response.data;
+      // assert.equal(mensajeRespuesta.username, userData.username);
+      valid = ajv.validate(errorSchema, mensajeRespuesta);
+      assert.strictEqual(valid, true);
     }
   }
 );
