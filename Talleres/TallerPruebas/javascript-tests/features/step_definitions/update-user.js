@@ -33,6 +33,7 @@ Before(async function () {
     //console.log("token generado");
   } catch (error) {
     response = error.response;
+    console.log(error.response)
     //console.log(error);
   }
 });
