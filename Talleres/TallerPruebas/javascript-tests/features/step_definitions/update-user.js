@@ -86,8 +86,6 @@ Then("el servidor responde con un mensaje de éxito", function () {
   if (!response.data) {
     console.log("entro aqui")
     return;
-  }else{
-    console.log(response.data);
   }
 });
 
