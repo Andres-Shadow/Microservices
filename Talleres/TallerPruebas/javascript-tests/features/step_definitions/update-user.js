@@ -27,6 +27,7 @@ let token;
 Before(async function () {
   try {
     respuesta = await axios.post(loginUrl, userData);
+    console.log(respuesta);
     response = respuesta;
     token = response.data;
     //console.log("token generado");
@@ -84,7 +85,7 @@ Then("el servidor actualiza los datos del usuario", function () {
 Then("el servidor responde con un mensaje de éxito", function () {
   // Write code here that turns the phrase above into concrete actions
   if (!response.data) {
-    console.log("entro aqui")
+    console.log("entro aqui");
     return;
   }
 });
