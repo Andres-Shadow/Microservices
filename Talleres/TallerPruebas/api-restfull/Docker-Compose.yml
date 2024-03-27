@@ -1,4 +1,4 @@
-version: '2.8'
+version: "2.8"
 services:
   #SERVICIO DE LA BASE DE DATOS
   database:
@@ -18,3 +18,10 @@ services:
       - DATABASE=database
     depends_on:
       - database
+
+  #SERVICIO DE JENKINS
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "6432:8080"
+      - "50000:50000"

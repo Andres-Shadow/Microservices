@@ -2,8 +2,8 @@
 
 //Definig the host
 
-host = "localhost";
-//host = "servidor"
+//host = "localhost";
+host = "server"
 
 //user route
 const userurl = "http://" + host + ":9090/api/v1/users/";
