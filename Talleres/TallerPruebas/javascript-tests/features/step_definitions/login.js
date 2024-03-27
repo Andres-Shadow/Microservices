@@ -4,8 +4,8 @@ const axios = require("axios");
 const messageSchema = require("../../schemas/message-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
-let loginUrl = "http://localhost:9090/api/v1/login";
-
+//let loginUrl = "http://localhost:9090/api/v1/login";
+let loginUrl = require("../../configuration/routes").loginUrl;
 
 //usuario precargado en la base de datos
 let userData = {

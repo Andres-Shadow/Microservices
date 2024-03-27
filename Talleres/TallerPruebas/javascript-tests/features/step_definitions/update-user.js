@@ -6,8 +6,11 @@ const messageSchema = require("../../schemas/message-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-let loginUrl = "http://localhost:9090/api/v1/login";
-let baseUrl = "http://localhost:9090/api/v1/users/";
+// let loginUrl = "http://localhost:9090/api/v1/login";
+// let baseUrl = "http://localhost:9090/api/v1/users/";
+
+let loginUrl = require("../../configuration/routes").loginUrl;
+let baseUrl = require("../../configuration/routes").userurl;
 
 //usuario precargado en la base de datos
 let userData = {
@@ -27,13 +30,11 @@ let token;
 Before(async function () {
   try {
     respuesta = await axios.post(loginUrl, userData);
-    console.log(respuesta);
     response = respuesta;
     token = response.data;
     //console.log("token generado");
   } catch (error) {
     response = error.response;
-    console.log(error.response)
     //console.log(error);
   }
 });

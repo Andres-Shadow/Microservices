@@ -5,7 +5,8 @@ const messageSchema = require("../../schemas/message-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-let baseUrl = "http://localhost:9090/api/v1/users/password/";
+// let baseUrl = "http://localhost:9090/api/v1/users/password/";
+let baseUrl = require("../../configuration/routes").passwordUpdateRoute;
 
 let response;
 

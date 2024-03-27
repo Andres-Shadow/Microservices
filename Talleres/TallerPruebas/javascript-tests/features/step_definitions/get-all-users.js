@@ -6,8 +6,11 @@ const userListSchema = require("../../schemas/userlist-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-let loginUrl = "http://localhost:9090/api/v1/login";
-let baseUrl = "http://localhost:9090/api/v1/users/";
+// let loginUrl = "http://localhost:9090/api/v1/login";
+// let baseUrl = "http://localhost:9090/api/v1/users/";
+
+let loginUrl = require("../../configuration/routes").loginUrl;
+let baseUrl = require("../../configuration/routes").userurl;
 
 let config2;
 

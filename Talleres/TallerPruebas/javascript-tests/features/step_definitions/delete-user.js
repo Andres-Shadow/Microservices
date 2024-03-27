@@ -6,9 +6,13 @@ const messageSchema = require("../../schemas/message-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-let baseUrl = "http://localhost:9090/api/v1/users/?email=";
-let loginUrl = "http://localhost:9090/api/v1/login";
-let registerUrl = "http://localhost:9090/api/v1/users/";
+// let baseUrl = "http://localhost:9090/api/v1/users/?email=";
+// let loginUrl = "http://localhost:9090/api/v1/login";
+// let registerUrl = "http://localhost:9090/api/v1/users/";
+
+let baseUrl = require("../../configuration/routes").userurl;
+let loginUrl = require("../../configuration/routes").loginUrl;
+let registerUrl = require("../../configuration/routes").userurl;
 
 let response;
 
@@ -68,7 +72,7 @@ Given(
 
 When("pepe hace una petición DELETE a \\/api\\/v1\\/users", async function () {
   try {
-    baseUrl = baseUrl + userData.email;
+    baseUrl = baseUrl + "?email=" + userData.email;
     respuesta = await axios.delete(baseUrl, config);
     response = respuesta;
     token = response.data;

@@ -7,7 +7,8 @@ const messageSchema = require("../../schemas/message-schema");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-let baseURL = "http://localhost:9090/api/v1/users/";
+//let baseURL = "http://localhost:9090/api/v1/users/";
+let baseURL = require("../../configuration/routes").userurl;
 
 let userData = {
   username: faker.fakerAR.internet.userName(),

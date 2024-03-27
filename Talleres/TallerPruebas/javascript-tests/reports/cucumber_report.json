@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 430337500
+              "duration": 46736699
             }
           },
           {
@@ -22,7 +22,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 134699
+              "duration": 54199
             }
           },
           {
@@ -30,7 +30,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 105700
+              "duration": 70399
             }
           },
           {
@@ -38,7 +38,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6348700
+              "duration": 2726800
             }
           },
           {
@@ -46,7 +46,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 141200
+              "duration": 88199
             }
           },
           {
@@ -54,7 +54,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4283200
+              "duration": 2094799
             }
           },
           {
@@ -63,11 +63,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha realizado el registro",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:58"
+              "location": "features\\step_definitions\\change-password.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 158899
+              "duration": 124900
             }
           },
           {
@@ -76,11 +76,11 @@
             "line": 5,
             "name": "pepe quiere actualizar su contraseña a 12345",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:63"
+              "location": "features\\step_definitions\\change-password.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 188400
+              "duration": 149700
             }
           },
           {
@@ -89,11 +89,11 @@
             "line": 8,
             "name": "pepe diligencia su correo en el cuerpo de la petición",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:70"
+              "location": "features\\step_definitions\\change-password.js:74"
             },
             "result": {
               "status": "passed",
-              "duration": 177999
+              "duration": 182599
             }
           },
           {
@@ -102,11 +102,11 @@
             "line": 9,
             "name": "pepe hace una solicitud a la ruta PATCH /api/v1/users/password",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:75"
+              "location": "features\\step_definitions\\change-password.js:79"
             },
             "result": {
               "status": "passed",
-              "duration": 22897099
+              "duration": 5902700
             }
           },
           {
@@ -115,11 +115,11 @@
             "line": 10,
             "name": "la aplicación lo busca en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:90"
+              "location": "features\\step_definitions\\change-password.js:94"
             },
             "result": {
               "status": "passed",
-              "duration": 599099
+              "duration": 280399
             }
           },
           {
@@ -128,11 +128,11 @@
             "line": 11,
             "name": "si existe un registro con esos dados actauliza la contraseña",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:95"
+              "location": "features\\step_definitions\\change-password.js:99"
             },
             "result": {
               "status": "passed",
-              "duration": 142100
+              "duration": 222199
             }
           },
           {
@@ -141,11 +141,11 @@
             "line": 12,
             "name": "el servidor retorna un codigo de estado 200",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:103"
+              "location": "features\\step_definitions\\change-password.js:107"
             },
             "result": {
               "status": "passed",
-              "duration": 60680099
+              "duration": 30918600
             }
           }
         ],
@@ -164,7 +164,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 7688799
+              "duration": 5728799
             }
           },
           {
@@ -172,7 +172,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 27799
+              "duration": 19400
             }
           },
           {
@@ -180,7 +180,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 65099
+              "duration": 57300
             }
           },
           {
@@ -188,7 +188,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4683800
+              "duration": 2673500
             }
           },
           {
@@ -196,7 +196,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 161199
+              "duration": 129400
             }
           },
           {
@@ -204,7 +204,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3717800
+              "duration": 2468099
             }
           },
           {
@@ -213,11 +213,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha realizado el registro",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:58"
+              "location": "features\\step_definitions\\change-password.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 72999
+              "duration": 114599
             }
           },
           {
@@ -226,11 +226,11 @@
             "line": 5,
             "name": "pepe quiere actualizar su contraseña a 12345",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:63"
+              "location": "features\\step_definitions\\change-password.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 48400
+              "duration": 36499
             }
           },
           {
@@ -239,11 +239,11 @@
             "line": 15,
             "name": "pepe diligencia un correo que no está registrado en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:114"
+              "location": "features\\step_definitions\\change-password.js:118"
             },
             "result": {
               "status": "passed",
-              "duration": 672199
+              "duration": 230599
             }
           },
           {
@@ -252,11 +252,11 @@
             "line": 16,
             "name": "pepe hace una solicitud a la ruta PATCH /api/v1/users/password",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:75"
+              "location": "features\\step_definitions\\change-password.js:79"
             },
             "result": {
               "status": "passed",
-              "duration": 13450700
+              "duration": 3055099
             }
           },
           {
@@ -265,11 +265,11 @@
             "line": 17,
             "name": "la aplicación busca su registro en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:121"
+              "location": "features\\step_definitions\\change-password.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 166200
+              "duration": 87599
             }
           },
           {
@@ -278,11 +278,11 @@
             "line": 18,
             "name": "si no existe un registro con esos dados",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:123"
+              "location": "features\\step_definitions\\change-password.js:127"
             },
             "result": {
               "status": "passed",
-              "duration": 130299
+              "duration": 45799
             }
           },
           {
@@ -291,11 +291,11 @@
             "line": 19,
             "name": "el servidor retorna un codigo de estado 404",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:103"
+              "location": "features\\step_definitions\\change-password.js:107"
             },
             "result": {
               "status": "passed",
-              "duration": 104500
+              "duration": 47200
             }
           }
         ],
@@ -314,7 +314,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5641199
+              "duration": 3859099
             }
           },
           {
@@ -322,7 +322,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 13999
+              "duration": 11099
             }
           },
           {
@@ -330,7 +330,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36900
+              "duration": 25900
             }
           },
           {
@@ -338,7 +338,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3485700
+              "duration": 2971799
             }
           },
           {
@@ -346,7 +346,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 53700
+              "duration": 38100
             }
           },
           {
@@ -354,7 +354,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4432600
+              "duration": 2296900
             }
           },
           {
@@ -363,11 +363,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha realizado el registro",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:58"
+              "location": "features\\step_definitions\\change-password.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 58300
+              "duration": 48900
             }
           },
           {
@@ -376,11 +376,11 @@
             "line": 5,
             "name": "pepe quiere actualizar su contraseña a 12345",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:63"
+              "location": "features\\step_definitions\\change-password.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 53599
+              "duration": 30099
             }
           },
           {
@@ -389,11 +389,11 @@
             "line": 22,
             "name": "pepe hace una solicitud a la ruta PATCH /api/v1/users/password",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:75"
+              "location": "features\\step_definitions\\change-password.js:79"
             },
             "result": {
               "status": "passed",
-              "duration": 6450800
+              "duration": 2341099
             }
           },
           {
@@ -402,11 +402,11 @@
             "line": 23,
             "name": "pepe no proporsiona el token de verificación jwt",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:127"
+              "location": "features\\step_definitions\\change-password.js:131"
             },
             "result": {
               "status": "passed",
-              "duration": 226099
+              "duration": 79499
             }
           },
           {
@@ -415,11 +415,11 @@
             "line": 24,
             "name": "el servidor retorna un codigo de estado 404",
             "match": {
-              "location": "features\\step_definitions\\change-password.js:103"
+              "location": "features\\step_definitions\\change-password.js:107"
             },
             "result": {
               "status": "passed",
-              "duration": 126900
+              "duration": 55899
             }
           }
         ],
@@ -449,7 +449,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4715100
+              "duration": 2184999
             }
           },
           {
@@ -457,7 +457,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 12899
+              "duration": 8999
             }
           },
           {
@@ -465,7 +465,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 123699
+              "duration": 77000
             }
           },
           {
@@ -473,7 +473,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4002799
+              "duration": 2409000
             }
           },
           {
@@ -481,7 +481,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 71300
+              "duration": 100700
             }
           },
           {
@@ -489,7 +489,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5913500
+              "duration": 3772799
             }
           },
           {
@@ -498,11 +498,11 @@
             "line": 4,
             "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:29"
+              "location": "features\\step_definitions\\create-user.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 144800
+              "duration": 132799
             }
           },
           {
@@ -530,11 +530,11 @@
             "line": 5,
             "name": "pepe ingresa los siguientes datos:",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:35"
+              "location": "features\\step_definitions\\create-user.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 307800
+              "duration": 404699
             }
           },
           {
@@ -543,11 +543,11 @@
             "line": 10,
             "name": "el cliente envia una solicitud POST a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:50"
+              "location": "features\\step_definitions\\create-user.js:51"
             },
             "result": {
               "status": "passed",
-              "duration": 7917899
+              "duration": 6608000
             }
           },
           {
@@ -556,11 +556,11 @@
             "line": 11,
             "name": "el codigo de respuesta debe ser 200",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:81"
+              "location": "features\\step_definitions\\create-user.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 228499
+              "duration": 120899
             }
           },
           {
@@ -569,11 +569,11 @@
             "line": 12,
             "name": "el cuerpo de la respuesta debe contener los detalles del usuario registrado",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:87"
+              "location": "features\\step_definitions\\create-user.js:88"
             },
             "result": {
               "status": "passed",
-              "duration": 24909700
+              "duration": 16733699
             }
           }
         ],
@@ -592,7 +592,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3294100
+              "duration": 2355299
             }
           },
           {
@@ -600,7 +600,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 16800
+              "duration": 11999
             }
           },
           {
@@ -608,7 +608,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 69700
+              "duration": 40799
             }
           },
           {
@@ -616,7 +616,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4374099
+              "duration": 4846099
             }
           },
           {
@@ -624,7 +624,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 44499
+              "duration": 31400
             }
           },
           {
@@ -632,7 +632,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6284899
+              "duration": 2697499
             }
           },
           {
@@ -641,11 +641,11 @@
             "line": 4,
             "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:29"
+              "location": "features\\step_definitions\\create-user.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 63699
+              "duration": 47700
             }
           },
           {
@@ -673,11 +673,11 @@
             "line": 5,
             "name": "pepe ingresa los siguientes datos:",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:35"
+              "location": "features\\step_definitions\\create-user.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 99500
+              "duration": 72600
             }
           },
           {
@@ -686,11 +686,11 @@
             "line": 15,
             "name": "el cuerpo de la solicitud de creación no contiene los datos requeridos",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:101"
+              "location": "features\\step_definitions\\create-user.js:102"
             },
             "result": {
               "status": "passed",
-              "duration": 77399
+              "duration": 65700
             }
           },
           {
@@ -699,11 +699,11 @@
             "line": 16,
             "name": "el cliente envia una solicitud POST a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:50"
+              "location": "features\\step_definitions\\create-user.js:51"
             },
             "result": {
               "status": "passed",
-              "duration": 2506899
+              "duration": 2186500
             }
           },
           {
@@ -712,11 +712,11 @@
             "line": 17,
             "name": "el codigo de respuesta debe ser 400",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:81"
+              "location": "features\\step_definitions\\create-user.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 57500
+              "duration": 51699
             }
           },
           {
@@ -725,11 +725,11 @@
             "line": 18,
             "name": "el cuerpo de la respuesta debe contener un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:108"
+              "location": "features\\step_definitions\\create-user.js:109"
             },
             "result": {
               "status": "passed",
-              "duration": 87499
+              "duration": 80700
             }
           }
         ],
@@ -748,7 +748,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2056699
+              "duration": 1896699
             }
           },
           {
@@ -756,7 +756,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 13499
+              "duration": 9299
             }
           },
           {
@@ -764,7 +764,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 34999
+              "duration": 20600
             }
           },
           {
@@ -772,7 +772,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4297600
+              "duration": 1687000
             }
           },
           {
@@ -780,7 +780,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 84800
+              "duration": 22400
             }
           },
           {
@@ -788,7 +788,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3925500
+              "duration": 4835700
             }
           },
           {
@@ -797,11 +797,11 @@
             "line": 4,
             "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:29"
+              "location": "features\\step_definitions\\create-user.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 70399
+              "duration": 53900
             }
           },
           {
@@ -829,11 +829,11 @@
             "line": 5,
             "name": "pepe ingresa los siguientes datos:",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:35"
+              "location": "features\\step_definitions\\create-user.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 79499
+              "duration": 54699
             }
           },
           {
@@ -842,11 +842,11 @@
             "line": 21,
             "name": "en el cuerpo de la solicitud se ingresa un email ya registrado",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:122"
+              "location": "features\\step_definitions\\create-user.js:123"
             },
             "result": {
               "status": "passed",
-              "duration": 86699
+              "duration": 78400
             }
           },
           {
@@ -855,11 +855,11 @@
             "line": 22,
             "name": "el cliente envia una solicitud POST a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:50"
+              "location": "features\\step_definitions\\create-user.js:51"
             },
             "result": {
               "status": "passed",
-              "duration": 3422700
+              "duration": 2943600
             }
           },
           {
@@ -868,11 +868,11 @@
             "line": 23,
             "name": "el codigo de respuesta debe ser 400",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:81"
+              "location": "features\\step_definitions\\create-user.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 118499
+              "duration": 83699
             }
           },
           {
@@ -881,11 +881,11 @@
             "line": 24,
             "name": "el cuerpo de la respuesta debe contener un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:108"
+              "location": "features\\step_definitions\\create-user.js:109"
             },
             "result": {
               "status": "passed",
-              "duration": 66900
+              "duration": 22899
             }
           }
         ],
@@ -904,7 +904,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3327499
+              "duration": 2340299
             }
           },
           {
@@ -912,7 +912,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 18199
+              "duration": 10800
             }
           },
           {
@@ -920,7 +920,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 65000
+              "duration": 25600
             }
           },
           {
@@ -928,7 +928,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4275200
+              "duration": 2610299
             }
           },
           {
@@ -936,7 +936,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 252099
+              "duration": 31599
             }
           },
           {
@@ -944,7 +944,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4296800
+              "duration": 2258700
             }
           },
           {
@@ -953,11 +953,11 @@
             "line": 4,
             "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:29"
+              "location": "features\\step_definitions\\create-user.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 46300
+              "duration": 96399
             }
           },
           {
@@ -985,11 +985,11 @@
             "line": 5,
             "name": "pepe ingresa los siguientes datos:",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:35"
+              "location": "features\\step_definitions\\create-user.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 118900
+              "duration": 320299
             }
           },
           {
@@ -998,11 +998,11 @@
             "line": 27,
             "name": "se crea un cuerpo de solicitud con datos que no coindicen con el esquema de la base de datos",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:129"
+              "location": "features\\step_definitions\\create-user.js:130"
             },
             "result": {
               "status": "passed",
-              "duration": 93799
+              "duration": 546800
             }
           },
           {
@@ -1011,11 +1011,11 @@
             "line": 28,
             "name": "el cliente envia una solicitud POST a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:50"
+              "location": "features\\step_definitions\\create-user.js:51"
             },
             "result": {
               "status": "passed",
-              "duration": 2590699
+              "duration": 3612300
             }
           },
           {
@@ -1024,11 +1024,11 @@
             "line": 29,
             "name": "el codigo de respuesta debe ser 400",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:81"
+              "location": "features\\step_definitions\\create-user.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 112599
+              "duration": 87100
             }
           },
           {
@@ -1037,11 +1037,11 @@
             "line": 30,
             "name": "el cuerpo de la respuesta debe contener un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\create-user.js:108"
+              "location": "features\\step_definitions\\create-user.js:109"
             },
             "result": {
               "status": "passed",
-              "duration": 27999
+              "duration": 33599
             }
           }
         ],
@@ -1071,7 +1071,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3052700
+              "duration": 2179399
             }
           },
           {
@@ -1079,7 +1079,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 12199
+              "duration": 14000
             }
           },
           {
@@ -1087,7 +1087,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30599
+              "duration": 42100
             }
           },
           {
@@ -1095,7 +1095,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5907699
+              "duration": 2514899
             }
           },
           {
@@ -1103,7 +1103,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 50300
+              "duration": 44900
             }
           },
           {
@@ -1111,7 +1111,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2707799
+              "duration": 3918199
             }
           },
           {
@@ -1120,11 +1120,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:28"
+              "location": "features\\step_definitions\\delete-user.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 6023699
+              "duration": 8098999
             }
           },
           {
@@ -1133,11 +1133,11 @@
             "line": 5,
             "name": "pepe ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:44"
+              "location": "features\\step_definitions\\delete-user.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 5074000
+              "duration": 2092100
             }
           },
           {
@@ -1146,11 +1146,11 @@
             "line": 8,
             "name": "pepe proporsiona su correo electrónico en el cuerpo de la petición de eliminado",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:64"
+              "location": "features\\step_definitions\\delete-user.js:68"
             },
             "result": {
               "status": "passed",
-              "duration": 119400
+              "duration": 69799
             }
           },
           {
@@ -1159,11 +1159,11 @@
             "line": 9,
             "name": "pepe hace una petición DELETE a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:69"
+              "location": "features\\step_definitions\\delete-user.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 7579699
+              "duration": 5133000
             }
           },
           {
@@ -1172,11 +1172,11 @@
             "line": 10,
             "name": "la aplicación encuentra su registro",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:88"
+              "location": "features\\step_definitions\\delete-user.js:92"
             },
             "result": {
               "status": "passed",
-              "duration": 18328299
+              "duration": 12189799
             }
           },
           {
@@ -1185,11 +1185,11 @@
             "line": 11,
             "name": "la aplicación elimina el registro de la base de datos",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:95"
+              "location": "features\\step_definitions\\delete-user.js:99"
             },
             "result": {
               "status": "passed",
-              "duration": 80700
+              "duration": 65700
             }
           },
           {
@@ -1198,11 +1198,11 @@
             "line": 12,
             "name": "el mensaje de respuesta del servidor contiene un estado 200",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:100"
+              "location": "features\\step_definitions\\delete-user.js:104"
             },
             "result": {
               "status": "passed",
-              "duration": 81900
+              "duration": 50199
             }
           }
         ],
@@ -1221,7 +1221,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5333400
+              "duration": 2402099
             }
           },
           {
@@ -1229,7 +1229,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 22899
+              "duration": 12400
             }
           },
           {
@@ -1237,7 +1237,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 47199
+              "duration": 23200
             }
           },
           {
@@ -1245,7 +1245,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2632399
+              "duration": 1936200
             }
           },
           {
@@ -1253,7 +1253,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 26700
+              "duration": 42899
             }
           },
           {
@@ -1261,7 +1261,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2031900
+              "duration": 4843699
             }
           },
           {
@@ -1270,11 +1270,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:28"
+              "location": "features\\step_definitions\\delete-user.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 8150599
+              "duration": 5543599
             }
           },
           {
@@ -1283,11 +1283,11 @@
             "line": 5,
             "name": "pepe ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:44"
+              "location": "features\\step_definitions\\delete-user.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 3852499
+              "duration": 2236400
             }
           },
           {
@@ -1296,11 +1296,11 @@
             "line": 15,
             "name": "pepe no proporsiona un correo electrónico valido en el cuerpo de la peticion",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:109"
+              "location": "features\\step_definitions\\delete-user.js:113"
             },
             "result": {
               "status": "passed",
-              "duration": 98900
+              "duration": 126899
             }
           },
           {
@@ -1309,11 +1309,11 @@
             "line": 16,
             "name": "pepe hace una petición DELETE a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:69"
+              "location": "features\\step_definitions\\delete-user.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 3053100
+              "duration": 3443500
             }
           },
           {
@@ -1322,11 +1322,11 @@
             "line": 17,
             "name": "el mensaje de respuesta del servidor contiene un estado 404",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:100"
+              "location": "features\\step_definitions\\delete-user.js:104"
             },
             "result": {
               "status": "passed",
-              "duration": 123600
+              "duration": 350199
             }
           }
         ],
@@ -1345,7 +1345,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4436499
+              "duration": 3510900
             }
           },
           {
@@ -1353,7 +1353,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 15100
+              "duration": 12699
             }
           },
           {
@@ -1361,7 +1361,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36200
+              "duration": 53200
             }
           },
           {
@@ -1369,7 +1369,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3829599
+              "duration": 2618999
             }
           },
           {
@@ -1377,7 +1377,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 165500
+              "duration": 29700
             }
           },
           {
@@ -1385,7 +1385,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4307899
+              "duration": 2323199
             }
           },
           {
@@ -1394,11 +1394,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:28"
+              "location": "features\\step_definitions\\delete-user.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 6655900
+              "duration": 6538100
             }
           },
           {
@@ -1407,11 +1407,11 @@
             "line": 5,
             "name": "pepe ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:44"
+              "location": "features\\step_definitions\\delete-user.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 5719500
+              "duration": 2755699
             }
           },
           {
@@ -1420,11 +1420,11 @@
             "line": 20,
             "name": "pepe no proporsiona un correo electrónico en el cuerpo de la petición",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:118"
+              "location": "features\\step_definitions\\delete-user.js:122"
             },
             "result": {
               "status": "passed",
-              "duration": 133199
+              "duration": 170799
             }
           },
           {
@@ -1433,11 +1433,11 @@
             "line": 21,
             "name": "pepe hace una petición DELETE a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:69"
+              "location": "features\\step_definitions\\delete-user.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 4757600
+              "duration": 2830500
             }
           },
           {
@@ -1446,11 +1446,11 @@
             "line": 22,
             "name": "el mensaje de respuesta del servidor contiene un estado 404",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:100"
+              "location": "features\\step_definitions\\delete-user.js:104"
             },
             "result": {
               "status": "passed",
-              "duration": 65099
+              "duration": 84399
             }
           }
         ],
@@ -1469,7 +1469,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3916300
+              "duration": 2039600
             }
           },
           {
@@ -1477,7 +1477,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 14400
+              "duration": 10200
             }
           },
           {
@@ -1485,7 +1485,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 42400
+              "duration": 22300
             }
           },
           {
@@ -1493,7 +1493,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5366899
+              "duration": 2268299
             }
           },
           {
@@ -1501,7 +1501,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 52600
+              "duration": 38999
             }
           },
           {
@@ -1509,7 +1509,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3234600
+              "duration": 5190500
             }
           },
           {
@@ -1518,11 +1518,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:28"
+              "location": "features\\step_definitions\\delete-user.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 7064400
+              "duration": 5404999
             }
           },
           {
@@ -1531,11 +1531,11 @@
             "line": 5,
             "name": "pepe ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:44"
+              "location": "features\\step_definitions\\delete-user.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 4766399
+              "duration": 2322199
             }
           },
           {
@@ -1544,11 +1544,11 @@
             "line": 25,
             "name": "pepe ingresa un correo electrónico diferente al suyo",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:127"
+              "location": "features\\step_definitions\\delete-user.js:131"
             },
             "result": {
               "status": "passed",
-              "duration": 132000
+              "duration": 101700
             }
           },
           {
@@ -1557,11 +1557,11 @@
             "line": 26,
             "name": "pepe hace una petición DELETE a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:69"
+              "location": "features\\step_definitions\\delete-user.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 3302199
+              "duration": 2209599
             }
           },
           {
@@ -1570,11 +1570,11 @@
             "line": 27,
             "name": "la aplicación no encuentra un registro con ese correo",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:132"
+              "location": "features\\step_definitions\\delete-user.js:136"
             },
             "result": {
               "status": "passed",
-              "duration": 159100
+              "duration": 115899
             }
           },
           {
@@ -1583,11 +1583,11 @@
             "line": 28,
             "name": "el mensaje de respuesta del servidor contiene un estado 404",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:100"
+              "location": "features\\step_definitions\\delete-user.js:104"
             },
             "result": {
               "status": "passed",
-              "duration": 46200
+              "duration": 30500
             }
           }
         ],
@@ -1606,7 +1606,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4313500
+              "duration": 2221499
             }
           },
           {
@@ -1614,7 +1614,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24800
+              "duration": 34300
             }
           },
           {
@@ -1622,7 +1622,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 92599
+              "duration": 204699
             }
           },
           {
@@ -1630,7 +1630,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 20278100
+              "duration": 2791000
             }
           },
           {
@@ -1638,7 +1638,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 98700
+              "duration": 31499
             }
           },
           {
@@ -1646,7 +1646,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 8302300
+              "duration": 2717299
             }
           },
           {
@@ -1655,11 +1655,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:28"
+              "location": "features\\step_definitions\\delete-user.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 8965999
+              "duration": 4474599
             }
           },
           {
@@ -1668,11 +1668,11 @@
             "line": 5,
             "name": "pepe ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:44"
+              "location": "features\\step_definitions\\delete-user.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 6075199
+              "duration": 1942600
             }
           },
           {
@@ -1681,11 +1681,11 @@
             "line": 31,
             "name": "pepe no proporsiona un token jwt de autenticación",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:142"
+              "location": "features\\step_definitions\\delete-user.js:146"
             },
             "result": {
               "status": "passed",
-              "duration": 138299
+              "duration": 90200
             }
           },
           {
@@ -1694,11 +1694,11 @@
             "line": 32,
             "name": "pepe hace una petición DELETE a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:69"
+              "location": "features\\step_definitions\\delete-user.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 4747200
+              "duration": 2755200
             }
           },
           {
@@ -1707,11 +1707,11 @@
             "line": 33,
             "name": "el mensaje de respuesta del servidor contiene un estado 401",
             "match": {
-              "location": "features\\step_definitions\\delete-user.js:100"
+              "location": "features\\step_definitions\\delete-user.js:104"
             },
             "result": {
               "status": "passed",
-              "duration": 98000
+              "duration": 227599
             }
           }
         ],
@@ -1741,7 +1741,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3763599
+              "duration": 2179200
             }
           },
           {
@@ -1749,7 +1749,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 27099
+              "duration": 16899
             }
           },
           {
@@ -1757,7 +1757,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 201600
+              "duration": 48299
             }
           },
           {
@@ -1765,7 +1765,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4085399
+              "duration": 2563700
             }
           },
           {
@@ -1773,7 +1773,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 35599
+              "duration": 38300
             }
           },
           {
@@ -1781,7 +1781,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2736099
+              "duration": 1781399
             }
           },
           {
@@ -1790,11 +1790,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:45"
+              "location": "features\\step_definitions\\get-all-users.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 102499
+              "duration": 78999
             }
           },
           {
@@ -1803,11 +1803,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:36"
+              "location": "features\\step_definitions\\get-all-users.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 100200
+              "duration": 60999
             }
           },
           {
@@ -1816,11 +1816,11 @@
             "line": 8,
             "name": "pepe hace un petición get a la ruta /api/v1/users?page=1&limit=10",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:52"
+              "location": "features\\step_definitions\\get-all-users.js:55"
             },
             "result": {
               "status": "passed",
-              "duration": 13831200
+              "duration": 2065500
             }
           },
           {
@@ -1829,11 +1829,11 @@
             "line": 9,
             "name": "la API le responde con una lista de usuarios registrados en la base de datos con paginación",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:71"
+              "location": "features\\step_definitions\\get-all-users.js:74"
             },
             "result": {
               "status": "passed",
-              "duration": 26547200
+              "duration": 17649399
             }
           },
           {
@@ -1842,11 +1842,11 @@
             "line": 10,
             "name": "la API le responde con un status code 200",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:81"
+              "location": "features\\step_definitions\\get-all-users.js:84"
             },
             "result": {
               "status": "passed",
-              "duration": 125399
+              "duration": 201900
             }
           }
         ],
@@ -1865,7 +1865,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3611699
+              "duration": 2399800
             }
           },
           {
@@ -1873,7 +1873,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 18600
+              "duration": 10300
             }
           },
           {
@@ -1881,7 +1881,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 50999
+              "duration": 24699
             }
           },
           {
@@ -1889,7 +1889,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3581700
+              "duration": 2641600
             }
           },
           {
@@ -1897,7 +1897,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 61500
+              "duration": 48499
             }
           },
           {
@@ -1905,7 +1905,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3946099
+              "duration": 5201200
             }
           },
           {
@@ -1914,11 +1914,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:45"
+              "location": "features\\step_definitions\\get-all-users.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 76400
+              "duration": 71599
             }
           },
           {
@@ -1927,11 +1927,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:36"
+              "location": "features\\step_definitions\\get-all-users.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 55099
+              "duration": 43099
             }
           },
           {
@@ -1940,11 +1940,11 @@
             "line": 13,
             "name": "pepe hace una petición get a la ruta /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:87"
+              "location": "features\\step_definitions\\get-all-users.js:90"
             },
             "result": {
               "status": "passed",
-              "duration": 7219399
+              "duration": 3704200
             }
           },
           {
@@ -1953,11 +1953,11 @@
             "line": 14,
             "name": "la aplicación internamente define el tamaño de la paginación a mostrar",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:108"
+              "location": "features\\step_definitions\\get-all-users.js:111"
             },
             "result": {
               "status": "passed",
-              "duration": 202699
+              "duration": 97200
             }
           },
           {
@@ -1966,11 +1966,11 @@
             "line": 15,
             "name": "la API le responde con una lista de usuarios registrados en la base de datos con paginación",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:71"
+              "location": "features\\step_definitions\\get-all-users.js:74"
             },
             "result": {
               "status": "passed",
-              "duration": 103599
+              "duration": 92499
             }
           },
           {
@@ -1979,11 +1979,11 @@
             "line": 16,
             "name": "la API le responde con un status code 200",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:81"
+              "location": "features\\step_definitions\\get-all-users.js:84"
             },
             "result": {
               "status": "passed",
-              "duration": 48099
+              "duration": 39399
             }
           }
         ],
@@ -2002,7 +2002,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2602599
+              "duration": 2678499
             }
           },
           {
@@ -2010,7 +2010,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 17099
+              "duration": 14500
             }
           },
           {
@@ -2018,7 +2018,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 48300
+              "duration": 34500
             }
           },
           {
@@ -2026,7 +2026,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3750900
+              "duration": 4807399
             }
           },
           {
@@ -2034,7 +2034,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 46700
+              "duration": 57200
             }
           },
           {
@@ -2042,7 +2042,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5005800
+              "duration": 2686699
             }
           },
           {
@@ -2051,11 +2051,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:45"
+              "location": "features\\step_definitions\\get-all-users.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 249900
+              "duration": 59000
             }
           },
           {
@@ -2064,11 +2064,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:36"
+              "location": "features\\step_definitions\\get-all-users.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 79599
+              "duration": 51199
             }
           },
           {
@@ -2077,11 +2077,11 @@
             "line": 19,
             "name": "la base de datos se encuentra vacía",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:121"
+              "location": "features\\step_definitions\\get-all-users.js:124"
             },
             "result": {
               "status": "passed",
-              "duration": 91199
+              "duration": 84300
             }
           },
           {
@@ -2090,11 +2090,11 @@
             "line": 20,
             "name": "pepe hace una petición get a la ruta /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:87"
+              "location": "features\\step_definitions\\get-all-users.js:90"
             },
             "result": {
               "status": "passed",
-              "duration": 3813199
+              "duration": 2391600
             }
           },
           {
@@ -2103,11 +2103,11 @@
             "line": 21,
             "name": "la API le responde con una lista vacía",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:125"
+              "location": "features\\step_definitions\\get-all-users.js:128"
             },
             "result": {
               "status": "passed",
-              "duration": 115700
+              "duration": 85599
             }
           },
           {
@@ -2116,11 +2116,11 @@
             "line": 22,
             "name": "la API le responde con un status code 200",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:81"
+              "location": "features\\step_definitions\\get-all-users.js:84"
             },
             "result": {
               "status": "passed",
-              "duration": 64700
+              "duration": 30299
             }
           }
         ],
@@ -2139,7 +2139,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3102200
+              "duration": 1549000
             }
           },
           {
@@ -2147,7 +2147,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 14800
+              "duration": 7799
             }
           },
           {
@@ -2155,7 +2155,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 66700
+              "duration": 25400
             }
           },
           {
@@ -2163,7 +2163,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5528400
+              "duration": 1568899
             }
           },
           {
@@ -2171,7 +2171,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 75600
+              "duration": 32999
             }
           },
           {
@@ -2179,7 +2179,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2727100
+              "duration": 2017700
             }
           },
           {
@@ -2188,11 +2188,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:45"
+              "location": "features\\step_definitions\\get-all-users.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 71900
+              "duration": 43499
             }
           },
           {
@@ -2201,11 +2201,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:36"
+              "location": "features\\step_definitions\\get-all-users.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 30099
+              "duration": 26299
             }
           },
           {
@@ -2214,11 +2214,11 @@
             "line": 25,
             "name": "el token jwt ingresado se encuentra caducado",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:117"
+              "location": "features\\step_definitions\\get-all-users.js:120"
             },
             "result": {
               "status": "passed",
-              "duration": 69200
+              "duration": 66100
             }
           },
           {
@@ -2227,11 +2227,11 @@
             "line": 26,
             "name": "pepe hace una petición get a la ruta /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:87"
+              "location": "features\\step_definitions\\get-all-users.js:90"
             },
             "result": {
               "status": "passed",
-              "duration": 2760100
+              "duration": 4350200
             }
           },
           {
@@ -2240,11 +2240,11 @@
             "line": 27,
             "name": "la API le responde con un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:133"
+              "location": "features\\step_definitions\\get-all-users.js:136"
             },
             "result": {
               "status": "passed",
-              "duration": 985100
+              "duration": 751200
             }
           },
           {
@@ -2253,11 +2253,11 @@
             "line": 28,
             "name": "la API le responde con un status code 401",
             "match": {
-              "location": "features\\step_definitions\\get-all-users.js:81"
+              "location": "features\\step_definitions\\get-all-users.js:84"
             },
             "result": {
               "status": "passed",
-              "duration": 77499
+              "duration": 41999
             }
           }
         ],
@@ -2292,7 +2292,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3487999
+              "duration": 2374899
             }
           },
           {
@@ -2300,7 +2300,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 93800
+              "duration": 11299
             }
           },
           {
@@ -2308,7 +2308,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 178399
+              "duration": 24899
             }
           },
           {
@@ -2316,7 +2316,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4632200
+              "duration": 2260599
             }
           },
           {
@@ -2324,7 +2324,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 33800
+              "duration": 28800
             }
           },
           {
@@ -2332,7 +2332,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3468799
+              "duration": 1882700
             }
           },
           {
@@ -2345,7 +2345,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 99199
+              "duration": 77700
             }
           },
           {
@@ -2358,7 +2358,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60000
+              "duration": 50500
             }
           },
           {
@@ -2371,7 +2371,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3425899
+              "duration": 2118999
             }
           },
           {
@@ -2384,7 +2384,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 121900
+              "duration": 122399
             }
           },
           {
@@ -2397,7 +2397,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11174100
+              "duration": 18502699
             }
           }
         ],
@@ -2416,7 +2416,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3169899
+              "duration": 3324300
             }
           },
           {
@@ -2424,7 +2424,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 16399
+              "duration": 11999
             }
           },
           {
@@ -2432,7 +2432,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 51599
+              "duration": 36199
             }
           },
           {
@@ -2440,7 +2440,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3454999
+              "duration": 3093999
             }
           },
           {
@@ -2448,7 +2448,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 144100
+              "duration": 57299
             }
           },
           {
@@ -2456,7 +2456,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5039399
+              "duration": 2470199
             }
           },
           {
@@ -2469,7 +2469,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 43099
+              "duration": 52000
             }
           },
           {
@@ -2482,7 +2482,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 18999
+              "duration": 36200
             }
           },
           {
@@ -2495,7 +2495,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 68400
+              "duration": 72800
             }
           },
           {
@@ -2508,7 +2508,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3543500
+              "duration": 2995299
             }
           },
           {
@@ -2521,7 +2521,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58000
+              "duration": 421499
             }
           },
           {
@@ -2534,7 +2534,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 146700
+              "duration": 576200
             }
           }
         ],
@@ -2553,7 +2553,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3043099
+              "duration": 2577300
             }
           },
           {
@@ -2561,7 +2561,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 11100
+              "duration": 24700
             }
           },
           {
@@ -2569,7 +2569,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 27200
+              "duration": 59200
             }
           },
           {
@@ -2577,7 +2577,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4765700
+              "duration": 2379899
             }
           },
           {
@@ -2585,7 +2585,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 114099
+              "duration": 52399
             }
           },
           {
@@ -2593,7 +2593,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2626600
+              "duration": 2708399
             }
           },
           {
@@ -2606,7 +2606,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46599
+              "duration": 52299
             }
           },
           {
@@ -2619,7 +2619,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 21800
+              "duration": 44000
             }
           },
           {
@@ -2632,7 +2632,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 67800
+              "duration": 80299
             }
           },
           {
@@ -2645,7 +2645,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2392699
+              "duration": 2408800
             }
           },
           {
@@ -2658,7 +2658,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 130399
+              "duration": 64300
             }
           }
         ],
@@ -2677,7 +2677,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4085500
+              "duration": 4684999
             }
           },
           {
@@ -2685,7 +2685,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 21000
+              "duration": 15299
             }
           },
           {
@@ -2693,7 +2693,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36899
+              "duration": 43300
             }
           },
           {
@@ -2701,7 +2701,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4755499
+              "duration": 2565000
             }
           },
           {
@@ -2709,7 +2709,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 145799
+              "duration": 65500
             }
           },
           {
@@ -2717,7 +2717,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2876999
+              "duration": 2304499
             }
           },
           {
@@ -2730,7 +2730,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46800
+              "duration": 47699
             }
           },
           {
@@ -2743,7 +2743,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 21499
+              "duration": 19600
             }
           },
           {
@@ -2756,7 +2756,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 89100
+              "duration": 96500
             }
           },
           {
@@ -2769,7 +2769,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2570600
+              "duration": 2711799
             }
           },
           {
@@ -2782,7 +2782,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63899
+              "duration": 54799
             }
           },
           {
@@ -2795,7 +2795,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46700
+              "duration": 50400
             }
           }
         ],
@@ -2825,7 +2825,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2578199
+              "duration": 1628000
             }
           },
           {
@@ -2833,7 +2833,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 13200
+              "duration": 8999
             }
           },
           {
@@ -2841,7 +2841,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 39499
+              "duration": 46800
             }
           },
           {
@@ -2849,7 +2849,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2852200
+              "duration": 4823099
             }
           },
           {
@@ -2857,7 +2857,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 29000
+              "duration": 51100
             }
           },
           {
@@ -2865,7 +2865,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3835800
+              "duration": 2479900
             }
           },
           {
@@ -2874,11 +2874,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya se ha registrado",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:22"
+              "location": "features\\step_definitions\\recover-password.js:23"
             },
             "result": {
               "status": "passed",
-              "duration": 860099
+              "duration": 108600
             }
           },
           {
@@ -2887,11 +2887,11 @@
             "line": 5,
             "name": "pepe por correo electronico a@gmail.com",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:26"
+              "location": "features\\step_definitions\\recover-password.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 130900
+              "duration": 74099
             }
           },
           {
@@ -2900,11 +2900,11 @@
             "line": 8,
             "name": "pepe hace una solicitud a la ruta GET /api/v1/users/password/?email=\"a@gmail.com\"",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:32"
+              "location": "features\\step_definitions\\recover-password.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 4092299
+              "duration": 2584400
             }
           },
           {
@@ -2913,11 +2913,11 @@
             "line": 9,
             "name": "si existe un registro con ese correo",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:48"
+              "location": "features\\step_definitions\\recover-password.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 187199
+              "duration": 101499
             }
           },
           {
@@ -2926,11 +2926,11 @@
             "line": 10,
             "name": "la aplicación responde con un token jwt valido por 30 minutos",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:54"
+              "location": "features\\step_definitions\\recover-password.js:55"
             },
             "result": {
               "status": "passed",
-              "duration": 23515699
+              "duration": 12123099
             }
           },
           {
@@ -2939,11 +2939,11 @@
             "line": 11,
             "name": "la respuesta tendrá un código 200",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:66"
+              "location": "features\\step_definitions\\recover-password.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 393300
+              "duration": 143899
             }
           }
         ],
@@ -2962,7 +2962,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6333100
+              "duration": 3414700
             }
           },
           {
@@ -2970,7 +2970,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 41000
+              "duration": 13000
             }
           },
           {
@@ -2978,7 +2978,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62700
+              "duration": 50400
             }
           },
           {
@@ -2986,7 +2986,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5312800
+              "duration": 2735300
             }
           },
           {
@@ -2994,7 +2994,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62199
+              "duration": 29800
             }
           },
           {
@@ -3002,7 +3002,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6552399
+              "duration": 2354099
             }
           },
           {
@@ -3011,11 +3011,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya se ha registrado",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:22"
+              "location": "features\\step_definitions\\recover-password.js:23"
             },
             "result": {
               "status": "passed",
-              "duration": 72500
+              "duration": 60500
             }
           },
           {
@@ -3024,11 +3024,11 @@
             "line": 5,
             "name": "pepe por correo electronico a@gmail.com",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:26"
+              "location": "features\\step_definitions\\recover-password.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 34299
+              "duration": 43699
             }
           },
           {
@@ -3037,11 +3037,11 @@
             "line": 14,
             "name": "pepe hace una solicitud a la ruta GET /api/v1/users/password/?email=\"z@gmail.com\"",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:32"
+              "location": "features\\step_definitions\\recover-password.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 3785400
+              "duration": 4948699
             }
           },
           {
@@ -3050,20 +3050,7 @@
             "line": 15,
             "name": "si no existe un registro con esos datos",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:72"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 210300
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 16,
-            "name": "la aplicación responde con un mensaje de error",
-            "match": {
-              "location": "features\\step_definitions\\recover-password.js:77"
+              "location": "features\\step_definitions\\recover-password.js:73"
             },
             "result": {
               "status": "passed",
@@ -3072,15 +3059,28 @@
           },
           {
             "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "la aplicación responde con un mensaje de error",
+            "match": {
+              "location": "features\\step_definitions\\recover-password.js:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43599
+            }
+          },
+          {
+            "arguments": [],
             "keyword": "And ",
             "line": 17,
             "name": "la respuesta envida tendrá un código 404",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:84"
+              "location": "features\\step_definitions\\recover-password.js:85"
             },
             "result": {
               "status": "passed",
-              "duration": 111400
+              "duration": 47399
             }
           }
         ],
@@ -3099,7 +3099,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3449200
+              "duration": 2450199
             }
           },
           {
@@ -3107,7 +3107,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 32400
+              "duration": 12799
             }
           },
           {
@@ -3115,7 +3115,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 66799
+              "duration": 27199
             }
           },
           {
@@ -3123,7 +3123,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5834800
+              "duration": 1835399
             }
           },
           {
@@ -3131,7 +3131,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36999
+              "duration": 31100
             }
           },
           {
@@ -3139,7 +3139,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3053900
+              "duration": 1569500
             }
           },
           {
@@ -3148,11 +3148,11 @@
             "line": 4,
             "name": "un usario llamado pepe que ya se ha registrado",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:22"
+              "location": "features\\step_definitions\\recover-password.js:23"
             },
             "result": {
               "status": "passed",
-              "duration": 58699
+              "duration": 50500
             }
           },
           {
@@ -3161,11 +3161,11 @@
             "line": 5,
             "name": "pepe por correo electronico a@gmail.com",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:26"
+              "location": "features\\step_definitions\\recover-password.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 31100
+              "duration": 20600
             }
           },
           {
@@ -3174,11 +3174,11 @@
             "line": 20,
             "name": "pepe hace una solicitud a la ruta GET /api/v1/users/password/",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:92"
+              "location": "features\\step_definitions\\recover-password.js:93"
             },
             "result": {
               "status": "passed",
-              "duration": 3937000
+              "duration": 2407200
             }
           },
           {
@@ -3187,11 +3187,11 @@
             "line": 21,
             "name": "se envía un correo electrónico no valido",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:108"
+              "location": "features\\step_definitions\\recover-password.js:109"
             },
             "result": {
               "status": "passed",
-              "duration": 136299
+              "duration": 111899
             }
           },
           {
@@ -3200,11 +3200,11 @@
             "line": 22,
             "name": "la aplicación responde con un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:77"
+              "location": "features\\step_definitions\\recover-password.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 50699
+              "duration": 22400
             }
           },
           {
@@ -3213,11 +3213,11 @@
             "line": 23,
             "name": "la respuesta envida tendrá un código 404",
             "match": {
-              "location": "features\\step_definitions\\recover-password.js:84"
+              "location": "features\\step_definitions\\recover-password.js:85"
             },
             "result": {
               "status": "passed",
-              "duration": 57199
+              "duration": 27499
             }
           }
         ],
@@ -3247,7 +3247,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4733000
+              "duration": 4684900
             }
           },
           {
@@ -3255,7 +3255,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 29800
+              "duration": 13200
             }
           },
           {
@@ -3263,7 +3263,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 59200
+              "duration": 32800
             }
           },
           {
@@ -3271,7 +3271,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3720999
+              "duration": 2758800
             }
           },
           {
@@ -3279,7 +3279,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 106999
+              "duration": 126199
             }
           },
           {
@@ -3287,7 +3287,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4124199
+              "duration": 2514799
             }
           },
           {
@@ -3296,11 +3296,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos que ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:39"
+              "location": "features\\step_definitions\\update-user.js:42"
             },
             "result": {
               "status": "passed",
-              "duration": 138700
+              "duration": 82000
             }
           },
           {
@@ -3309,11 +3309,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt en las cabeceras de las peticiones",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:47"
+              "location": "features\\step_definitions\\update-user.js:50"
             },
             "result": {
               "status": "passed",
-              "duration": 105700
+              "duration": 64900
             }
           },
           {
@@ -3322,11 +3322,11 @@
             "line": 8,
             "name": "el cuerpo de la petición corresponde a los datos almacenados en la base dedatos",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:72"
+              "location": "features\\step_definitions\\update-user.js:75"
             },
             "result": {
               "status": "passed",
-              "duration": 70299
+              "duration": 45300
             }
           },
           {
@@ -3335,11 +3335,11 @@
             "line": 9,
             "name": "pepe realiza una petición PUT a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:59"
+              "location": "features\\step_definitions\\update-user.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 11712800
+              "duration": 5363200
             }
           },
           {
@@ -3348,11 +3348,11 @@
             "line": 10,
             "name": "el servidor actualiza los datos del usuario",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:79"
+              "location": "features\\step_definitions\\update-user.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 160799
+              "duration": 171700
             }
           },
           {
@@ -3361,11 +3361,11 @@
             "line": 11,
             "name": "el servidor responde con un mensaje de éxito",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:84"
+              "location": "features\\step_definitions\\update-user.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 891700
+              "duration": 129199
             }
           }
         ],
@@ -3384,7 +3384,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3721400
+              "duration": 4798099
             }
           },
           {
@@ -3392,7 +3392,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 20500
+              "duration": 19299
             }
           },
           {
@@ -3400,7 +3400,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 56999
+              "duration": 50700
             }
           },
           {
@@ -3408,7 +3408,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6657899
+              "duration": 2695800
             }
           },
           {
@@ -3416,7 +3416,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 45899
+              "duration": 33199
             }
           },
           {
@@ -3424,7 +3424,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3526199
+              "duration": 1980300
             }
           },
           {
@@ -3433,11 +3433,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos que ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:39"
+              "location": "features\\step_definitions\\update-user.js:42"
             },
             "result": {
               "status": "passed",
-              "duration": 87200
+              "duration": 61500
             }
           },
           {
@@ -3446,11 +3446,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt en las cabeceras de las peticiones",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:47"
+              "location": "features\\step_definitions\\update-user.js:50"
             },
             "result": {
               "status": "passed",
-              "duration": 46200
+              "duration": 38200
             }
           },
           {
@@ -3459,11 +3459,11 @@
             "line": 14,
             "name": "el cuerpo de la petición corresponde a los datos de un usuario que no existe",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:96"
+              "location": "features\\step_definitions\\update-user.js:97"
             },
             "result": {
               "status": "passed",
-              "duration": 620799
+              "duration": 157699
             }
           },
           {
@@ -3472,11 +3472,11 @@
             "line": 15,
             "name": "pepe realiza una petición PUT a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:59"
+              "location": "features\\step_definitions\\update-user.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 4342899
+              "duration": 2074200
             }
           },
           {
@@ -3485,11 +3485,11 @@
             "line": 16,
             "name": "el servidor responde con un json con un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:105"
+              "location": "features\\step_definitions\\update-user.js:106"
             },
             "result": {
               "status": "passed",
-              "duration": 15753300
+              "duration": 11093899
             }
           },
           {
@@ -3498,11 +3498,11 @@
             "line": 17,
             "name": "el servidor responde con un código de estado 404",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:120"
+              "location": "features\\step_definitions\\update-user.js:121"
             },
             "result": {
               "status": "passed",
-              "duration": 167299
+              "duration": 132700
             }
           }
         ],
@@ -3521,7 +3521,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6030099
+              "duration": 1982100
             }
           },
           {
@@ -3529,7 +3529,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 21100
+              "duration": 9100
             }
           },
           {
@@ -3537,7 +3537,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36900
+              "duration": 21499
             }
           },
           {
@@ -3545,7 +3545,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3420099
+              "duration": 1962699
             }
           },
           {
@@ -3553,7 +3553,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 47099
+              "duration": 26200
             }
           },
           {
@@ -3561,7 +3561,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4329699
+              "duration": 1642800
             }
           },
           {
@@ -3570,11 +3570,11 @@
             "line": 4,
             "name": "un usario llamado pepe registrado en la base de datos que ya se ha autenticado",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:39"
+              "location": "features\\step_definitions\\update-user.js:42"
             },
             "result": {
               "status": "passed",
-              "duration": 79399
+              "duration": 41199
             }
           },
           {
@@ -3583,11 +3583,11 @@
             "line": 5,
             "name": "pepe proporsiona el token jwt en las cabeceras de las peticiones",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:47"
+              "location": "features\\step_definitions\\update-user.js:50"
             },
             "result": {
               "status": "passed",
-              "duration": 54000
+              "duration": 29000
             }
           },
           {
@@ -3596,11 +3596,11 @@
             "line": 20,
             "name": "pepe realiza una petición PUT a /api/v1/users",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:59"
+              "location": "features\\step_definitions\\update-user.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 6737199
+              "duration": 4766700
             }
           },
           {
@@ -3609,11 +3609,11 @@
             "line": 21,
             "name": "el token jwt ingresado se encuentra vencido",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:115"
+              "location": "features\\step_definitions\\update-user.js:116"
             },
             "result": {
               "status": "passed",
-              "duration": 107699
+              "duration": 137599
             }
           },
           {
@@ -3622,11 +3622,11 @@
             "line": 22,
             "name": "el servidor responde con un json con un mensaje de error",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:105"
+              "location": "features\\step_definitions\\update-user.js:106"
             },
             "result": {
               "status": "passed",
-              "duration": 57299
+              "duration": 66300
             }
           },
           {
@@ -3635,11 +3635,11 @@
             "line": 23,
             "name": "el servidor responde con un código de estado 401",
             "match": {
-              "location": "features\\step_definitions\\update-user.js:120"
+              "location": "features\\step_definitions\\update-user.js:121"
             },
             "result": {
               "status": "passed",
-              "duration": 40300
+              "duration": 33299
             }
           }
         ],
