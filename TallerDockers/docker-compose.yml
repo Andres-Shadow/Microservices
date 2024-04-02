@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  servidor:
+    # Configuración del servidor (usar la imagen y el puerto que corresponda)
+    build: ./go_server # Directorio del servidor donde se encuentra el Dockerfile
+    ports:
+      - 80:80 # Puerto del servidor
+  cliente:
+    # Configuración del cliente
+    build: ./python_client # Directorio del cliente donde se encuentra el Dockerfile
+    environment:
+      - SERVER_URL=http://servidor:80 # URL del servidor
+    depends_on:
+      - servidor # El cliente depende del servidor
+    
