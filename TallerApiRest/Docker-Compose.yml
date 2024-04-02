@@ -1,0 +1,20 @@
+version: '2.8'
+services:
+  #SERVICIO DE LA BASE DE DATOS
+  database:
+    build: ./database
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+  #SERVICIO DEL SERVIDOR
+  server:
+    build: ./go_server
+    ports:
+      - "9090:9090"
+    expose:
+      - "9090"
+    environment:
+      - DATABASE=database
+    depends_on:
+      - database

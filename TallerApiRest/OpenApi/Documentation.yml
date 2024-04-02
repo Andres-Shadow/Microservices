@@ -1,0 +1,214 @@
+openapi: "3.0.1"
+info:
+  title: "User Management API Documentation" 
+  description: "User API that allows to manage users in a system, registering them into a postgresql database and providing the elemental REST operations with classic endpoints."
+  version: "1.0.0"
+servers:
+  - url: http://localhot:9090/api/v1/
+
+tags:
+  - name: user
+    description: "User sub-route where an authenticated user can use the differrent operations supported by the API"
+paths:
+  /users:
+    get:
+      security:
+        - BearerAuth: []
+      tags:
+        - user
+      summary: "Get all users"
+      parameters:
+        - $ref: "#/components/parameters/token"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBodyGet"
+            
+        required: true
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserSuccesGetAll"
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+  
+    post:
+      security:
+        - BearerAuth: []
+      tags:
+        - user
+      summary: "Add an user"
+      parameters:
+        - $ref: "#/components/parameters/token"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBodyPost"
+        required: true
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPostSucces"
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+    put:
+      security:
+        - BearerAuth: []
+      tags:
+        - user
+      summary: "Add an user"
+      parameters:
+        - $ref: "#/components/parameters/token"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBodyPost"
+        required: true
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPostSucces"
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+    delete:
+      security:
+        - BearerAuth: []
+      tags:
+        - user
+      summary: Deletes an user record
+      parameters:
+        - $ref: "#/components/parameters/token"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDeleteUser"
+        required: true
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDeleteSucces"
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnSuccess"
+
+components:
+  parameters:
+    token:
+      name: "token"
+      in: "header"
+      description: "token jwt de autenticación."
+      required: true
+      schema:
+        type: string
+    id:
+      name: "id"
+      in: "header"
+      description: "user unique id"
+      required: true
+      schema:
+        type: integer
+
+  schemas:
+    UserBodyGet:
+      type: object
+
+    UserBodyPost:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: user id
+    UserSuccesGetAll:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: user id
+        name:
+          type: string
+          description: username
+        password:
+          type: string
+          description: user password
+    UserDeleteUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: user id for deletion
+    UserDeleteSucces:
+      type: object
+      properties:
+        response:
+          type: string
+          description: deletion confirmation message
+    UserPostSucces:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: new user id
+
+    UnSuccess:
+      type: object
+      properties:
+        message:
+          type: string
+          description: error message
