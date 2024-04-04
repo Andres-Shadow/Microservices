@@ -22,6 +22,6 @@ func DBConnection() {
 	if error != nil {
 		log.Fatal(error)
 	} else {
-		log.Println("BD CONECTADA")
+		log.Println("BD Connected")
 	}
 }

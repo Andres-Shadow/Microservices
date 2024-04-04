@@ -7,7 +7,7 @@ services:
       - "5432:5432"
     expose:
       - "5432"
-  #SERVICIO DEL SERVIDOR
+  #SERVICIO DEL PRODUCTOR
   server:
     build: ./go_server
     ports:
@@ -16,5 +16,20 @@ services:
       - "9090"
     environment:
       - DATABASE=database
+      - NATS_SERVER=nats
     depends_on:
       - database
+  #SERVICIO DEL CONSUMIDOR
+  cliente:
+    build: ./logs-api
+    depends_on:
+      - nats
+    environment:
+      - NATS_SERVER=nats
+  #SERVICIO DE NATS
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
+    expose:
+      - "4222"

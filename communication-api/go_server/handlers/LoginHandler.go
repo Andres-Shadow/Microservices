@@ -3,11 +3,15 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"taller_apirest/models"
 	"taller_apirest/security"
 	"taller_apirest/utilities"
+
+	"github.com/nats-io/nats.go"
 )
 
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
@@ -35,9 +39,31 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tokenString := security.LoginHandler(&user)
+	notifyLogin(user.Username, user.Email)
 
+	tokenString := security.LoginHandler(&user)
 	// Responder con el token JWT
 	w.Header().Set("Content-Type", "text/plain")
 	fmt.Fprint(w, tokenString)
+
+}
+
+func notifyLogin(username, email string) {
+
+	// nc, err := nats.Connect(nats.DefaultURL)
+	natsUrl := os.Getenv("NATS_SERVER")
+	fmt.Println("NATS_SERVER: ", natsUrl)
+	url := "nats://nats:4222"
+	nc, err := nats.Connect(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer nc.Close()
+	// Tema para notificaciones de autenticación
+	authEventsSubject := "auth.events"
+	if err := nc.Publish(authEventsSubject, []byte("Usuario autenticado: "+username+" - "+email)); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Notification sent")
 }
