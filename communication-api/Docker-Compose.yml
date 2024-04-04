@@ -19,6 +19,7 @@ services:
       - NATS_SERVER=nats
     depends_on:
       - database
+      - nats
   #SERVICIO DEL CONSUMIDOR
   cliente:
     build: ./logs-api
