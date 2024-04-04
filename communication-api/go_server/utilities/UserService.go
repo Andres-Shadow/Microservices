@@ -23,6 +23,15 @@ func GetUsers(page, pageSize int) ([]models.User, error) {
 	return users, nil
 }
 
+func CountUsers() (int, error) {
+	var count int64
+	err := DataBase.DB.Model(&models.User{}).Count(&count).Error
+	if err != nil {
+		return 0, err
+	}
+	return int(count), nil
+}
+
 func CreateUser(user models.User) (bool, error) {
 	if err := DataBase.DB.Create(&user).Error; err != nil {
 		return false, err
