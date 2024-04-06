@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"taller_apirest/models"
 	"taller_apirest/security"
@@ -48,6 +49,12 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+type LoginResponse struct {
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	LogDate     string `json:"log_date"`
+}
+
 func notifyLogin(username, email string) {
 
 	var natsHost string
@@ -62,9 +69,25 @@ func notifyLogin(username, email string) {
 		log.Fatal(err)
 	}
 	defer nc.Close()
+
+	// Definir la estructura de la notificación
+	notification := LoginResponse{
+		Name:        "USERS-API",
+		Description: "User " + username + " logged in with email " + email,
+		LogDate:     time.Now().Format(time.RFC3339),
+	}
+
+	// Convertir la estructura en JSON
+	jsonData, err := json.Marshal(notification)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	// Tema para notificaciones de autenticación
 	authEventsSubject := "auth.events"
-	if err := nc.Publish(authEventsSubject, []byte("Usuario autenticado: "+username+" - "+email)); err != nil {
+
+	// Publicar el mensaje JSON
+	if err := nc.Publish(authEventsSubject, jsonData); err != nil {
 		log.Fatal(err)
 	}
 

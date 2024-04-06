@@ -28,3 +28,10 @@ func CountLogs() (int, error) {
 	}
 	return int(count), nil
 }
+
+func CreateLog(log models.Application) (bool, error) {
+	if err := dataBase.DB.Create(&log).Error; err != nil {
+		return false, err
+	}
+	return true, nil
+}
