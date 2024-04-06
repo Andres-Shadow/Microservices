@@ -1,10 +1,10 @@
-package DataBase
+package dataBase
 
 import (
 	"log"
 	"os"
 
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -19,12 +19,13 @@ func DBConnection() {
 	if host == "" {
 		host = "localhost"
 	}
-	
-	var DSN = "host=" + host + " user=andres password=1234 dbname=users port=5432"
-	var error error
-	DB, error = gorm.Open(postgres.Open(DSN), &gorm.Config{})
-	if error != nil {
-		log.Fatal(error)
+	// refer https://github.com/go-sql-driver/mysql#dsn-data-source-name for details
+	DSN := "root:andres_1@tcp(" + host + ":3306)/logs?charset=utf8mb4&parseTime=True&loc=Local"
+	var err error
+	DB, err = gorm.Open(mysql.Open(DSN), &gorm.Config{})
+
+	if err != nil {
+		log.Fatal(err)
 	} else {
 		log.Println("BD Connected")
 	}
