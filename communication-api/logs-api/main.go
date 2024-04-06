@@ -3,46 +3,55 @@ package main
 import (
 	"fmt"
 	"log"
+	dataBase "logs-api/database"
+	"logs-api/handlers"
+	"logs-api/messaging"
+	"logs-api/models"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 
-	"github.com/nats-io/nats.go"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	// Conectar al servidor NATS
-	natsUrl := os.Getenv("NATS_SERVER")
-	fmt.Println("NATS_SERVER: ", natsUrl)
-	url := "nats://nats:4222"
-	//nc, err := nats.Connect(nats.DefaultURL)
-	nc, err := nats.Connect(url)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer nc.Close()
+	r := mux.NewRouter()
 
-	// Tema para notificaciones de autenticación
-	authEventsSubject := "auth.events"
+	// Establecer las rutas de los endpoints
+	defineEndpoints(r.PathPrefix("/api/v1/logs").Subrouter())
 
-	// Función para manejar los mensajes recibidos
-	msgHandler := func(msg *nats.Msg) {
-		// Procesar el mensaje recibido
-		log.Printf("Mensaje recibido: %s", msg.Data)
-		// Aquí puedes hacer cualquier acción necesaria con el mensaje recibido
-	}
+	initDatabase()
 
-	// Suscribirse al tema para recibir notificaciones
-	_, err = nc.Subscribe(authEventsSubject, msgHandler)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// Inicializar NATS
+	messaging.InitNats()
 
-	log.Printf("Escuchando notificaciones en el tema: %s", authEventsSubject)
+	// Iniciar el servidor HTTP en una goroutine
+	go func() {
+		fmt.Println("Iniciando servidor HTTP en el puerto 9091...")
+		if err := http.ListenAndServe(":9091", r); err != nil {
+			log.Fatalf("Error al iniciar el servidor HTTP: %v", err)
+		}
+	}()
 
 	// Esperar señales de interrupción para salir graciosamente
 	sigCh := make(chan os.Signal, 1)
 	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
 	<-sigCh
-	log.Println("Saliendo...")
+	fmt.Println("Saliendo...")
+}
+
+func initDatabase() {
+	// Establecer la conexión a la base de datos
+	fmt.Println("Estableciendo conexión a la base de datos...")
+	dataBase.DBConnection()
+	dataBase.DB.AutoMigrate(models.Application{})
+}
+
+func defineEndpoints(logRouter *mux.Router) {
+	logRouter.HandleFunc("/", handlers.GetAllLogs).Methods("GET")
+	logRouter.HandleFunc("/", handlers.GetAllLogs).Methods("POST")
+	logRouter.HandleFunc("/", handlers.GetAllLogs).Methods("DELETE")
+	logRouter.HandleFunc("/", handlers.GetAllLogs).Methods("GET")
+
 }

@@ -50,10 +50,13 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 func notifyLogin(username, email string) {
 
-	// nc, err := nats.Connect(nats.DefaultURL)
-	natsUrl := os.Getenv("NATS_SERVER")
-	fmt.Println("NATS_SERVER: ", natsUrl)
-	url := "nats://nats:4222"
+	var natsHost string
+	natsHost = os.Getenv("NATS_SERVER")
+	if natsHost == "" {
+		natsHost = "localhost"
+	}
+	url := "nats://" + natsHost + ":4222"
+
 	nc, err := nats.Connect(url)
 	if err != nil {
 		log.Fatal(err)
