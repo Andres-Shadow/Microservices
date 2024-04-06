@@ -2,14 +2,15 @@ package handlers
 
 import (
 	"encoding/json"
+	"logs-api/models"
 	"logs-api/utilities"
 	"net/http"
 	"strconv"
 )
 
 type LogResponse struct {
-	Logs      []int `json:"logs"`
-	Registros int   `json:"registros"`
+	Logs      []models.Application `json:"logs"`
+	Registros int                  `json:"registros"`
 }
 
 func GetAllLogs(w http.ResponseWriter, r *http.Request) {
@@ -22,8 +23,8 @@ func GetAllLogs(w http.ResponseWriter, r *http.Request) {
 		pageSize = 10
 	}
 
-	logs := utilities.GetAllLogs(page, pageSize)
-	tam := utilities.CountAllLogs()
+	logs, _ := utilities.GetAllLogs(page, pageSize)
+	tam, _ := utilities.CountLogs()
 
 	response := LogResponse{
 		Logs:      logs,
