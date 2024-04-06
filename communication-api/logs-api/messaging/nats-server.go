@@ -1,16 +1,18 @@
 package messaging
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
+	"logs-api/models"
+	"logs-api/utilities"
 	"os"
 
 	"github.com/nats-io/nats.go"
 )
 
-func InitNats() {
+func InitNats() *nats.Conn {
+	// Inicializar NATS
 	var natsHost string
-	// Conectar al servidor NATS
 	natsHost = os.Getenv("NATS_SERVER")
 	if natsHost == "" {
 		natsHost = "localhost"
@@ -21,26 +23,31 @@ func InitNats() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer nc.Close()
 
-	fmt.Println("Inicializando NATS...")
-
-	// Tema para notificaciones de autenticación
+	// Tema al que te suscribes para recibir las notificaciones de autenticación
 	authEventsSubject := "auth.events"
 
-	// Función para manejar los mensajes recibidos
+	// Función de manejo de mensajes
 	msgHandler := func(msg *nats.Msg) {
-		// Procesar el mensaje recibido
-		log.Printf("Mensaje recibido: %s", msg.Data)
-		// Aquí puedes hacer cualquier acción necesaria con el mensaje recibido
+		// Decodificar el mensaje JSON
+		var notification models.Application
+		if err := json.Unmarshal(msg.Data, &notification); err != nil {
+			log.Println("Error decoding JSON:", err)
+			return
+		}
+
+		// Manejar el mensaje
+		//fmt.Println("llego aqui")
+		log.Printf("Received notification:\nName: %s\nDescription: %s\nTime: %s\n", notification.Name, notification.Description, notification.LogDate)
+		utilities.CreateLog(notification)
 	}
 
-	// Suscribirse al tema para recibir notificaciones
+	// Suscribirse al tema para recibir los mensajes
 	_, err = nc.Subscribe(authEventsSubject, msgHandler)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Subscribed to subject: %s\n", authEventsSubject)
 
-	log.Printf("Escuchando notificaciones en el tema: %s", authEventsSubject)
-
+	return nc
 }

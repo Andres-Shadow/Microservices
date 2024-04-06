@@ -34,3 +34,10 @@ func GetAllLogs(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
 }
+
+func PostLog(w http.ResponseWriter, r *http.Request) {
+	var log models.Application
+	json.NewDecoder(r.Body).Decode(&log)
+	utilities.CreateLog(log)
+	w.WriteHeader(http.StatusCreated)
+}
