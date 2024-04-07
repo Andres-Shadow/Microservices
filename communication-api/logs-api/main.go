@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	dataBase "logs-api/database"
+	"logs-api/handlers"
 	"logs-api/messaging"
 	"logs-api/models"
 	"net/http"
@@ -14,18 +15,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type LoginResponse struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	LogDate     string `json:"time"`
-}
-
 func main() {
 	r := mux.NewRouter()
-
+	//login route
+	defineEndpoints(r.PathPrefix("/api/v1/logs").Subrouter())
 	initDatabase()
 
-	nc := messaging.InitNats()
+	nc := messaging.InitNats("auth.events")
 
 	//Iniciar el servidor HTTP en una goroutine
 	go func() {
@@ -43,6 +39,13 @@ func main() {
 
 	// Cerrar la conexión a NATS antes de salir
 	nc.Close()
+}
+
+func defineEndpoints(userRouter *mux.Router) {
+	//RESTful API endpoints for crud
+	userRouter.HandleFunc("/", handlers.GetAllLogs).Methods("GET")
+	userRouter.HandleFunc("/{application}", handlers.GetLogByApplication).Methods("GET")
+
 }
 
 func initDatabase() {

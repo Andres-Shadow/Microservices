@@ -35,3 +35,14 @@ func CreateLog(log models.Application) (bool, error) {
 	}
 	return true, nil
 }
+
+func GetLogsByApplication(applicationName string, page, pageSize int) ([]models.Application, error) {
+	var logs []models.Application
+	offset := (page - 1) * pageSize
+	err := dataBase.DB.Where("name = ?", applicationName).Offset(offset).Limit(pageSize).Find(&logs).Error
+	if err != nil {
+		return nil, err
+	}
+	return logs, nil
+
+}
