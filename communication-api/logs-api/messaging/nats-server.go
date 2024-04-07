@@ -10,7 +10,7 @@ import (
 	"github.com/nats-io/nats.go"
 )
 
-func InitNats() *nats.Conn {
+func InitNats(evento string) *nats.Conn {
 	// Inicializar NATS
 	var natsHost string
 	natsHost = os.Getenv("NATS_SERVER")
@@ -25,7 +25,7 @@ func InitNats() *nats.Conn {
 	}
 
 	// Tema al que te suscribes para recibir las notificaciones de autenticación
-	authEventsSubject := "auth.events"
+	//authEventsSubject := "auth.events"
 
 	// Función de manejo de mensajes
 	msgHandler := func(msg *nats.Msg) {
@@ -43,11 +43,11 @@ func InitNats() *nats.Conn {
 	}
 
 	// Suscribirse al tema para recibir los mensajes
-	_, err = nc.Subscribe(authEventsSubject, msgHandler)
+	_, err = nc.Subscribe(evento, msgHandler)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Subscribed to subject: %s\n", authEventsSubject)
+	log.Printf("Subscribed to subject: %s\n", evento)
 
 	return nc
 }
