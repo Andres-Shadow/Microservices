@@ -2,6 +2,7 @@ package messaging
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"logs-api/models"
 	"logs-api/utilities"
@@ -38,7 +39,9 @@ func InitNats(evento string) *nats.Conn {
 
 		// Manejar el mensaje
 		//fmt.Println("llego aqui")
-		log.Printf("Received notification:\nName: %s\nDescription: %s\nTime: %s\n", notification.Name, notification.Description, notification.LogDate)
+		//log.Printf("Received notification:\nName: %s\nDescription: %s\nTime: %s\n", notification.Name, notification.Description, notification.LogDate)
+		log.Println(notification.Description)
+		fmt.Println("==============================")
 		utilities.CreateLog(notification)
 	}
 
@@ -47,6 +50,7 @@ func InitNats(evento string) *nats.Conn {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("==============================")
 	log.Printf("Subscribed to subject: %s\n", evento)
 
 	return nc
