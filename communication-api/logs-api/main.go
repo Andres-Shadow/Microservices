@@ -21,7 +21,7 @@ func main() {
 	defineEndpoints(r.PathPrefix("/api/v1/logs").Subrouter())
 	initDatabase()
 
-	nc := messaging.InitNats("auth.events")
+	nc := messaging.InitNats("MicroservicesLogs")
 
 	//Iniciar el servidor HTTP en una goroutine
 	go func() {
