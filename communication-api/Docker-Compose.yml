@@ -17,6 +17,7 @@ services:
     environment:
       - DATABASE=database
       - NATS_SERVER=nats
+      - NATS_SUBJECT=MicroservicesLogs
     depends_on:
       - database
       - nats
@@ -24,9 +25,16 @@ services:
   cliente:
     build: ./logs-api
     depends_on:
+      - log_database
       - nats
     environment:
       - NATS_SERVER=nats
+      - DATABASE=log_database
+      - LOGS_PORT=3306
+    ports:
+      - "9091:9091"
+    expose:
+      - "9091"
   #SERVICIO DE NATS
   nats:
     image: nats:latest
@@ -34,3 +42,9 @@ services:
       - "4222:4222"
     expose:
       - "4222"
+  log_database:
+    build: ./logs-database
+    ports:
+      - "3307:3306"
+    expose:
+      - "3307"

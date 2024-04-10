@@ -46,9 +46,11 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		Module:      "USERS-API",
 	}
 
-	nc := communication.ConnectToNATS()
-	communication.NotifyLogin(nc, &notification, "auth.events")
-	nc.Close()
+	// nc := communication.ConnectToNATS()
+	// communication.NotifyLogin(nc, &notification, "auth.events")
+	// nc.Close()
+
+	communication.ConnectToNATS().SendLog(&notification)
 
 	tokenString := security.LoginHandler(&user)
 	// Responder con el token JWT
