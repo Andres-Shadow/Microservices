@@ -1,9 +1,9 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import projectRoutes from '../routes/project-routes';
-import { DataLog } from '../database/database';
-import NATSManager from '../communication/nats-manager';
+import projectRoutes from './app/routes/project-routes';
+import { DataLog } from './app/database/database';
+import NATSManager from './app/communication/nats-manager';
 
 async function main() {
     const app = express();
@@ -29,8 +29,10 @@ async function main() {
 
     // conexion de NATS
 
+    let natsHost = process.env.NATS_SERVER ?? 'localhost'
+
     // Crear una instancia de NATSManager y conectar a NATS
-    const natsManager = new NATSManager('natss://localhost:4222');
+    const natsManager = new NATSManager('nats://' + natsHost + ':4222');
     await natsManager.connect();
 }
 

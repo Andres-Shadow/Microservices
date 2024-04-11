@@ -23,14 +23,16 @@ services:
       - nats
   #SERVICIO DEL CONSUMIDOR
   cliente:
-    build: ./logs-api
+    build: ./logs-manage-api
     depends_on:
       - log_database
       - nats
     environment:
       - NATS_SERVER=nats
       - DATABASE=log_database
-      - LOGS_PORT=3306
+      - DATABASE_PORT=3306
+      - ROOT_PASSWORD=andres_1
+      - PUERTO=9091
     ports:
       - "9091:9091"
     expose:
@@ -42,6 +44,7 @@ services:
       - "4222:4222"
     expose:
       - "4222"
+  #SERVICIO DE LA BASE DE DATOS DE LOS LOGS
   log_database:
     build: ./logs-database
     ports:

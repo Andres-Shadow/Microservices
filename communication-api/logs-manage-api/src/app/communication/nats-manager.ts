@@ -1,4 +1,5 @@
 import { connect, NatsConnection, Msg, Subscription, StringCodec } from 'nats';
+import { mapJSONToDataLogs } from '../logs-services/logs-services'
 
 class NATSManager {
     private connection: NatsConnection | null = null;
@@ -6,6 +7,7 @@ class NATSManager {
     constructor(private readonly url: string) { }
 
     async connect(): Promise<void> {
+
         try {
             this.connection = await connect({ servers: this.url });
             console.log('Conectado a NATS en', this.url);
@@ -24,16 +26,14 @@ class NATSManager {
         const sub = this.connection.subscribe("MicroservicesLogs");
         (async () => {
             for await (const m of sub) {
-                console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
+                //console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
+                let data = JSON.parse(sc.decode(m.data));
+                console.log(data);
+                mapJSONToDataLogs(data)
             }
             console.log("subscription closed");
         })();
-    } // Add the subscription options
-
-    // Manejar cierre del cliente
-
+    }
 }
-
-
 
 export default NATSManager;
