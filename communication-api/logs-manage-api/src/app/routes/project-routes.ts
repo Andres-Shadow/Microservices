@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getLog, createLog } from "../handlers/logs-handler"; 
+import { getLog, createLog } from "../handlers/logs-handler";
 
 const router = Router();
 
