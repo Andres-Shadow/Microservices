@@ -28,12 +28,32 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
+		notification := models.LogResponse{
+			Name:        "USERS-API",
+			Summary:     "User tried to log in",
+			Description: "User " + user.Username + " tried to log in in with email " + user.Email + " but was not found",
+			LogDate:     time.Now().Format(time.RFC3339),
+			LogType:     "ERROR",
+			Module:      "USERS-API",
+		}
+
+		communication.ConnectToNATS().SendLog(&notification)
 		return
 	}
 
 	// Verificar si se proporcionaron usuario y clave
 	if user.Username == "" || user.Password == "" {
 		http.Error(w, "Faltan usuario y claves", http.StatusBadRequest)
+		notification := models.LogResponse{
+			Name:        "USERS-API",
+			Summary:     "User tried to log in",
+			Description: "User " + user.Username + " tried to log in in with email " + user.Email + " but did not provide credentials",
+			LogDate:     time.Now().Format(time.RFC3339),
+			LogType:     "ERROR",
+			Module:      "USERS-API",
+		}
+
+		communication.ConnectToNATS().SendLog(&notification)
 		return
 	}
 
@@ -45,10 +65,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		LogType:     "INFO",
 		Module:      "USERS-API",
 	}
-
-	// nc := communication.ConnectToNATS()
-	// communication.NotifyLogin(nc, &notification, "auth.events")
-	// nc.Close()
 
 	communication.ConnectToNATS().SendLog(&notification)
 
