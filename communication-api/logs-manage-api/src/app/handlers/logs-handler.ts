@@ -1,31 +1,71 @@
 import { Response, Request } from "express";
 import logsServices from "../logs-services/logs-services"
+import { Op } from 'sequelize';
 
-const getLog = (req: Request, res: Response) => {
+// const getLog = (req: Request, res: Response) => {
+//     let page = req.query.page as string;
+//     let pageSize = req.query.pageSize as string;
+//     let pageNumber, size = 0;
+
+//     if (!page || !pageSize) {
+//         // Si page o pageSize son undefined, asigna los valores predeterminados
+//         pageNumber = 1;
+//         size = 10;
+//     } else {
+//         // Convierte los parámetros de consulta a números enteros y verifica si son válidos
+//         pageNumber = parseInt(page, 10);
+//         size = parseInt(pageSize, 10);
+//     }
+
+//     let logs = logsServices.getLogs(pageNumber, size);
+
+//     logs.then((result) => {
+//         res.status(200).json(result);
+//     }).catch((error) => {
+//         console.error('Error al obtener los logs:', error);
+//         res.status(500).json({ error: 'Error interno al obtener los logs.' });
+//     });
+// }
+
+const getLog = async (req: Request, res: Response) => {
     let page = req.query.page as string;
     let pageSize = req.query.pageSize as string;
+    let startDate = req.query.startDate as string;
+    let logType = req.query.logType as string;
     let pageNumber, size = 0;
 
+    // Verifica y asigna los valores de paginación predeterminados si los parámetros no están definidos
     if (!page || !pageSize) {
-        // Si page o pageSize son undefined, asigna los valores predeterminados
         pageNumber = 1;
         size = 10;
     } else {
-        // Convierte los parámetros de consulta a números enteros y verifica si son válidos
         pageNumber = parseInt(page, 10);
         size = parseInt(pageSize, 10);
     }
 
-    let logs = logsServices.getLogs(pageNumber, size);
+    // Crea un objeto de filtro para la consulta
+    const filter: any = {};
 
-    logs.then((result) => {
-        res.status(200).json(result);
-    }).catch((error) => {
+    // Agrega filtros para el rango de fechas y el tipo de log si están presentes en los parámetros de consulta
+    if (startDate) {
+        filter.log_date = {
+            [Op.eq]: [startDate]
+        };
+    }
+
+    if (logType) {
+        filter.logType = logType;
+    }
+
+    try {
+        // Realiza la consulta de logs utilizando la paginación y los filtros
+        const logs = await logsServices.getLogs(pageNumber, size, filter);
+        res.status(200).json(logs);
+    } catch (error) {
         console.error('Error al obtener los logs:', error);
         res.status(500).json({ error: 'Error interno al obtener los logs.' });
-    });
+    }
 }
-
 
 const createLog = (req: Request, res: Response) => {
 
@@ -117,4 +157,31 @@ const udpateLog = async (req: Request, res: Response) => {
 
 }
 
-export { getLog, createLog, deleteLog, udpateLog };
+const getLogsByApplication = (req: Request, res: Response) => {
+    let application = req.params.application as string;
+    let page = req.query.page as string;
+    let pageSize = req.query.pageSize as string;
+    let pageNumber, size = 0;
+
+    if (!page || !pageSize) {
+        // Si page o pageSize son undefined, asigna los valores predeterminados
+        pageNumber = 1;
+        size = 10;
+    } else {
+        // Convierte los parámetros de consulta a números enteros y verifica si son válidos
+        pageNumber = parseInt(page, 10);
+        size = parseInt(pageSize, 10);
+    }
+
+    let logs = logsServices.getLogsByApplication(application, pageNumber, size);
+
+    logs.then((result) => {
+        res.status(200).json(result);
+    }).catch((error) => {
+        console.error('Error al obtener los logs:', error);
+        res.status(500).json({ error: 'Error interno al obtener los logs.' });
+    });
+
+}
+
+export { getLog, createLog, deleteLog, udpateLog, getLogsByApplication };
