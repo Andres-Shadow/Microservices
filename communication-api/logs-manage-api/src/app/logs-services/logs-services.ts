@@ -36,6 +36,27 @@ class logsServices {
 
         return logs_stored;
     }
+
+    static async deleteLog(id: string) {
+        await DataLog.destroy({
+            where: {
+                id: id
+            }
+        });
+    }
+
+    static async getLog(id: string) {
+        const log = await DataLog.findByPk(id);
+        return log;
+    }
+
+    static async updateLog(id: string, data: any) {
+        await DataLog.update(data, {
+            where: {
+                id: id
+            }
+        });
+    }
 }
 
 
