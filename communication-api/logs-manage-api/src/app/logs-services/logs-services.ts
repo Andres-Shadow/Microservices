@@ -1,6 +1,5 @@
 import { DataLog } from '../database/database';
 
-
 class logsServices {
     // Method for casting logs that came from nats server communication to JSON 
     // so, it can be stored in the database
@@ -25,14 +24,22 @@ class logsServices {
         await DataLog.create(data);
     }
 
-    static async getLogs(pageNumber: number, size: number) {
+    static async getLogs(pageNumber: number, size: number, filter: any) {
         const offset = (pageNumber - 1) * size;
 
-        // Consulta los comentarios utilizando la paginación
-        const logs_stored = await DataLog.findAndCountAll({
+        // Crea un objeto de opciones para la consulta
+        const options: any = {
             limit: size,
             offset: offset
-        });
+        };
+
+        // Si se proporciona un filtro, agrégalo a las opciones de consulta
+        if (filter) {
+            options.where = filter;
+        }
+
+        // Consulta los logs utilizando las opciones de consulta
+        const logs_stored = await DataLog.findAndCountAll(options);
 
         return logs_stored;
     }
@@ -56,6 +63,21 @@ class logsServices {
                 id: id
             }
         });
+    }
+
+    static async getLogsByApplication(application: string, pageNumber: number, size: number) {
+        const offset = (pageNumber - 1) * size;
+
+        // Consulta los comentarios utilizando la paginación
+        const logs_stored = await DataLog.findAndCountAll({
+            where: {
+                Module: application
+            },
+            limit: size,
+            offset: offset
+        });
+
+        return logs_stored;
     }
 }
 
