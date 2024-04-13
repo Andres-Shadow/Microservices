@@ -59,4 +59,62 @@ const createLog = (req: Request, res: Response) => {
     }
 }
 
-export { getLog, createLog };
+const deleteLog = (req: Request, res: Response) => {
+    let id = req.query.id as string;
+
+    if (!id) {
+        console.log('ID:', id);
+        return res.status(400).json({ error: 'El ID del log es requerido.' });
+    }
+
+    // Llamada al método de eliminación de la base de datos
+    try {
+        console.log('ID:', id);
+        logsServices.deleteLog(id);
+        res.status(200).json({ data: 'Log was deleted successfully!' });
+    } catch (error) {
+        console.error('Error al eliminar el log en la base de datos:', error);
+        res.status(500).json({ error: 'Error interno al eliminar el log en la base de datos.' });
+    }
+}
+
+const udpateLog = async (req: Request, res: Response) => {
+    const { body } = req;
+
+
+    console.log('Body:', body);
+    // Verificar si el cuerpo de la petición está vacío
+    if (!body || Object.keys(body).length === 0) {
+        return res.status(400).json({ error: 'El cuerpo de la petición está vacío.' });
+    }
+
+    // Verificar si la cantidad de elementos en el JSON es diferente a la cantidad de campos necesarios
+    const requiredFields = ['id', 'Name', 'Summary', 'Description', 'Log_date', 'Log_type', 'Module']; // Reemplazar con los nombres de los campos necesarios
+    if (Object.keys(body).length !== requiredFields.length) {
+        return res.status(400).json({ error: 'La cantidad de elementos en el JSON es incorrecta.' });
+    }
+
+    // Verificar si existen tipos de datos diferentes
+    for (const field of requiredFields) {
+        if (!(field in body) || typeof body[field] !== 'string') {
+            return res.status(400).json({ error: 'Los tipos de datos son incorrectos.' });
+        }
+    }
+
+    let storedLog = await logsServices.getLog(body.id);
+
+    if (!storedLog) {
+        return res.status(404).json({ error: 'Log not found' });
+    }
+    // Llamada al método de actualización de la base de datos
+    try {
+        logsServices.updateLog(body.id, body);
+        res.status(200).json({ data: 'Log was updated successfully!' });
+    } catch (error) {
+        console.error('Error al actualizar el log en la base de datos:', error);
+        res.status(500).json({ error: 'Error interno al actualizar el log en la base de datos.' });
+    }
+
+}
+
+export { getLog, createLog, deleteLog, udpateLog };
