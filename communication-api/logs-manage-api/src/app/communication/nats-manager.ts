@@ -1,5 +1,5 @@
 import { connect, NatsConnection, Msg, Subscription, StringCodec } from 'nats';
-import { mapJSONToDataLogs } from '../logs-services/logs-services'
+import logsServices from '../logs-services/logs-services';
 
 class NATSManager {
     private connection: NatsConnection | null = null;
@@ -29,7 +29,7 @@ class NATSManager {
                 //console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
                 let data = JSON.parse(sc.decode(m.data));
                 console.log(data);
-                mapJSONToDataLogs(data)
+                logsServices.mapJSONToDataLogs(data);
             }
             console.log("subscription closed");
         })();

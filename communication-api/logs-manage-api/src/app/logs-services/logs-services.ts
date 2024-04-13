@@ -1,20 +1,42 @@
 import { DataLog } from '../database/database';
 
-async function mapJSONToDataLogs(jsonData: any): Promise<String> {
-    try {
-        // Crea una nueva instancia de DataLogs con los datos del JSON
-        const newDataLogs = await DataLog.create({
-            Name: jsonData.name,
-            Summary: jsonData.summary,
-            Description: jsonData.description,
-            Log_date: new Date(jsonData.log_date),
-            Log_type: jsonData.log_type,
-            Module: jsonData.module,
+
+class logsServices {
+    // Method for casting logs that came from nats server communication to JSON 
+    // so, it can be stored in the database
+    static async mapJSONToDataLogs(jsonData: any): Promise<String> {
+        try {
+            // Crea una nueva instancia de DataLogs con los datos del JSON
+            const newDataLogs = await DataLog.create({
+                Name: jsonData.name,
+                Summary: jsonData.summary,
+                Description: jsonData.description,
+                Log_date: new Date(jsonData.log_date),
+                Log_type: jsonData.log_type,
+                Module: jsonData.module,
+            });
+            return "Log created successfully!" + newDataLogs.toJSON();
+        } catch (error: any) {
+            throw new Error('Error while mapping JSON atributes: ' + error.message);
+        }
+    }
+
+    static async createInDatabase(data: any) {
+        await DataLog.create(data);
+    }
+
+    static async getLogs(pageNumber: number, size: number) {
+        const offset = (pageNumber - 1) * size;
+
+        // Consulta los comentarios utilizando la paginación
+        const logs_stored = await DataLog.findAndCountAll({
+            limit: size,
+            offset: offset
         });
-        return "Log created successfully!";
-    } catch (error: any) {
-        throw new Error('Error while mapping JSON atributes: ' + error.message);
+
+        return logs_stored;
     }
 }
 
-export { mapJSONToDataLogs };
+
+export default logsServices;
