@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 84484000
+              "duration": 45496700
             }
           },
           {
@@ -22,7 +22,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 73699
+              "duration": 42500
             }
           },
           {
@@ -30,7 +30,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 99300
+              "duration": 57400
             }
           },
           {
@@ -38,7 +38,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2830000
+              "duration": 44300
             }
           },
           {
@@ -46,7 +46,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 96200
+              "duration": 96000
             }
           },
           {
@@ -54,7 +54,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2337600
+              "duration": 3314099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 88699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 111900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 130999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2780999
             }
           },
           {
@@ -67,7 +99,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 124600
+              "duration": 365299
             }
           },
           {
@@ -80,7 +112,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 135499
+              "duration": 188800
             }
           },
           {
@@ -93,7 +125,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 135499
+              "duration": 95100
             }
           },
           {
@@ -106,7 +138,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6548999
+              "duration": 15050900
             }
           },
           {
@@ -119,7 +151,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 198599
+              "duration": 149800
             }
           },
           {
@@ -132,7 +164,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 135099
+              "duration": 63800
             }
           },
           {
@@ -145,7 +177,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34804700
+              "duration": 34424299
             }
           }
         ],
@@ -164,7 +196,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 7169699
+              "duration": 4714800
             }
           },
           {
@@ -172,7 +204,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 18399
+              "duration": 33399
             }
           },
           {
@@ -180,7 +212,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 64299
+              "duration": 12800
             }
           },
           {
@@ -188,7 +220,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2610199
+              "duration": 9999
             }
           },
           {
@@ -196,7 +228,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 121599
+              "duration": 60699
             }
           },
           {
@@ -204,7 +236,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2790800
+              "duration": 2850299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 70899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3318900
             }
           },
           {
@@ -217,7 +281,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60699
+              "duration": 56699
             }
           },
           {
@@ -230,7 +294,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 41300
+              "duration": 55299
             }
           },
           {
@@ -243,7 +307,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 177999
+              "duration": 222299
             }
           },
           {
@@ -256,7 +320,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5741499
+              "duration": 3204699
             }
           },
           {
@@ -269,7 +333,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 100900
+              "duration": 201299
             }
           },
           {
@@ -282,7 +346,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51300
+              "duration": 78599
             }
           },
           {
@@ -295,7 +359,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57299
+              "duration": 110300
             }
           }
         ],
@@ -314,7 +378,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2879000
+              "duration": 3047199
             }
           },
           {
@@ -322,7 +386,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 13399
+              "duration": 19899
             }
           },
           {
@@ -330,7 +394,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 28799
+              "duration": 14399
             }
           },
           {
@@ -338,7 +402,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4048599
+              "duration": 11299
             }
           },
           {
@@ -346,7 +410,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 41799
+              "duration": 105599
             }
           },
           {
@@ -354,7 +418,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2546199
+              "duration": 4773800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2654900
             }
           },
           {
@@ -367,7 +463,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 49100
+              "duration": 57200
             }
           },
           {
@@ -380,7 +476,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31500
+              "duration": 47600
             }
           },
           {
@@ -393,7 +489,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4871300
+              "duration": 3256500
             }
           },
           {
@@ -406,7 +502,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 84699
+              "duration": 280799
             }
           },
           {
@@ -419,7 +515,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62399
+              "duration": 90499
             }
           }
         ],
@@ -439,6 +535,446 @@
     "elements": [
       {
         "description": "",
+        "id": "creacion-de-un-log-nuevo-realizado-manualmente;el-usuario-realiza-una-peticion-post-a-/api/v1/logs/",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "El usuario realiza una peticion post a /api/v1/logs/",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2983900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 19899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5244199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5434799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "el usuario diligencia en el cuerpo de la petición de forma correcta los campos",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 133300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "se hace una petición post a /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3199100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "se debe retornar un status code 200",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 199900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "el servidor envia un mensaje de respuesta",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 358200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "creacion-de-un-log-nuevo-realizado-manualmente;el-usuario-realiza-una-peticion-post-a-/api/v1/logs/",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "El usuario realiza una peticion post a /api/v1/logs/",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3761500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3016200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3252499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "el usuario no diligencia en el cuerpo de la petición de forma correcta los campos",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 123199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "se hace una petición post a /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2430399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "se debe retornar un status code 400",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 62600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "el servidor envia un mensaje de respuesta",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24399
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "creacion-de-un-log-nuevo-realizado-manualmente;el-usuario-realiza-una-peticion-post-a-/api/v1/logs/",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "El usuario realiza una peticion post a /api/v1/logs/",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4681400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 19099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2352400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 32099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2435799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "el usuario diligencia en el cuerpo con un tipo de dato diferente a los permitidos",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 130099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "se hace una petición post a /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3332899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "se debe retornar un status code 400",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "el servidor envia un mensaje de respuesta",
+            "match": {
+              "location": "features\\step_definitions\\create-log.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "creacion-de-un-log-nuevo-realizado-manualmente",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Creacion de un log nuevo realizado manualmente",
+    "tags": [],
+    "uri": "features\\create-log.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
         "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase;pepe-intenta-registrarse-en-la-base-de-datos",
         "keyword": "Scenario",
         "line": 9,
@@ -449,7 +985,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2966099
+              "duration": 3134000
             }
           },
           {
@@ -457,7 +993,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9999
+              "duration": 26800
             }
           },
           {
@@ -465,7 +1001,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 81699
+              "duration": 54999
             }
           },
           {
@@ -473,7 +1009,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1988200
+              "duration": 15899
             }
           },
           {
@@ -481,7 +1017,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24599
+              "duration": 147900
             }
           },
           {
@@ -489,7 +1025,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2457199
+              "duration": 3783499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3066700
             }
           },
           {
@@ -502,7 +1070,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 77399
+              "duration": 108799
             }
           },
           {
@@ -534,7 +1102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 247600
+              "duration": 383799
             }
           },
           {
@@ -547,7 +1115,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7064400
+              "duration": 8636199
             }
           },
           {
@@ -560,7 +1128,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 116499
+              "duration": 136999
             }
           },
           {
@@ -573,7 +1141,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15588899
+              "duration": 16876300
             }
           }
         ],
@@ -592,7 +1160,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3076700
+              "duration": 2252799
             }
           },
           {
@@ -600,7 +1168,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10700
+              "duration": 12500
             }
           },
           {
@@ -608,7 +1176,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 51099
+              "duration": 8399
             }
           },
           {
@@ -616,7 +1184,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2752100
+              "duration": 7699
             }
           },
           {
@@ -624,7 +1192,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30500
+              "duration": 39700
             }
           },
           {
@@ -632,7 +1200,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2235699
+              "duration": 2505400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2646699
             }
           },
           {
@@ -645,7 +1245,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 43899
+              "duration": 65799
             }
           },
           {
@@ -677,7 +1277,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64599
+              "duration": 117100
             }
           },
           {
@@ -690,7 +1290,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 68700
+              "duration": 86299
             }
           },
           {
@@ -703,7 +1303,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2074400
+              "duration": 2879899
             }
           },
           {
@@ -716,7 +1316,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 56899
+              "duration": 248400
             }
           },
           {
@@ -729,7 +1329,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 89099
+              "duration": 418999
             }
           }
         ],
@@ -748,7 +1348,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4136100
+              "duration": 3171500
             }
           },
           {
@@ -756,7 +1356,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10600
+              "duration": 17699
             }
           },
           {
@@ -764,7 +1364,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 26700
+              "duration": 12400
             }
           },
           {
@@ -772,7 +1372,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2351300
+              "duration": 12100
             }
           },
           {
@@ -780,7 +1380,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30700
+              "duration": 51400
             }
           },
           {
@@ -788,7 +1388,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2451600
+              "duration": 2557500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 232000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2878900
             }
           },
           {
@@ -801,7 +1433,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 52099
+              "duration": 63400
             }
           },
           {
@@ -833,7 +1465,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47900
+              "duration": 71000
             }
           },
           {
@@ -846,7 +1478,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 65199
+              "duration": 109400
             }
           },
           {
@@ -859,7 +1491,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3559200
+              "duration": 2785800
             }
           },
           {
@@ -872,7 +1504,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 65099
+              "duration": 108500
             }
           },
           {
@@ -885,7 +1517,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 21999
+              "duration": 132399
             }
           }
         ],
@@ -904,7 +1536,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1969200
+              "duration": 4164999
             }
           },
           {
@@ -912,7 +1544,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9100
+              "duration": 14800
             }
           },
           {
@@ -920,7 +1552,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 43400
+              "duration": 14300
             }
           },
           {
@@ -928,7 +1560,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4368599
+              "duration": 6400
             }
           },
           {
@@ -936,7 +1568,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 32299
+              "duration": 33600
             }
           },
           {
@@ -944,7 +1576,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2440500
+              "duration": 2369499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2842199
             }
           },
           {
@@ -957,7 +1621,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 44400
+              "duration": 90200
             }
           },
           {
@@ -989,7 +1653,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 118300
+              "duration": 94699
             }
           },
           {
@@ -1002,7 +1666,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 103900
+              "duration": 105599
             }
           },
           {
@@ -1015,7 +1679,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2448300
+              "duration": 2255500
             }
           },
           {
@@ -1028,7 +1692,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76600
+              "duration": 82599
             }
           },
           {
@@ -1041,7 +1705,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20700
+              "duration": 42099
             }
           }
         ],
@@ -1061,6 +1725,657 @@
     "elements": [
       {
         "description": "",
+        "id": "el-usuario-desea-eliminar-un-log-de-forma-manual-de-la-base-de-datos;eliminar-un-log-de-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Eliminar un log de la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4476599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2641299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "el id existe en la base de datos",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "el usuario hace una peticion delete a /api/v1/logs/:id",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5384199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "el usuario envia la peticion",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 176800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "el servidor valida que se encuentre el log",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 151700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "el servidor de logs responde con estado 200",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:45"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 152099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "el servidor de logs responde con el log eliminado",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "el-usuario-desea-eliminar-un-log-de-forma-manual-de-la-base-de-datos;el-usuario-no-ingresa-el-id-a-eliminar-en-los-logs",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "El usuario no ingresa el id a eliminar en los logs",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2585099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2273000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 36699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2904300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "el usuario no proporciona un id",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "el usuario hace una peticion delete a /api/v1/logs/:id",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2902000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "el usuario envia la peticion",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 71899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "el servidor de logs envia un mensaje",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 123699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "el servidor responde con estado 400",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:68"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1322200,
+              "error_message": "AssertionError [ERR_ASSERTION]: 200 == 400\n    + expected - actual\n\n    -200\n    +400\n\n    at World.<anonymous> (C:\\Users\\andres\\Documents\\Universidad\\Microservicios\\communication-api\\javascript-tests\\features\\step_definitions\\delete-log.js:71:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "el-usuario-desea-eliminar-un-log-de-forma-manual-de-la-base-de-datos;el-usuario-ingresa-un-id-no-valido-en-los-logs",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "El usuario ingresa un id no valido en los logs",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2274599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2404399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3068399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "el usuario hace una peticion delete a /api/v1/logs/:id",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3626100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "el id no existe en la base de datos",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 222299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "el usuario envia la peticion",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 99700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "el servidor de logs envia un mensaje",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 135600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "el servidor responde con estado 500",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:68"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 943399,
+              "error_message": "AssertionError [ERR_ASSERTION]: 200 == 500\n    + expected - actual\n\n    -200\n    +500\n\n    at World.<anonymous> (C:\\Users\\andres\\Documents\\Universidad\\Microservicios\\communication-api\\javascript-tests\\features\\step_definitions\\delete-log.js:71:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "el-usuario-desea-eliminar-un-log-de-forma-manual-de-la-base-de-datos;el-usuario-ingresa-un-id-no-valido-en-los-logs",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "El usuario ingresa un id no valido en los logs",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2336500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2603400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3145400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 23,
+            "name": "el usuario hace una peticion delete a /api/v1/logs/:id",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3926999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "el usuario no proporciona un id valido de logs",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:83"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 484599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "el usuario envia la peticion",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 446299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "el servidor de logs envia un mensaje",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "el servidor responde con estado 500",
+            "match": {
+              "location": "features\\step_definitions\\delete-log.js:68"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 315299,
+              "error_message": "AssertionError [ERR_ASSERTION]: 200 == 500\n    + expected - actual\n\n    -200\n    +500\n\n    at World.<anonymous> (C:\\Users\\andres\\Documents\\Universidad\\Microservicios\\communication-api\\javascript-tests\\features\\step_definitions\\delete-log.js:71:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "el-usuario-desea-eliminar-un-log-de-forma-manual-de-la-base-de-datos",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "El usuario desea eliminar un log de forma manual de la base de datos",
+    "tags": [],
+    "uri": "features\\delete-log.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
         "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase;pepe-desea-eliminar-un-registro-en-la-base-de-datos",
         "keyword": "Scenario",
         "line": 7,
@@ -1071,7 +2386,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1833300
+              "duration": 2647100
             }
           },
           {
@@ -1079,7 +2394,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10699
+              "duration": 18900
             }
           },
           {
@@ -1087,7 +2402,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24799
+              "duration": 12499
             }
           },
           {
@@ -1095,7 +2410,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2265200
+              "duration": 8899
             }
           },
           {
@@ -1103,7 +2418,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 33999
+              "duration": 59199
             }
           },
           {
@@ -1111,7 +2426,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4156199
+              "duration": 2597499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2851099
             }
           },
           {
@@ -1124,7 +2471,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6593199
+              "duration": 10958299
             }
           },
           {
@@ -1137,7 +2484,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2376999
+              "duration": 3271500
             }
           },
           {
@@ -1150,7 +2497,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 96699
+              "duration": 132600
             }
           },
           {
@@ -1163,7 +2510,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7346400
+              "duration": 8247199
             }
           },
           {
@@ -1176,7 +2523,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 12065400
+              "duration": 10606499
             }
           },
           {
@@ -1189,7 +2536,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 140000
+              "duration": 95200
             }
           },
           {
@@ -1202,7 +2549,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 129899
+              "duration": 83700
             }
           }
         ],
@@ -1221,7 +2568,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4828999
+              "duration": 4279199
             }
           },
           {
@@ -1229,7 +2576,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 53899
+              "duration": 12600
             }
           },
           {
@@ -1237,7 +2584,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 55700
+              "duration": 7200
             }
           },
           {
@@ -1245,7 +2592,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2697300
+              "duration": 7400
             }
           },
           {
@@ -1253,7 +2600,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36599
+              "duration": 73700
             }
           },
           {
@@ -1261,7 +2608,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2533499
+              "duration": 2533900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 50400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2438400
             }
           },
           {
@@ -1274,7 +2653,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5824799
+              "duration": 12300900
             }
           },
           {
@@ -1287,7 +2666,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3293299
+              "duration": 3898999
             }
           },
           {
@@ -1300,7 +2679,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 151000
+              "duration": 180700
             }
           },
           {
@@ -1313,7 +2692,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2672699
+              "duration": 9762800
             }
           },
           {
@@ -1326,7 +2705,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 53600
+              "duration": 102099
             }
           }
         ],
@@ -1345,7 +2724,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2027300
+              "duration": 2995599
             }
           },
           {
@@ -1353,7 +2732,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9200
+              "duration": 20099
             }
           },
           {
@@ -1361,7 +2740,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24100
+              "duration": 6999
             }
           },
           {
@@ -1369,7 +2748,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1892700
+              "duration": 6099
             }
           },
           {
@@ -1377,7 +2756,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 37000
+              "duration": 49600
             }
           },
           {
@@ -1385,7 +2764,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4537700
+              "duration": 3122299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 198199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5677399
             }
           },
           {
@@ -1398,7 +2809,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5226400
+              "duration": 13441699
             }
           },
           {
@@ -1411,7 +2822,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1878499
+              "duration": 3702699
             }
           },
           {
@@ -1424,7 +2835,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 83799
+              "duration": 136599
             }
           },
           {
@@ -1437,7 +2848,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2256400
+              "duration": 3442099
             }
           },
           {
@@ -1450,7 +2861,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 50099
+              "duration": 142699
             }
           }
         ],
@@ -1469,7 +2880,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1703699
+              "duration": 3493299
             }
           },
           {
@@ -1477,7 +2888,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10800
+              "duration": 20500
             }
           },
           {
@@ -1485,7 +2896,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 51100
+              "duration": 9199
             }
           },
           {
@@ -1493,7 +2904,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4189600
+              "duration": 23000
             }
           },
           {
@@ -1501,7 +2912,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30499
+              "duration": 83600
             }
           },
           {
@@ -1509,7 +2920,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2388799
+              "duration": 5122399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3868799
             }
           },
           {
@@ -1522,7 +2965,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4916900
+              "duration": 8857199
             }
           },
           {
@@ -1535,7 +2978,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1957800
+              "duration": 3689099
             }
           },
           {
@@ -1548,7 +2991,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 95200
+              "duration": 311199
             }
           },
           {
@@ -1561,7 +3004,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1984799
+              "duration": 3803499
             }
           },
           {
@@ -1574,7 +3017,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 193099
+              "duration": 202799
             }
           },
           {
@@ -1587,7 +3030,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76899
+              "duration": 55600
             }
           }
         ],
@@ -1606,7 +3049,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3864900
+              "duration": 2060400
             }
           },
           {
@@ -1614,7 +3057,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 21699
+              "duration": 14100
             }
           },
           {
@@ -1622,7 +3065,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 59100
+              "duration": 12700
             }
           },
           {
@@ -1630,7 +3073,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3279800
+              "duration": 8600
             }
           },
           {
@@ -1638,7 +3081,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 28799
+              "duration": 40699
             }
           },
           {
@@ -1646,7 +3089,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1853699
+              "duration": 2680299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2570500
             }
           },
           {
@@ -1659,7 +3134,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4816700
+              "duration": 12722000
             }
           },
           {
@@ -1672,7 +3147,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4692499
+              "duration": 4428700
             }
           },
           {
@@ -1685,7 +3160,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 91499
+              "duration": 98200
             }
           },
           {
@@ -1698,7 +3173,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2296399
+              "duration": 2625100
             }
           },
           {
@@ -1711,7 +3186,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59000
+              "duration": 62100
             }
           }
         ],
@@ -1741,7 +3216,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1876199
+              "duration": 2151300
             }
           },
           {
@@ -1749,7 +3224,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9300
+              "duration": 14899
             }
           },
           {
@@ -1757,7 +3232,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 22600
+              "duration": 5600
             }
           },
           {
@@ -1765,7 +3240,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1766900
+              "duration": 5499
             }
           },
           {
@@ -1773,7 +3248,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24000
+              "duration": 39700
             }
           },
           {
@@ -1781,7 +3256,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1717000
+              "duration": 2452600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2461699
             }
           },
           {
@@ -1794,7 +3301,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78099
+              "duration": 193399
             }
           },
           {
@@ -1807,7 +3314,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 68800
+              "duration": 112899
             }
           },
           {
@@ -1820,7 +3327,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3915300
+              "duration": 2994900
             }
           },
           {
@@ -1833,7 +3340,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15230599
+              "duration": 14817000
             }
           },
           {
@@ -1846,7 +3353,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 178300
+              "duration": 263200
             }
           }
         ],
@@ -1865,7 +3372,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2927499
+              "duration": 2537799
             }
           },
           {
@@ -1873,7 +3380,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 13099
+              "duration": 16499
             }
           },
           {
@@ -1881,7 +3388,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 49400
+              "duration": 9399
             }
           },
           {
@@ -1889,7 +3396,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4544799
+              "duration": 9200
             }
           },
           {
@@ -1897,7 +3404,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 34699
+              "duration": 39000
             }
           },
           {
@@ -1905,7 +3412,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2469799
+              "duration": 2359800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3038199
             }
           },
           {
@@ -1918,7 +3457,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 94399
+              "duration": 65400
             }
           },
           {
@@ -1931,7 +3470,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 36800
+              "duration": 49199
             }
           },
           {
@@ -1944,7 +3483,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3347699
+              "duration": 3387600
             }
           },
           {
@@ -1957,7 +3496,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 87400
+              "duration": 128199
             }
           },
           {
@@ -1970,7 +3509,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 75599
+              "duration": 146899
             }
           },
           {
@@ -1983,7 +3522,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27100
+              "duration": 214300
             }
           }
         ],
@@ -2002,7 +3541,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4893800
+              "duration": 2348299
             }
           },
           {
@@ -2010,7 +3549,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 11800
+              "duration": 11700
             }
           },
           {
@@ -2018,7 +3557,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 39400
+              "duration": 7099
             }
           },
           {
@@ -2026,7 +3565,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2466800
+              "duration": 11200
             }
           },
           {
@@ -2034,7 +3573,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 34800
+              "duration": 46299
             }
           },
           {
@@ -2042,7 +3581,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2237599
+              "duration": 4847100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2511099
             }
           },
           {
@@ -2055,7 +3626,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48800
+              "duration": 47699
             }
           },
           {
@@ -2068,7 +3639,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27199
+              "duration": 47399
             }
           },
           {
@@ -2081,7 +3652,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48700
+              "duration": 83800
             }
           },
           {
@@ -2094,7 +3665,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2329700
+              "duration": 2420700
             }
           },
           {
@@ -2107,7 +3678,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 90500
+              "duration": 147400
             }
           },
           {
@@ -2120,7 +3691,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31199
+              "duration": 53600
             }
           }
         ],
@@ -2139,7 +3710,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1934099
+              "duration": 2878399
             }
           },
           {
@@ -2147,7 +3718,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 12099
+              "duration": 13200
             }
           },
           {
@@ -2155,7 +3726,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 34000
+              "duration": 11000
             }
           },
           {
@@ -2163,7 +3734,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4280600
+              "duration": 7400
             }
           },
           {
@@ -2171,7 +3742,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 41799
+              "duration": 43599
             }
           },
           {
@@ -2179,7 +3750,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2336600
+              "duration": 3139199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3333800
             }
           },
           {
@@ -2192,7 +3795,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46399
+              "duration": 54399
             }
           },
           {
@@ -2205,7 +3808,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27399
+              "duration": 35699
             }
           },
           {
@@ -2218,7 +3821,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59700
+              "duration": 81299
             }
           },
           {
@@ -2231,7 +3834,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2301300
+              "duration": 2369599
             }
           },
           {
@@ -2244,7 +3847,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 731500
+              "duration": 759700
             }
           },
           {
@@ -2257,7 +3860,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45400
+              "duration": 54700
             }
           }
         ],
@@ -2282,6 +3885,303 @@
     "elements": [
       {
         "description": "",
+        "id": "el-usuario-desea-listar-los-logs-del-sistema;el-usuario-lista-los-logs-del-sistema",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "El usuario lista los logs del sistema",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2914499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2667800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 85899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4219399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "El usuario realiza una petición GET a la URL /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14949200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "El usuario envía la petición",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 86699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "El sistema responde con un código de estado 200",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "El sistema responde con una lista de logs",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "el-usuario-desea-listar-los-logs-del-sistema;el-usuario-lista-los-logs-del-sistema",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "El usuario lista los logs del sistema",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2001199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2846199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 148800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3140400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "El usuario realiza una petición GET a la URL /api/v1/logs/?page=1&pageSize=10",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6470599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "El usuario envía la petición",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "El sistema responde con un código de estado 200",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "El sistema responde con una lista de logs",
+            "match": {
+              "location": "features\\step_definitions\\get-logs.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "el-usuario-desea-listar-los-logs-del-sistema",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "El usuario desea listar los logs del sistema",
+    "tags": [],
+    "uri": "features\\get-logs.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
         "id": "la-api-provee-al-usuario-la-funcionalidad-de-ingresar-con-sus-credenciales-previamente-registradas;pepe-quiere-autenticarse-dentro-de-la-aplicación",
         "keyword": "Scenario",
         "line": 7,
@@ -2292,7 +4192,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1818099
+              "duration": 2693200
             }
           },
           {
@@ -2300,7 +4200,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9199
+              "duration": 14899
             }
           },
           {
@@ -2308,7 +4208,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 22300
+              "duration": 6899
             }
           },
           {
@@ -2316,7 +4216,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2064699
+              "duration": 12599
             }
           },
           {
@@ -2324,7 +4224,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 32899
+              "duration": 50199
             }
           },
           {
@@ -2332,7 +4232,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1970899
+              "duration": 2726700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 74200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 165999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 83200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3377900
             }
           },
           {
@@ -2345,7 +4277,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93200
+              "duration": 117799
             }
           },
           {
@@ -2358,7 +4290,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 85299
+              "duration": 79899
             }
           },
           {
@@ -2371,7 +4303,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4117300
+              "duration": 4306300
             }
           },
           {
@@ -2384,7 +4316,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 114000
+              "duration": 817299
             }
           },
           {
@@ -2397,7 +4329,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7897800
+              "duration": 15158899
             }
           }
         ],
@@ -2416,7 +4348,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2746700
+              "duration": 3025700
             }
           },
           {
@@ -2424,7 +4356,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23099
+              "duration": 64899
             }
           },
           {
@@ -2432,7 +4364,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 77199
+              "duration": 11199
             }
           },
           {
@@ -2440,7 +4372,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4740400
+              "duration": 9599
             }
           },
           {
@@ -2448,7 +4380,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 42999
+              "duration": 49499
             }
           },
           {
@@ -2456,7 +4388,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2634799
+              "duration": 3282000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3151800
             }
           },
           {
@@ -2469,7 +4433,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59200
+              "duration": 138300
             }
           },
           {
@@ -2482,7 +4446,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19600
+              "duration": 119700
             }
           },
           {
@@ -2495,7 +4459,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61599
+              "duration": 337599
             }
           },
           {
@@ -2508,7 +4472,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2044400
+              "duration": 3591799
             }
           },
           {
@@ -2521,7 +4485,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51300
+              "duration": 59700
             }
           },
           {
@@ -2534,7 +4498,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 118999
+              "duration": 224899
             }
           }
         ],
@@ -2553,7 +4517,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1737500
+              "duration": 2445800
             }
           },
           {
@@ -2561,7 +4525,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10499
+              "duration": 22899
             }
           },
           {
@@ -2569,7 +4533,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 34800
+              "duration": 8599
             }
           },
           {
@@ -2577,7 +4541,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2186400
+              "duration": 7200
             }
           },
           {
@@ -2585,7 +4549,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 27399
+              "duration": 136500
             }
           },
           {
@@ -2593,7 +4557,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4507800
+              "duration": 2942299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 19999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3963899
             }
           },
           {
@@ -2606,7 +4602,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47699
+              "duration": 314400
             }
           },
           {
@@ -2619,7 +4615,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 18800
+              "duration": 41999
             }
           },
           {
@@ -2632,7 +4628,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62400
+              "duration": 123300
             }
           },
           {
@@ -2645,7 +4641,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2882999
+              "duration": 2909599
             }
           },
           {
@@ -2658,7 +4654,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 71799
+              "duration": 68599
             }
           }
         ],
@@ -2677,7 +4673,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1934400
+              "duration": 2309300
             }
           },
           {
@@ -2685,7 +4681,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9400
+              "duration": 20399
             }
           },
           {
@@ -2693,7 +4689,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 22299
+              "duration": 11099
             }
           },
           {
@@ -2701,7 +4697,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1704099
+              "duration": 18799
             }
           },
           {
@@ -2709,7 +4705,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23600
+              "duration": 62899
             }
           },
           {
@@ -2717,7 +4713,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1859899
+              "duration": 3391400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3029499
             }
           },
           {
@@ -2730,7 +4758,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 44500
+              "duration": 95799
             }
           },
           {
@@ -2743,7 +4771,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 17900
+              "duration": 199900
             }
           },
           {
@@ -2756,7 +4784,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 77799
+              "duration": 196799
             }
           },
           {
@@ -2769,7 +4797,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2034800
+              "duration": 3687100
             }
           },
           {
@@ -2782,7 +4810,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 144900
+              "duration": 54800
             }
           },
           {
@@ -2795,7 +4823,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63499
+              "duration": 70699
             }
           }
         ],
@@ -2825,7 +4853,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4077800
+              "duration": 2142599
             }
           },
           {
@@ -2833,7 +4861,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 15000
+              "duration": 25700
             }
           },
           {
@@ -2841,7 +4869,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 59400
+              "duration": 18100
             }
           },
           {
@@ -2849,7 +4877,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2311599
+              "duration": 8600
             }
           },
           {
@@ -2857,7 +4885,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 26000
+              "duration": 64899
             }
           },
           {
@@ -2865,7 +4893,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1826400
+              "duration": 3187399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2876599
             }
           },
           {
@@ -2878,7 +4938,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 77500
+              "duration": 148000
             }
           },
           {
@@ -2891,7 +4951,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47899
+              "duration": 179200
             }
           },
           {
@@ -2904,7 +4964,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2193700
+              "duration": 5207199
             }
           },
           {
@@ -2917,7 +4977,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93299
+              "duration": 127299
             }
           },
           {
@@ -2930,7 +4990,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11424600
+              "duration": 17290100
             }
           },
           {
@@ -2943,7 +5003,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 115100
+              "duration": 146699
             }
           }
         ],
@@ -2962,7 +5022,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2890300
+              "duration": 3312500
             }
           },
           {
@@ -2970,7 +5030,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 11500
+              "duration": 171499
             }
           },
           {
@@ -2978,7 +5038,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30299
+              "duration": 16300
             }
           },
           {
@@ -2986,7 +5046,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2977899
+              "duration": 14400
             }
           },
           {
@@ -2994,7 +5054,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 29599
+              "duration": 84900
             }
           },
           {
@@ -3002,7 +5062,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2780000
+              "duration": 3566900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2919400
             }
           },
           {
@@ -3015,7 +5107,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 386599
+              "duration": 85400
             }
           },
           {
@@ -3028,7 +5120,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 137299
+              "duration": 46800
             }
           },
           {
@@ -3041,7 +5133,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2755799
+              "duration": 3644499
             }
           },
           {
@@ -3054,7 +5146,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 100200
+              "duration": 197400
             }
           },
           {
@@ -3067,7 +5159,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 69299
+              "duration": 97299
             }
           },
           {
@@ -3080,7 +5172,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58499
+              "duration": 93000
             }
           }
         ],
@@ -3099,7 +5191,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2078999
+              "duration": 3027799
             }
           },
           {
@@ -3107,7 +5199,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 11799
+              "duration": 22399
             }
           },
           {
@@ -3115,7 +5207,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24599
+              "duration": 24300
             }
           },
           {
@@ -3123,7 +5215,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1952700
+              "duration": 16199
             }
           },
           {
@@ -3131,7 +5223,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36799
+              "duration": 319399
             }
           },
           {
@@ -3139,7 +5231,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1862999
+              "duration": 4772500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3182999
             }
           },
           {
@@ -3152,7 +5276,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 43399
+              "duration": 81600
             }
           },
           {
@@ -3165,7 +5289,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19400
+              "duration": 72799
             }
           },
           {
@@ -3178,7 +5302,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1851100
+              "duration": 3623099
             }
           },
           {
@@ -3191,7 +5315,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 94100
+              "duration": 172700
             }
           },
           {
@@ -3204,7 +5328,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51199
+              "duration": 37900
             }
           },
           {
@@ -3217,7 +5341,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57099
+              "duration": 397000
             }
           }
         ],
@@ -3237,6 +5361,446 @@
     "elements": [
       {
         "description": "",
+        "id": "el-usuario-desea-actualizar-de-forma-manual-la-información-de-un-log;el-usuario-actualiza-un-log-de-forma-manual",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "el usuario actualiza un log de forma manual",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3897300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 61800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3176899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3201900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "el usuario diligencia de forma correcta en el cuerpo de la peticion la informacion a actualizar",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 142500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "el usuario envia la peticion PUT a /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8684300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "el servidor responde con un codigo de respuesta igual a 200",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 134499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "el servidor envia un mensaje de respuesta con informacion",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 99800
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "el-usuario-desea-actualizar-de-forma-manual-la-información-de-un-log;el-usuario-actualiza-un-log-de-forma-manual-con-informacion-incorrecta",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "el usuario actualiza un log de forma manual con informacion incorrecta",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3714099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3555199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 74400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 217700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3567600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "el usuario diligencia de forma incorrecta en el cuerpo de la peticion la informacion a actualizar",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 246699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "el usuario envia la peticion PUT a /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5909299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "el servidor responde con un codigo de respuesta igual a 400",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "el servidor envia un mensaje de respuesta con informacion",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38399
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "el-usuario-desea-actualizar-de-forma-manual-la-información-de-un-log;el-usuario-actualiza-un-log-de-forma-manual-con-informacion-faltante",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "el usuario actualiza un log de forma manual con informacion faltante",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4855700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 62899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2811300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 74599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3528100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "el usuario no diligencia la informacion a actualizar en la base de datos de logs",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 187500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "el usuario envia la peticion PUT a /api/v1/logs/",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9088099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "el servidor responde con un codigo de respuesta igual a 400",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "el servidor envia un mensaje de respuesta con informacion",
+            "match": {
+              "location": "features\\step_definitions\\update-log.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "el-usuario-desea-actualizar-de-forma-manual-la-información-de-un-log",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "El usuario desea actualizar de forma manual la información de un Log",
+    "tags": [],
+    "uri": "features\\update-log.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
         "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-listar-los-usuarios-dentro-de-la-base-de-datos-con-paginación;pepe-desea-actualizar-los-datos-de-un-usuario",
         "keyword": "Scenario",
         "line": 7,
@@ -3247,7 +5811,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4432399
+              "duration": 3562500
             }
           },
           {
@@ -3255,7 +5819,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 11900
+              "duration": 19199
             }
           },
           {
@@ -3263,7 +5827,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 25000
+              "duration": 12999
             }
           },
           {
@@ -3271,7 +5835,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2364000
+              "duration": 9700
             }
           },
           {
@@ -3279,7 +5843,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 77400
+              "duration": 53100
             }
           },
           {
@@ -3287,7 +5851,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1921899
+              "duration": 3117300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 59000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3157499
             }
           },
           {
@@ -3300,7 +5896,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78900
+              "duration": 187600
             }
           },
           {
@@ -3313,7 +5909,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 66999
+              "duration": 490199
             }
           },
           {
@@ -3326,7 +5922,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 42599
+              "duration": 556800
             }
           },
           {
@@ -3339,7 +5935,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 13653899
+              "duration": 13214400
             }
           },
           {
@@ -3352,7 +5948,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 101900
+              "duration": 159299
             }
           },
           {
@@ -3365,7 +5961,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51399
+              "duration": 94500
             }
           }
         ],
@@ -3384,7 +5980,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1992000
+              "duration": 2360000
             }
           },
           {
@@ -3392,7 +5988,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10199
+              "duration": 13399
             }
           },
           {
@@ -3400,7 +5996,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24399
+              "duration": 5499
             }
           },
           {
@@ -3408,7 +6004,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1802900
+              "duration": 9099
             }
           },
           {
@@ -3416,7 +6012,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23499
+              "duration": 48700
             }
           },
           {
@@ -3424,7 +6020,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1659099
+              "duration": 2733700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3363299
             }
           },
           {
@@ -3437,7 +6065,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45299
+              "duration": 87000
             }
           },
           {
@@ -3450,7 +6078,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28000
+              "duration": 57399
             }
           },
           {
@@ -3463,7 +6091,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 137699
+              "duration": 218800
             }
           },
           {
@@ -3476,7 +6104,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2717099
+              "duration": 3039900
             }
           },
           {
@@ -3489,7 +6117,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 12022299
+              "duration": 12519499
             }
           },
           {
@@ -3502,7 +6130,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 100899
+              "duration": 105399
             }
           }
         ],
@@ -3521,7 +6149,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2229899
+              "duration": 3783099
             }
           },
           {
@@ -3529,7 +6157,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10699
+              "duration": 38800
             }
           },
           {
@@ -3537,7 +6165,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36600
+              "duration": 22500
             }
           },
           {
@@ -3545,7 +6173,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4484700
+              "duration": 21299
             }
           },
           {
@@ -3553,7 +6181,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30600
+              "duration": 221899
             }
           },
           {
@@ -3561,7 +6189,39 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2499099
+              "duration": 3063600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 50300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2261099
             }
           },
           {
@@ -3574,7 +6234,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 50099
+              "duration": 68699
             }
           },
           {
@@ -3587,7 +6247,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 36500
+              "duration": 65399
             }
           },
           {
@@ -3600,7 +6260,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2114900
+              "duration": 3610300
             }
           },
           {
@@ -3613,7 +6273,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78200
+              "duration": 156500
             }
           },
           {
@@ -3626,7 +6286,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 44399
+              "duration": 94399
             }
           },
           {
@@ -3639,7 +6299,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34099
+              "duration": 49100
             }
           }
         ],

@@ -2,8 +2,16 @@
 
 //Definig the host
 
-host = "localhost";
-//host = "server"
+host = process.env.SERVER_HOST;
+logsHost = process.env.LOGS_HOST;
+
+if (!host) {
+  host = "localhost";
+}
+
+if (!logsHost) {
+  logsHost = "localhost";
+}
 
 //user route
 const userurl = "http://" + host + ":9090/api/v1/users/";
@@ -14,9 +22,14 @@ const passwordRoute = "http://" + host + ":9090/api/v1/users/password";
 //update password route
 const passwordUpdateRoute = "http://" + host + ":9090/api/v1/users/password/";
 
+// logs manager API
+
+const logsManager = "http://" + logsHost + ":9091/api/v1/logs/";
+
 module.exports = {
   userurl,
   loginUrl,
   passwordRoute,
   passwordUpdateRoute,
+  logsManager,
 };
