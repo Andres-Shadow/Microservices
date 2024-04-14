@@ -184,4 +184,6 @@ const getLogsByApplication = (req: Request, res: Response) => {
 
 }
 
+
+
 export { getLog, createLog, deleteLog, udpateLog, getLogsByApplication };
