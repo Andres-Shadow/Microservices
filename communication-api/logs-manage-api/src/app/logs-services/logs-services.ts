@@ -44,7 +44,7 @@ class logsServices {
         return logs_stored;
     }
 
-    static async deleteLog(id: string) {
+    static async deleteLog(id: number) {
         await DataLog.destroy({
             where: {
                 id: id
@@ -54,7 +54,11 @@ class logsServices {
 
     static async getLog(id: string) {
         const log = await DataLog.findByPk(id);
-        return log;
+        if (!log) {
+            return null;
+        } else {
+            return log;
+        }
     }
 
     static async updateLog(id: string, data: any) {

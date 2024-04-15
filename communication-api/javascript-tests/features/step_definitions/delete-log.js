@@ -12,19 +12,19 @@ Before(function () {});
 
 // scenario 1
 Given("el id existe en la base de datos", function () {
-  log_id = 20;
+  log_id = 400;
 });
 
 Given(
-  "el usuario hace una peticion delete a \\/api\\/v1\\/logs\\/:id",
+  "el usuario hace una peticion delete a \\/api\\/v1\\/logs\\/?id",
   async function () {
     try {
       url = baseUrl + "?id=" + log_id;
       respuesta = await axios.delete(url);
       response = respuesta.data;
       statusCode = respuesta.status;
-      console.log("url", url);
-      console.log("response", response);
+      // console.log("url", url);
+      // console.log("response", response);
     } catch (error) {
       response = error.response.data;
       statusCode = error.response.status;
@@ -54,6 +54,20 @@ Then("el servidor de logs responde con el log eliminado", function () {
 });
 
 // scenario 2
+
+When(
+  "el usuario hace una peticion delete a \\/api\\/v1\\/logs\\/",
+  async function () {
+    try {
+      respuesta = await axios.delete(baseUrl);
+      response = respuesta.data;
+      statusCode = respuesta.status;
+    } catch (error) {
+      response = error.response.data;
+      statusCode = error.response.status;
+    }
+  }
+);
 
 Given("el usuario no proporciona un id", function () {
   // Write code here that turns the phrase above into concrete actions
