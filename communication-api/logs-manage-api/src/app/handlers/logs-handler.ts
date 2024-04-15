@@ -98,23 +98,37 @@ const createLog = (req: Request, res: Response) => {
         res.status(500).json({ error: 'Error interno al crear el log en la base de datos.' });
     }
 }
+const deleteLog = async (req: Request, res: Response) => {
+    const idParam = req.query.id;
 
-const deleteLog = (req: Request, res: Response) => {
-    let id = req.query.id as string;
-
-    if (!id) {
-        console.log('ID:', id);
+    // Verificar si el parámetro id existe y no está vacío
+    if (!idParam || typeof idParam !== 'string') {
         return res.status(400).json({ error: 'El ID del log es requerido.' });
     }
 
-    // Llamada al método de eliminación de la base de datos
+    // Convertir el id a un número entero
+    const id = parseInt(idParam, 10);
+
+    // Verificar si el id es un número válido
+    if (isNaN(id) || id < 0) {
+        return res.status(400).json({ error: 'El ID del log no es válido.' });
+    }
+
     try {
-        console.log('ID:', id);
-        logsServices.deleteLog(id);
+        // Obtener el log de la base de datos
+        const log = await logsServices.getLog("" + id);
+
+        // Verificar si se encontró el log
+        if (!log) {
+            return res.status(404).json({ error: 'Log not found' });
+        }
+
+        // Llamada al método de eliminación de la base de datos
+        await logsServices.deleteLog(id);
         res.status(200).json({ data: 'Log was deleted successfully!' });
     } catch (error) {
-        console.error('Error al eliminar el log en la base de datos:', error);
-        res.status(500).json({ error: 'Error interno al eliminar el log en la base de datos.' });
+        console.error('Error al eliminar o recuperar el log en la base de datos:', error);
+        res.status(500).json({ error: 'Error interno al eliminar o recuperar el log en la base de datos.' });
     }
 }
 
