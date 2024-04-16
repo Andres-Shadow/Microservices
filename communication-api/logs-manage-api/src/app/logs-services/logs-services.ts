@@ -10,7 +10,7 @@ class logsServices {
                 Name: jsonData.name,
                 Summary: jsonData.summary,
                 Description: jsonData.description,
-                Log_date: new Date(jsonData.log_date),
+                Log_date: jsonData.log_date,
                 Log_type: jsonData.log_type,
                 Module: jsonData.module,
             });
@@ -59,6 +59,17 @@ class logsServices {
         } else {
             return log;
         }
+    }
+
+    static async getLogsByName(name: string) {
+        const logs = await DataLog.findAll({
+            where: {
+                Name: name,
+                Log_type: 'CREATION'
+            }
+        });
+
+        return logs;
     }
 
     static async updateLog(id: string, data: any) {

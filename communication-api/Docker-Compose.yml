@@ -51,3 +51,12 @@ services:
       - "3307:3306"
     expose:
       - "3307"
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "6432:8080"
+      - "50000:50000"
+    environment:
+      - USER_SERVER_HOST=server
+      - LOGS_HOST=cliente
+      - LOGS_DATABASE0=log_database

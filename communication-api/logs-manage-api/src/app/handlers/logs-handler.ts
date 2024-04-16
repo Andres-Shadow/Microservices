@@ -78,9 +78,9 @@ const createLog = (req: Request, res: Response) => {
 
     // Verificar si la cantidad de elementos en el JSON es diferente a la cantidad de campos necesarios
     const requiredFields = ['Name', 'Summary', 'Description', 'Log_date', 'Log_type', 'Module']; // Reemplazar con los nombres de los campos necesarios
-    if (Object.keys(body).length !== requiredFields.length) {
-        return res.status(400).json({ error: 'La cantidad de elementos en el JSON es incorrecta.' });
-    }
+    // if (Object.keys(body).length !== requiredFields.length) {
+    //     return res.status(400).json({ error: 'La cantidad de elementos en el JSON es incorrecta.' });
+    // }
 
     // Verificar si existen tipos de datos diferentes
     for (const field of requiredFields) {
@@ -198,6 +198,18 @@ const getLogsByApplication = (req: Request, res: Response) => {
 
 }
 
+const getLogsByEmailAndCreation = (req: Request, res: Response) => {
+    let email = req.params.email as string;
+
+    let logs = logsServices.getLogsByName(email);
+
+    logs.then((result) => {
+        res.status(200).json(result);
+    }).catch((error) => {
+        console.error('Error al obtener los logs:', error);
+        res.status(500).json({ error: 'Error interno al obtener los logs.' });
+    });
+}
 
 
-export { getLog, createLog, deleteLog, udpateLog, getLogsByApplication };
+export { getLog, createLog, deleteLog, udpateLog, getLogsByApplication, getLogsByEmailAndCreation };
