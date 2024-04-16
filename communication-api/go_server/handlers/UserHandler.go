@@ -25,14 +25,13 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	page, _ := strconv.Atoi(query.Get("page"))
 	pageSize, _ := strconv.Atoi(query.Get("pageSize"))
-	logDate := time.Now().Format("02/01/06 - 15:04")
 
 	if !verifyTokenPresency(r) {
 		notification := models.LogResponse{
 			Name:        "USERS-API",
 			Summary:     "User tried to list users",
 			Description: "User tried to list users but token was not valid",
-			LogDate:     logDate,
+			LogDate:     time.Now().Format(time.RFC3339),
 			LogType:     "ERROR",
 			Module:      "USERS-API",
 		}
@@ -120,7 +119,7 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	notification := models.LogResponse{
-		Name:        "USERS-API",
+		Name:        createdUser.Email,
 		Summary:     "User created",
 		Description: "User " + createdUser.Username + " created with email " + createdUser.Email,
 		LogDate:     time.Now().Format(time.RFC3339),

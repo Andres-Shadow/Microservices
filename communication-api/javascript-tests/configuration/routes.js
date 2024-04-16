@@ -2,7 +2,7 @@
 
 //Definig the host
 
-host = process.env.SERVER_HOST;
+host = process.env.USER_SERVER_HOST;
 logsHost = process.env.LOGS_HOST;
 
 if (!host) {

@@ -8,7 +8,7 @@ let logBody = {
   Name: "Test from JS",
   Summary: "Test made with CucumberJS",
   Description: "Just a test made with cucumberJS",
-  Log_date: "2024-04-09",
+  Log_date: "2024-04-09 00:00:00",
   Log_type: "INFO",
   Module: "CUCUMBER",
 };

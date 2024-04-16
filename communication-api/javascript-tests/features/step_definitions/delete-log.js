@@ -2,6 +2,7 @@ const { Given, When, Then, Before } = require("@cucumber/cucumber");
 const assert = require("assert");
 const axios = require("axios");
 const faker = require("@faker-js/faker");
+const { getLastLogId } = require("../../logic/database");
 
 let baseUrl = require("../../configuration/routes").logsManager;
 
@@ -10,9 +11,25 @@ let statusCode;
 let log_id;
 Before(function () {});
 
-// scenario 1
-Given("el id existe en la base de datos", function () {
-  log_id = 400;
+Given("el id existe en la base de datos", async function () {
+  try {
+    const count = await new Promise((resolve, reject) => {
+      getLastLogId((error, count) => {
+        if (error) {
+          //console.error("Error:", error);
+          reject(error);
+        } else {
+          // console.log("count", count);
+          resolve(count);
+        }
+      });
+    });
+
+    // Ahora puedes acceder a log_id fuera de la función de devolución de llamada
+    log_id = count;
+  } catch (error) {
+    console.error("Error:", error);
+  }
 });
 
 Given(

@@ -25,7 +25,7 @@ export const DataLog = sequelize.define('log', {
     field: 'description' // Nombre del campo en la base de datos
   },
   Log_date: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: false,
     field: 'log_date' // Nombre del campo en la base de datos
   },
