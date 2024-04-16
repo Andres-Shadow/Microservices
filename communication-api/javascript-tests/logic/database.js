@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 host = process.env.LOGS_DATABASE;
 
 if (!host) {
-  host = "log_database";
+  host = "localhost";
 }
 
 // Configura la conexión a la base de datos
