@@ -59,4 +59,4 @@ services:
     environment:
       - USER_SERVER_HOST=server
       - LOGS_HOST=cliente
-      - LOGS_DATABASE0=log_database
+      - LOGS_DATABASE=log_database
