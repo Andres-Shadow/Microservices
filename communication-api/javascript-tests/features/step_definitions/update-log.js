@@ -5,7 +5,7 @@ const faker = require("@faker-js/faker");
 
 let baseUrl = require("../../configuration/routes").logsManager;
 let logBody = {
-  id: "300",
+  id: "1",
   Name: "Test from JS",
   Summary: "Test made with CucumberJS",
   Description: "Just a test made with cucumberJS",
@@ -22,7 +22,7 @@ Before(function () {});
 Given(
   "el usuario diligencia de forma correcta en el cuerpo de la peticion la informacion a actualizar",
   function () {
-    // nothing to do here
+    //nothing to do here
   }
 );
 
