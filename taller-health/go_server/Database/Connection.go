@@ -32,3 +32,14 @@ func DBConnection() {
 		}
 	}
 }
+
+func VerifyDatabaseConnection() bool {
+
+	//hacer un ping a la base de datos
+	err := DB.Exec("SELECT 1").Error
+	if err != nil {
+		return false
+	} else {
+		return true
+	}
+}

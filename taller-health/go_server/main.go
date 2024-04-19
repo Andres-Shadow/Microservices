@@ -22,6 +22,7 @@ func main() {
 
 	//login route
 	defineLoginRegisterEndpoints(r.PathPrefix("/api/v1").Subrouter())
+	defineHealthEndpoints(r.PathPrefix("/api/v1").Subrouter())
 
 	//user routes
 	//creating route prefix
@@ -55,4 +56,10 @@ func defineUserEndpoints(userRouter *mux.Router) {
 
 func defineLoginRegisterEndpoints(loginRouter *mux.Router) {
 	loginRouter.HandleFunc("/login", handlers.LoginHandler).Methods("POST")
+}
+
+func defineHealthEndpoints(healthRouter *mux.Router) {
+	healthRouter.HandleFunc("/health", handlers.CheckHealth).Methods("GET")
+	healthRouter.HandleFunc("/health/ready", handlers.CheckHealth).Methods("GET")
+	healthRouter.HandleFunc("/health/live", handlers.CheckHealth).Methods("GET")
 }

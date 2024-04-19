@@ -29,12 +29,6 @@ func ConnectToNATS() *NatsLogger {
 		natsHost = "localhost"
 	}
 	url := "nats://" + natsHost + ":4222"
-
-	// nc, err := nats.Connect(url)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// return nc
 	once.Do(func() {
 		nc, err := nats.Connect(url)
 		if err != nil {
@@ -45,23 +39,6 @@ func ConnectToNATS() *NatsLogger {
 
 	return &NatsLogger{conn: instance}
 }
-
-// func NotifyLogin(nc *nats.Conn, newLog *models.LogResponse, event string) {
-// 	// Definir la estructura de la notificación
-
-// 	// Convertir la estructura en JSON
-// 	jsonData, err := json.Marshal(newLog)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	// Publicar el mensaje JSON
-// 	if err := nc.Publish("MicroservicesLogs", jsonData); err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	fmt.Println("Notification sent")
-// }
 
 func init() {
 	logger = ConnectToNATS()
@@ -89,4 +66,14 @@ func (nl *NatsLogger) SendLog(newLog *models.LogResponse) {
 	}
 
 	fmt.Println("Notification sent")
+}
+
+// HealthCheckNATS verifica si la conexión a NATS está viva
+func (nl *NatsLogger) HealthCheckNATS() bool {
+	if nl.conn == nil {
+		return false
+	} else if nl.conn.Status() != nats.CONNECTED {
+		return false
+	}
+	return true
 }
