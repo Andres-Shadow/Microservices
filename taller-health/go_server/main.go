@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	DataBase "taller_apirest/Database"
 	"taller_apirest/handlers"
@@ -19,8 +20,9 @@ func main() {
 	utilities.PrechargeSampleUsers()
 
 	r := mux.NewRouter()
-
 	//login route
+	utilities.StartTime = time.Now()
+
 	defineLoginRegisterEndpoints(r.PathPrefix("/api/v1").Subrouter())
 	defineHealthEndpoints(r.PathPrefix("/api/v1").Subrouter())
 
