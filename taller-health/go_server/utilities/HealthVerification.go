@@ -77,3 +77,68 @@ func VerifyHealth() models.GeneralCheck {
 
 	return report
 }
+
+func VerifyReadyHealth() models.GeneralCheck {
+	var databaseReady string = "DOWN"
+	var checkStatus string = "DOWN"
+	checks := []models.HealthCheck{}
+	fromTime := time.Now()
+
+	// database readyness check
+	aux := DataBase.VerifyDatabaseReady()
+
+	if aux {
+		databaseReady = "READY"
+		checkStatus = "UP"
+	}
+
+	DatabaseData := models.HealthData{
+		From:   fromTime,
+		Status: databaseReady,
+	}
+
+	healthCheck := models.HealthCheck{
+		Data:   DatabaseData,
+		Name:   "Databse connection check",
+		Status: checkStatus,
+	}
+
+	checks = append(checks, healthCheck)
+	// nats readyness check
+	checkStatus = "DOWN"
+	natsConnection := communication.ConnectToNATS().ReadyNats()
+	var natsReady string = "DOWN"
+
+	if natsConnection {
+		natsReady = "READY"
+		checkStatus = "UP"
+	}
+
+	NatsData := models.HealthData{
+		From:   fromTime,
+		Status: natsReady,
+	}
+
+	natsHealthCheck := models.HealthCheck{
+		Data:   NatsData,
+		Name:   "Nats connection check",
+		Status: checkStatus,
+	}
+
+	checks = append(checks, natsHealthCheck)
+	var reportStatus string
+	report := models.GeneralCheck{}
+
+	reportStatus = "DOWN"
+	if natsReady == "READY" && databaseReady == "READY" {
+		reportStatus = "UP"
+	}
+
+	report.Status = reportStatus
+	report.Checks = checks
+	report.Version = "1.0.0"
+	report.Uptime = time.Since(StartTime).String()
+
+	return report
+
+}

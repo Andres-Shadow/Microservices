@@ -68,6 +68,21 @@ func (nl *NatsLogger) SendLog(newLog *models.LogResponse) {
 	fmt.Println("Notification sent")
 }
 
+func (nl *NatsLogger) SendSampleMessage() bool {
+	var subject string
+
+	subject = os.Getenv("NATS_SUBJECT")
+	if subject == "" {
+		subject = "MicroservicesLogs"
+	}
+
+	if err := nl.conn.Publish(subject, []byte("Sample message")); err != nil {
+		return false
+	}
+
+	return true
+}
+
 // HealthCheckNATS verifica si la conexión a NATS está viva
 func (nl *NatsLogger) HealthCheckNATS() bool {
 	if nl.conn == nil {
@@ -76,4 +91,11 @@ func (nl *NatsLogger) HealthCheckNATS() bool {
 		return false
 	}
 	return true
+}
+
+// ReadyNats verifica si se puede enviar un mensaje por NATS
+func (nl *NatsLogger) ReadyNats() bool {
+
+	return nl.SendSampleMessage()
+
 }

@@ -3,6 +3,7 @@ package DataBase
 import (
 	"log"
 	"os"
+	"taller_apirest/models"
 	"time"
 
 	"gorm.io/driver/postgres"
@@ -38,6 +39,15 @@ func VerifyDatabaseConnection() bool {
 	//hacer un ping a la base de datos
 	err := DB.Exec("SELECT 1").Error
 	if err != nil {
+		return false
+	} else {
+		return true
+	}
+}
+
+func VerifyDatabaseReady() bool {
+	var count int64
+	if err := DB.Model(&models.User{}).Count(&count).Error; err != nil {
 		return false
 	} else {
 		return true

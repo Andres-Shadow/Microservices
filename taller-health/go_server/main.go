@@ -62,6 +62,6 @@ func defineLoginRegisterEndpoints(loginRouter *mux.Router) {
 
 func defineHealthEndpoints(healthRouter *mux.Router) {
 	healthRouter.HandleFunc("/health", handlers.CheckHealth).Methods("GET")
-	healthRouter.HandleFunc("/health/ready", handlers.CheckHealth).Methods("GET")
+	healthRouter.HandleFunc("/health/ready", handlers.CheackReadyHealth).Methods("GET")
 	healthRouter.HandleFunc("/health/live", handlers.CheckHealth).Methods("GET")
 }
