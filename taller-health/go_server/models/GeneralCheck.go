@@ -6,3 +6,7 @@ type GeneralCheck struct {
 	Version string        `json:"version"`
 	Uptime  string        `json:"uptime"`
 }
+
+type Health struct {
+	Checks []GeneralCheck `json:"checks"`
+}

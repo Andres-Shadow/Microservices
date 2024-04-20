@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getLog, createLog, deleteLog, udpateLog, getLogsByApplication, getLogsByEmailAndCreation } from "../handlers/logs-handler";
-import { verifyLive, verifyReady } from "../handlers/health-handler";
+import { verifyLive, verifyReady, verifyHealth } from "../handlers/health-handler";
 
 
 const router = Router();
@@ -19,6 +19,7 @@ router.get(apiUrl + ':application', getLogsByApplication)
 
 router.get(healthUrl + "/live", verifyLive)
 router.get(healthUrl + "/ready", verifyReady)
+router.get(healthUrl, verifyHealth)
 
 
 export default router;

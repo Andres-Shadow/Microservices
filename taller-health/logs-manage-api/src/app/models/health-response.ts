@@ -19,4 +19,8 @@ interface LiveStatus {
     uptime: string;
 }
 
+interface HealthResposnse {
+    checks: LiveStatus[];
+}
+
 export { LiveStatus, Check, CheckData }
