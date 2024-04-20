@@ -2,7 +2,10 @@ import { connect, NatsConnection, Msg, Subscription, StringCodec } from 'nats';
 import logsServices from '../logs-services/logs-services';
 
 class NATSManager {
+
     private connection: NatsConnection | null = null;
+    private readonly stringCodec = StringCodec();
+
 
     constructor(private readonly url: string) { }
 
@@ -16,6 +19,40 @@ class NATSManager {
             console.error('Error al conectar a NATS:', error);
         }
     }
+
+    async testConnection(): Promise<boolean> {
+        try {
+            const testConnection = await connect({ servers: this.url });
+            await testConnection.close(); // Cerramos la conexión de prueba
+            return true; // Si se conecta y cierra sin errores, es exitoso
+        } catch (error) {
+            console.error('Error al probar conexión a NATS:', error);
+            return false; // Si falla, devolvemos falso
+        }
+    }
+
+    async sendTestMessage(): Promise<boolean> {
+
+
+
+        try {
+            const testConnection = await connect({ servers: this.url });
+            if (!testConnection) {
+                throw new Error('No hay conexión a NATS');
+            }
+
+            let subject = "Test message"
+            let message = "Test message from logs-manage-api"
+            await testConnection.publish(subject, this.stringCodec.encode(message)); // Envía el mensaje
+            //console.log(`Mensaje enviado a ${subject}: ${message}`);
+            await testConnection.close();
+            return true;
+        } catch (error) {
+            //console.error('Error al enviar mensaje a NATS:', error);
+            return false;
+        }
+    }
+
 
     private subscribe(): void {
         if (!this.connection) return;

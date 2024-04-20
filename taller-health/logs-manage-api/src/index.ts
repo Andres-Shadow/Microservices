@@ -4,6 +4,7 @@ import cors from 'cors';
 import projectRoutes from './app/routes/project-routes';
 import { DataLog } from './app/database/database';
 import NATSManager from './app/communication/nats-manager';
+import healthServices from './app/logs-services/health-services';
 
 async function main() {
     const app = express();
@@ -12,6 +13,9 @@ async function main() {
     app.use(cors());
     app.use(morgan('dev'));
     app.use(express.json()); // Este middleware analiza el cuerpo de la solicitud en formato JSON
+
+    //ejecuta la toma de tiempo
+    const hServices = new healthServices();
 
     // Rutas
     app.use(projectRoutes);
