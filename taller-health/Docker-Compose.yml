@@ -51,6 +51,7 @@ services:
       - "3307:3306"
     expose:
       - "3306"
+  #SERVICIO DE JENKINS
   jenkins:
     image: jenkins/jenkins:lts
     ports:
@@ -60,3 +61,22 @@ services:
       - USER_SERVER_HOST=server
       - LOGS_HOST=cliente
       - LOGS_DATABASE=log_database
+  #SERVICIO DE HEALTH DATABASE
+  health_database:
+    image: mysql:latest
+    ports:
+      - "3308:3306"
+    expose:
+      - "3308"
+    environment:
+      MYSQL_DATABASE: db1
+      MYSQL_ROOT_PASSWORD: andres_1
+  #SERVICIO DE HEALTH SERVER
+  health_server:
+    build: ./health_server
+    ports:
+      - "9092:9092"
+    expose:
+      - "9092"
+    depends_on:
+      - health_database
