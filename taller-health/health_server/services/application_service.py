@@ -39,3 +39,48 @@ def get_all_registered_applications():
     
     return applications
     
+def get_application_by_name(name):
+    # Crear una nueva sesión
+    session = Session()
+    
+    # Obtener la aplicación por su nombre
+    application = session.query(Application).filter_by(name=name).first()
+    
+    # Cerrar la sesión
+    session.close()
+    
+    return application
+
+def delete_application_by_name(name):
+    # Crear una nueva sesión
+    session = Session()
+    
+    # Obtener la aplicación por su nombre
+    application = session.query(Application).filter_by(name=name).first()
+    
+    # Eliminar la aplicación si existe
+    if application:
+        session.delete(application)
+        session.commit()
+    
+    # Cerrar la sesión
+    session.close()
+
+def update_application_by_name(name, new_data):
+    # Crear una nueva sesión
+    session = Session()
+    
+    # Obtener la aplicación por su nombre
+    application = session.query(Application).filter_by(name=name).first()
+    
+    # Actualizar los datos de la aplicación si existe
+    if application:
+        application.name = new_data.name
+        application.endpoint = new_data.endpoint
+        application.frequency = new_data.frequency
+        application.email = new_data.email
+        
+        session.commit()
+    
+    # Cerrar la sesión
+    session.close()

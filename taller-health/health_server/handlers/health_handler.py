@@ -1,7 +1,7 @@
 from flask import jsonify, request  # Importar clases de Flask
 from models.application import Application
 import requests
-from services.application_service import create_new_application, get_all_registered_applications
+from services.application_service import *
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 def health_handler():
@@ -61,3 +61,91 @@ def create_application_handler():
 
     except Exception as e:
         return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+def delete_application_handler():
+    try:
+        # Obtener el nombre de la aplicación de la solicitud
+        name = request.args.get('name')
+        
+        # Validar que el nombre de la aplicación esté presente
+        if not name:
+            return jsonify({'error': 'Missing application name'}), 400
+
+        # Eliminar la aplicación de la base de datos
+        delete_application_by_name(name)
+        
+        # Devolver una respuesta
+        return jsonify({'message': 'Application deleted successfully'}), 200
+
+    except IntegrityError:
+        return jsonify({'error': 'Database integrity error'}), 500
+
+    except SQLAlchemyError as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+    
+def update_application_handler():
+    try:
+        # Obtener el nombre de la aplicación de la solicitud
+        name = request.args.get('name')
+        
+        # Validar que el nombre de la aplicación esté presente
+        if not name:
+            return jsonify({'error': 'Missing application name'}), 400
+
+        # Obtener los nuevos datos de la aplicación de la solicitud
+        data = request.get_json()
+        
+        # Validación de datos (asegúrate de que al menos un campo esté presente)
+        if not data:
+            return jsonify({'error': 'No data provided for update'}), 400
+
+        # Obtener la aplicación existente por su nombre
+        application = get_application_by_name(name)
+        
+        # Si la aplicación no existe, devolver un error
+        if not application:
+            return jsonify({'error': 'Application not found'}), 404
+
+        # Actualizar los datos de la aplicación
+        if 'name' in data:
+            application.name = str(data['name']).strip()
+        if 'endpoint' in data:
+            application.endpoint = str(data['endpoint']).strip()
+        if 'frequency' in data:
+            application.frequency = str(data['frequency']).strip()
+        if 'email' in data:
+            application.email = str(data['email']).strip()
+        
+        # Guardar los cambios en la base de datos
+        update_application_by_name(name, application)
+        
+        # Devolver una respuesta
+        return jsonify({'message': 'Application updated successfully'}), 200
+
+    except IntegrityError:
+        return jsonify({'error': 'Database integrity error'}), 500
+
+    except SQLAlchemyError as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+    
+def get_application_by_name_handler(name):
+    # Obtener la aplicación por su nombre
+    application = get_application_by_name(name)
+    
+    # Si la aplicación no existe, devolver un error
+    if not application:
+        return jsonify({'error': 'Application not found'}), 404
+    
+    # Devolver los datos de la aplicación como respuesta JSON
+    return jsonify({
+        'name': application.name,
+        'endpoint': application.endpoint,
+        'frequency': application.frequency,
+        'email': application.email
+    })
