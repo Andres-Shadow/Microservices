@@ -1,13 +1,17 @@
-from sqlalchemy import Table, Column, Integer, String
+from sqlalchemy import Column, Integer, String
 from database.db_config import get_engine, meta
+from sqlalchemy.ext.declarative import declarative_base
 
-# Definición de la tabla 'students'
-students = Table(
-   'students', meta, 
-   Column('id', Integer, primary_key=True),
-   Column('name', String(50)),
-   Column('lastname', String(50)),
-)
+Base = declarative_base()  # Base para definir modelos
+
+# Define tu modelo como una clase
+class Application(Base):
+    __tablename__ = 'application'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(50))
+    endpoint = Column(String(50))
+    frequency = Column(String(50))
+    email = Column(String(50))
 
 # Función para crear todas las tablas
 def create_all_tables():

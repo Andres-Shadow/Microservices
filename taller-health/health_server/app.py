@@ -1,12 +1,12 @@
-from flask import Flask
+from flask import Flask, request, jsonify  # Importar clases de Flask
 from models.application import create_all_tables  # Importar la función para crear tablas
-from handlers.health_handler import health_handler
+from handlers.health_handler import create_application_handler
 
 app = Flask(__name__)
 
-@app.route('/health', methods=['GET'])
+@app.route('/health', methods=['POST'])
 def health():
-    return health_handler()
+    return create_application_handler()
 
 # Ejecutar el servidor y crear las tablas cuando se inicie
 if __name__ == '__main__':

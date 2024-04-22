@@ -4,8 +4,7 @@ import os
 def get_engine():
     # Configura el motor de conexión
     host = os.getenv("DB_HOST", "localhost:3306")
-    
-    engine = create_engine("mysql://root:andres_1@"+host+"/db1")
+    engine = create_engine("mysql://root:andres_1@"+host+"/applications")
     return engine
 
 # Metadatos compartidos
