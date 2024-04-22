@@ -88,49 +88,48 @@ def delete_application_handler():
     
 def update_application_handler():
     try:
-        # Obtener el nombre de la aplicación de la solicitud
-        name = request.args.get('name')
-        
-        # Validar que el nombre de la aplicación esté presente
-        if not name:
-            return jsonify({'error': 'Missing application name'}), 400
-
-        # Obtener los nuevos datos de la aplicación de la solicitud
+        # Obtener el cuerpo de la solicitud y verificar que es JSON
         data = request.get_json()
         
-        # Validación de datos (asegúrate de que al menos un campo esté presente)
         if not data:
-            return jsonify({'error': 'No data provided for update'}), 400
-
-        # Obtener la aplicación existente por su nombre
+            return jsonify({'error': 'No data provided'}), 400
+        
+        # Obtener el nombre de la aplicación del cuerpo de la solicitud
+        name = data.get('name')  # Usar .get() para evitar KeyError
+        
+        # Validar que el nombre está presente
+        if not name:
+            return jsonify({'error': 'Missing application name in request body'}), 400
+        
+        # Obtener la aplicación por el nombre
         application = get_application_by_name(name)
         
         # Si la aplicación no existe, devolver un error
         if not application:
-            return jsonify({'error': 'Application not found'}), 404
-
-        # Actualizar los datos de la aplicación
-        if 'name' in data:
-            application.name = str(data['name']).strip()
+            return jsonify({'error': f'Application with name "{name}" not found'}), 404
+        
+        # Actualizar los campos de la aplicación solo si están presentes
+        new_Application = Application()
+        new_Application.name = application.name
         if 'endpoint' in data:
-            application.endpoint = str(data['endpoint']).strip()
+            new_Application.endpoint = str(data['endpoint']).strip()
         if 'frequency' in data:
-            application.frequency = str(data['frequency']).strip()
+            new_Application.frequency = str(data['frequency']).strip()
         if 'email' in data:
-            application.email = str(data['email']).strip()
+            new_Application.email = str(data['email']).strip()
+
+        # Guardar los cambios
+        update_application_by_name(application.name, new_Application)
         
-        # Guardar los cambios en la base de datos
-        update_application_by_name(name, application)
-        
-        # Devolver una respuesta
+        # Devolver una respuesta de éxito
         return jsonify({'message': 'Application updated successfully'}), 200
 
     except IntegrityError:
         return jsonify({'error': 'Database integrity error'}), 500
-
+    
     except SQLAlchemyError as e:
         return jsonify({'error': f'Database error: {str(e)}'}), 500
-
+    
     except Exception as e:
         return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
     
