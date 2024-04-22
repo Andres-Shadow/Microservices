@@ -26,4 +26,16 @@ def create_new_application(application_data):
     
     # Cerrar la sesión
     session.close()
+
+def get_all_registered_applications():
+    # Crear una nueva sesión
+    session = Session()
+    
+    # Obtener todas las aplicaciones registradas
+    applications = session.query(Application).all()
+    
+    # Cerrar la sesión
+    session.close()
+    
+    return applications
     
