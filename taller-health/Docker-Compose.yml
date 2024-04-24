@@ -80,3 +80,9 @@ services:
       - "9092"
     depends_on:
       - health_database
+  prometheus:
+    image: prom/prometheus:latest # Usa la imagen oficial de Prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml # Monta el archivo de configuración
+    ports:
+      - "9093:9090" # Puerto para acceder a la interfaz de Prometheus

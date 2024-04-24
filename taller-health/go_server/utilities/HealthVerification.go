@@ -33,7 +33,7 @@ func VerifyHealth() models.GeneralCheck {
 	}
 	healthCheck := models.HealthCheck{
 		Data:   DatabaseData,
-		Name:   "Databse connection check",
+		Name:   "Databse live connection check",
 		Status: checkStatus,
 	}
 
@@ -56,7 +56,7 @@ func VerifyHealth() models.GeneralCheck {
 
 	natsHealthCheck := models.HealthCheck{
 		Data:   NatsData,
-		Name:   "Nats connection check",
+		Name:   "Nats live connection check",
 		Status: checkStatus,
 	}
 
@@ -99,7 +99,7 @@ func VerifyReadyHealth() models.GeneralCheck {
 
 	healthCheck := models.HealthCheck{
 		Data:   DatabaseData,
-		Name:   "Databse connection check",
+		Name:   "Databse ready connection check",
 		Status: checkStatus,
 	}
 
@@ -121,7 +121,7 @@ func VerifyReadyHealth() models.GeneralCheck {
 
 	natsHealthCheck := models.HealthCheck{
 		Data:   NatsData,
-		Name:   "Nats connection check",
+		Name:   "Nats ready connection check",
 		Status: checkStatus,
 	}
 

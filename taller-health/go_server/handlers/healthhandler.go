@@ -3,7 +3,6 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"taller_apirest/models"
 	"taller_apirest/utilities"
 )
 
@@ -28,13 +27,13 @@ func CheckHealth(w http.ResponseWriter, r *http.Request) {
 	live := utilities.VerifyHealth()
 	ready := utilities.VerifyReadyHealth()
 
-	report := models.Health{}
-
-	report.Checks = append(report.Checks, ready)
-	report.Checks = append(report.Checks, live)
+	// Concatenar los resultados en un solo mapa
+	response := map[string]interface{}{
+		"live":  live,
+		"ready": ready,
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(report)
-
+	json.NewEncoder(w).Encode(response)
 }
