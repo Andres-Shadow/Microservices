@@ -5,6 +5,7 @@ from services.email_service import revisar_aplicaciones
 import threading
 import time
 import requests
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
@@ -17,7 +18,8 @@ def periodic_request(app_name, endpoint, frequency, app_email):
             result.raise_for_status()  # Comprueba si la solicitud fue exitosa
             revisar_aplicaciones(result.json(), app_email)
         except requests.exceptions.RequestException as e:
-            print(f"Error haciendo request a {app_name}: {e}")
+            
+            print(f"Error haciendo request a {app_name}")
         
         time.sleep(int(frequency))  # Espera antes de la siguiente solicitud
 
@@ -54,5 +56,6 @@ def get_application_by_name(application_name):
 # Ejecutar el servidor y crear las tablas cuando se inicie
 if __name__ == '__main__':
     create_all_tables()  # Asegurarse de que las tablas estén creadas
-    #start_monitoring()
+    start_monitoring()
+    load_dotenv()
     app.run(debug=True, port=9092)  # Ejecutar Flask en modo depuración
