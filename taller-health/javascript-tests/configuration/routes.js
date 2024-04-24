@@ -4,6 +4,7 @@
 
 host = process.env.USER_SERVER_HOST;
 logsHost = process.env.LOGS_HOST;
+healtHost = process.env.HEALTH_HOST;
 
 if (!host) {
   host = "localhost";
@@ -11,6 +12,10 @@ if (!host) {
 
 if (!logsHost) {
   logsHost = "localhost";
+}
+
+if (!healtHost) {
+  healtHost = "localhost";
 }
 
 //user route
@@ -26,10 +31,15 @@ const passwordUpdateRoute = "http://" + host + ":9090/api/v1/users/password/";
 
 const logsManager = "http://" + logsHost + ":9091/api/v1/logs/";
 
+// health server API
+
+const healthServer = "http://" + healtHost + ":9092/api/v1/health";
+
 module.exports = {
   userurl,
   loginUrl,
   passwordRoute,
   passwordUpdateRoute,
   logsManager,
+  healthServer,
 };

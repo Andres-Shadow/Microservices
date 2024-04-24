@@ -69,12 +69,7 @@ func (nl *NatsLogger) SendLog(newLog *models.LogResponse) {
 }
 
 func (nl *NatsLogger) SendSampleMessage() bool {
-	var subject string
-
-	subject = os.Getenv("NATS_SUBJECT")
-	if subject == "" {
-		subject = "MicroservicesLogs"
-	}
+	var subject string = "test"
 
 	if err := nl.conn.Publish(subject, []byte("Sample message")); err != nil {
 		return false

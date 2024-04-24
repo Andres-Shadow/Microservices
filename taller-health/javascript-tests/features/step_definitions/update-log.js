@@ -5,7 +5,7 @@ const faker = require("@faker-js/faker");
 
 let baseUrl = require("../../configuration/routes").logsManager;
 let logBody = {
-  id: "1",
+  id: "15",
   Name: "Test from JS",
   Summary: "Test made with CucumberJS",
   Description: "Just a test made with cucumberJS",

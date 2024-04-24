@@ -5,7 +5,7 @@ from services.application_service import *
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 def health_handler():
-    applications = get_all_registered_applications()  # Obtiene todas las aplicaciones
+    applications = get_all_registered_applications()[:2]  # Obtiene las primeras 10 aplicaciones
     response = []
 
     for app in applications:
@@ -38,6 +38,8 @@ def create_application_handler():
         for field in required_fields:
             if field not in data:
                 return jsonify({'error': f'Missing field: {field}'}), 400
+            if not isinstance(data[field], str):
+                return jsonify({'error': f'Invalid data type for field {field}. Expected string.'}), 400
 
         # Sanitizar los datos (evitar inyección de scripts u otros datos maliciosos)
         new_application = Application()
@@ -51,16 +53,16 @@ def create_application_handler():
         create_new_application(new_application)
         
         # Devolver una respuesta
-        return jsonify({'message': 'Application created successfully'}), 201
+        return jsonify({'message': 'Application created successfully'}), 200
 
     except IntegrityError:
-        return jsonify({'error': 'Database integrity error'}), 500
+        return jsonify({'error': 'Database integrity error'}), 400
 
     except SQLAlchemyError as e:
-        return jsonify({'error': f'Database error: {str(e)}'}), 500
+        return jsonify({'error': f'Database error: {str(e)}'}), 400
 
     except Exception as e:
-        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 400
 
 def delete_application_handler():
     try:
@@ -92,14 +94,14 @@ def update_application_handler():
         data = request.get_json()
         
         if not data:
-            return jsonify({'error': 'No data provided'}), 400
+            return jsonify({'error': 'No data provided'}), 404
         
         # Obtener el nombre de la aplicación del cuerpo de la solicitud
         name = data.get('name')  # Usar .get() para evitar KeyError
         
         # Validar que el nombre está presente
         if not name:
-            return jsonify({'error': 'Missing application name in request body'}), 400
+            return jsonify({'error': 'Missing application name in request body'}), 404
         
         # Obtener la aplicación por el nombre
         application = get_application_by_name(name)
@@ -125,13 +127,13 @@ def update_application_handler():
         return jsonify({'message': 'Application updated successfully'}), 200
 
     except IntegrityError:
-        return jsonify({'error': 'Database integrity error'}), 500
+        return jsonify({'error': 'Database integrity error'}), 400
     
     except SQLAlchemyError as e:
-        return jsonify({'error': f'Database error: {str(e)}'}), 500
+        return jsonify({'error': f'Database error: {str(e)}'}), 400
     
     except Exception as e:
-        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 400
     
 def get_application_by_name_handler(name):
     # Obtener la aplicación por su nombre

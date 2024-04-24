@@ -32,23 +32,39 @@ class NATSManager {
     }
 
     async sendTestMessage(): Promise<boolean> {
-
-
+        const stringCodec = StringCodec(); // Inicializa el codec para convertir entre cadenas y buffers
 
         try {
+            // Conexión a NATS
             const testConnection = await connect({ servers: this.url });
             if (!testConnection) {
                 throw new Error('No hay conexión a NATS');
             }
 
-            let subject = "Test message"
-            let message = "Test message from logs-manage-api"
-            await testConnection.publish(subject, this.stringCodec.encode(message)); // Envía el mensaje
-            //console.log(`Mensaje enviado a ${subject}: ${message}`);
-            await testConnection.close();
+            // Define el objeto JSON que quieres enviar
+            const jsonMessage = {
+                source: "logs-manage-api",
+                message: "Test message from logs-manage-api",
+                timestamp: new Date().toISOString(), // Agrega una marca de tiempo
+            };
+
+            // Convierte el objeto JSON a una cadena
+            const jsonString = JSON.stringify(jsonMessage);
+
+            // El asunto a donde enviarás el mensaje
+            const subject = "MicroservicesLogs"; // Cambia esto al asunto correcto
+
+            try {
+                // Publica el mensaje en el subject
+                await testConnection.publish(subject, stringCodec.encode(jsonString)); // Envía el mensaje JSON codificado
+            } catch (error) {
+                console.error('Error al publicar el mensaje en NATS:', error);
+            }
+
+            await testConnection.close(); // Cierra la conexión
             return true;
         } catch (error) {
-            //console.error('Error al enviar mensaje a NATS:', error);
+            console.error('Error al enviar mensaje a NATS:', error); // Muestra el error en caso de fallo
             return false;
         }
     }

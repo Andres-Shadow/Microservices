@@ -29,11 +29,11 @@ def revisar_aplicaciones(result, email):
     if "live" in result and result["live"]["status"] == "DOWN":
         subject = "Alerta: Estado LIVE en DOWN"
         body = json.dumps(result["live"], indent=4)
-        send_email(subject, body, email)
+        #send_email(subject, body, email)
     
     if "ready" in result and result["ready"]["status"] == "DOWN":
         subject = "Alerta: Estado READY en DOWN"
         body = json.dumps(result["ready"], indent=4)
-        send_email(subject, body, email)
+        #send_email(subject, body, email)
     
     return 0
