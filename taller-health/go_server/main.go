@@ -5,11 +5,14 @@ import (
 	"time"
 
 	DataBase "taller_apirest/Database"
+	"taller_apirest/communication"
 	"taller_apirest/handlers"
 	"taller_apirest/models"
 	"taller_apirest/utilities"
 
 	"github.com/gorilla/mux"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -25,7 +28,7 @@ func main() {
 
 	defineLoginRegisterEndpoints(r.PathPrefix("/api/v1").Subrouter())
 	defineHealthEndpoints(r.PathPrefix("/api/v1").Subrouter())
-
+	defineMetricsEndpoints(r.PathPrefix("/api/v1").Subrouter())
 	//user routes
 	//creating route prefix
 	//and delegating a function subroutes responsability
@@ -64,4 +67,110 @@ func defineHealthEndpoints(healthRouter *mux.Router) {
 	healthRouter.HandleFunc("/health", handlers.CheckHealth).Methods("GET")
 	healthRouter.HandleFunc("/health/ready", handlers.CheackReadyHealth).Methods("GET")
 	healthRouter.HandleFunc("/health/live", handlers.CheckLive).Methods("GET")
+}
+func defineMetricsEndpoints(metricsRouter *mux.Router) {
+	metricsRouter.Handle("/metrics", promhttp.Handler()).Methods("GET")
+}
+
+var (
+	healthRequests = prometheus.NewCounter(prometheus.CounterOpts{
+		Name: "health_requests_total",
+		Help: "Total de solicitudes de verificación de salud.",
+	})
+
+	dbStatusGauge = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name: "database_status",
+		Help: "Estado de la conexión a la base de datos (1 = READY, 0 = DOWN).",
+	})
+
+	natsStatusGauge = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name: "nats_status",
+		Help: "Estado de la conexión a NATS (1 = READY, 0 = DOWN).",
+	})
+)
+
+func init() {
+	prometheus.MustRegister(healthRequests, dbStatusGauge, natsStatusGauge)
+}
+
+// Función que verifica la salud del servicio y actualiza las métricas
+func VerifyHealth() models.GeneralCheck {
+	healthRequests.Inc() // Incrementar el contador de solicitudes de verificación de salud
+
+	databaseConnection := DataBase.VerifyDatabaseConnection()
+	natsConnection := communication.ConnectToNATS().HealthCheckNATS()
+	fromTime := time.Now()
+
+	checks := []models.HealthCheck{}
+	var checkStatus string
+
+	// Actualizar el estado de la base de datos
+	var dbStatus string = "DOWN"
+	if databaseConnection {
+		dbStatus = "READY"
+		dbStatusGauge.Set(1) // Gauge de Prometheus
+	} else {
+		dbStatusGauge.Set(0)
+	}
+
+	DatabaseData := models.HealthData{
+		From:   fromTime,
+		Status: dbStatus,
+	}
+
+	checkStatus = "UP"
+	if dbStatus != "READY" {
+		checkStatus = "DOWN"
+	}
+
+	healthCheck := models.HealthCheck{
+		Data:   DatabaseData,
+		Name:   "User service Database live connection check",
+		Status: checkStatus,
+	}
+
+	checks = append(checks, healthCheck)
+
+	// Actualizar el estado de NATS
+	var natsStatus string = "DOWN"
+	if natsConnection {
+		natsStatus = "READY"
+		natsStatusGauge.Set(1)
+	} else {
+		natsStatusGauge.Set(0)
+	}
+
+	checkStatus = "UP"
+	if natsStatus != "READY" {
+		checkStatus = "DOWN"
+	}
+
+	NatsData := models.HealthData{
+		From:   fromTime,
+		Status: natsStatus,
+	}
+
+	natsHealthCheck := models.HealthCheck{
+		Data:   NatsData,
+		Name:   "User service NATS live connection check",
+		Status: checkStatus,
+	}
+
+	checks = append(checks, natsHealthCheck)
+
+	var reportStatus string
+	if natsStatus == "READY" && dbStatus == "READY" {
+		reportStatus = "UP"
+	} else {
+		reportStatus = "DOWN"
+	}
+
+	report := models.GeneralCheck{
+		Status:  reportStatus,
+		Checks:  checks,
+		Version: "1.0.0",
+		Uptime:  time.Now().String(),
+	}
+
+	return report
 }

@@ -4,5 +4,6 @@ global:
 scrape_configs:
   - job_name: "microservices"
     static_configs:
-      - targets: ["localhost:9090"]
-    metrics_path: "/api/v1/health" # Nueva ruta para el scraping
+      - targets: ["server:9090"]
+      - targets: ["cliente:9091"]
+    metrics_path: "/api/v1/metrics" # Nueva ruta para el scraping

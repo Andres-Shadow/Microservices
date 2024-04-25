@@ -15,6 +15,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^3.9.4",
     "nats": "^2.22.0",
+    "prom-client": "^15.1.2",
     "sequelize": "^6.37.2"
   },
   "devDependencies": {
