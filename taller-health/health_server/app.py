@@ -6,20 +6,18 @@ import threading
 import time
 import requests
 from dotenv import load_dotenv
-
 app = Flask(__name__)
 
-# Función que realiza peticiones periódicas a un endpoint
+
+
 def periodic_request(app_name, endpoint, frequency, app_email):
-    
     while True:
         try:
             result = requests.get(endpoint)  # Hace una solicitud GET
             result.raise_for_status()  # Comprueba si la solicitud fue exitosa
             revisar_aplicaciones(result.json(), app_email)
         except requests.exceptions.RequestException as e:
-            
-            print(f"Error haciendo request a {app_name}")
+            print(f"Error haciendo request a {app_name}: {e}")
         
         time.sleep(int(frequency))  # Espera antes de la siguiente solicitud
 
