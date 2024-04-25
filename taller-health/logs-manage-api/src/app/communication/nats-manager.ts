@@ -52,7 +52,7 @@ class NATSManager {
             const jsonString = JSON.stringify(jsonMessage);
 
             // El asunto a donde enviarás el mensaje
-            const subject = "MicroservicesLogs"; // Cambia esto al asunto correcto
+            const subject = "test"; // Cambia esto al asunto correcto
 
             try {
                 // Publica el mensaje en el subject

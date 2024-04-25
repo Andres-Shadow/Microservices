@@ -13,7 +13,7 @@ async function verifyLiveDependencies() {
     }
 
     const Check: Check = {
-        name: 'Database alive connection test',
+        name: 'Losg Service Database alive connection test',
         status: dbCheck,
         data: CheckData,
     }
@@ -30,7 +30,7 @@ async function verifyLiveDependencies() {
     }
 
     const CheckNats: Check = {
-        name: 'NATS alive connection test',
+        name: 'Losg Service NATS alive connection test',
         status: natsCheck,
         data: CheckDataNats,
     }
@@ -63,7 +63,7 @@ async function verifyReadyDependencies() {
     }
 
     const Check: Check = {
-        name: 'Database ready connection test',
+        name: 'Losg Service Database ready connection test',
         status: dbCheck,
         data: CheckData,
     }
@@ -81,7 +81,7 @@ async function verifyReadyDependencies() {
     }
 
     const CheckNats: Check = {
-        name: 'NATS ready connection test',
+        name: 'Losg Service NATS ready connection test',
         status: natsCheck,
         data: CheckDataNats,
     }

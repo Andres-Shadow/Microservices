@@ -8,6 +8,9 @@ def health_handler():
     applications = get_all_registered_applications()[:2]  # Obtiene las primeras 10 aplicaciones
     response = []
 
+    if len(applications) == 0:
+        return jsonify({'message': 'No applications found'})
+
     for app in applications:
         # Realiza una solicitud GET al endpoint de cada aplicación
         try:

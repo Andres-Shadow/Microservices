@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify  # Importar clases de Flask
-from models.application import create_all_tables  # Importar la función para crear tablas
+from models.application import create_all_tables, create_sample_data  # Importar la función para crear tablas
 from handlers.health_handler import *
 from services.email_service import revisar_aplicaciones
+from services.application_service import get_all_registered_applications
 import threading
 import time
 import requests
@@ -26,13 +27,16 @@ def start_monitoring():
     print("Starting monitoring...")
     applications = get_all_registered_applications()  # Necesitas esta función
     # Inicia un hilo para cada aplicación con su frecuencia
-    for app in applications:
-        thread = threading.Thread(
-            target=periodic_request,
-            args=(app.name, app.endpoint, app.frequency, app.email)
-        )
-        thread.daemon = True  # Hace que el hilo se cierre cuando la aplicación se detenga
-        thread.start()  # Inicia el hilo
+    if len(applications) == 0:
+        print("No applications found. Monitoring will not start.")
+    else:
+        for app in applications:
+            thread = threading.Thread(
+                target=periodic_request,
+                args=(app.name, app.endpoint, app.frequency, app.email)
+            )
+            thread.daemon = True  # Hace que el hilo se cierre cuando la aplicación se detenga
+            thread.start()  # Inicia el hilo
 
 # Ruta para el manejo de solicitudes generales
 @app.route('/api/v1/health', methods=['GET', 'POST', 'PUT', 'DELETE'])
@@ -54,6 +58,9 @@ def get_application_by_name(application_name):
 # Ejecutar el servidor y crear las tablas cuando se inicie
 if __name__ == '__main__':
     create_all_tables()  # Asegurarse de que las tablas estén creadas
-    start_monitoring()
+    create_sample_data()
+     
     load_dotenv()
-    app.run(debug=True, port=9092)  # Ejecutar Flask en modo depuración
+    start_monitoring()
+    app.run(host='0.0.0.0', port=9092)
+    

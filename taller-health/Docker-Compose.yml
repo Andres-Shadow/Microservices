@@ -21,6 +21,9 @@ services:
     depends_on:
       - database
       - nats
+
+
+
   #SERVICIO DEL CONSUMIDOR
   cliente:
     build: ./logs-manage-api
@@ -37,6 +40,8 @@ services:
       - "9091:9091"
     expose:
       - "9091"
+
+
   #SERVICIO DE NATS
   nats:
     image: nats:latest
@@ -44,6 +49,9 @@ services:
       - "4222:4222"
     expose:
       - "4222"
+
+
+
   #SERVICIO DE LA BASE DE DATOS DE LOS LOGS
   log_database:
     build: ./logs-database
@@ -51,6 +59,9 @@ services:
       - "3307:3306"
     expose:
       - "3306"
+
+
+
   #SERVICIO DE JENKINS
   jenkins:
     image: jenkins/jenkins:lts
@@ -61,6 +72,11 @@ services:
       - USER_SERVER_HOST=server
       - LOGS_HOST=cliente
       - LOGS_DATABASE=log_database
+      - HEALTH_HOST=health_server
+
+
+
+
   #SERVICIO DE HEALTH DATABASE
   health_database:
     image: mysql:latest
@@ -69,8 +85,12 @@ services:
     expose:
       - "3308"
     environment:
-      MYSQL_DATABASE: db1
+      MYSQL_DATABASE: applications
       MYSQL_ROOT_PASSWORD: andres_1
+
+
+
+
   #SERVICIO DE HEALTH SERVER
   health_server:
     build: ./health_server
@@ -80,6 +100,13 @@ services:
       - "9092"
     depends_on:
       - health_database
+    environment:
+      - DB_HOST=health_database
+
+
+
+
+
   prometheus:
     image: prom/prometheus:latest # Usa la imagen oficial de Prometheus
     volumes:
