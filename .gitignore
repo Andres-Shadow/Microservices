@@ -1,3 +1,3 @@
-taller-health/logs-manage-api/node_modules
-taller-health/javascript-tests/node_modules
+api_gateway/logs-manage-api/node_modules
+api_gateway/javascript-tests/node_modules
 *.env
