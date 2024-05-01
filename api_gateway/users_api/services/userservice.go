@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"users_api/database"
 	"users_api/models"
 )
@@ -19,19 +20,44 @@ func GetUsers(page, pageSize int) ([]models.User, error) {
 	return users, nil
 }
 
-func CreateUser(user models.User) models.User {
+func CreateUser(user models.User) (*models.User, error) {
 	// Crear un nuevo usuario
-	database.DB.Create(&user)
-	return user
+	err := database.DB.Create(&user).Error
+	if err != nil {
+		return nil, err
+	}
+	return &user, nil
 }
 
-func DeleteUser(user models.User) {
+func DeleteUser(userId string) bool {
 	// Eliminar un usuario
-	database.DB.Delete(&user)
+	err := database.DB.Where("id = ?", userId).Delete(&models.User{})
+	return err == nil
 }
 
 func UpdateUser(user models.User) models.User {
 	// Actualizar un usuario
 	database.DB.Save(&user)
 	return user
+}
+
+func GetUserById(userId string) (models.User, error) {
+	// Obtener un usuario por su ID
+	var user models.User
+	err := database.DB.Where("id = ?", userId).First(&user).Error
+	if err != nil {
+		return user, err
+	}
+	fmt.Print("el usuario es: ", user)
+	return user, nil
+}
+
+func GetUserByNickname(nickname string) (models.User, error) {
+	// Obtener un usuario por su nickname
+	var user models.User
+	err := database.DB.Where("nickname = ?", nickname).First(&user).Error
+	if err != nil {
+		return user, err
+	}
+	return user, nil
 }
