@@ -1,6 +1,6 @@
 package models
 
-type LogResponse struct {
+type Message struct {
 	ID          int    `json:"id"`
 	Name        string `json:"name"`
 	Summary     string `json:"summary"`

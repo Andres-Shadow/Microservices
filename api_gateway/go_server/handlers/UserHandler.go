@@ -116,6 +116,17 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Ocurrio un error al crear el usuario"))
+		notification := models.LogResponse{
+			Name:        "USERS-API",
+			Summary:     "User tried to register",
+			Description: "User  tried to registern but did not provide all the required fields",
+			LogDate:     time.Now().Format(time.RFC3339),
+			LogType:     "ERROR",
+			Module:      "USERS-API",
+		}
+
+		communication.ConnectToNATS().SendLog(&notification)
+		return
 	}
 
 	notification := models.LogResponse{
