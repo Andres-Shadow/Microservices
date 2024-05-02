@@ -2,6 +2,9 @@ package services
 
 import (
 	"fmt"
+	"time"
+
+	"users_api/communication"
 	"users_api/database"
 	"users_api/models"
 )
@@ -13,7 +16,17 @@ func GetUsers(page, pageSize int) ([]models.User, error) {
 
 	users := []models.User{}
 	err := database.DB.Offset(offset).Limit(pageSize).Find(&users).Error
+
 	if err != nil {
+		message := models.Message{
+			Name:        "USERS_PROFILE_API",
+			Summary:     "Error while listing users profiles",
+			Description: "Error while listing users profiles from the database",
+			LogDate:     time.Now().String(),
+			LogType:     "ERROR",
+			Module:      "USERS_PROFILE_API",
+		}
+		communication.ConnectToNATS().SendLog(&message)
 		return nil, err
 	}
 

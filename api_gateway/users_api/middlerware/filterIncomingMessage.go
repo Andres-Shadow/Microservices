@@ -1,9 +1,29 @@
-package services
+package middlerware
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
+	"users_api/database"
 	"users_api/models"
 )
+
+func FilterMessager(Rmessage string) {
+	var message models.Message
+
+	err := json.Unmarshal([]byte(Rmessage), &message)
+	if err != nil {
+		log.Printf("Error deserializando JSON: %v", err)
+		return
+	}
+
+	// Verificar si el log_type es "Error"
+	if message.LogType == "CREATION" {
+		CreateUserFromMessage(message)
+	} else {
+		fmt.Println("Mensaje no es un error, ignorando...")
+	}
+}
 
 func CreateUserFromMessage(message models.Message) {
 	var newUser models.User
@@ -27,12 +47,12 @@ func CreateUserFromMessage(message models.Message) {
 	//auth server already manage that
 
 	//save user
-	saved, err := CreateUser(newUser)
+	err := database.DB.Create(&newUser).Error
 
 	if err != nil {
 		fmt.Println("Error creating user: ", err)
 	} else {
-		fmt.Println("User created: ", saved.Email)
+		fmt.Println("User created: ", newUser.Email)
 	}
 
 }
