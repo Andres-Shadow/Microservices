@@ -10,7 +10,7 @@ import (
 )
 
 func SubscribeToNATS(done <-chan struct{}) {
-	natsServer := os.Getenv("NATS_HOST")
+	natsServer := os.Getenv("NATS_SERVER")
 	natsSubject := os.Getenv("NATS_SUBJECT")
 
 	if natsServer == "" {

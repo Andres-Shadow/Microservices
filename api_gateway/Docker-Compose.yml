@@ -22,8 +22,6 @@ services:
       - database
       - nats
 
-
-
   #SERVICIO DEL CONSUMIDOR
   cliente:
     build: ./logs-manage-api
@@ -41,7 +39,6 @@ services:
     expose:
       - "9091"
 
-
   #SERVICIO DE NATS
   nats:
     image: nats:latest
@@ -50,8 +47,6 @@ services:
     expose:
       - "4222"
 
-
-
   #SERVICIO DE LA BASE DE DATOS DE LOS LOGS
   log_database:
     build: ./logs-database
@@ -59,8 +54,6 @@ services:
       - "3307:3306"
     expose:
       - "3306"
-
-
 
   #SERVICIO DE JENKINS
   jenkins:
@@ -74,9 +67,6 @@ services:
       - LOGS_DATABASE=log_database
       - HEALTH_HOST=health_server
 
-
-
-
   #SERVICIO DE HEALTH DATABASE
   health_database:
     image: mysql:latest
@@ -87,9 +77,6 @@ services:
     environment:
       MYSQL_DATABASE: applications
       MYSQL_ROOT_PASSWORD: andres_1
-
-
-
 
   #SERVICIO DE HEALTH SERVER
   health_server:
@@ -103,10 +90,30 @@ services:
     environment:
       - DB_HOST=health_database
 
+  user_profile:
+    build: ./users_api
+    ports:
+      - "9094:9094"
+    expose:
+      - "9094"
+    depends_on:
+      - user_profile_database
+    environment:
+      - DATABASE=user_profile_database
+      - NATS_SERVER=nats
+      - NATS_SUBJECT=MicroservicesLogs
 
+  user_profile_database:
+    image: mysql:latest
+    ports:
+      - "3309:3306"
+    expose:
+      - "3309"
+    environment:
+      MYSQL_DATABASE: users
+      MYSQL_ROOT_PASSWORD: andres_1
 
-
-
+  #SERVICIO DE PROMETHEUS
   prometheus:
     image: prom/prometheus:latest # Usa la imagen oficial de Prometheus
     volumes:
