@@ -14,5 +14,5 @@ type User struct {
 	Organization string `json:"organization"`
 	Country      string `json:"country"`
 	Social_Media string `json:"social_media"`
-	Email        string `json:"email"`
+	Email        string `json:"email" gorm:"unique"`
 }

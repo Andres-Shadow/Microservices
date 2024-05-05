@@ -23,6 +23,7 @@ func main() {
 	r.POST(url, handlers.CreateUser)   // Crear un nuevo usuario
 	r.PUT(url, handlers.UpdateUser)    // Actualizar un usuario
 	r.DELETE(url, handlers.DeleteUser) // Eliminar un usuario
+	r.GET(url+"/:email", handlers.GetUser) // Obtener un usuario por ID
 
 	// Canales para controlar la aplicación
 	quit := make(chan os.Signal, 1)

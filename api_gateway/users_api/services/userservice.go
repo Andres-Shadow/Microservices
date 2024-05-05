@@ -64,3 +64,23 @@ func GetUserByNickname(nickname string) (models.User, error) {
 	}
 	return user, nil
 }
+
+func GetUserByEmail(email string) (bool, error) {
+	// Obtener un usuario por su email
+	var user models.User
+	err := database.DB.Where("email = ?", email).First(&user).Error
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+func RecoverUserByEmail(email string) (models.User, error) {
+	// Recuperar un usuario por su email
+	var user models.User
+	err := database.DB.Where("email = ?", email).First(&user).Error
+	if err != nil {
+		return user, err
+	}
+	return user, nil
+}
