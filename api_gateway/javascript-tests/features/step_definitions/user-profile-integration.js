@@ -75,5 +75,7 @@ When(
 
 Then("debe existir un registro con esos datos", function () {
   // Write code here that turns the phrase above into concrete actions
-  assert.ok(profile);
+  if (profile) {
+    assert.equal(profile.email, userData.email);
+  }
 });

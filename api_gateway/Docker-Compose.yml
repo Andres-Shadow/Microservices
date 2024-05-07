@@ -66,6 +66,7 @@ services:
       - LOGS_HOST=cliente
       - LOGS_DATABASE=log_database
       - HEALTH_HOST=health_server
+      - USER_PROFILE_HOST=user_profile
 
   #SERVICIO DE HEALTH DATABASE
   health_database:
@@ -97,6 +98,7 @@ services:
     expose:
       - "9094"
     depends_on:
+      - nats
       - user_profile_database
     environment:
       - DATABASE=user_profile_database
@@ -114,9 +116,9 @@ services:
       MYSQL_ROOT_PASSWORD: andres_1
 
   #SERVICIO DE PROMETHEUS
-  prometheus:
-    image: prom/prometheus:latest # Usa la imagen oficial de Prometheus
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml # Monta el archivo de configuración
-    ports:
-      - "9093:9090" # Puerto para acceder a la interfaz de Prometheus
+  # prometheus:
+  #   image: prom/prometheus:latest # Usa la imagen oficial de Prometheus
+  #   volumes:
+  #     - ./prometheus.yml:/etc/prometheus/prometheus.yml # Monta el archivo de configuración
+  #   ports:
+  #     - "9093:9090" # Puerto para acceder a la interfaz de Prometheus

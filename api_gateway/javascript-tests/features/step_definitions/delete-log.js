@@ -16,7 +16,7 @@ Given("el id existe en la base de datos", async function () {
     const count = await new Promise((resolve, reject) => {
       getLastLogId((error, count) => {
         if (error) {
-          //console.error("Error:", error);
+          console.error("Error:", error);
           reject(error);
         } else {
           //console.log("count", count);
@@ -27,6 +27,7 @@ Given("el id existe en la base de datos", async function () {
 
     // Ahora puedes acceder a log_id fuera de la función de devolución de llamada
     log_id = count;
+    console.log("log_id", log_id);
   } catch (error) {
     console.error("Error:", error);
   }
