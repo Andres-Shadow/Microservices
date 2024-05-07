@@ -27,7 +27,7 @@ Given("el id existe en la base de datos", async function () {
 
     // Ahora puedes acceder a log_id fuera de la función de devolución de llamada
     log_id = count;
-    console.log("log_id", log_id);
+    // console.log("log_id", log_id);
   } catch (error) {
     console.error("Error:", error);
   }

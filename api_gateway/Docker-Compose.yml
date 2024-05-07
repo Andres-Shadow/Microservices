@@ -57,7 +57,7 @@ services:
 
   #SERVICIO DE JENKINS
   jenkins:
-    image: jenkins/jenkins:lts
+    build: ./jenkins
     ports:
       - "6432:8080"
       - "50000:50000"
