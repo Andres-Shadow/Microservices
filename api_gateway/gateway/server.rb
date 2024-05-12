@@ -60,10 +60,10 @@ end
 def iniciar_servidor
   servidor = WEBrick::HTTPServer.new(Port: 9095)
 
-  # Ruta para redirigir a la operación de autenticación
-    servidor.mount_proc '/api/v1/users' do |req, res|
-        redirigir_solicitud("http://localhost:9090/api/v1/users/", req, res)
-    end
+    # Ruta para redirigir a la operación de autenticación
+      servidor.mount_proc '/api/v1/users' do |req, res|
+          redirigir_solicitud("http://localhost:9090/api/v1/users/", req, res)
+      end
 
     servidor.mount_proc '/api/v1/users/login' do |req, res|
         redirigir_solicitud("http://localhost:9090/api/v1/login", req, res)

@@ -1,0 +1,6 @@
+Manage Jenkins->
+Manage Nodes->
+Click settings(gear icon)->
+click Script console on left and type in the following command:
+
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")

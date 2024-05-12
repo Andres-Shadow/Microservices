@@ -106,15 +106,15 @@ func UpdateUserPassword(user models.User) (*models.User, error) {
 	return &userToUpdate, nil
 }
 
-func RecoverPassword(email string) (string, error) {
+func RecoverPassword(email string) (string, *models.User, error) {
 	var userToUpdate models.User
 	DataBase.DB.Where("email = ?", email).First(&userToUpdate)
 
 	if userToUpdate.Password == "" {
-		return "", errors.New("user not found")
+		return "", nil, errors.New("user not found")
 	}
 
 	token := security.LoginHandler(&userToUpdate)
 
-	return token, nil
+	return token, &userToUpdate, nil
 }

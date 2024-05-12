@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem 'standard'  # Agrega otras gemas según sea necesario
+gem 'webrick'

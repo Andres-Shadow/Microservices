@@ -25,7 +25,7 @@ func LoginHandler(user *models.User) string {
 }
 
 // Verifiy the token
-func VerifyToken(token string) bool {
+func VerifyToken(token string) (bool,string) {
 	// Parsear y verificar el token JWT
 	tokenV, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
 		// Verificar el algoritmo de firma
@@ -38,18 +38,21 @@ func VerifyToken(token string) bool {
 
 	// Verificar errores en el token JWT
 	if err != nil {
-		return false
+		return false,""
 	}
 
 	// Verificar si el token es válido
 	if !tokenV.Valid {
-		return false
+		return false,""
 	}
 
 	// Verificar si el emisor del token es correcto
 	claims, ok := tokenV.Claims.(jwt.MapClaims)
 	if !ok || claims["iss"] != "ingesis.uniquindio.edu.co" {
-		return false
+		return false,""
 	}
-	return true
+
+	//obtener el nombre de usuario del token
+	username := claims["sub"].(string)
+	return true, username
 }

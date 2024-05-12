@@ -6,11 +6,9 @@ import (
 	"strconv"
 	"strings"
 	DataBase "taller_apirest/Database"
-	"taller_apirest/communication"
 	"taller_apirest/models"
 	"taller_apirest/security"
 	"taller_apirest/utilities"
-	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -25,18 +23,13 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	page, _ := strconv.Atoi(query.Get("page"))
 	pageSize, _ := strconv.Atoi(query.Get("pageSize"))
+	valid, username := verifyTokenPresency(r)
 
-	if !verifyTokenPresency(r) {
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to list users",
-			Description: "User tried to list users but token was not valid",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+	if !valid {
+		summary := "User tried to list users"
+		description := "User tried to list users but token was not valid"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		http.Error(w, "Token no válido", http.StatusUnauthorized)
 		return
 	}
@@ -57,16 +50,10 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 		Registros: totalCount,
 	}
 
-	notification := models.LogResponse{
-		Name:        "USERS-API",
-		Summary:     "Users listed",
-		Description: "Users list was requested",
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "INFO",
-		Module:      "USERS-API",
-	}
-
-	communication.ConnectToNATS().SendLog(&notification)
+	summary := "Users listed"
+	description := "Users list was requested"
+	logType := "INFO"
+	utilities.SendLogToNats(username, summary, description, logType)
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
@@ -74,7 +61,8 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 
 func GetUserHandlerById(w http.ResponseWriter, r *http.Request) {
 
-	if !verifyTokenPresency(r) {
+	valid, _ := verifyTokenPresency(r)
+	if !valid {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
 		return
 	}
@@ -100,63 +88,44 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	if user.Email == "" || user.Username == "" || user.Password == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("El email, password y nombre son obligatorios"))
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to register",
-			Description: "User  tried to registern but did not provide all the required fields",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		username := user.Username
+		summary := "User tried to register"
+		description := "User tried to register but did not provide all the required fields"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		return
 	}
 	createdUser, err := utilities.PostUser(user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Ocurrio un error al crear el usuario"))
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to register",
-			Description: "User  tried to registern but did not provide all the required fields",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		username := user.Username
+		summary := "User tried to register"
+		description := "User tried to register but an error occurred"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		return
 	}
 
-	notification := models.LogResponse{
-		Name:        createdUser.Email,
-		Summary:     "User created",
-		Description: "User " + createdUser.Username + " created with email " + createdUser.Email,
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "CREATION",
-		Module:      "USERS-API",
-	}
+	username := createdUser.Username
+	summary := "User created"
+	description := "User " + createdUser.Username + " created with email " + createdUser.Email
+	tipo := "CREATION"
+	utilities.SendLogToNats(username, summary, description, tipo)
 
-	communication.ConnectToNATS().SendLog(&notification)
 
 	json.NewEncoder(w).Encode(&createdUser)
 }
 
 func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 
-	if !verifyTokenPresency(r) {
+	valid, username := verifyTokenPresency(r)
+	if !valid {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to be updated",
-			Description: "User tried to be updated but token was not valid",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		summary := "User tried to update"
+		description := "User tried to update but token was not valid"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		http.Error(w, "Token no válido", http.StatusUnauthorized)
 		return
 	}
@@ -169,28 +138,17 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
 
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to be updated",
-			Description: "User  tried to be updated but did not provide jwt token",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		sumarry := "User tried to be updated"
+		description := "User  tried to be updated but did not provide jwt token"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, sumarry, description, logType)
 
 	} else {
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User was updated in",
-			Description: "User " + user.Username + " with email " + user.Email + " was updated",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "UPDATE",
-			Module:      "USERS-API",
-		}
 
-		communication.ConnectToNATS().SendLog(&notification)
+		summary := "User was updated"
+		description := "User " + user.Username + " with email " + user.Email + " was updated"
+		logType := "UPDATE"
+		utilities.SendLogToNats(username, summary, description, logType)
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Usuario was updated"))
 	}
@@ -198,19 +156,13 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
-
-	if !verifyTokenPresency(r) {
+	valid, username := verifyTokenPresency(r)
+	if !valid {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to delete",
-			Description: "User tried to delete but token was not valid",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		summary := "User tried to delete"
+		description := "User tried to delete but token was not valid"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		http.Error(w, "Token no válido", http.StatusUnauthorized)
 		return
 	}
@@ -222,47 +174,32 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to delete",
-			Description: "User  tried to delete but did not provide a valid email",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
 
-		communication.ConnectToNATS().SendLog(&notification)
+		summary := "User tried to delete"
+		description := "User  tried to delete but did not provide a valid email"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		return
 	}
 
-	notification := models.LogResponse{
-		Name:        "USERS-API",
-		Summary:     "User was deleted",
-		Description: "User with email " + email + " was deleted",
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "DELETION",
-		Module:      "USERS-API",
-	}
+	summary := "User was deleted"
+	description := "User with email " + email + " was deleted"
+	logType := "DELETION"
+	utilities.SendLogToNats(username, summary, description, logType)
 
-	communication.ConnectToNATS().SendLog(&notification)
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Usuario eliminado"))
 }
 
 func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 
-	if !verifyTokenPresency(r) {
+	valid, username := verifyTokenPresency(r)
+	if !valid {
 		http.Error(w, "Token no valido", http.StatusUnauthorized)
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to update password",
-			Description: "User tried to update password but token was not valid",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		summary := "User tried to update password"
+		description := "User tried to update password but token was not valid"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		http.Error(w, "Token no válido", http.StatusUnauthorized)
 		return
 	}
@@ -274,29 +211,17 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found "))
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to be updated",
-			Description: "User  tried to be updated but did not provide a valid user info",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		summary := "User tried to be updated"
+		description := "User  tried to be updated but did not provide a valid user info"
+		logType := "ERROR"
+		utilities.SendLogToNats(username, summary, description, logType)
 		return
 	}
 
-	notification := models.LogResponse{
-		Name:        "USERS-API",
-		Summary:     "User was updated",
-		Description: "User " + user.Username + " with email " + user.Email + " updated his password",
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "UPDATE",
-		Module:      "USERS-API",
-	}
-
-	communication.ConnectToNATS().SendLog(&notification)
+	summary := "User password was updated"
+	description := "User " + user.Username + " with email " + user.Email + " updated his password"
+	logType := "UPDATE"
+	utilities.SendLogToNats(username, summary, description, logType)
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Password updated"))
 
@@ -307,43 +232,34 @@ func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	email := query.Get("email")
 
-	password, err := utilities.RecoverPassword(email)
+	password, usr, err := utilities.RecoverPassword(email)
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
-		notification := models.LogResponse{
-			Name:        "USERS-API",
-			Summary:     "User tried to be updated",
-			Description: "User  tried to be updated but did not provide a valid user info",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS-API",
-		}
-
-		communication.ConnectToNATS().SendLog(&notification)
+		name := usr.Username
+		summary := "User tried to recover password"
+		description := "User  tried to recover password but did not provide a valid email"
+		logType := "ERROR"
+		utilities.SendLogToNats(name, summary, description, logType)
 		return
 	}
 
-	notification := models.LogResponse{
-		Name:        "USERS-API",
-		Summary:     "User logged in",
-		Description: "User with email " + email + " recovered his password",
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "INFO",
-		Module:      "USERS-API",
-	}
+	name := usr.Username
+	summary := "User recovered password"
+	description := "User with email " + email + " recovered his password"
+	logType := "INFO"	
+	utilities.SendLogToNats(name, summary, description, logType)
 
-	communication.ConnectToNATS().SendLog(&notification)
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(password))
 }
 
-func verifyTokenPresency(r *http.Request) bool {
+func verifyTokenPresency(r *http.Request) (bool,string) {
 
 	authHeader := r.Header.Get("Authorization")
 
 	tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
 
-	verified := security.VerifyToken(tokenString)
-	return verified
+	verified,user := security.VerifyToken(tokenString)
+	return verified, user
 }
