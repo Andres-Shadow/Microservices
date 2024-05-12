@@ -112,6 +112,8 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	description := "User " + createdUser.Username + " created with email " + createdUser.Email
 	tipo := "CREATION"
 	utilities.SendLogToNats(username, summary, description, tipo)
+	
+	utilities.NotifyUserRegistration(username, createdUser.Email, "CREATION")
 
 
 	json.NewEncoder(w).Encode(&createdUser)

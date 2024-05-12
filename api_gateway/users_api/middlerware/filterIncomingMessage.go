@@ -9,7 +9,7 @@ import (
 )
 
 func FilterMessager(Rmessage string) {
-	var message models.Message
+	var message models.EventMessage
 
 	err := json.Unmarshal([]byte(Rmessage), &message)
 	if err != nil {
@@ -18,21 +18,22 @@ func FilterMessager(Rmessage string) {
 	}
 
 	// Verificar si el log_type es "Error"
-	if message.LogType == "CREATION" {
+	if message.Type == "CREATION" {
 		CreateUserFromMessage(message)
 	} else {
 		fmt.Println("Mensaje no es un error, ignorando...")
 	}
 }
 
-func CreateUserFromMessage(message models.Message) {
+func CreateUserFromMessage(message models.EventMessage) {
 	var newUser models.User
-	userEmail := message.Name
+	userEmail := message.Email
+	userName := message.Name
 
 	//user basic info
 	newUser.Email = userEmail
-	newUser.Nickname = userEmail
-	newUser.Name = userEmail
+	newUser.Nickname = userName
+	newUser.Name = userName
 
 	//set default values for additional fields
 	newUser.Public_Info = "1"

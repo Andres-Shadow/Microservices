@@ -68,6 +68,25 @@ func (nl *NatsLogger) SendLog(newLog *models.LogResponse) {
 	fmt.Println("Notification sent")
 }
 
+
+func (nl *NatsLogger) NotifyUserRegistration(name, email, log_type string) bool{
+	var subject string = "users.creation"
+	msg := models.Registration{
+		Name:  name,
+		Email: email,
+		Type:  log_type,
+	}
+	jsonData, err := json.Marshal(msg)
+	if err != nil {
+		return false
+	}
+	if err := nl.conn.Publish(subject, jsonData); err != nil {
+		return false
+	}
+	return true
+
+}
+
 func (nl *NatsLogger) SendSampleMessage() bool {
 	var subject string = "test"
 

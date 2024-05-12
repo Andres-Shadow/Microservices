@@ -9,6 +9,7 @@ import (
 	"github.com/nats-io/nats.go"
 )
 
+
 func SubscribeToNATS(done <-chan struct{}) {
 	natsServer := os.Getenv("NATS_SERVER")
 	natsSubject := os.Getenv("NATS_SUBJECT")
@@ -17,7 +18,7 @@ func SubscribeToNATS(done <-chan struct{}) {
 		natsServer = "localhost"
 	}
 	if natsSubject == "" {
-		natsSubject = "MicroservicesLogs"
+		natsSubject = "users.creation"
 	}
 
 	natsUrl := "nats://" + natsServer + ":4222"
@@ -33,7 +34,7 @@ func SubscribeToNATS(done <-chan struct{}) {
 
 	// Suscribirse al tema
 	subscription, err := nc.Subscribe(natsSubject, func(m *nats.Msg) {
-		//fmt.Printf("Recibido un mensaje en %s: %s\n", natsSubject, string(m.Data))
+		fmt.Printf("Recibido un mensaje en %s: %s\n", natsSubject, string(m.Data))
 		middlerware.FilterMessager(string(m.Data))
 	})
 	if err != nil {
