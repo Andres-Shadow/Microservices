@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strings"
 	"users_api/database"
 	"users_api/models"
 )
@@ -20,9 +21,8 @@ func FilterMessager(Rmessage string) {
 	// Verificar si el log_type es "Error"
 	if message.Type == "CREATION" {
 		CreateUserFromMessage(message)
-	} else {
-		fmt.Println("Mensaje no es un error, ignorando...")
 	}
+
 }
 
 func CreateUserFromMessage(message models.EventMessage) {
@@ -56,4 +56,50 @@ func CreateUserFromMessage(message models.EventMessage) {
 		fmt.Println("User created: ", newUser.Email)
 	}
 
+}
+
+func UpdateUserFromMessage(message models.EventMessage) {
+	var user models.User
+	oldEmail := strings.Split(message.Email, ",")[0]
+	newEmail := strings.Split(message.Email, ",")[1]
+	userName := message.Name
+
+	//get user
+	err := database.DB.Where("email = ?", oldEmail).First(&user).Error
+	if err != nil {
+		fmt.Println("Error getting user: ", err)
+		return
+	}
+
+	//update user
+	user.Email = newEmail
+	user.Nickname = userName
+
+	//save user
+	err = database.DB.Save(&user).Error
+	if err != nil {
+		fmt.Println("Error updating user: ", err)
+	} else {
+		fmt.Println("User updated: ", user.Email)
+	}
+}
+
+func DeleteUserFromMessage(message models.EventMessage) {
+	var user models.User
+	userEmail := message.Email
+
+	//get user
+	err := database.DB.Where("email = ?", userEmail).First(&user).Error
+	if err != nil {
+		fmt.Println("Error getting user: ", err)
+		return
+	}
+
+	//delete user
+	err = database.DB.Delete(&user).Error
+	if err != nil {
+		fmt.Println("Error deleting user: ", err)
+	} else {
+		fmt.Println("User deleted: ", user.Email)
+	}
 }
