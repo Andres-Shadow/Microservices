@@ -23,6 +23,14 @@ func FilterMessager(Rmessage string) {
 		CreateUserFromMessage(message)
 	}
 
+	if message.Type == "UPDATE" {
+		UpdateUserFromMessage(message)
+	}
+
+	if message.Type == "DELETION" {
+		DeleteUserFromMessage(message)
+	}
+
 }
 
 func CreateUserFromMessage(message models.EventMessage) {
@@ -95,8 +103,8 @@ func DeleteUserFromMessage(message models.EventMessage) {
 		return
 	}
 
-	//delete user
-	err = database.DB.Delete(&user).Error
+	//delete user from database
+	err = database.DB.Unscoped().Delete(&user).Error
 	if err != nil {
 		fmt.Println("Error deleting user: ", err)
 	} else {

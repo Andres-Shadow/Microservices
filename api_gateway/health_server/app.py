@@ -61,6 +61,6 @@ if __name__ == '__main__':
     create_sample_data()
      
     load_dotenv()
-    start_monitoring()
+    #start_monitoring()
     app.run(host='0.0.0.0', port=9092)
     

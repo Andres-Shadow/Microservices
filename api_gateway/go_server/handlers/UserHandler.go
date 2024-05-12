@@ -113,7 +113,7 @@ func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	tipo := "CREATION"
 	utilities.SendLogToNats(username, summary, description, tipo)
 	
-	utilities.NotifyUserRegistration(username, createdUser.Email, "CREATION")
+	utilities.NotifyUserEvent(username, createdUser.Email, "CREATION")
 
 
 	json.NewEncoder(w).Encode(&createdUser)
@@ -134,8 +134,9 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 
 	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
-
-	_, err := utilities.UpdateUser(user)
+	oldEmail := r.URL.Query().Get("oldEmail")
+	if oldEmail == "" {oldEmail = user.Email}
+	_, err := utilities.UpdateUser(user, oldEmail)
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
@@ -151,6 +152,8 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 		description := "User " + user.Username + " with email " + user.Email + " was updated"
 		logType := "UPDATE"
 		utilities.SendLogToNats(username, summary, description, logType)
+		email := oldEmail + "," + user.Email
+		utilities.NotifyUserEvent(username, email, "UPDATE")
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Usuario was updated"))
 	}
@@ -188,7 +191,7 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 	description := "User with email " + email + " was deleted"
 	logType := "DELETION"
 	utilities.SendLogToNats(username, summary, description, logType)
-
+	utilities.NotifyUserEvent(username, email, "DELETION")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Usuario eliminado"))
 }
@@ -238,7 +241,7 @@ func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("User not found"))
-		name := usr.Username
+		name := usr
 		summary := "User tried to recover password"
 		description := "User  tried to recover password but did not provide a valid email"
 		logType := "ERROR"
@@ -246,7 +249,7 @@ func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	name := usr.Username
+	name := usr
 	summary := "User recovered password"
 	description := "User with email " + email + " recovered his password"
 	logType := "INFO"	

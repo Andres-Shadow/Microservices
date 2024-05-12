@@ -57,9 +57,9 @@ Then(
   function (int) {
     if (!response.data) {
       return;
-    }else{
+    } else {
       valid = ajv.validate(messageSchema, response);
-      assert.ok(valid)
+      assert.ok(valid);
     }
   }
 );

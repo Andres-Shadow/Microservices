@@ -65,9 +65,9 @@ func PostUser(user models.User) (*models.User, error) {
 	return &user, nil
 }
 
-func UpdateUser(user models.User) (*models.User, error) {
+func UpdateUser(user models.User, oldEmail string) (*models.User, error) {
 	var userToUpdate models.User
-	DataBase.DB.Where("email = ?", user.Email).First(&userToUpdate)
+	DataBase.DB.Where("email = ?", oldEmail).First(&userToUpdate)
 
 	if userToUpdate.Id == 0 || user.Password == "" {
 		fmt.Println("user not found")
@@ -76,6 +76,7 @@ func UpdateUser(user models.User) (*models.User, error) {
 
 	userToUpdate.Username = user.Username
 	userToUpdate.Password = user.Password
+	userToUpdate.Email = user.Email
 	DataBase.DB.Save(&userToUpdate)
 	return &userToUpdate, nil
 }
@@ -106,15 +107,15 @@ func UpdateUserPassword(user models.User) (*models.User, error) {
 	return &userToUpdate, nil
 }
 
-func RecoverPassword(email string) (string, *models.User, error) {
+func RecoverPassword(email string) (string, string, error) {
 	var userToUpdate models.User
 	DataBase.DB.Where("email = ?", email).First(&userToUpdate)
 
 	if userToUpdate.Password == "" {
-		return "", nil, errors.New("user not found")
+		return "", "", errors.New("user not found")
 	}
 
 	token := security.LoginHandler(&userToUpdate)
-
-	return token, &userToUpdate, nil
+	username := userToUpdate.Username
+	return token, username, nil
 }

@@ -18,6 +18,6 @@ func SendLogToNats(name, summary, description, logType string) {
 	communication.ConnectToNATS().SendLog(&notification)
 }
 
-func NotifyUserRegistration(name, email, log_type string){
+func NotifyUserEvent(name, email, log_type string){
 	communication.ConnectToNATS().NotifyUserRegistration(name, email, log_type)
 }
