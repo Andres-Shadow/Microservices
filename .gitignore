@@ -1,3 +1,4 @@
 api_gateway/logs-manage-api/node_modules
 api_gateway/javascript-tests/node_modules
+api_gateway/gateway/node_modules
 *.env
