@@ -1,4 +1,4 @@
-const { getExampleHandler } = require("../handlers/mainHandler");
+const { getExampleHandler } = require("../handlers/mainHandler")
 
 async function routes(fastify, options) {
   fastify.get("/example", getExampleHandler);

@@ -4,7 +4,7 @@ const PORT = 9095;
 
 const start = async () => {
   try {
-    await fastify.listen({port: PORT});
+    await fastify.listen({ port: PORT });
     console.log(`Servidor Fastify corriendo en puerto ${PORT}`);
   } catch (err) {
     console.error(err);
