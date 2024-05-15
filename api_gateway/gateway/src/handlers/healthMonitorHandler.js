@@ -31,7 +31,8 @@ class HealthMonitorHandler {
   }
 
   static async deleteMonitoredAp(request, reply) {
-    const appName = request.params.name;
+    //obtener el nombre de la aplicacion a eliminar desde el query param
+    const appName = request.query.name;
     let respuesta;
     try {
       respuesta = await axios.delete(healthUrl + "?name=" + appName);
@@ -40,6 +41,7 @@ class HealthMonitorHandler {
       reply.code(500).send({ message: "Internal Server Error" });
       return null;
     }
+    reply.code(200).send({ message: respuesta.data });
   }
 
   static async updateMonitoredAp(request, reply) {
@@ -52,6 +54,7 @@ class HealthMonitorHandler {
       reply.code(500).send({ message: "Internal Server Error" });
       return null;
     }
+    reply.code(200).send({ message: respuesta.data });
   }
 }
 
