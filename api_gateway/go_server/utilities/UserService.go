@@ -119,3 +119,13 @@ func RecoverPassword(email string) (string, string, error) {
 	username := userToUpdate.Username
 	return token, username, nil
 }
+
+func GetUserByEmail(email string) (*models.User, error) {
+	var user models.User
+	fmt.Println("email", email)
+	DataBase.DB.Where("email = ?", email).First(&user)
+	if user.Id == 0 {
+		return nil, errors.New("user not found")
+	}
+	return &user, nil
+}

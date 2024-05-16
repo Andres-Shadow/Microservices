@@ -232,6 +232,29 @@ func UpdateUserPassword(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func GetUserHandlerByEmail(w http.ResponseWriter, r *http.Request) {
+	
+	valid, _ := verifyTokenPresency(r)
+	if !valid {
+		http.Error(w, "Token no valido", http.StatusUnauthorized)
+		return
+	}
+
+	params := mux.Vars(r)
+	var user *models.User
+	
+	user, _ = utilities.GetUserByEmail(params["email"])
+
+	if user == nil {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("Usuario no encontrado"))
+		return
+	}
+
+	json.NewEncoder(w).Encode(&user)
+
+}
+
 func RecoverPassword(w http.ResponseWriter, r *http.Request) {
 
 	query := r.URL.Query()

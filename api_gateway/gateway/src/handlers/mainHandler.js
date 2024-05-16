@@ -3,6 +3,8 @@ const axios = require("axios");
 //importar las rutas
 const login = require("../configuracion/routesConfiguration").loginUrl;
 const auth_server_url = require("../configuracion/routesConfiguration").userurl;
+const user_profile_service =
+  require("../configuracion/routesConfiguration").userProfile;
 
 class MainHandler {
   static async getUsers(request, reply) {
@@ -87,6 +89,49 @@ class MainHandler {
       console.error("Error al realizar la petición DELETE:", error.message);
       reply.code(500).send({ message: "Internal Server Error" });
     }
+  }
+
+  static async getUserInfo(request, reply) {
+    //obtener el header authorization
+
+    const email = request.query.email;
+
+    const authHeader = request.headers.authorization;
+
+    const decodedToken = MainHandler.verifyJwt(authHeader);
+
+    if (!decodedToken) {
+      reply.code(401).send({ message: "Unauthorized" });
+      return;
+    }
+
+    try {
+      // Realizar la petición GET con node-fetch y pasar el token en el encabezado de autorización
+      const response = await axios.get(auth_server_url + "/info/" + email, {
+        headers: {
+          Authorization: authHeader,
+        },
+      });
+
+      const response2 = await axios.get(user_profile_service + "/" + email);
+
+      //concatenate both responses
+      let fullResponse = { ...response.data, ...response2.data };
+
+      // Si la petición se realiza con éxito, devolver la respuesta
+      reply.code(200).send(fullResponse);
+    } catch (error) {
+      // Si ocurre algún error durante la petición, devolver un error
+      console.error("Error al realizar la petición GET:", error.message);
+      reply.code(500).send({ message: "Internal Server Error" });
+    }
+    // Si la petición se realiza con éxito, devolver la respuesta
+    reply.code(200).send(fullResponse);
+  }
+  catch(error) {
+    // Si ocurre algún error durante la petición, devolver un error
+    console.error("Error al realizar la petición GET:", error.message);
+    reply.code(500).send({ message: "Internal Server Error" });
   }
 
   static verifyJwt(token) {

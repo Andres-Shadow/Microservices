@@ -9,6 +9,9 @@ async function routes(fastify, options) {
   fastify.post(API_PREFIX + "/user/login", mainHandler.userLogin);
   fastify.post(API_PREFIX + "/user/register", mainHandler.userRegister);
 
+  //user info route
+  fastify.get(API_PREFIX + "/user/info", mainHandler.getUserInfo);
+
   //user routes
   fastify.get(API_PREFIX + "/user", mainHandler.getUsers);
   fastify.post(API_PREFIX + "/user", mainHandler.userRegister);
