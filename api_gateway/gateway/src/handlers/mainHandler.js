@@ -157,9 +157,9 @@ class MainHandler {
     let backupAuthUser;
     let email = request.params.email;
 
-    //almacenar en cache el usuario antes de actulizarlo en caso de que falle la actualizacion
+    // Almacenar en caché el usuario antes de actualizarlo en caso de que falle la actualización
     try {
-      const response = await axios.get(auth_server_url + "/" + email, {
+      const response = await axios.get(`${auth_server_url}/${email}`, {
         headers: {
           Authorization: authHeader,
         },
@@ -167,12 +167,13 @@ class MainHandler {
 
       backupAuthUser = response.data;
     } catch (error) {
-      reply.code(500).send({ message: "Internal Server Error" });
+      return reply.code(500).send({ message: "Internal Server Error" });
     }
 
+    // Intentar actualizar el usuario
     try {
       if (newData.password) {
-        await axios.put(auth_server_url, newData, {
+        await axios.put(`${auth_server_url}?oldEmail=${email}`, newData, {
           headers: {
             Authorization: authHeader,
           },
@@ -180,38 +181,45 @@ class MainHandler {
       } else {
         await axios.put(user_profile_service, newData);
       }
+      reply.code(200).send({ message: "User updated successfully" });
     } catch (error) {
-      // Si ocurre algún error durante la petición, devolver un error
       console.error("Error al realizar la petición PUT:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      return reply.code(500).send({ message: "Internal Server Error" });
     }
+  }
 
-    // verificar para rollbackk
+  static async verifyRollback(
+    email,
+    newData,
+    authHeader,
+    backupAuthUser,
+    reply
+  ) {
+    // Verificar para rollback
     try {
-      const verificarion = axios.get(user_profile_service + "/" + email);
-      const user = verificarion.data;
+      const verification = await axios.get(`${user_profile_service}/${email}`);
+      const user = verification.data;
       if (user.email != newData.email) {
-        //rollback
+        // Intentar hacer rollback si los datos no coinciden
         try {
-          // Realizar la petición PUT con node-fetch y pasar el token en el encabezado de autorización
           await axios.put(auth_server_url, backupAuthUser, {
             headers: {
               Authorization: authHeader,
             },
           });
         } catch (error) {
-          // Si ocurre algún error durante la petición, devolver un error
           console.error(
             "Error al realizar la petición de rollback:",
             error.message
           );
-          reply.code(500).send({ message: "Internal Server Error" });
+          return reply.code(500).send({ message: "Internal Server Error" });
         }
       } else {
         reply.code(200).send({ message: "User updated successfully" });
       }
     } catch (error) {
-      await axios.put(auth_server_url, backupAuthUser, {
+      // Hacer rollback si la verificación falla
+      await axios.put(`${auth_server_url}?oldEmail=${email}`, backupAuthUser, {
         headers: {
           Authorization: authHeader,
         },
