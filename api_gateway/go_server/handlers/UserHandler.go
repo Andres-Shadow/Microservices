@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -57,27 +58,6 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
-}
-
-func GetUserHandlerById(w http.ResponseWriter, r *http.Request) {
-
-	valid, _ := verifyTokenPresency(r)
-	if !valid {
-		http.Error(w, "Token no valido", http.StatusUnauthorized)
-		return
-	}
-
-	params := mux.Vars(r)
-	var user *models.User
-	user, _ = utilities.GetUserById(params["id"])
-
-	if user == nil {
-		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte("Usuario no encontrado"))
-		return
-	}
-
-	json.NewEncoder(w).Encode(&user)
 }
 
 func PostUserHandler(w http.ResponseWriter, r *http.Request) {
@@ -242,7 +222,7 @@ func GetUserHandlerByEmail(w http.ResponseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
 	var user *models.User
-	
+	fmt.Println(params["email"])
 	user, _ = utilities.GetUserByEmail(params["email"])
 
 	if user == nil {

@@ -49,11 +49,10 @@ func initServer() {
 func defineUserEndpoints(userRouter *mux.Router) {
 	//RESTful API endpoints for crud
 	userRouter.HandleFunc("/", handlers.GetUsersHandler).Methods("GET")
-	userRouter.HandleFunc("/{id}", handlers.GetUserHandlerById).Methods("GET")
 	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods("POST")
 	userRouter.HandleFunc("/", handlers.DeleteUserHandler).Methods("DELETE")
 	userRouter.HandleFunc("/", handlers.UpdateUserHandler).Methods("PUT")
-	userRouter.HandleFunc("/info/{email}", handlers.GetUserHandlerByEmail).Methods("GET")
+	userRouter.HandleFunc("/{email}", handlers.GetUserHandlerByEmail).Methods("GET")
 
 	//RESTful API endpoints for user recover and update password
 	userRouter.HandleFunc("/password/", handlers.RecoverPassword).Methods("GET")

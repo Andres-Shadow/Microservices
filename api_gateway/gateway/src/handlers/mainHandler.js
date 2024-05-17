@@ -112,10 +112,11 @@ class MainHandler {
     }
   }
 
+  //metoodo objetivo
   static async getUserInfo(request, reply) {
     //obtener el header authorization
 
-    const email = request.query.email;
+    const email = request.params.email;
 
     const authHeader = request.headers.authorization;
 
@@ -128,7 +129,7 @@ class MainHandler {
 
     try {
       // Realizar la petición GET con node-fetch y pasar el token en el encabezado de autorización
-      const response = await axios.get(auth_server_url + "/info/" + email, {
+      const response = await axios.get(auth_server_url + "/" + email, {
         headers: {
           Authorization: authHeader,
         },
