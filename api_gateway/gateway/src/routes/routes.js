@@ -1,4 +1,4 @@
-const fastify = require("fastify")();
+const fastify = require("fastify")({ logger: true });
 
 // Importar rutas
 const exampleRoutes = require("./appRoutes");

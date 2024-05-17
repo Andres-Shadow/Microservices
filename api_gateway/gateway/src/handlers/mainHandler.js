@@ -5,6 +5,8 @@ const login = require("../configuracion/routesConfiguration").loginUrl;
 const auth_server_url = require("../configuracion/routesConfiguration").userurl;
 const user_profile_service =
   require("../configuracion/routesConfiguration").userProfile;
+//importar la funcion sendlosToNats
+const nats = require("../services/communicationService");
 
 class MainHandler {
   static async getUsers(request, reply) {
@@ -40,13 +42,23 @@ class MainHandler {
     //obtener el body de la peticion
     const usuario = request.body;
     let respuesta;
+    console.log("entro aqui");
     try {
       respuesta = await axios.post(login, usuario);
+      let name = usuario.username;
+      let description =
+        "User " + usuario.name + " logged in with email " + usuario.email;
+      let summary = "User logged in";
+      nats.sendLogToNats(name, summary, description, "INFO");
+      reply.code(200).send({ message: respuesta.data });
     } catch (error) {
+      let name = usuario.name;
+      let description = "User " + usuario.name + " tryed to log in";
+      let summary = "User tryed to log in";
+      nats.sendLogToNats(name, summary, description, "ERROR");
       console.error("Error al verificar el token JWT:", error);
-      return null;
+      reply.code(400).send({ message: error.response.data });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
   static async userRegister(request, reply) {
@@ -55,7 +67,16 @@ class MainHandler {
     let respuesta;
     try {
       respuesta = await axios.post(auth_server_url, usuario);
+      let name = usuario.username;
+      let description =
+        "User " + usuario.name + " logged in with email " + usuario.email;
+      let summary = "User logged in";
+      nats.sendLogToNats(name, summary, description, "CREATION");
     } catch (error) {
+      let name = usuario.name;
+      let description = "User " + usuario.name + " tryed to log in";
+      let summary = "User tryed to log in";
+      nats.sendLogToNats(name, summary, description, "ERROR");
       console.error("Error al verificar el token JWT:", error);
       reply.code(500).send({ message: "Internal Server Error" });
       return null;
