@@ -9,21 +9,31 @@ estado_correo = {
 }
 # Función para enviar correos
 def send_email(subject, body, to_email):
-    api_key = os.getenv("API_KEY")
-    domain = os.getenv("DOMAIN")
+    # api_key = os.getenv("API_KEY")
+    # domain = os.getenv("DOMAIN")
 
-    request_url = f"https://api.mailgun.net/v3/{domain}/messages"
+    # request_url = f"https://api.mailgun.net/v3/{domain}/messages"
 
-    requests.post(
-        request_url,
-        auth=("api", api_key),
-        data={
-            "from": "Servicio de Monitorización <monitor@tu-dominio.com>",
-            "to": [to_email],
-            "subject": subject,
-            "text": body,
-        },
-    )
+    # requests.post(
+    #     request_url,
+    #     auth=("api", api_key),
+    #     data={
+    #         "from": "Servicio de Monitorización <monitor@tu-dominio.com>",
+    #         "to": [to_email],
+    #         "subject": subject,
+    #         "text": body,
+    #     },
+    # )
+    
+    #crear un objeto json con el contenido del correo
+    email = {
+        'subject': subject,
+        'message': body,
+        'target': to_email
+    }
+    
+    #hacer una peticion post al servicio de notificaciones
+    response = requests.post('http://localhost:9096/api/v1/notification', json=email)
 
 
 
