@@ -1,7 +1,6 @@
-from flask import jsonify
-from services.notification_service import get_notifications, create_notification
 from models.notification import Notification
-
+from services.notification_service import get_notifications, create_notification
+from communication.communication import create_log
 
 def get_notificaions_handler(page, page_size):
     notifications = get_notifications(page, page_size)
@@ -15,6 +14,12 @@ def get_notificaions_handler(page, page_size):
             'target': notification.target
         }
         notifications_list.append(notification_dict)
+        
+    name = "User wanted to list all notificacion"
+    summary = "User listed all notifications"
+    description = "User listed all notifications"
+    log_type = "INFO"
+    create_log(name, summary, description, log_type)
     return notifications_list
 
 def create_notification_handler(notification):
@@ -25,5 +30,19 @@ def create_notification_handler(notification):
     new_notification.message = str(notification['message']).strip()
     new_notification.target = str(notification['target']).strip()
 
-    response = create_notification(new_notification)
+    try:
+        response = create_notification(new_notification)
+    except Exception as e:
+        name = "User wanted to create a notification"
+        summary = "Error creating a notification"
+        description = "Error creating a notification"
+        log_type = "ERROR"
+        create_log(name, summary, description, log_type)
+        return str(e)
+    
+    name = "User wanted to create a notification"
+    summary = "User sended an email to "+new_notification.target
+    description = "User sended an email to "+new_notification.target+" with the subject "+new_notification.subject+" and the message "+new_notification.message
+    log_type = "CREATION"
+    create_log(name, summary, description, log_type)
     return response

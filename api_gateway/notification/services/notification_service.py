@@ -35,5 +35,5 @@ def create_notification(notification):
         send_email(notification.subject, notification.message, notification.target)
     except Exception as e:
         print(e)
-        return 'Error creating notification'
+        return e
     return 'Notification created successfully and email was sended'

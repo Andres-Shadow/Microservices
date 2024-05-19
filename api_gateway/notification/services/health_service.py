@@ -4,8 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import Session
 from models.data_check import CheckData, Check, HealthReport
 from sqlalchemy import text
-# engine = get_engine()
-# Session = sessionmaker(bind=engine)
+from communication.communication import test_connection, send_sample_message
 
 
 def verify_ready():
@@ -21,6 +20,8 @@ def verify_ready():
 
 
 def construct_ready_body():
+    
+    #verify database ready
     status = verify_ready()
     status_label = "READY" if status else "DOWN"
     check_status = "UP" if status else "DOWN"
@@ -32,9 +33,22 @@ def construct_ready_body():
         status=check_status
     )
     
+    #verify nats ready
+    nast_status = verify_nats_ready()
+    nast_status_label = "READY" if nast_status else "DOWN"
+    check_status = "UP" if nast_status else "DOWN"
+    check_2 = Check(
+        data = CheckData(
+            from_=datetime.utcnow().isoformat(),
+            status=nast_status_label),
+        name="NATS connection ready",
+        status=check_status
+        
+    )
+    general_status = "UP" if status and nast_status else "DOWN"
     report = HealthReport(
-        status=check_status,
-        checks=[check_1]
+        status=general_status,
+        checks=[check_1, check_2]
     )
     return report
 
@@ -52,6 +66,7 @@ def verify_alive():
         return False
     
 def construct_alive_body():
+    #verify database alive
     status = verify_alive()
     status_label = "LIVE" if status else "DOWN"
     check_status = "UP" if status else "DOWN"
@@ -63,8 +78,38 @@ def construct_alive_body():
         status=check_status
     )
     
+    #verify nats alive
+    nast_status = verify_nats_alive()
+    nast_status_label = "LIVE" if nast_status else "DOWN"
+    check_status = "UP" if nast_status else "DOWN"
+    check_2 = Check(
+        data=CheckData(
+            from_=datetime.utcnow().isoformat(),
+            status=nast_status_label),
+        name="NATS connection alive",
+        status=check_status
+    )
+    
+    genera_status = "UP" if status and nast_status else "DOWN"
+    
     report = HealthReport(
-        status=check_status,
-        checks=[check_1]
+        status=genera_status,
+        checks=[check_1, check_2]
     )
     return report
+
+def verify_nats_ready():
+    try:
+        test_connection()
+        return True
+    except Exception as e:
+        return False
+    
+    
+def verify_nats_alive():
+    try:
+        send_sample_message()
+        return True
+    except Exception as e:
+        return False
+
