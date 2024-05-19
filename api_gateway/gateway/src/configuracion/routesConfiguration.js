@@ -38,7 +38,7 @@ const logsManager = "http://" + logsHost + ":9091/api/v1/logs/";
 
 // health server API
 
-const healthServer = "http://" + healtHost + ":9092/api/v1/health";
+const healthServer = "http://" + healtHost + ":9092/api/v1/apps";
 
 // user profile API
 

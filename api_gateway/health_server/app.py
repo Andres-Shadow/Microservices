@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify  # Importar clases de Flask
 from models.application import create_all_tables, create_sample_data  # Importar la función para crear tablas
 from handlers.health_handler import *
+from handlers.health_app_handler import verify_server_ready, verify_server_live, verify_server_health
 from services.email_service import revisar_aplicaciones
 from services.application_service import get_all_registered_applications
 import threading
@@ -39,7 +40,7 @@ def start_monitoring():
             thread.start()  # Inicia el hilo
 
 # Ruta para el manejo de solicitudes generales
-@app.route('/api/v1/health', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/api/v1/apps', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def health():
     if request.method == 'POST':
         return create_application_handler()
@@ -49,6 +50,21 @@ def health():
         return update_application_handler()
     elif request.method == 'DELETE':
         return delete_application_handler()
+    
+@app.route('/api/v1/health/ready', methods=['GET'])
+def get_health():
+    report = verify_server_ready()
+    return jsonify(report.to_json())
+
+@app.route('/api/v1/health/live', methods=['GET'])
+def get_health():
+    report = verify_server_live()
+    return jsonify(report.to_json())
+
+@app.route('/api/v1/health', methods=['GET'])
+def get_health():
+    report = verify_server_health()
+    return jsonify(report.to_json())
 
 # Ruta para obtener una aplicación por nombre
 @app.route('/api/v1/health/<application_name>', methods=['GET'])

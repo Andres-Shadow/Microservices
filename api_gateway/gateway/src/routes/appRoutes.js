@@ -26,10 +26,10 @@ async function routes(fastify, options) {
   fastify.put(API_PREFIX + "/logs", logsHandler.upateLog);
 
   //health monitoring route
-  fastify.get(API_PREFIX + "/health", healthHandler.getMonitoredAps);
-  fastify.post(API_PREFIX + "/health", healthHandler.createMonitoredAp);
-  fastify.delete(API_PREFIX + "/health", healthHandler.deleteMonitoredAp);
-  fastify.put(API_PREFIX + "/health", healthHandler.updateMonitoredAp);
+  fastify.get(API_PREFIX + "/apps", healthHandler.getMonitoredAps);
+  fastify.post(API_PREFIX + "/apps", healthHandler.createMonitoredAp);
+  fastify.delete(API_PREFIX + "/apps", healthHandler.deleteMonitoredAp);
+  fastify.put(API_PREFIX + "/apps", healthHandler.updateMonitoredAp);
 }
 
 module.exports = routes;
