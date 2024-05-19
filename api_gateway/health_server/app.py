@@ -52,19 +52,19 @@ def health():
         return delete_application_handler()
     
 @app.route('/api/v1/health/ready', methods=['GET'])
-def get_health():
+def get_ready():
     report = verify_server_ready()
-    return jsonify(report.to_json())
+    return jsonify(report.to_dict())
 
 @app.route('/api/v1/health/live', methods=['GET'])
-def get_health():
+def get_live():
     report = verify_server_live()
-    return jsonify(report.to_json())
+    return jsonify(report.to_dict())
 
 @app.route('/api/v1/health', methods=['GET'])
-def get_health():
+def get_health_server():
     report = verify_server_health()
-    return jsonify(report.to_json())
+    return jsonify(report.to_dict())
 
 # Ruta para obtener una aplicación por nombre
 @app.route('/api/v1/health/<application_name>', methods=['GET'])
