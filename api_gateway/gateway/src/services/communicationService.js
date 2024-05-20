@@ -40,5 +40,29 @@ async function sendLogToNats(name, summary, description, logType) {
   }
 }
 
+//funcioon para probar la conexion a nats
+async function testConnection() {
+  try {
+    await connectToNats();
+    console.log("Conexión exitosa");
+    return true;
+  } catch (err) {
+    console.error(`Error en la conexión: ${err.message}`);
+    return false;
+  }
+}
+
+async function sendSampleMessage() {
+  try {
+    await connectToNats();
+    nc.publish("sample", sc.encode("Mensaje de prueba"));
+    console.log(`Mensaje de prueba enviado en el tema: ${subject}`);
+    return true;
+  } catch (err) {
+    console.error(`Error enviando el mensaje de prueba a NATS: ${err.message}`);
+    return false;
+  }
+}
+
 //exportar el modulo
-module.exports = { sendLogToNats };
+module.exports = { sendLogToNats, testConnection, sendSampleMessage };

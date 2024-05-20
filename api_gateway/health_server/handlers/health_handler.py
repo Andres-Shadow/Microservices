@@ -3,6 +3,7 @@ from models.application import Application
 import requests
 from services.application_service import *
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from communication.communication import create_log
 
 def health_handler():
     applications = get_all_registered_applications()[:2]  # Obtiene las primeras 10 aplicaciones
@@ -27,7 +28,11 @@ def health_handler():
                 'name': app.name,
                 'error': str(e)
             })
-
+    name = 'Health Check'
+    summary = 'Health Check with all applications registered'
+    description = 'Health Check with all applications registered in monitor database'
+    log_type = 'INFO'
+    create_log(name, summary, description, log_type)
     # Devuelve la lista de resultados como respuesta JSON
     return jsonify(response)
 

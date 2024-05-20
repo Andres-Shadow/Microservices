@@ -1,6 +1,7 @@
 const mainHandler = require("../handlers/mainHandler");
 const logsHandler = require("../handlers/logsHandler");
 const healthHandler = require("../handlers/healthMonitorHandler");
+const healthVerification = require("../handlers/healthHandler");
 
 const API_PREFIX = "/api/v1";
 
@@ -30,6 +31,11 @@ async function routes(fastify, options) {
   fastify.post(API_PREFIX + "/apps", healthHandler.createMonitoredAp);
   fastify.delete(API_PREFIX + "/apps", healthHandler.deleteMonitoredAp);
   fastify.put(API_PREFIX + "/apps", healthHandler.updateMonitoredAp);
+
+  //health verification route
+  fastify.get(API_PREFIX + "/health/ready",healthVerification.readyVerification);
+  fastify.get(API_PREFIX + "/health/live",healthVerification.liveVerification);
+  fastify.get(API_PREFIX + "/health",healthVerification.verifyHealth);
 }
 
 module.exports = routes;

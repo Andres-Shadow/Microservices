@@ -188,6 +188,33 @@ class MainHandler {
     }
   }
 
+  static async updateUserPassword(request, reply) {
+    let body = request.body;
+    let authHeader = request.headers.authorization;
+    try {
+      let respuesta = await axios.patch(
+        auth_server_url + "/password",
+        body,
+        authHeader
+      );
+      reply.code(200).send({ message: respuesta.data });
+    } catch (error) {
+      return reply.code(500).send({ message: "Internal Server Error" });
+    }
+  }
+
+  static async recoverPassword(request, reply) {
+    let email = request.query.email;
+    try {
+      let respuesta = await axios.get(
+        auth_server_url + "/password/?email=" + email
+      );
+      reply.code(200).send({ message: respuesta.data });
+    } catch (error) {
+      return reply.code(500).send({ message: "Internal Server Error" });
+    }
+  }
+
   static async verifyRollback(
     email,
     newData,

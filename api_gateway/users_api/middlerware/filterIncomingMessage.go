@@ -71,7 +71,6 @@ func UpdateUserFromMessage(message models.EventMessage) {
 	oldEmail := strings.Split(message.Email, ",")[0]
 	newEmail := strings.Split(message.Email, ",")[1]
 	userName := message.Name
-
 	//get user
 	err := database.DB.Where("email = ?", oldEmail).First(&user).Error
 	if err != nil {

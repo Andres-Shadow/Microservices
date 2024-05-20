@@ -51,7 +51,7 @@ func (nl *NatsLogger) SendLog(newLog *models.Message) {
 
 	subject = os.Getenv("NATS_SUBJECT")
 	if subject == "" {
-		subject = "MicroservicesLogs"
+		subject = "MicroservicesLogs"	
 	}
 
 	// Convertir la estructura en JSON
