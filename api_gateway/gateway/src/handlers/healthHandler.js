@@ -38,10 +38,10 @@ class HealthHandler {
   }
 
   static async verifyHealth(request, reply) {
-    let report = await HealthHandler.verifyReady();
-    let report2 = await HealthHandler.verifyLive();
-    let reports = [report, report2];
-    reply.code(200).send(reports);
+    let ready = await HealthHandler.verifyReady();
+    let live = await HealthHandler.verifyLive();
+
+    reply.code(200).send({ live, ready });
   }
 }
 module.exports = HealthHandler;

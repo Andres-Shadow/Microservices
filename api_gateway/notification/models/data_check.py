@@ -57,3 +57,21 @@ class HealthReport:
             status=data["status"],
             checks=[Check.from_dict(check) for check in data["checks"]]
         )
+        
+class HelathCheck:
+    def __init__(self, ready, live):
+        self.ready = ready
+        self.live = live
+
+    def to_dict(self):
+        return {
+            "ready": self.ready.to_dict(),
+            "live": self.live.to_dict()
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            ready=HealthReport.from_dict(data["ready"]),
+            live=HealthReport.from_dict(data["live"])
+        )
