@@ -144,9 +144,9 @@ services:
   gateway_server:
     build: ./gateway
     ports:
-      - "9098:9098"
+      - "9095:9095"
     expose:
-      - "9098"
+      - "9095"
     depends_on:
       - nats
       - user_profile
