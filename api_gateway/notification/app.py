@@ -19,7 +19,7 @@ def notification():
         if page_size is None:
             page_size = 10
         notifications =  get_notificaions_handler(page, page_size)
-        return (notifications)
+        return jsonify(notifications)
     elif request.method == 'POST':
         #obtener el body de la petición
         body = request.json

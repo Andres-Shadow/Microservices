@@ -31,6 +31,16 @@ def get_notifications_email(page, page_size, email):
         return []
     return notifications
 
+def count_notifications():
+    #contar las notificaciones en la base de datos
+    try:
+        session = Session()
+        count = session.query(Notification).count()
+        session.close()
+    except Exception as e:
+        return 0
+    return count
+
 def create_notification(notification):
     #crear una notificacion en la base de datos
     session = Session()
