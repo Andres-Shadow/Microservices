@@ -10,7 +10,7 @@ if (!host) {
 // Configura la conexión a la base de datos
 const connection = mysql.createConnection({
   host: host,
-  port: 3307,
+  port: 3306,
   user: "root",
   password: "andres_1",
   database: "logs",
