@@ -24,6 +24,10 @@ func main() {
 	r.PUT(url, handlers.UpdateUser)    // Actualizar un usuario
 	r.DELETE(url, handlers.DeleteUser) // Eliminar un usuario
 	r.GET(url+"/:email", handlers.GetUser) // Obtener un usuario por ID
+	//rutas de la salud
+	r.GET("/health/live", handlers.CheckLive)
+	r.GET("/health/ready", handlers.CheackReadyHealth)
+	r.GET("/health", handlers.CheckHealth)
 
 	// Canales para controlar la aplicación
 	quit := make(chan os.Signal, 1)
