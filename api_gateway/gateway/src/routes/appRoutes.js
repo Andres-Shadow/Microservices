@@ -33,6 +33,7 @@ async function routes(fastify, options) {
   fastify.post(API_PREFIX + "/apps", healthHandler.createMonitoredAp);
   fastify.delete(API_PREFIX + "/apps", healthHandler.deleteMonitoredAp);
   fastify.put(API_PREFIX + "/apps", healthHandler.updateMonitoredAp);
+  fastify.get(API_PREFIX + "/apps/:name", healthHandler.getAppByName);
 
   //health verification route
   fastify.get(API_PREFIX + "/health/ready", healthHandler2.readyVerification);
@@ -42,6 +43,7 @@ async function routes(fastify, options) {
   //notification routes
   fastify.post(API_PREFIX + "/notification", notiHandler.sendNotification);
   fastify.get(API_PREFIX + "/notification", notiHandler.getNotifications);
+  fastify.get(API_PREFIX + "/notification/:email", notiHandler.getNotificationsByEMail);
 }
 
 module.exports = routes;

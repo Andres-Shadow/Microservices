@@ -56,6 +56,17 @@ class HealthMonitorHandler {
     }
     reply.code(200).send({ message: respuesta.data });
   }
+
+  static async getAppByName(request, reply) {
+    const appName = request.params.name;
+    try {
+      const response = await axios.get(healthUrl + "/" + appName);
+      reply.code(200).send(response.data);
+    } catch (error) {
+      console.error("Error al realizar la petición GET:", error.message);
+      reply.code(500).send({ message: "Internal Server Error" });
+    }
+  }
 }
 
 module.exports = HealthMonitorHandler;

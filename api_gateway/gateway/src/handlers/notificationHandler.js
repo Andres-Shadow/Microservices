@@ -25,6 +25,17 @@ class NotificationHandler {
       reply.code(500).send({ message: "Internal Server Error" });
     }
   }
+
+  static async getNotificationsByEMail(request, reply) {
+    const email = request.params.email;
+    try {
+      const response = await axios.get(notificationUrl + "/" + email);
+      reply.code(200).send(response.data);
+    } catch (error) {
+      console.error("Error al realizar la petición GET:", error.message);
+      reply.code(500).send({ message: "Internal Server Error" });
+    }
+  }
 }
 
 module.exports = NotificationHandler;
