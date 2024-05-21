@@ -4,13 +4,15 @@ const LogResponse = require("../models/logModel");
 // Crear una variable global para la conexión de NATS
 let nc = null;
 const sc = StringCodec();
+const host = process.env.NATS_SERVER || "localhost";
 const subject = "MicroservicesLogs";
 
 // Función para conectar a NATS si no está ya conectado
 async function connectToNats() {
   if (!nc) {
     try {
-      nc = await connect({ servers: "nats://localhost:4222" });
+      url = `nats://${host}:4222`;
+      nc = await connect({ servers: url });
       console.log("Conectado a NATS");
     } catch (err) {
       console.error(`Error conectando a NATS: ${err.message}`);

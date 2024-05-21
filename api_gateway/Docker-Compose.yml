@@ -141,6 +141,27 @@ services:
       MYSQL_DATABASE: notifications
       MYSQL_ROOT_PASSWORD: andres_1
 
+  gateway_server:
+    build: ./gateway
+    ports:
+      - "9098:9098"
+    expose:
+      - "9098"
+    depends_on:
+      - nats
+      - user_profile
+      - notification_server
+      - server
+      - cliente
+      - health_server
+    environment:
+      - USER_SERVER_HOST=server
+      - LOGS_HOST=cliente
+      - HEALTH_HOST=health_server
+      - USER_PROFILE_HOST=user_profile
+      - NOTIFICATION_HOST=notification_server
+      - NATS_SERVER=nats
+
   #SERVICIO DE PROMETHEUS
   # prometheus:
   #   image: prom/prometheus:latest # Usa la imagen oficial de Prometheus

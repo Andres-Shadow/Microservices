@@ -2,6 +2,7 @@ const mainHandler = require("../handlers/mainHandler");
 const logsHandler = require("../handlers/logsHandler");
 const healthHandler = require("../handlers/healthMonitorHandler");
 const healthHandler2 = require("../handlers/healthHandler");
+const notiHandler = require("../handlers/notificationHandler");
 
 const API_PREFIX = "/api/v1";
 
@@ -20,7 +21,6 @@ async function routes(fastify, options) {
   fastify.delete(API_PREFIX + "/user", mainHandler.deleteUser);
   fastify.get(API_PREFIX + "/password", mainHandler.recoverPassword);
   fastify.patch(API_PREFIX + "/password", mainHandler.updateUserPassword);
-  //upate route logic pending
 
   //logs routes
   fastify.get(API_PREFIX + "/logs", logsHandler.getLogs);
@@ -38,6 +38,10 @@ async function routes(fastify, options) {
   fastify.get(API_PREFIX + "/health/ready", healthHandler2.readyVerification);
   fastify.get(API_PREFIX + "/health/live", healthHandler2.liveVerification);
   fastify.get(API_PREFIX + "/health", healthHandler2.verifyHealth);
+
+  //notification routes
+  fastify.post(API_PREFIX + "/notification", notiHandler.sendNotification);
+  fastify.get(API_PREFIX + "/notification", notiHandler.getNotifications);
 }
 
 module.exports = routes;

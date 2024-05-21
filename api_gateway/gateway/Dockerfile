@@ -3,12 +3,11 @@ FROM node:latest
 WORKDIR /app
 
 COPY package*.json ./
-COPY tsconfig.json ./
 
 RUN npm install
 
 COPY ./src ./src
 
-EXPOSE 9091
+EXPOSE 9095
 
-CMD ["npm", "run", "dev"]a
+CMD ["npm", "run", "dev"]
