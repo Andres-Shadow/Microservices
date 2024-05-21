@@ -1,0 +1,733 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: API Gateway
+  description: API Gateway para la gestión de autenticación, usuarios, logs y aplicaciones monitoreadas
+tags:
+  - name: Autenticación
+    description: Operaciones relacionadas con la autenticación de usuarios
+  - name: Info de usuarios
+    description: Operaciones relacionadas con la información de los usuarios
+  - name: Usuarios
+    description: Operaciones relacionadas con los usuarios
+  - name: Logs
+    description: Operaciones relacionadas con los logs
+  - name: Monitoreo
+    description: Operaciones relacionadas con las aplicaciones a monitorear
+paths:
+  /api/v1/user/login:
+    post:
+      tags:
+        - Autenticación
+      summary: Iniciar sesión de usuario
+      parameters:
+        - $ref: '#/components/headers/Token'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginRequest'
+      responses:
+        '200':
+          description: Usuario autenticado exitosamente, devuelve un token JWT
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        '400':
+          description: Error en la autenticación del usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user/register:
+    post:
+      tags:
+        - Autenticación
+      summary: Registrar nuevo usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginRequest'
+      responses:
+        '200':
+          description: Usuario registrado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user/{email}:
+    get:
+      tags:
+        - Info de usuarios
+      summary: Obtener información de usuario
+      parameters:
+        - $ref: '#/components/parameters/email'
+        - $ref: '#/components/headers/Token'
+      responses:
+        '200':
+          description: Información de usuario obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        '401':
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthResponse'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Info de usuarios
+      summary: Actualizar información de usuario
+      parameters:
+        - $ref: '#/components/parameters/email'
+        - $ref: '#/components/headers/Token'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInfo'
+      responses:
+        '200':
+          description: Información de usuario actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user:
+    get:
+      tags:
+        - Usuarios
+      summary: Obtener usuarios autenticados
+      parameters:
+        - $ref: '#/components/headers/Token'
+      responses:
+        '200':
+          description: Usuarios obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthResponse'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - Usuarios
+      summary: Eliminar usuario autenticado
+      parameters:
+        - $ref: '#/components/headers/Token'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+      responses:
+        '200':
+          description: Usuario eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '401':
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthResponse'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/logs:
+    get:
+      tags:
+      - Logs
+      summary: Obtener todos los logs
+      description: Permite obtener todos los logs
+      responses:
+        '200':
+          description: Logs obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Log'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - Logs
+      summary: Crear un nuevo registro de log
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogInput'
+      responses:
+        '200':
+          description: Registro de log creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Actualizar un registro de log
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogUpdate'
+      responses:
+        '200':
+          description: Registro de log actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/logs/{id}:
+    delete:
+      summary: Eliminar un registro de log por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del registro de log a eliminar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Registro de log eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/apps:
+    get:
+      tags:
+        - Monitoreo
+      summary: Obtener aplicaciones monitorizadas
+      responses:
+        '200':
+          description: Lista de aplicaciones monitorizadas obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApplicationHealthResponse'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - Monitoreo
+      summary: Crear nueva aplicación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '200':
+          description: Aplicación creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - Monitoreo
+      summary: Eliminar aplicación por nombre
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Nombre de la aplicación monitorizada a eliminar
+      responses:
+        '200':
+          description: Aplicación eliminada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Actualizar aplicación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '200':
+          description: Aplicación actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/health:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado de salud
+      description: Verifica tanto el estado en vivo como el estado listo de la aplicación.
+      responses:
+        '200':
+          description: Estados de salud verificados exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  live:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+                  ready:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/ready:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado listo
+      description: Verifica si la aplicación está lista para manejar solicitudes.
+      responses:
+        '200':
+          description: Estado listo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/live:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado en vivo
+      description: Verifica el estado en vivo de la aplicación.
+      responses:
+        '200':
+          description: Estado en vivo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /users/password:
+    patch:
+      summary: Actualizar la contraseña de un usuario
+      tags:
+        - Autenticación
+      parameters:
+        - $ref: '#/components/parameters/emailQuery'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginRequest'
+      responses:
+        '200':
+          description: Contraseña actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      summary: Recuperar la contraseña de un usuario
+      tags:
+        - Autenticación
+      parameters:
+        - $ref: '#/components/parameters/emailQuery'
+      responses:
+        '200':
+          description: Contenido de la contraseña añadida a un mensaje
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  headers:
+    Token:
+      required: true
+      schema:
+        type: string
+        format: jwt
+      description: Token JWT de autenticación
+  
+  parameters:
+    email:
+      name: email
+      in: path
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Correo electrónico del usuario del cual se desea obtener la información
+    emailQuery:
+      in: query
+      name: email
+      required: true
+      schema:
+        type: string
+      description: Correo electrónico del usuario
+
+  schemas:
+    UserLoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Nombre de usuario
+        email:
+          type: string
+          description: Correo electrónico del usuario
+        password:
+          type: string
+          description: Clave de usuario
+    Response:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Mensaje de éxito de la operación realizada (autenticación, info de usuario, usuarios, logs, monitoreo)
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Mensaje de error de la operación realizada (autenticación, info de usuario, usuarios, logs, monitoreo)
+    UnauthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Mensaje de no autorización de la operación realizada (info de usuario, usuarios)
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID del usuario
+        name:
+          type: string
+          description: Nombre del usuario
+        nickname:
+          type: string
+          description: Apodo del usuario
+        public_info:
+          type: string
+          description: Información pública del usuario
+        messaging:
+          type: string
+          description: Información de mensajería del usuario
+        biography:
+          type: string
+          description: Biografía del usuario
+        organization:
+          type: string
+          description: Organización del usuario
+        country:
+          type: string
+          description: País del usuario
+        social_media:
+          type: string
+          description: Redes sociales del usuario
+        email:
+          type: string
+          description: Correo electrónico del usuario
+        username:
+          type: string
+          description: Nombre de usuario
+        password:
+          type: string
+          description: Clave de usuario
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        nickname:
+          type: string
+        public_info:
+          type: string
+        messaging:
+          type: string
+        biography:
+          type: string
+        organization:
+          type: string
+        country:
+          type: string
+        social_media:
+          type: string
+        email:
+          type: string
+    ApplicationHealthResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la aplicación
+        response:
+          type: object
+          properties:
+            status:
+              type: string
+              description: Estado de la aplicación
+            version:
+              type: string
+              description: Versión de la aplicación
+    Application:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la aplicación
+        endpoint:
+          type: string
+          description: Endpoint de la aplicación
+        frequency:
+          type: string
+          description: Frecuencia de chequeo de la aplicación
+        email:
+          type: string
+          description: Correo electrónico asociado a la aplicación
+    Log:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID del log
+        name:
+          type: string
+          description: Nombre del log
+        summary:
+          type: string
+          description: Resumen del log
+        description:
+          type: string
+          description: Descripción detallada del log
+        log_date:
+          type: string
+          format: date-time
+        log_type:
+          type: string
+          description: Tipo de log
+        module:
+          type: string
+          description: Módulo asociado al log
+    LogInput:
+      type: object
+      required:
+        - name
+        - summary
+        - description
+        - log_date
+        - log_type
+        - module
+      properties:
+        name:
+          type: string
+          description: Nombre del log
+        summary:
+          type: string
+          description: Resumen del log
+        description:
+          type: string
+          description: Descripción detallada del log
+        log_date:
+          type: string
+          format: date-time
+          description: Fecha y hora del log
+        log_type:
+          type: string
+          description: Tipo de log
+        module:
+          type: string
+          description: Módulo asociado al log
+    LogUpdate:
+      type: object
+      required:
+        - id
+        - Name
+        - Summary
+        - Description
+        - Log_date
+        - Log_type
+        - Module
+      properties:
+        id:
+          type: integer
+          description: ID del log
+        Name:
+          type: string
+          description: Nombre del log
+        Summary:
+          type: string
+          description: Resumen del log
+        Description:
+          type: string
+          description: Descripción detallada del log
+        Log_date:
+          type: string
+          format: date-time
+          description: Fecha y hora del log
+        Log_type:
+          type: string
+          description: Tipo de log
+        Module:
+          type: string
+          description: Módulo asociado al log

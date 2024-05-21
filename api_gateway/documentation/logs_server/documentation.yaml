@@ -1,0 +1,451 @@
+openapi: 3.0.1
+info:
+  title: API de logs y salud
+  description: Esta API se encarga de gestionar los logs y el estado de la API misma.
+  version: 1.0.0
+tags:
+  - name: Logs
+    description: Operaciones relacionadas con los logs de la API
+  - name: Salud
+    description: Operaciones relacionadas con la salud de la API
+paths:
+  /api/v1/logs:
+    get:
+      tags:
+        - Logs
+      summary: Obtener logs con paginación y filtros
+      description: Permite obtener logs aplicando paginación y filtros por fecha y tipo de log.
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/startDate'
+        - $ref: '#/components/parameters/logType'
+      responses:
+        '200':
+          description: Logs obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Log'
+        '500':
+          description: Error interno al obtener los logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - Logs
+      summary: Crear un nuevo log
+      description: Permite crear un nuevo log con los campos necesarios.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogInput'
+      responses:
+        '200':
+          description: Log creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+        '400':
+          description: Error de validación en el cuerpo de la petición
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Error interno al crear el log en la base de datos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    put:
+      tags:
+        - Logs
+      summary: Actualizar un log existente
+      description: Permite actualizar un log existente mediante su ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogUpdate'
+      responses:
+        '200':
+          description: Log actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+        '400':
+          description: Error de validación en el cuerpo de la petición
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Log no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Error interno al actualizar el log en la base de datos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    delete:
+      tags:
+        - Logs
+      summary: Eliminar un log existente
+      description: Permite eliminar un log existente mediante su ID.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Log eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+        '400':
+          description: Error de validación en el parámetro ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Log no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Error interno al eliminar o recuperar el log en la base de datos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/logs/{email}:
+    get:
+      tags:
+        - Logs
+      summary: Obtener logs por email y creación
+      description: Permite obtener los logs asociados a un email específico.
+      parameters:
+        - $ref: '#/components/parameters/email'
+      responses:
+        '200':
+          description: Logs obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Log'
+        '500':
+          description: Error interno al obtener los logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/logs/{application}:
+    get:
+      tags:
+        - Logs
+      summary: Obtener logs por aplicación
+      description: Permite obtener los logs asociados a una aplicación específica con soporte de paginación.
+      parameters:
+        - $ref: '#/components/parameters/application'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Logs obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Log'
+        '500':
+          description: Error interno al obtener los logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/health:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado de salud
+      description: Verifica tanto el estado en vivo como el estado listo de la aplicación.
+      responses:
+        '200':
+          description: Estados de salud verificados exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  live:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+                  ready:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/ready:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado listo
+      description: Verifica si la aplicación está lista para manejar solicitudes.
+      responses:
+        '200':
+          description: Estado listo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/live:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado en vivo
+      description: Verifica el estado en vivo de la aplicación.
+      responses:
+        '200':
+          description: Estado en vivo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+
+components:
+  parameters:
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+      description: Número de página para la paginación
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+      description: Tamaño de página para la paginación
+    startDate:
+      name: startDate
+      in: query
+      schema:
+        type: string
+        format: date
+      description: Fecha de inicio para filtrar logs
+    logType:
+      name: logType
+      in: query
+      schema:
+        type: string
+      description: Tipo de log para filtrar
+    id:
+      name: id
+      in: query
+      schema:
+        type: integer
+      description: ID del log
+    application:
+      name: application
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Nombre de la aplicación para filtrar los logs
+    email:
+      name: email
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Email del usuario para filtrar los logs
+
+  schemas:
+    Log:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID del log
+        name:
+          type: string
+          description: Nombre del log
+        summary:
+          type: string
+          description: Resumen del log
+        description:
+          type: string
+          description: Descripción detallada del log
+        log_date:
+          type: string
+          format: date-time
+        log_type:
+          type: string
+          description: Tipo de log
+        module:
+          type: string
+          description: Módulo asociado al log
+    LogInput:
+      type: object
+      required:
+        - name
+        - summary
+        - description
+        - log_date
+        - log_type
+        - module
+      properties:
+        name:
+          type: string
+          description: Nombre del log
+        summary:
+          type: string
+          description: Resumen del log
+        description:
+          type: string
+          description: Descripción detallada del log
+        log_date:
+          type: string
+          format: date-time
+          description: Fecha y hora del log
+        log_type:
+          type: string
+          description: Tipo de log
+        module:
+          type: string
+          description: Módulo asociado al log
+    LogUpdate:
+      type: object
+      required:
+        - id
+        - Name
+        - Summary
+        - Description
+        - Log_date
+        - Log_type
+        - Module
+      properties:
+        id:
+          type: integer
+          description: ID del log
+        Name:
+          type: string
+          description: Nombre del log
+        Summary:
+          type: string
+          description: Resumen del log
+        Description:
+          type: string
+          description: Descripción detallada del log
+        Log_date:
+          type: string
+          format: date-time
+          description: Fecha y hora del log
+        Log_type:
+          type: string
+          description: Tipo de log
+        Module:
+          type: string
+          description: Módulo asociado al log

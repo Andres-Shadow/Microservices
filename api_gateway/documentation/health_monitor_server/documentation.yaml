@@ -1,0 +1,279 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: API de monitoreo y aplicaciones
+  description: API de monitoreo y gestión de aplicaciones
+tags:
+  - name: Salud
+    description: Operaciones relacionadas con la salud de la API
+  - name: Aplicaciones
+    description: Operaciones relacionadas con la gestión de aplicaciones
+paths:
+  /api/v1/apps:
+    get:
+      tags:
+        - Aplicaciones
+      summary: Verificar estado de salud de las aplicaciones registradas
+      description: Obtiene el estado de salud de las primeras dos aplicaciones registradas.
+      responses:
+        '200':
+          description: Estado de salud de las aplicaciones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApplicationHealthResponse'
+    post:
+      tags:
+        - Aplicaciones
+      summary: Crear una nueva aplicación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '200':
+          description: Aplicación creada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: Input inválido o error de la database
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    delete:
+      tags:
+        - Aplicaciones
+      summary: Eliminar una aplicación por nombre
+      parameters:
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Applicación eliminada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: Falta de parámetros (name)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Error interno desconocido o de la database
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    put:
+      tags:
+        - Aplicaciones
+      summary: Actualizar una aplicación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '200':
+          description: Aplicación actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: Error inesperado o de la database
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Applicación no encontrada o falta de datos en la request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/health/name:
+    get:
+      tags:
+        - Salud
+      summary: Obtener una aplicación por nombre
+      parameters:
+        - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          description: Aplicación obtenida con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '404':
+          description: Applicacion no encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/health:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado de salud
+      description: Verifica tanto el estado en vivo como el estado listo de la aplicación.
+      responses:
+        '200':
+          description: Estados de salud verificados exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  live:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+                  ready:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/ready:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado listo
+      description: Verifica si la aplicación está lista para manejar solicitudes.
+      responses:
+        '200':
+          description: Estado listo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/live:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado en vivo
+      description: Verifica el estado en vivo de la aplicación.
+      responses:
+        '200':
+          description: Estado en vivo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+components:
+  parameters:
+    name:
+      in: query
+      name: name
+      required: true
+      schema:
+        type: string
+  schemas:
+    ApplicationHealthResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la aplicación
+        response:
+          type: object
+          properties:
+            status:
+              type: string
+              description: Estado de la aplicación
+            version:
+              type: string
+              description: Versión de la aplicación
+    Application:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la aplicación
+        endpoint:
+          type: string
+          description: Endpoint de la aplicación
+        frequency:
+          type: string
+          description: Frecuencia de chequeo de la aplicación
+        email:
+          type: string
+          description: Correo electrónico asociado a la aplicación

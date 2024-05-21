@@ -1,0 +1,430 @@
+openapi: 3.0.1
+info:
+  title: API de usuarios, login y salud
+  description: Esta API se encarga de gestionar los usuarios y el rendimiento de la API misma.
+  version: 1.0.0
+tags:
+  - name: Usuarios
+    description: Operaciones relacionadas con la autenticación de usuarios
+  - name: Salud
+    description: Operaciones relacionadas con la salud de la API
+  - name: Login
+    description: Operaciones relacionadas con la autenticación de usuarios
+paths:
+  /api/v1/login:
+    post:
+      tags:
+        - Login
+      summary: Autenticación de usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Autenticación exitosa, devuelve un token JWT
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        '400':
+          description: Error de autenticación, los detalles del error se proporcionan en el cuerpo de la respuesta.
+        '404':
+          description: Usuario no encontrado en la database.
+        '405':
+          description: Método HTTP no permitido. Únicamente se permite el método POST.
+  /api/v1/users:
+    get:
+      tags:
+        - Usuarios
+      summary: Listar usuarios
+      description: Devuelve una lista de usuarios con soporte para paginación.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Lista de usuarios y recuento total.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Clients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        email:
+                          type: string
+                  Registros:
+                    type: integer
+        '401':
+          description: Token no válido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - Usuarios
+      summary: Crear un nuevo usuario
+      description: Crea un nuevo usuario proporcionando email, nombre de usuario y contraseña.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Usuario creado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Faltan campos obligatorios o error al crear el usuario.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    delete:
+      tags:
+        - Usuarios
+      summary: Eliminar usuario
+      description: Elimina un usuario basado en el correo electrónico proporcionado.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/email'
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '401':
+          description: Token no válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    put:
+      tags:
+        - Usuarios
+      summary: Actualizar usuario
+      description: Actualiza los datos de un usuario basado en el correo electrónico antiguo proporcionado.
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/email'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Usuario actualizado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '401':
+          description: Token no válido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Usuario no encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/health:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado de salud
+      description: Verifica tanto el estado en vivo como el estado listo de la aplicación.
+      responses:
+        '200':
+          description: Estados de salud verificados exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  live:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+                  ready:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/ready:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado listo
+      description: Verifica si la aplicación está lista para manejar solicitudes.
+      responses:
+        '200':
+          description: Estado listo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/health/live:
+    get:
+      tags:
+        - Salud
+      summary: Verificar estado en vivo
+      description: Verifica el estado en vivo de la aplicación.
+      responses:
+        '200':
+          description: Estado en vivo verificado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum: [pass, fail]
+                        description:
+                          type: string
+  /api/v1/users/{email}:
+    get:
+      tags:
+        - Usuarios
+      summary: Obtener usuario por email
+      description: Permite obtener la información de un usuario específico mediante su dirección de correo electrónico.
+      parameters:
+        - $ref: '#/components/parameters/email'
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID del usuario
+                  username:
+                    type: string
+                    description: Nombre de usuario
+                  email:
+                    type: string
+                    description: Correo electrónico del usuario
+        '401':
+          description: Token no válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/v1/users/password:
+    get:
+      tags:
+        - Usuarios
+      summary: Recuperar contraseña de usuario
+      description: Permite a un usuario recuperar su contraseña proporcionando su correo electrónico.
+      parameters:
+        - $ref: '#/components/parameters/email'
+      responses:
+        '200':
+          description: Contraseña recuperada exitosamente
+          content:
+            text/plain:
+              schema:
+                type: string
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    patch:
+      tags:
+        - Usuarios
+      summary: Actualizar contraseña de usuario
+      description: Permite a un usuario autenticado actualizar su contraseña.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Email_Password'
+      responses:
+        '200':
+          description: Contraseña actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '401':
+          description: Token no válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+components:
+  parameters:
+    token:
+      name: token
+      in: header
+      description: Token de autenticación.
+      required: true
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+      description: Número de la página a recuperar.
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+      description: Cantidad de usuarios por página.
+    email:
+      name: email
+      in: query
+      schema:
+        type: string
+      description: Correo electrónico del usuario a eliminar/actualizar.
+
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Nombre de usuario
+        email:
+          type: string
+          description: Correo electrónico del usuario
+        password:
+          type: string
+          description: Clave de usuario
+    Email_Password:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Correo electrónico del usuario
+        password:
+          type: string
+          description: Nueva contraseña del usuario
