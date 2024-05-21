@@ -19,6 +19,18 @@ def get_notifications(page, page_size):
         return []
     return notifications
 
+def get_notifications_email(page, page_size, email):
+    #buscar las notificaciones en la base de datos
+    notificions = []
+    try:
+        session = Session()
+        offset = (page - 1) * page_size
+        notifications = session.query(Notification).filter(Notification.target == email).offset(offset).limit(page_size).all()
+        session.close()
+    except Exception as e:
+        return []
+    return notifications
+
 def create_notification(notification):
     #crear una notificacion en la base de datos
     session = Session()

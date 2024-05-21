@@ -1,5 +1,5 @@
 from models.notification import Notification
-from services.notification_service import get_notifications, create_notification
+from services.notification_service import get_notifications, create_notification, get_notifications_email
 from communication.communication import create_log
 
 def get_notificaions_handler(page, page_size):
@@ -18,6 +18,26 @@ def get_notificaions_handler(page, page_size):
     name = "User wanted to list all notificacion"
     summary = "User listed all notifications"
     description = "User listed all notifications"
+    log_type = "INFO"
+    create_log(name, summary, description, log_type)
+    return notifications_list
+
+def get_notificaions_by_email_handler(page, page_size, email):
+    notifications = get_notifications_email(page, page_size, email)
+    
+    #mapear las notificaciones a un json
+    notifications_list = []
+    for notification in notifications:
+        notification_dict = {
+            'subject': notification.subject,
+            'message': notification.message,
+            'target': notification.target
+        }
+        notifications_list.append(notification_dict)
+        
+    name = "User wanted to list all notificacion by email"
+    summary = "User listed all notifications by email"
+    description = "User listed all notifications by email"
     log_type = "INFO"
     create_log(name, summary, description, log_type)
     return notifications_list
