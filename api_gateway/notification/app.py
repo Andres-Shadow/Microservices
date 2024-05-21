@@ -51,17 +51,17 @@ def filter(email):
     else :
         return jsonify({'error': 'Metodo no permitido'}), 405
     
-@app.route('/api/v1/notification/health', methods=['GET'])
+@app.route('/api/v1/health', methods=['GET'])
 def health():
     body = verify_server_health()
     return jsonify(body.to_dict())
 
-@app.route('/api/v1/notification/health/ready', methods=['GET'])
+@app.route('/api/v1/health/ready', methods=['GET'])
 def ready():
     body = verify_server_ready()
     return jsonify(body.to_dict())
 
-@app.route('/api/v1/notification/health/live', methods=['GET'])
+@app.route('/api/v1/health/live', methods=['GET'])
 def live():
     body = verify_server_live()
     return jsonify(body.to_dict())

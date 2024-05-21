@@ -27,7 +27,7 @@ func main() {
 	//rutas de la salud
 	r.GET("/health/live", handlers.CheckLive)
 	r.GET("/health/ready", handlers.CheackReadyHealth)
-	r.GET("/health", handlers.CheckHealth)
+	r.GET("/api/v1/health", handlers.CheckHealth)
 
 	// Canales para controlar la aplicación
 	quit := make(chan os.Signal, 1)

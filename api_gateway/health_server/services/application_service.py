@@ -31,8 +31,8 @@ def get_all_registered_applications():
     # Crear una nueva sesión
     session = Session()
     
-    # Obtener todas las aplicaciones registradas
-    applications = session.query(Application).all()
+    # Obtener las primeras 4 aplicaciones registradas
+    applications = session.query(Application).limit(4).all()
     
     # Cerrar la sesión
     session.close()
