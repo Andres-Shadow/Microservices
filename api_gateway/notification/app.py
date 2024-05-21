@@ -24,8 +24,13 @@ def notification():
         #obtener el body de la petición
         body = request.json
         #crear una notificación
-        response = create_notification_handler(body)
-        return jsonify(response)
+        try: 
+            response = create_notification_handler(body)
+            return jsonify(response), 200
+        except Exception as e:
+            print(e)
+            return jsonify({'error': str(e)}), 400
+        
     else :
         return jsonify({'error': 'Metodo no permitido'}), 405
     

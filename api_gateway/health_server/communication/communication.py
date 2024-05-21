@@ -16,7 +16,7 @@ class NATSClient:
 
     async def connect(self):
         if not self._is_connected:
-            nats_host = os.getenv("NATS_HOST", "localhost")
+            nats_host = os.getenv("NATS_SERVER", "localhost")
             nats_url = "nats://" + nats_host + ":4222"
             try:
                 await self.nc.connect(nats_url)
@@ -42,7 +42,6 @@ async def send_log_via_nats(log):
     if nats_client._is_connected:
         log_json = log.to_json()
         await nats_client.publish("MicroservicesLogs", log_json.encode('utf-8'))
-        await nats_client.drain()
 
 def create_log(name, summary, description, log_type):
     log = Log(

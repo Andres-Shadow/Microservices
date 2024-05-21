@@ -67,6 +67,7 @@ services:
       - LOGS_DATABASE=log_database
       - HEALTH_HOST=health_server
       - USER_PROFILE_HOST=user_profile
+      - NOTIFICATION_HOST=notification_server
 
   #SERVICIO DE HEALTH DATABASE
   health_database:
@@ -90,6 +91,7 @@ services:
       - health_database
     environment:
       - DB_HOST=health_database
+      - NATS_SERVER=nats
 
   user_profile:
     build: ./users_api
@@ -113,6 +115,30 @@ services:
       - "3309"
     environment:
       MYSQL_DATABASE: users
+      MYSQL_ROOT_PASSWORD: andres_1
+
+  notification_server:
+    build: ./notification
+    ports:
+      - "9096:9096"
+    expose:
+      - "9096"
+    depends_on:
+      - nats
+      - notification_database
+    environment:
+      - DB_NOTIFICATION_HOST=notification_database
+      - NATS_SERVER=nats
+      - NATS_SUBJECT=MicroservicesLogs
+
+  notification_database:
+    image: mysql:latest
+    ports:
+      - "3310:3306"
+    expose:
+      - "3310"
+    environment:
+      MYSQL_DATABASE: notifications
       MYSQL_ROOT_PASSWORD: andres_1
 
   #SERVICIO DE PROMETHEUS

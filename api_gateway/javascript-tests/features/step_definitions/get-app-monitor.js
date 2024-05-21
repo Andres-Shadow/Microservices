@@ -24,6 +24,7 @@ Given(
       response = respuesta.data;
       statusCode = respuesta.status;
     } catch (e) {
+      console.log("Error:", e);
       response = e.response;
       statusCode = e.response.status;
     }

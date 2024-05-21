@@ -19,7 +19,7 @@ Given("el id existe en la base de datos", async function () {
           console.error("Error:", error);
           reject(error);
         } else {
-          //console.log("count", count);
+          // console.log("count", count);
           resolve(count);
         }
       });
