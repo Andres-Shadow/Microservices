@@ -1,4 +1,6 @@
-# Microservices Architecture Project 🚀
+<h1 align=center>
+    Microservices Architecture Project 🚀
+</h1>
 
 Welcome to the Microservices Architecture Project, developed as part of the Microservices Architecture course at the University of Quindío. This project demonstrates a robust microservices architecture using a variety of technologies and design patterns for optimal scalability, reliability, and monitoring. All microservices are containerized and orchestrated via Docker Compose, ensuring smooth inter-service communication and easy deployment. 🌐
 
