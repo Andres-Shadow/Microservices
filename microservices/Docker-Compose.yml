@@ -1,15 +1,19 @@
 version: "2.8"
 services:
-  #SERVICIO DE LA BASE DE DATOS
+  # ---------------------- #
+  # USER AUTH SERVICES
+  # ---------------------- #
+
+  #USER AUTH DATABASE
   database:
-    build: ./database
+    build: ./auth_database
     ports:
       - "5432:5432"
     expose:
       - "5432"
-  #SERVICIO DEL PRODUCTOR
+  #USER AUTH SERVICE
   server:
-    build: ./go_server
+    build: ./auth_server
     ports:
       - "9090:9090"
     expose:
@@ -22,9 +26,13 @@ services:
       - database
       - nats
 
-  #SERVICIO DEL CONSUMIDOR
+  # ---------------------- #
+  # LOGS MANAGE SERVICES
+  # ---------------------- #
+
+  # LOGS MANAGER SERVICE
   cliente:
-    build: ./logs-manage-api
+    build: ./logs_manager_server
     depends_on:
       - log_database
       - nats
@@ -39,48 +47,19 @@ services:
     expose:
       - "9091"
 
-  #SERVICIO DE NATS
-  nats:
-    image: nats:latest
-    ports:
-      - "4222:4222"
-    expose:
-      - "4222"
-
-  #SERVICIO DE LA BASE DE DATOS DE LOS LOGS
+  #LOGS MANAGER DATABASE
   log_database:
-    build: ./logs-database
+    build: ./logs_manager_database
     ports:
       - "3307:3306"
     expose:
       - "3306"
 
-  #SERVICIO DE JENKINS
-  jenkins:
-    build: ./jenkins
-    ports:
-      - "6432:8080"
-      - "50000:50000"
-    environment:
-      - USER_SERVER_HOST=server
-      - LOGS_HOST=cliente
-      - LOGS_DATABASE=log_database
-      - HEALTH_HOST=health_server
-      - USER_PROFILE_HOST=user_profile
-      - NOTIFICATION_HOST=notification_server
+  # ---------------------- #
+  # HEALTH SERVICES
+  # ---------------------- #
 
-  #SERVICIO DE HEALTH DATABASE
-  health_database:
-    image: mysql:latest
-    ports:
-      - "3308:3306"
-    expose:
-      - "3308"
-    environment:
-      MYSQL_DATABASE: applications
-      MYSQL_ROOT_PASSWORD: andres_1
-
-  #SERVICIO DE HEALTH SERVER
+  #HEALTH SERVice
   health_server:
     build: ./health_server
     ports:
@@ -93,8 +72,24 @@ services:
       - DB_HOST=health_database
       - NATS_SERVER=nats
 
+  #HEALTH SERVICE DATABASE
+  health_database:
+    image: mysql:latest
+    ports:
+      - "3308:3306"
+    expose:
+      - "3308"
+    environment:
+      MYSQL_DATABASE: applications
+      MYSQL_ROOT_PASSWORD: andres_1
+
+  # ---------------------- #
+  # USER PROFILE SERVICES
+  # ---------------------- #
+
+  #USER PROFILE SERVICE
   user_profile:
-    build: ./users_api
+    build: ./user_profile_server
     ports:
       - "9094:9094"
     expose:
@@ -107,6 +102,7 @@ services:
       - NATS_SERVER=nats
       - NATS_SUBJECT=MicroservicesLogs
 
+  #USER PROFILE DATABASE
   user_profile_database:
     image: mysql:latest
     ports:
@@ -117,8 +113,13 @@ services:
       MYSQL_DATABASE: users
       MYSQL_ROOT_PASSWORD: andres_1
 
+  # ---------------------- #
+  # NOTIFICATION SERVICES
+  # ---------------------- #
+
+  #NOTIFICATION SERVICE
   notification_server:
-    build: ./notification
+    build: ./notification_server
     ports:
       - "9096:9096"
     expose:
@@ -131,6 +132,7 @@ services:
       - NATS_SERVER=nats
       - NATS_SUBJECT=MicroservicesLogs
 
+  #NOTIFICATION DATABASE
   notification_database:
     image: mysql:latest
     ports:
@@ -141,8 +143,13 @@ services:
       MYSQL_DATABASE: notifications
       MYSQL_ROOT_PASSWORD: andres_1
 
+  # ---------------------- #
+  # GATEWAY SERVICES
+  # ---------------------- #
+
+  #GATEWAY SERVICE
   gateway_server:
-    build: ./gateway
+    build: ./gateway_server
     ports:
       - "9095:9095"
     expose:
@@ -162,7 +169,37 @@ services:
       - NOTIFICATION_HOST=notification_server
       - NATS_SERVER=nats
 
-  #SERVICIO DE PROMETHEUS
+  # ---------------------- #
+  # AUXILIAR SERVICES
+  # ---------------------- #
+
+  #NATS SERVICE
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
+    expose:
+      - "4222"
+
+  #JENKINS SERVICE
+  jenkins:
+    build: ./jenkins_configuration
+    ports:
+      - "6432:8080"
+      - "50000:50000"
+    environment:
+      - USER_SERVER_HOST=server
+      - LOGS_HOST=cliente
+      - LOGS_DATABASE=log_database
+      - HEALTH_HOST=health_server
+      - USER_PROFILE_HOST=user_profile
+      - NOTIFICATION_HOST=notification_server
+
+  # ---------------------- #
+  # PROMETHEUS SERVICES
+  # ---------------------- #
+
+  #PROMETHEUS SERVICE
   # prometheus:
   #   image: prom/prometheus:latest # Usa la imagen oficial de Prometheus
   #   volumes:

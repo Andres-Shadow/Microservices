@@ -1,4 +1,4 @@
-import healthServices from "../logs-services/health-services";
+import healthServices from "./health-services";
 import { Check, LiveStatus, CheckData } from "../models/health-response";
 
 
