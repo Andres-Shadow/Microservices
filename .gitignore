@@ -1,4 +1,5 @@
-api_gateway/logs-manage-api/node_modules
-api_gateway/javascript-tests/node_modules
-api_gateway/gateway/node_modules
+microservices/logs-manage-api/node_modules
+microservices/javascript-tests/node_modules
+microservices/gateway/node_modules
+*.vscode
 *.env
