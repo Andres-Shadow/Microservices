@@ -1,10 +1,11 @@
 {
-  "name": "javascript-tests",
+  "name": "gherkin-e2e-tests",
   "version": "1.0.0",
-  "description": "",
+  "description": "End-to-end Gherkin/Cucumber tests for the microservices platform",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cucumber-js features/",
+    "report": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +19,6 @@
     "axios": "^1.6.8",
     "chai": "^5.1.0",
     "cucumber-html-reporter": "^7.1.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.9.4"
+    "pg": "^8.11.5"
   }
 }
