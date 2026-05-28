@@ -14,6 +14,12 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   # ─────────────────────────────────────────────
   # AUTH SERVICE
@@ -35,8 +41,10 @@ services:
       - NATS_SUBJECT=MicroservicesLogs
       - JWT_SECRET=changeme_use_a_strong_secret_in_production
     depends_on:
-      - database
-      - nats
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
 
   # ─────────────────────────────────────────────
   # LOGS MANAGER SERVICE
@@ -57,8 +65,10 @@ services:
       - DATABASE_SCHEMA=logs
       - PUERTO=9091
     depends_on:
-      - database
-      - nats
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
 
   # ─────────────────────────────────────────────
   # HEALTH MONITOR SERVICE
@@ -80,8 +90,12 @@ services:
       - NOTIFICATION_HOST=notification_server
       - NOTIFICATION_PORT=9096
     depends_on:
-      - database
-      - nats
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+      notification_server:
+        condition: service_started
 
   # ─────────────────────────────────────────────
   # USER PROFILE SERVICE
@@ -102,8 +116,10 @@ services:
       - NATS_SERVER=nats
       - NATS_SUBJECT=MicroservicesLogs
     depends_on:
-      - database
-      - nats
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
 
   # ─────────────────────────────────────────────
   # NOTIFICATION SERVICE
@@ -116,11 +132,16 @@ services:
       - "9096"
     environment:
       - DB_NOTIFICATION_HOST=notification_database
+      - DB_NOTIFICATION_PORT=3306
+      - DB_NOTIFICATION_USER=root
+      - DB_NOTIFICATION_PASSWORD=andres_1
       - NATS_SERVER=nats
       - NATS_SUBJECT=MicroservicesLogs
     depends_on:
-      - nats
-      - notification_database
+      nats:
+        condition: service_healthy
+      notification_database:
+        condition: service_healthy
 
   # Notification server still uses its own MySQL (not yet migrated)
   notification_database:
@@ -163,11 +184,17 @@ services:
   # INFRASTRUCTURE
   # ─────────────────────────────────────────────
   nats:
-    image: nats:latest
+    image: nats:2.10
     ports:
       - "4222:4222"
     expose:
       - "4222"
+    healthcheck:
+      test: ["CMD", "nats-server", "--help"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
 
   jenkins:
     build: ./ci/jenkins
@@ -180,16 +207,6 @@ services:
       - HEALTH_HOST=health_server
       - USER_PROFILE_HOST=user_profile
       - NOTIFICATION_HOST=notification_server
-
-  # ─────────────────────────────────────────────
-  # PROMETHEUS (commented — not yet configured)
-  # ─────────────────────────────────────────────
-  # prometheus:
-  #   image: prom/prometheus:latest
-  #   volumes:
-  #     - ./prometheus.yml:/etc/prometheus/prometheus.yml
-  #   ports:
-  #     - "9093:9090"
 
 volumes:
   postgres_data:
