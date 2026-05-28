@@ -1,22 +1,21 @@
-from services.health_service import *
+from models.data_check import HealthReport
+from services.health_service import construct_ready_body, construct_alive_body
 
-def verify_server_ready():
-    body = construct_ready_body()
-    return body
 
-def verify_server_live():
-    body = construct_alive_body()
-    return body
+def verify_server_ready() -> HealthReport:
+    return construct_ready_body()
 
-def verify_server_health():
-    ready_report = construct_ready_body()
-    alive_report = construct_alive_body()
-    
-    combined_status = "UP" if ready_report.status == "UP" and alive_report.status == "UP" else "DOWN"
-    combined_checks = ready_report.checks + alive_report.checks
-    
-    combined_report = HealthReport(
+
+def verify_server_live() -> HealthReport:
+    return construct_alive_body()
+
+
+def verify_server_health() -> HealthReport:
+    ready = construct_ready_body()
+    alive = construct_alive_body()
+
+    combined_status = "UP" if ready.status == "UP" and alive.status == "UP" else "DOWN"
+    return HealthReport(
         status=combined_status,
-        checks=combined_checks
+        checks=alive.checks + ready.checks,
     )
-    return combined_report
