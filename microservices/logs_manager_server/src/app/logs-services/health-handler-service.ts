@@ -1,106 +1,48 @@
-import healthServices from "./health-services";
-import { Check, LiveStatus, CheckData } from "../models/health-response";
+import healthServices from './health-services';
+import { Check, LiveStatus, CheckData } from '../models/health-response';
 
-
-async function verifyLiveDependencies() {
-    let estado = await healthServices.verifyDatabaseConnection()
-    let dbCheck = estado ? 'UP' : 'DOWN';
-    let dbStatus = estado ? 'READY' : 'DOWN';
-
-    const CheckData: CheckData = {
-        from: new Date().toISOString(),
-        status: dbStatus,
-    }
-
-    const Check: Check = {
-        name: 'Losg Service Database alive connection test',
-        status: dbCheck,
-        data: CheckData,
-    }
-
-
-
-    const natsConnection = await healthServices.verifyNatsConnection();
-    let natsCheck = natsConnection ? 'UP' : 'DOWN';
-    let natsStatus = natsConnection ? 'READY' : 'DOWN';
-
-    const CheckDataNats: CheckData = {
-        from: new Date().toISOString(),
-        status: natsStatus,
-    }
-
-    const CheckNats: Check = {
-        name: 'Losg Service NATS alive connection test',
-        status: natsCheck,
-        data: CheckDataNats,
-    }
-
-    // Envía el objeto como respuesta JSON
-
-
-    const checks: Check[] = [Check, CheckNats];
-
-    let uptime = healthServices.getUptime();
-    // // Crea el objeto principal con el estado y la lista de 'checks'
-    const liveStatus: LiveStatus = {
-        status: 'UP',
-        checks,
-        version: '1.0',
-        uptime: uptime,
+function buildCheck(name: string, isUp: boolean): Check {
+    const checkData: CheckData = {
+        from:   new Date().toISOString(),
+        status: isUp ? 'READY' : 'DOWN',
     };
-
-    return liveStatus;
+    return {
+        name,
+        status: isUp ? 'UP' : 'DOWN',
+        data:   checkData,
+    };
 }
 
-async function verifyReadyDependencies() {
-    let estado = await healthServices.verifyDatabaseReady()
-    let dbCheck = estado ? 'UP' : 'DOWN';
-    let dbStatus = estado ? 'READY' : 'DOWN';
-
-    const CheckData: CheckData = {
-        from: new Date().toISOString(),
-        status: dbStatus,
-    }
-
-    const Check: Check = {
-        name: 'Losg Service Database ready connection test',
-        status: dbCheck,
-        data: CheckData,
-    }
-
-
-    // Verificar conexión a NATS
-
-    const natsConnection = await healthServices.verifyNatsReady();
-    let natsCheck = natsConnection ? 'UP' : 'DOWN';
-    let natsStatus = natsConnection ? 'READY' : 'DOWN';
-
-    const CheckDataNats: CheckData = {
-        from: new Date().toISOString(),
-        status: natsStatus,
-    }
-
-    const CheckNats: Check = {
-        name: 'Losg Service NATS ready connection test',
-        status: natsCheck,
-        data: CheckDataNats,
-    }
-
-    // Envía el objeto como respuesta JSON
-
-
-    const checks: Check[] = [Check, CheckNats];
-
-    let uptime = healthServices.getUptime();
-    // // Crea el objeto principal con el estado y la lista de 'checks'
-    const liveStatus: LiveStatus = {
-        status: 'UP',
+function buildStatus(checks: Check[]): LiveStatus {
+    const allUp = checks.every(c => c.status === 'UP');
+    return {
+        status:  allUp ? 'UP' : 'DOWN',
         checks,
-        version: '1.0',
-        uptime: uptime,
+        version: '1.0.0',
+        uptime:  healthServices.getUptime(),
     };
-
-    return liveStatus;
 }
 
-export { verifyLiveDependencies, verifyReadyDependencies };
+export async function verifyLiveDependencies(): Promise<LiveStatus> {
+    const [dbOk, natsOk] = await Promise.all([
+        healthServices.verifyDatabaseConnection(),
+        healthServices.verifyNatsConnection(),
+    ]);
+
+    return buildStatus([
+        buildCheck('Logs Service Database alive connection check', dbOk),
+        buildCheck('Logs Service NATS alive connection check', natsOk),
+    ]);
+}
+
+export async function verifyReadyDependencies(): Promise<LiveStatus> {
+    const [dbOk, natsOk] = await Promise.all([
+        healthServices.verifyDatabaseReady(),
+        healthServices.verifyNatsReady(),
+    ]);
+
+    return buildStatus([
+        buildCheck('Logs Service Database ready check', dbOk),
+        buildCheck('Logs Service NATS ready check', natsOk),
+    ]);
+}
