@@ -2,7 +2,6 @@ package communication
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"sync"
@@ -14,21 +13,21 @@ import (
 var (
 	once     sync.Once
 	instance *nats.Conn
-	logger   *NatsLogger // Variable global para acceder a la instancia única de NatsLogger
 )
 
-// NatsLogger es una estructura que contiene la conexión a NATS
+// NatsLogger encapsula la conexión singleton a NATS.
 type NatsLogger struct {
 	conn *nats.Conn
 }
 
+// ConnectToNATS devuelve el singleton de NatsLogger.
 func ConnectToNATS() *NatsLogger {
-	var natsHost string
-	natsHost = os.Getenv("NATS_SERVER")
+	natsHost := os.Getenv("NATS_SERVER")
 	if natsHost == "" {
 		natsHost = "localhost"
 	}
 	url := "nats://" + natsHost + ":4222"
+
 	once.Do(func() {
 		nc, err := nats.Connect(url)
 		if err != nil {
@@ -40,57 +39,35 @@ func ConnectToNATS() *NatsLogger {
 	return &NatsLogger{conn: instance}
 }
 
-func init() {
-	logger = ConnectToNATS()
-}
-
-// SendLog envía un mensaje al tema de NATS usando la información en Notification
+// SendLog publica un Message serializado en JSON al subject de logs.
 func (nl *NatsLogger) SendLog(newLog *models.Message) {
-
-	var subject string
-
-	subject = os.Getenv("NATS_SUBJECT")
+	subject := os.Getenv("NATS_SUBJECT")
 	if subject == "" {
-		subject = "MicroservicesLogs"	
+		subject = "MicroservicesLogs"
 	}
 
-	// Convertir la estructura en JSON
 	jsonData, err := json.Marshal(newLog)
 	if err != nil {
-		log.Fatal(err)
-	}
-	// return nl.conn.Publish(subject, []byte(notification.Message))
-	// Publicar el mensaje JSON
-	if err := nl.conn.Publish("MicroservicesLogs", jsonData); err != nil {
-		log.Fatal(err)
+		log.Printf("Error serializando log: %v", err)
+		return
 	}
 
-	fmt.Println("Notification sent")
+	if err := nl.conn.Publish(subject, jsonData); err != nil {
+		log.Printf("Error publicando log en NATS: %v", err)
+	}
 }
 
+// SendSampleMessage publica un mensaje de prueba al subject "test".
 func (nl *NatsLogger) SendSampleMessage() bool {
-	var subject string = "test"
-
-	if err := nl.conn.Publish(subject, []byte("Sample message")); err != nil {
-		return false
-	}
-
-	return true
+	return nl.conn.Publish("test", []byte("Sample message")) == nil
 }
 
-// HealthCheckNATS verifica si la conexión a NATS está viva
+// HealthCheckNATS verifica si la conexión a NATS está activa.
 func (nl *NatsLogger) HealthCheckNATS() bool {
-	if nl.conn == nil {
-		return false
-	} else if nl.conn.Status() != nats.CONNECTED {
-		return false
-	}
-	return true
+	return nl.conn != nil && nl.conn.Status() == nats.CONNECTED
 }
 
-// ReadyNats verifica si se puede enviar un mensaje por NATS
+// ReadyNats verifica si se puede publicar en NATS.
 func (nl *NatsLogger) ReadyNats() bool {
-
 	return nl.SendSampleMessage()
-
 }

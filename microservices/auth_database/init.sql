@@ -43,3 +43,22 @@ GRANT USAGE ON SCHEMA logs TO logsuser;
 GRANT CREATE ON SCHEMA logs TO logsuser;
 ALTER DEFAULT PRIVILEGES IN SCHEMA logs
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO logsuser;
+
+-- -----------------------------------------------
+-- Schema: user_profile  (user_profile_server)
+-- -----------------------------------------------
+CREATE SCHEMA IF NOT EXISTS user_profile;
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'profileuser') THEN
+        CREATE ROLE profileuser WITH LOGIN PASSWORD 'profilepassword';
+    END IF;
+END
+$$;
+
+GRANT CONNECT ON DATABASE appdb TO profileuser;
+GRANT USAGE ON SCHEMA user_profile TO profileuser;
+GRANT CREATE ON SCHEMA user_profile TO profileuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA user_profile
+    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO profileuser;

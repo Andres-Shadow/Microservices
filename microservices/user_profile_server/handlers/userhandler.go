@@ -8,242 +8,131 @@ import (
 	"users_api/models"
 	"users_api/services"
 
-	"fmt"
-
 	"github.com/gin-gonic/gin"
 )
 
+// sendLog es un helper para no repetir la construcción de models.Message en cada handler.
+func sendLog(summary, description, logType string) {
+	msg := &models.Message{
+		Name:        "USERS_PROFILE_API",
+		Summary:     summary,
+		Description: description,
+		LogDate:     time.Now().Format(time.RFC3339),
+		LogType:     logType,
+		Module:      "USERS_PROFILE_API",
+	}
+	communication.ConnectToNATS().SendLog(msg)
+}
+
 func GetUsers(c *gin.Context) {
-	// Obtener los valores de los query params
 	page, _ := strconv.Atoi(c.Query("page"))
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 
-	if c.Query("page") == "" && c.Query("pagesize") == "" {
+	if page <= 0 {
 		page = 1
+	}
+	if pageSize <= 0 {
 		pageSize = 10
 	}
 
-	// Usa estos valores para obtener usuarios de tu servicio
 	users, err := services.GetUsers(page, pageSize)
-
 	if err != nil {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while listing users profiles",
-			Description: "Error while listing users profiles from the database",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
+		sendLog("Error listing user profiles", "Error retrieving user profiles from database", "ERROR")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not retrieve users"})
+		return
 	}
 
-	message := models.Message{
-		Name:        "USERS_PROFILE_API",
-		Summary:     "Users profiles listed",
-		Description: "Users profiles listed from the database",
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "INFO",
-		Module:      "USERS_PROFILE_API",
-	}
-	communication.ConnectToNATS().SendLog(&message)
-
-	// Responde con JSON
+	sendLog("Users profiles listed", "Users profiles listed from the database", "INFO")
 	c.JSON(http.StatusOK, users)
 }
 
 func CreateUser(c *gin.Context) {
-	// Crear un nuevo usuario
-	// Crear un nuevo usuario
 	var user models.User
 	if err := c.ShouldBindJSON(&user); err != nil {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while creating user profile",
-			Description: "Error while creating an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
+		sendLog("Error creating user profile", "Invalid JSON input", "ERROR")
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON input"})
 		return
 	}
 
-	if user.Name == "" || user.Email == "" || user.Country == "" || user.Nickname == "" || user.Public_Info == "" || user.Messaging == "" || user.Biography == "" || user.Organization == "" || user.Social_Media == "" {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while creating user profile",
-			Description: "Error while creating an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing required fields"})
+	// Campos obligatorios
+	if user.Name == "" || user.Email == "" || user.Country == "" || user.Nickname == "" || user.Public_Info == "" || user.Messaging == "" {
+		sendLog("Error creating user profile", "Missing required fields", "ERROR")
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing required fields: name, email, country, nickname, public_info, messaging"})
 		return
 	}
 
-	usr, _ := services.GetUserByEmail(user.Email)
-
-	if usr {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while creating user profile",
-			Description: "Error while creating an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Email already exists"})
+	exists, _ := services.GetUserByEmail(user.Email)
+	if exists {
+		sendLog("Error creating user profile", "Email already exists: "+user.Email, "ERROR")
+		c.JSON(http.StatusConflict, gin.H{"error": "Email already exists"})
 		return
-
 	}
-	// Manejo de errores en la creación del usuario
-	if _, err := services.CreateUser(user); err != nil {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while creating user profile",
-			Description: "Error while creating an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
+
+	created, err := services.CreateUser(user)
+	if err != nil {
+		sendLog("Error creating user profile", "Database error creating user: "+err.Error(), "ERROR")
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not create user"})
 		return
 	}
 
-	message := models.Message{
-		Name:        "USERS_PROFILE_API",
-		Summary:     "User profile created",
-		Description: "User profile created with email " + user.Email,
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "CREATION",
-		Module:      "USERS_PROFILE_API",
-	}
-
-	communication.ConnectToNATS().SendLog(&message)
-
-	c.JSON(http.StatusCreated, user)
+	sendLog("User profile created", "User profile created with email "+user.Email, "CREATION")
+	c.JSON(http.StatusCreated, created)
 }
 
 func DeleteUser(c *gin.Context) {
-	// Eliminar un usuario
 	userId := c.Query("id")
-	_, err := services.GetUserById(userId)
-	fmt.Println(err)
-	if err == nil {
-		services.DeleteUser(userId)
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "User profile deleted",
-			Description: "User profile deleted with id " + userId,
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "DELETION",
-			Module:      "USERS_PROFILE_API",
-		}
-
-		communication.ConnectToNATS().SendLog(&message)
-		c.JSON(http.StatusOK, gin.H{"message": "Usuario eliminado"})
-	} else {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while deleting user profile",
-			Description: "Error while deleting an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
-		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+	if userId == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "id query param is required"})
+		return
 	}
 
+	_, err := services.GetUserById(userId)
+	if err != nil {
+		sendLog("Error deleting user profile", "User not found with id "+userId, "ERROR")
+		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		return
+	}
+
+	services.DeleteUser(userId)
+	sendLog("User profile deleted", "User profile deleted with id "+userId, "DELETION")
+	c.JSON(http.StatusOK, gin.H{"message": "Usuario eliminado"})
 }
 
 func UpdateUser(c *gin.Context) {
-	// Actualizar un usuario
-	user := models.User{}
-	c.BindJSON(&user)
-
-	nickname := user.Nickname
-	email := user.Email
-
-	recordedUser, err := services.GetUserByNickname(nickname)
-
-	if err != nil {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while updating user profile",
-			Description: "Error while updating an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
-		c.JSON(http.StatusNotFound, gin.H{"error": "Usuario no encontrado"})
+	var user models.User
+	if err := c.ShouldBindJSON(&user); err != nil {
+		sendLog("Error updating user profile", "Invalid JSON input", "ERROR")
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON input"})
 		return
-
 	}
 
-	if recordedUser.Email != email {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while updating user profile",
-			Description: "Error while updating an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
+	recordedUser, err := services.GetUserByNickname(user.Nickname)
+	if err != nil {
+		sendLog("Error updating user profile", "User not found with nickname "+user.Nickname, "ERROR")
+		c.JSON(http.StatusNotFound, gin.H{"error": "Usuario no encontrado"})
+		return
+	}
+
+	if recordedUser.Email != user.Email {
+		sendLog("Error updating user profile", "Email mismatch for nickname "+user.Nickname, "ERROR")
 		c.JSON(http.StatusBadRequest, gin.H{"error": "No se puede actualizar el correo"})
 		return
 	}
 
 	services.UpdateUser(user)
-	message := models.Message{
-		Name:        "USERS_PROFILE_API",
-		Summary:     "User profile updated",
-		Description: "User profile created with email " + user.Email,
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "UPDATE",
-		Module:      "USERS_PROFILE_API",
-	}
-
-	communication.ConnectToNATS().SendLog(&message)
+	sendLog("User profile updated", "User profile updated with email "+user.Email, "UPDATE")
 	c.JSON(http.StatusOK, user)
 }
 
 func GetUser(c *gin.Context) {
-	// Obtener un usuario por ID
 	userEmail := c.Param("email")
 	user, err := services.RecoverUserByEmail(userEmail)
-
 	if err != nil {
-		message := models.Message{
-			Name:        "USERS_PROFILE_API",
-			Summary:     "Error while getting user profile",
-			Description: "Error while getting an user profile",
-			LogDate:     time.Now().Format(time.RFC3339),
-			LogType:     "ERROR",
-			Module:      "USERS_PROFILE_API",
-		}
-		communication.ConnectToNATS().SendLog(&message)
+		sendLog("Error getting user profile", "User not found with email "+userEmail, "ERROR")
 		c.JSON(http.StatusNotFound, gin.H{"error": "Usuario no encontrado"})
 		return
 	}
 
-	message := models.Message{
-		Name:        "USERS_PROFILE_API",
-		Summary:     "User profile obtained",
-		Description: "User profile obtained with email " + user.Email,
-		LogDate:     time.Now().Format(time.RFC3339),
-		LogType:     "INFO",
-		Module:      "USERS_PROFILE_API",
-	}
-
-	communication.ConnectToNATS().SendLog(&message)
-
+	sendLog("User profile obtained", "User profile obtained with email "+user.Email, "INFO")
 	c.JSON(http.StatusOK, user)
 }
