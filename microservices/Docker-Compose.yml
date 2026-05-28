@@ -105,23 +105,17 @@ services:
     expose:
       - "9094"
     depends_on:
+      - database
       - nats
-      - user_profile_database
     environment:
-      - DATABASE=user_profile_database
+      - DATABASE=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=profileuser
+      - DATABASE_PASSWORD=profilepassword
+      - DATABASE_NAME=appdb
+      - DATABASE_SCHEMA=user_profile
       - NATS_SERVER=nats
       - NATS_SUBJECT=MicroservicesLogs
-
-  #USER PROFILE DATABASE
-  user_profile_database:
-    image: mysql:latest
-    ports:
-      - "3309:3306"
-    expose:
-      - "3309"
-    environment:
-      MYSQL_DATABASE: users
-      MYSQL_ROOT_PASSWORD: andres_1
 
   # ---------------------- #
   # NOTIFICATION SERVICES
