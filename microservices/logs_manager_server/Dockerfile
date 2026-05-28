@@ -1,14 +1,23 @@
-FROM node:latest
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json tsconfig.json ./
+RUN npm ci --only=production=false
+
+COPY ./src ./src
+RUN npm run build
+
+# ── Runtime image ──────────────────────────────────────────────
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
-COPY tsconfig.json ./
+RUN npm ci --only=production
 
-RUN npm install
-
-COPY ./src ./src
+COPY --from=builder /app/dist ./dist
 
 EXPOSE 9091
 
-CMD ["npm", "run", "dev"]a
+CMD ["node", "dist/index.js"]
