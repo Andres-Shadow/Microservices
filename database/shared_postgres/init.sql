@@ -62,3 +62,22 @@ GRANT USAGE ON SCHEMA user_profile TO profileuser;
 GRANT CREATE ON SCHEMA user_profile TO profileuser;
 ALTER DEFAULT PRIVILEGES IN SCHEMA user_profile
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO profileuser;
+
+-- -----------------------------------------------
+-- Schema: health  (health_server)
+-- -----------------------------------------------
+CREATE SCHEMA IF NOT EXISTS health;
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'healthuser') THEN
+        CREATE ROLE healthuser WITH LOGIN PASSWORD 'healthpassword';
+    END IF;
+END
+$$;
+
+GRANT CONNECT ON DATABASE appdb TO healthuser;
+GRANT USAGE ON SCHEMA health TO healthuser;
+GRANT CREATE ON SCHEMA health TO healthuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA health
+    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO healthuser;
