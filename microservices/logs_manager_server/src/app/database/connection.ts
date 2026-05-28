@@ -1,16 +1,22 @@
 import { Sequelize } from 'sequelize';
 
-let database = process.env.DATABASE;
-let root_password = process.env.ROOT_PASSWORD;
-let port = process.env.DATABASE_PORT;
+const host     = process.env.DATABASE      ?? 'localhost';
+const port     = parseInt(process.env.DATABASE_PORT ?? '5432', 10);
+const user     = process.env.DATABASE_USER ?? 'logsuser';
+const password = process.env.DATABASE_PASSWORD ?? 'logspassword';
+const dbname   = process.env.DATABASE_NAME ?? 'appdb';
+const schema   = process.env.DATABASE_SCHEMA ?? 'logs';
 
-if (!database || !root_password || !port) {
-    database = 'localhost';
-    root_password = 'andres_1';
-    port = '3306';
-}
-
-// Configuración de la conexión a la base de datos
-const sequelize = new Sequelize(`mysql://root:${root_password}@${database}:${port}/logs`);
+const sequelize = new Sequelize(dbname, user, password, {
+    host,
+    port,
+    dialect: 'postgres',
+    schema,
+    define: {
+        // Todas las tablas se crean dentro del schema configurado
+        schema,
+    },
+    logging: false,
+});
 
 export default sequelize;
