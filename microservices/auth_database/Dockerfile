@@ -1,12 +1,13 @@
-#UTILIZAMOS LA ULTIMA IMAGEN DE POSTGRES
-FROM postgres:latest
-#ESTABLECEMOS LAS VARIABLES DE ENTONRO
-ENV POSTGRES_USER andres
-ENV POSTGRES_PASSWORD 1234
-#ESTABLECEMOS EL DIRECTORIO DE TRABAJO
-WORKDIR /app
-#COPIAMOS LAS INSTRUCCIONES
-COPY ./init.sql /docker-entrypoint-initdb.d/
-#CAMBIA LOS PERMISOS DE EJECUCIÓN 
-RUN chmod 755 /docker-entrypoint-initdb.d/init.sql
+# Imagen base de PostgreSQL
+FROM postgres:16
 
+# Base de datos compartida — cada servicio usa su propio schema
+ENV POSTGRES_DB=appdb
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+
+WORKDIR /docker-entrypoint-initdb.d
+
+# El script se ejecuta automáticamente al iniciar el contenedor
+COPY ./init.sql ./init.sql
+RUN chmod 644 ./init.sql

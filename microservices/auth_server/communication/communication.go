@@ -2,7 +2,6 @@ package communication
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"sync"
@@ -14,21 +13,21 @@ import (
 var (
 	once     sync.Once
 	instance *nats.Conn
-	logger   *NatsLogger // Variable global para acceder a la instancia única de NatsLogger
 )
 
-// NatsLogger es una estructura que contiene la conexión a NATS
+// NatsLogger encapsula la conexión a NATS.
 type NatsLogger struct {
 	conn *nats.Conn
 }
 
+// ConnectToNATS devuelve el singleton de NatsLogger, conectándose la primera vez.
 func ConnectToNATS() *NatsLogger {
-	var natsHost string
-	natsHost = os.Getenv("NATS_SERVER")
+	natsHost := os.Getenv("NATS_SERVER")
 	if natsHost == "" {
 		natsHost = "localhost"
 	}
 	url := "nats://" + natsHost + ":4222"
+
 	once.Do(func() {
 		nc, err := nats.Connect(url)
 		if err != nil {
@@ -40,76 +39,50 @@ func ConnectToNATS() *NatsLogger {
 	return &NatsLogger{conn: instance}
 }
 
-func init() {
-	logger = ConnectToNATS()
-}
-
-// SendLog envía un mensaje al tema de NATS usando la información en Notification
+// SendLog publica un LogResponse serializado en JSON al subject configurado.
 func (nl *NatsLogger) SendLog(newLog *models.LogResponse) {
-
-	var subject string
-
-	subject = os.Getenv("NATS_SUBJECT")
+	subject := os.Getenv("NATS_SUBJECT")
 	if subject == "" {
 		subject = "MicroservicesLogs"
 	}
 
-	// Convertir la estructura en JSON
 	jsonData, err := json.Marshal(newLog)
 	if err != nil {
-		log.Fatal(err)
-	}
-	// return nl.conn.Publish(subject, []byte(notification.Message))
-	// Publicar el mensaje JSON
-	if err := nl.conn.Publish("MicroservicesLogs", jsonData); err != nil {
-		log.Fatal(err)
+		log.Printf("Error serializando log: %v", err)
+		return
 	}
 
-	fmt.Println("Notification sent")
+	if err := nl.conn.Publish(subject, jsonData); err != nil {
+		log.Printf("Error publicando log en NATS: %v", err)
+	}
 }
 
-
-func (nl *NatsLogger) NotifyUserRegistration(name, email, log_type string) bool{
-	var subject string = "users.creation"
+// NotifyUserRegistration publica un evento de usuario al subject users.creation.
+func (nl *NatsLogger) NotifyUserRegistration(name, email, logType string) bool {
+	subject := "users.creation"
 	msg := models.Registration{
 		Name:  name,
 		Email: email,
-		Type:  log_type,
+		Type:  logType,
 	}
 	jsonData, err := json.Marshal(msg)
 	if err != nil {
 		return false
 	}
-	if err := nl.conn.Publish(subject, jsonData); err != nil {
-		return false
-	}
-	return true
-
+	return nl.conn.Publish(subject, jsonData) == nil
 }
 
+// SendSampleMessage publica un mensaje de prueba al subject "test".
 func (nl *NatsLogger) SendSampleMessage() bool {
-	var subject string = "test"
-
-	if err := nl.conn.Publish(subject, []byte("Sample message")); err != nil {
-		return false
-	}
-
-	return true
+	return nl.conn.Publish("test", []byte("Sample message")) == nil
 }
 
-// HealthCheckNATS verifica si la conexión a NATS está viva
+// HealthCheckNATS verifica si la conexión a NATS está activa.
 func (nl *NatsLogger) HealthCheckNATS() bool {
-	if nl.conn == nil {
-		return false
-	} else if nl.conn.Status() != nats.CONNECTED {
-		return false
-	}
-	return true
+	return nl.conn != nil && nl.conn.Status() == nats.CONNECTED
 }
 
-// ReadyNats verifica si se puede enviar un mensaje por NATS
+// ReadyNats verifica si se puede publicar un mensaje en NATS.
 func (nl *NatsLogger) ReadyNats() bool {
-
 	return nl.SendSampleMessage()
-
 }

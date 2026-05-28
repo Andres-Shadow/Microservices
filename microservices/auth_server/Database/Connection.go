@@ -1,6 +1,7 @@
 package DataBase
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"taller_apirest/models"
@@ -13,43 +14,60 @@ import (
 var DB *gorm.DB
 
 func DBConnection() {
-	var host string
-	host = os.Getenv("DATABASE")
+	host := os.Getenv("DATABASE")
 	if host == "" {
 		host = "localhost"
 	}
+	port := os.Getenv("DATABASE_PORT")
+	if port == "" {
+		port = "5432"
+	}
+	user := os.Getenv("DATABASE_USER")
+	if user == "" {
+		user = "devuser"
+	}
+	password := os.Getenv("DATABASE_PASSWORD")
+	if password == "" {
+		password = "devpassword"
+	}
+	dbname := os.Getenv("DATABASE_NAME")
+	if dbname == "" {
+		dbname = "appdb"
+	}
+	schema := os.Getenv("DATABASE_SCHEMA")
+	if schema == "" {
+		schema = "auth"
+	}
 
-	var DSN = "host=" + host + " user=andres password=1234 dbname=users port=5432"
+	dsn := fmt.Sprintf(
+		"host=%s port=%s user=%s password=%s dbname=%s search_path=%s sslmode=disable",
+		host, port, user, password, dbname, schema,
+	)
 
 	for {
 		var err error
-		DB, err = gorm.Open(postgres.Open(DSN), &gorm.Config{})
+		DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 		if err != nil {
 			log.Println("Failed to connect to database. Retrying in 5 seconds...")
-			time.Sleep(5 * time.Second) // Wait for 5 seconds before retrying
-		} else {
-			log.Println("DB Connected")
-			break // Exit the loop once the connection is successful
+			time.Sleep(5 * time.Second)
+			continue
 		}
+		// Crear el schema si no existe
+		if err := DB.Exec(fmt.Sprintf("CREATE SCHEMA IF NOT EXISTS %s", schema)).Error; err != nil {
+			log.Printf("Warning: could not create schema %s: %v", schema, err)
+		}
+		log.Println("DB Connected")
+		break
 	}
 }
 
+// VerifyDatabaseConnection hace un ping simple a la base de datos.
 func VerifyDatabaseConnection() bool {
-
-	//hacer un ping a la base de datos
-	err := DB.Exec("SELECT 1").Error
-	if err != nil {
-		return false
-	} else {
-		return true
-	}
+	return DB.Exec("SELECT 1").Error == nil
 }
 
+// VerifyDatabaseReady verifica que la tabla de usuarios sea accesible.
 func VerifyDatabaseReady() bool {
 	var count int64
-	if err := DB.Model(&models.User{}).Count(&count).Error; err != nil {
-		return false
-	} else {
-		return true
-	}
+	return DB.Model(&models.User{}).Count(&count).Error == nil
 }
