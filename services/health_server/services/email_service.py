@@ -1,64 +1,57 @@
-import requests
 import json
-import json
+import logging
 import os
+import requests
 
-estado_correo = {
-    "live": False,
-    "ready": False,
-}
-# Función para enviar correos
-def send_email(subject, body, to_email):
-    # api_key = os.getenv("API_KEY")
-    # domain = os.getenv("DOMAIN")
+logger = logging.getLogger(__name__)
 
-    # request_url = f"https://api.mailgun.net/v3/{domain}/messages"
+# Estado de alertas por aplicación (keyed by app name)
+# Evita reenviar el mismo correo mientras el servicio sigue caído.
+_alert_sent: dict[str, dict[str, bool]] = {}
 
-    # requests.post(
-    #     request_url,
-    #     auth=("api", api_key),
-    #     data={
-    #         "from": "Servicio de Monitorización <monitor@tu-dominio.com>",
-    #         "to": [to_email],
-    #         "subject": subject,
-    #         "text": body,
-    #     },
-    # )
-    
-    #crear un objeto json con el contenido del correo
-    email = {
-        'subject': subject,
-        'message': body,
-        'target': to_email
+
+def _notification_url() -> str:
+    host = os.getenv("NOTIFICATION_HOST", "localhost")
+    port = os.getenv("NOTIFICATION_PORT", "9096")
+    return f"http://{host}:{port}/api/v1/notification"
+
+
+def send_email(subject: str, body: str, to_email: str) -> None:
+    """Envía una notificación al notification_server vía HTTP."""
+    payload = {
+        "subject": subject,
+        "message": body,
+        "target":  to_email,
     }
-    
-    #hacer una peticion post al servicio de notificaciones
-    response = requests.post('http://localhost:9096/api/v1/notification', json=email)
+    try:
+        response = requests.post(_notification_url(), json=payload, timeout=5)
+        response.raise_for_status()
+        logger.info("Notification sent to %s", to_email)
+    except requests.exceptions.RequestException as exc:
+        logger.error("Failed to send notification to %s: %s", to_email, exc)
 
 
+def revisar_aplicaciones(app_name: str, result: dict, email: str) -> None:
+    """
+    Revisa el resultado del health check de una aplicación y envía
+    alertas por correo cuando el estado cambia a DOWN.
+    Restablece el flag cuando el servicio se recupera.
+    """
+    state = _alert_sent.setdefault(app_name, {"live": False, "ready": False})
 
-# Función para revisar los resultados y enviar correos si es necesario
-def revisar_aplicaciones(result, email):
-    # Uso de la variable global importada
-    if "live" in result and result["live"]["status"] == "DOWN" and not estado_correo["live"]:
-        subject = "Alerta: Estado LIVE en DOWN"
-        body = json.dumps(result["live"], indent=4)
-        print("Sending email")
-        send_email(subject, body, email)
-        estado_correo["live"] = True  # Marcar como enviado
+    for check_key in ("live", "ready"):
+        check = result.get(check_key)
+        if check is None:
+            continue
 
-    if "ready" in result and result["ready"]["status"] == "DOWN" and not estado_correo["ready"]:
-        subject = "Alerta: Estado READY en DOWN"
-        body = json.dumps(result["ready"], indent=4)
-        print("Sending email")
-        send_email(subject, body, email)
-        estado_correo["ready"] = True  # Marcar como enviado
+        is_down = check.get("status") == "DOWN"
 
-    # Restablecer el estado si se recupera
-    if "live" in result and result["live"]["status"] != "DOWN":
-        estado_correo["live"] = False
+        if is_down and not state[check_key]:
+            subject = f"[{app_name}] Alerta: estado {check_key.upper()} en DOWN"
+            body    = json.dumps(check, indent=4)
+            send_email(subject, body, email)
+            state[check_key] = True
 
-    if "ready" in result and result["ready"]["status"] != "DOWN":
-        estado_correo["ready"] = False
-
-    return 0
+        elif not is_down and state[check_key]:
+            # Servicio recuperado — resetear flag
+            state[check_key] = False
