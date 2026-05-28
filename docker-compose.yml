@@ -70,24 +70,18 @@ services:
     expose:
       - "9092"
     environment:
-      - DB_HOST=health_database
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_USER=healthuser
+      - DB_PASSWORD=healthpassword
+      - DB_NAME=appdb
+      - DB_SCHEMA=health
       - NATS_SERVER=nats
+      - NOTIFICATION_HOST=notification_server
+      - NOTIFICATION_PORT=9096
     depends_on:
-      - health_database
+      - database
       - nats
-
-  # Health server still uses its own MySQL (not yet migrated)
-  health_database:
-    image: mysql:8.0
-    ports:
-      - "3308:3306"
-    expose:
-      - "3306"
-    environment:
-      MYSQL_DATABASE: applications
-      MYSQL_ROOT_PASSWORD: andres_1
-    volumes:
-      - health_db_data:/var/lib/mysql
 
   # ─────────────────────────────────────────────
   # USER PROFILE SERVICE
@@ -199,5 +193,4 @@ services:
 
 volumes:
   postgres_data:
-  health_db_data:
   notification_db_data:
