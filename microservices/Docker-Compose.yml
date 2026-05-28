@@ -1,16 +1,23 @@
-version: "2.8"
 services:
   # ---------------------- #
   # USER AUTH SERVICES
   # ---------------------- #
 
-  #USER AUTH DATABASE
+  # Shared PostgreSQL instance — schema-per-service strategy
+  # Cada microservicio usa su propio schema dentro de "appdb"
   database:
     build: ./auth_database
     ports:
       - "5432:5432"
     expose:
       - "5432"
+    environment:
+      - POSTGRES_DB=appdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   #USER AUTH SERVICE
   server:
     build: ./auth_server
@@ -20,8 +27,14 @@ services:
       - "9090"
     environment:
       - DATABASE=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=devuser
+      - DATABASE_PASSWORD=devpassword
+      - DATABASE_NAME=appdb
+      - DATABASE_SCHEMA=auth
       - NATS_SERVER=nats
       - NATS_SUBJECT=MicroservicesLogs
+      - JWT_SECRET=changeme_use_a_strong_secret_in_production
     depends_on:
       - database
       - nats
@@ -31,29 +44,26 @@ services:
   # ---------------------- #
 
   # LOGS MANAGER SERVICE
+  # La base de datos ya no es independiente: usa el schema "logs"
+  # dentro de la instancia PostgreSQL compartida (servicio "database")
   cliente:
     build: ./logs_manager_server
     depends_on:
-      - log_database
+      - database
       - nats
     environment:
       - NATS_SERVER=nats
-      - DATABASE=log_database
-      - DATABASE_PORT=3306
-      - ROOT_PASSWORD=andres_1
+      - DATABASE=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=logsuser
+      - DATABASE_PASSWORD=logspassword
+      - DATABASE_NAME=appdb
+      - DATABASE_SCHEMA=logs
       - PUERTO=9091
     ports:
       - "9091:9091"
     expose:
       - "9091"
-
-  #LOGS MANAGER DATABASE
-  log_database:
-    build: ./logs_manager_database
-    ports:
-      - "3307:3306"
-    expose:
-      - "3306"
 
   # ---------------------- #
   # HEALTH SERVICES
@@ -206,3 +216,6 @@ services:
   #     - ./prometheus.yml:/etc/prometheus/prometheus.yml # Monta el archivo de configuración
   #   ports:
   #     - "9093:9090" # Puerto para acceder a la interfaz de Prometheus
+
+volumes:
+  postgres_data:
