@@ -1,268 +1,159 @@
-//importar axios
-const axios = require("axios");
-//importar las rutas
-const login = require("../configuracion/routesConfiguration").loginUrl;
-const auth_server_url = require("../configuracion/routesConfiguration").userurl;
-const user_profile_service =
-  require("../configuracion/routesConfiguration").userProfile;
-//importar la funcion sendlosToNats
-const nats = require("../services/communicationService");
+const axios = require('axios');
+const jwt   = require('jsonwebtoken');
+
+const {
+  loginUrl,
+  userurl,
+  userProfile,
+  passwordRoute,
+  passwordUpdateRoute,
+} = require('../configuracion/routesConfiguration');
+const nats = require('../services/communicationService');
+
+// JWT_SECRET debe coincidir con el del auth_server
+const JWT_SECRET = process.env.JWT_SECRET || 'changeme_set_JWT_SECRET_env_var';
 
 class MainHandler {
-  static async getUsers(request, reply) {
-    //obtener el header authorization
-    const authHeader = request.headers.authorization;
 
-    const decodedToken = MainHandler.verifyJwt(authHeader);
+  // ── helpers ────────────────────────────────────────────────────────────────
 
-    if (!decodedToken) {
-      reply.code(401).send({ message: "Unauthorized" });
-      return;
-    }
-
+  static verifyJwt(authHeader) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) return null;
+    const token = authHeader.slice(7);
     try {
-      // Realizar la petición GET con node-fetch y pasar el token en el encabezado de autorización
-      const response = await axios.get(auth_server_url, {
-        headers: {
-          Authorization: authHeader,
-        },
-      });
-      // Si la petición se realiza con éxito, devolver la respuesta
-      reply.code(200).send(response.data);
-    } catch (error) {
-      // Si ocurre algún error durante la petición, devolver un error
-      console.error("Error al realizar la petición GET:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      return jwt.verify(token, JWT_SECRET);
+    } catch {
+      return null;
     }
   }
 
-  //redirige la peticion de login
-  //localhost:9095/api/v1/user/login -> localhost:9090/api/v1/login
-  static async userLogin(request, reply) {
-    //obtener el body de la peticion
-    const usuario = request.body;
-    let respuesta;
-    console.log("entro aqui");
+  // ── handlers ───────────────────────────────────────────────────────────────
+
+  static async getUsers(request, reply) {
+    const authHeader = request.headers.authorization;
+    if (!MainHandler.verifyJwt(authHeader)) {
+      return reply.code(401).send({ message: 'Unauthorized' });
+    }
     try {
-      respuesta = await axios.post(login, usuario);
-      let name = usuario.username;
-      let description =
-        "User " + usuario.name + " logged in with email " + usuario.email;
-      let summary = "User logged in";
-      nats.sendLogToNats(name, summary, description, "INFO");
+      const response = await axios.get(userurl, { headers: { Authorization: authHeader } });
+      reply.code(200).send(response.data);
+    } catch (error) {
+      console.error('getUsers error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
+    }
+  }
+
+  static async userLogin(request, reply) {
+    const usuario = request.body;
+    try {
+      const respuesta = await axios.post(loginUrl, usuario);
+      nats.sendLogToNats(usuario.username, 'User logged in', `User ${usuario.username} logged in`, 'INFO');
       reply.code(200).send({ message: respuesta.data });
     } catch (error) {
-      let name = usuario.name;
-      let description = "User " + usuario.name + " tryed to log in";
-      let summary = "User tryed to log in";
-      nats.sendLogToNats(name, summary, description, "ERROR");
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(400).send({ message: error.response.data });
+      nats.sendLogToNats(usuario.username || 'unknown', 'Login failed', `Login attempt failed`, 'ERROR');
+      console.error('userLogin error:', error.message);
+      reply.code(400).send({ message: error.response?.data || 'Bad Request' });
     }
   }
 
   static async userRegister(request, reply) {
-    //obtener el body de la peticion
     const usuario = request.body;
-    let respuesta;
     try {
-      respuesta = await axios.post(auth_server_url, usuario);
-      let name = usuario.username;
-      let description =
-        "User " + usuario.name + " logged in with email " + usuario.email;
-      let summary = "User logged in";
-      nats.sendLogToNats(name, summary, description, "CREATION");
+      const respuesta = await axios.post(userurl, usuario);
+      nats.sendLogToNats(usuario.username, 'User registered', `User ${usuario.username} registered`, 'CREATION');
+      reply.code(201).send({ message: respuesta.data });
     } catch (error) {
-      let name = usuario.name;
-      let description = "User " + usuario.name + " tryed to log in";
-      let summary = "User tryed to log in";
-      nats.sendLogToNats(name, summary, description, "ERROR");
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      nats.sendLogToNats(usuario.username || 'unknown', 'Register failed', `Registration attempt failed`, 'ERROR');
+      console.error('userRegister error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
   static async deleteUser(request, reply) {
-    //obtener el header authorization
     const authHeader = request.headers.authorization;
-    const email = request.body.email;
-
-    const decodedToken = MainHandler.verifyJwt(authHeader);
-
-    if (!decodedToken) {
-      reply.code(401).send({ message: "Unauthorized" });
-      return;
+    if (!MainHandler.verifyJwt(authHeader)) {
+      return reply.code(401).send({ message: 'Unauthorized' });
     }
-
+    const email = request.body?.email;
     try {
-      // Realizar la petición DELETE con node-fetch y pasar el token en el encabezado de autorización
-      const response = await axios.delete(auth_server_url + "?email=" + email, {
-        headers: {
-          Authorization: authHeader,
-        },
+      const response = await axios.delete(`${userurl}?email=${email}`, {
+        headers: { Authorization: authHeader },
       });
-      // Si la petición se realiza con éxito, devolver la respuesta
       reply.code(200).send(response.data);
     } catch (error) {
-      // Si ocurre algún error durante la petición, devolver un error
-      console.error("Error al realizar la petición DELETE:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      console.error('deleteUser error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
     }
   }
 
-  //metoodo objetivo
   static async getUserInfo(request, reply) {
-    //obtener el header authorization
-
-    const email = request.params.email;
-
     const authHeader = request.headers.authorization;
-
-    const decodedToken = MainHandler.verifyJwt(authHeader);
-
-    if (!decodedToken) {
-      reply.code(401).send({ message: "Unauthorized" });
-      return;
+    if (!MainHandler.verifyJwt(authHeader)) {
+      return reply.code(401).send({ message: 'Unauthorized' });
     }
-
+    const email = request.params.email;
     try {
-      // Realizar la petición GET con node-fetch y pasar el token en el encabezado de autorización
-      const response = await axios.get(auth_server_url + "/" + email, {
-        headers: {
-          Authorization: authHeader,
-        },
-      });
-
-      const response2 = await axios.get(user_profile_service + "/" + email);
-
-      //concatenate both responses
-      let fullResponse = { ...response.data, ...response2.data };
-
-      // Si la petición se realiza con éxito, devolver la respuesta
+      const [authRes, profileRes] = await Promise.all([
+        axios.get(`${userurl}${email}`, { headers: { Authorization: authHeader } }),
+        axios.get(`${userProfile}/${email}`),
+      ]);
+      // fullResponse declarado dentro del try — bug original corregido
+      const fullResponse = { ...authRes.data, ...profileRes.data };
       reply.code(200).send(fullResponse);
     } catch (error) {
-      // Si ocurre algún error durante la petición, devolver un error
-      console.error("Error al realizar la petición GET:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      console.error('getUserInfo error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
     }
-    // Si la petición se realiza con éxito, devolver la respuesta
-    reply.code(200).send(fullResponse);
   }
 
   static async updateUserInformation(request, reply) {
-    const newData = request.body;
     const authHeader = request.headers.authorization;
-    let backupAuthUser;
-    let email = request.params.email;
-
-    // Almacenar en caché el usuario antes de actualizarlo en caso de que falle la actualización
-    try {
-      const response = await axios.get(`${auth_server_url}/${email}`, {
-        headers: {
-          Authorization: authHeader,
-        },
-      });
-
-      backupAuthUser = response.data;
-    } catch (error) {
-      return reply.code(500).send({ message: "Internal Server Error" });
+    if (!MainHandler.verifyJwt(authHeader)) {
+      return reply.code(401).send({ message: 'Unauthorized' });
     }
+    const newData = request.body;
+    const email   = request.params.email;
 
-    // Intentar actualizar el usuario
     try {
       if (newData.password) {
-        await axios.put(`${auth_server_url}?oldEmail=${email}`, newData, {
-          headers: {
-            Authorization: authHeader,
-          },
+        await axios.put(`${userurl}?oldEmail=${email}`, newData, {
+          headers: { Authorization: authHeader },
         });
       } else {
-        await axios.put(user_profile_service, newData);
+        await axios.put(userProfile, newData);
       }
-      reply.code(200).send({ message: "User updated successfully" });
+      reply.code(200).send({ message: 'User updated successfully' });
     } catch (error) {
-      console.error("Error al realizar la petición PUT:", error.message);
-      return reply.code(500).send({ message: "Internal Server Error" });
+      console.error('updateUserInformation error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
     }
   }
 
   static async updateUserPassword(request, reply) {
-    let body = request.body;
-    let authHeader = request.headers.authorization;
+    const authHeader = request.headers.authorization;
+    if (!MainHandler.verifyJwt(authHeader)) {
+      return reply.code(401).send({ message: 'Unauthorized' });
+    }
+    const body = request.body;
     try {
-      let respuesta = await axios.patch(
-        auth_server_url + "/password",
-        body,
-        authHeader
-      );
+      const respuesta = await axios.patch(passwordRoute, body, {
+        headers: { Authorization: authHeader },
+      });
       reply.code(200).send({ message: respuesta.data });
     } catch (error) {
-      return reply.code(500).send({ message: "Internal Server Error" });
+      console.error('updateUserPassword error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
     }
   }
 
   static async recoverPassword(request, reply) {
-    let email = request.query.email;
+    const email = request.query.email;
     try {
-      let respuesta = await axios.get(
-        auth_server_url + "/password/?email=" + email
-      );
+      const respuesta = await axios.get(`${passwordUpdateRoute}?email=${email}`);
       reply.code(200).send({ message: respuesta.data });
     } catch (error) {
-      return reply.code(500).send({ message: "Internal Server Error" });
-    }
-  }
-
-  static async verifyRollback(
-    email,
-    newData,
-    authHeader,
-    backupAuthUser,
-    reply
-  ) {
-    // Verificar para rollback
-    try {
-      const verification = await axios.get(`${user_profile_service}/${email}`);
-      const user = verification.data;
-      if (user.email != newData.email) {
-        // Intentar hacer rollback si los datos no coinciden
-        try {
-          await axios.put(auth_server_url, backupAuthUser, {
-            headers: {
-              Authorization: authHeader,
-            },
-          });
-        } catch (error) {
-          console.error(
-            "Error al realizar la petición de rollback:",
-            error.message
-          );
-          return reply.code(500).send({ message: "Internal Server Error" });
-        }
-      } else {
-        reply.code(200).send({ message: "User updated successfully" });
-      }
-    } catch (error) {
-      // Hacer rollback si la verificación falla
-      await axios.put(`${auth_server_url}?oldEmail=${email}`, backupAuthUser, {
-        headers: {
-          Authorization: authHeader,
-        },
-      });
-      reply.code(500).send({ message: "Internal Server Error" });
-    }
-  }
-
-  static verifyJwt(token) {
-    let decodedToken;
-
-    try {
-      decodedToken = JSON.parse(atob(token.split(".")[1]));
-      return decodedToken;
-    } catch (error) {
-      return null;
+      console.error('recoverPassword error:', error.message);
+      reply.code(500).send({ message: 'Internal Server Error' });
     }
   }
 }
