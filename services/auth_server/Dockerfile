@@ -1,18 +1,20 @@
-#UTILIZAMOS LA ULTIMA IMAGEN DE GOLANG
-FROM golang:latest
-#ESTABLECEMOS EL DIRECTORIO DE TRABAJO
+FROM golang:1.21-alpine AS builder
+
 WORKDIR /app
-#COPIAMOS LOS ARCHIVOS
+
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY . .
-#DESCARGAMOS DEPENDENCIAS
-RUN  go get -u github.com/gorilla/mux
-RUN  go get -u gorm.io/driver/postgres
-RUN  go get -u gorm.io/gorm
-RUN  go get github.com/nats-io/nats.go
-RUN  go get github.com/jackc/pgx/v5/pgxpool@v5.5.5
-RUN  go get github.com/prometheus/client_golang/prometheus
-RUN  go get github.com/jackc/puddle/v2 
+RUN go build -o auth_server .
 
-#EJECUTAMOS EL PROYECTO
-CMD ["go", "run", "main.go"]
+# ── Runtime image ──────────────────────────────────────────────
+FROM alpine:3.19
 
+WORKDIR /app
+
+COPY --from=builder /app/auth_server .
+
+EXPOSE 9090
+
+CMD ["./auth_server"]
