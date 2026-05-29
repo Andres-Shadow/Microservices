@@ -163,13 +163,20 @@ services:
       - USER_PROFILE_HOST=user_profile
       - NOTIFICATION_HOST=notification_server
       - NATS_SERVER=nats
+      - JWT_SECRET=changeme_use_a_strong_secret_in_production
     depends_on:
-      - nats
-      - user_profile
-      - notification_server
-      - server
-      - cliente
-      - health_server
+      nats:
+        condition: service_healthy
+      server:
+        condition: service_started
+      cliente:
+        condition: service_started
+      user_profile:
+        condition: service_started
+      notification_server:
+        condition: service_started
+      health_server:
+        condition: service_started
 
   # ─────────────────────────────────────────────
   # INFRASTRUCTURE
