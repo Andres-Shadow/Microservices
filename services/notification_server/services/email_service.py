@@ -1,19 +1,35 @@
+import logging
 import os
 import requests
 
-def send_email(subject, body, to_email):
-    api_key = os.getenv("API_KEY")
-    domain = os.getenv("DOMAIN")
+logger = logging.getLogger(__name__)
 
-    request_url = f"https://api.mailgun.net/v3/{domain}/messages"
 
-    requests.post(
-        request_url,
-        auth=("api", api_key),
-        data={
-            "from": "Servicio de Monitorización <monitor@tu-dominio.com>",
-            "to": [to_email],
-            "subject": subject,
-            "text": body,
-        },
-    )
+def send_email(subject: str, body: str, to_email: str) -> None:
+    """Envía un email vía Mailgun. Requiere API_KEY y DOMAIN en env vars."""
+    api_key = os.getenv("MAILGUN_API_KEY")
+    domain  = os.getenv("MAILGUN_DOMAIN")
+
+    if not api_key or not domain:
+        logger.warning(
+            "MAILGUN_API_KEY or MAILGUN_DOMAIN not set — email to %s skipped", to_email
+        )
+        return
+
+    url = f"https://api.mailgun.net/v3/{domain}/messages"
+    try:
+        response = requests.post(
+            url,
+            auth=("api", api_key),
+            data={
+                "from":    f"Monitor Service <monitor@{domain}>",
+                "to":      [to_email],
+                "subject": subject,
+                "text":    body,
+            },
+            timeout=10,
+        )
+        response.raise_for_status()
+        logger.info("Email sent to %s (subject: %s)", to_email, subject)
+    except requests.exceptions.RequestException as exc:
+        logger.error("Failed to send email to %s: %s", to_email, exc)

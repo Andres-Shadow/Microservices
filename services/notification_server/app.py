@@ -1,73 +1,80 @@
-from flask import Flask, request, jsonify  # Importar clases de Flask
-from models.notification import create_all_tables
-from handlers.notification_handler import get_notificaions_handler, create_notification_handler, get_notificaions_by_email_handler
-from handlers.health_handler import verify_server_ready, verify_server_live, verify_server_health
+import logging
+import os
+
 from dotenv import load_dotenv
+from flask import Flask, jsonify, request
+
+from handlers.health_handler import verify_server_health, verify_server_live, verify_server_ready
+from handlers.notification_handler import (
+    create_notification_handler,
+    get_notificaions_by_email_handler,
+    get_notificaions_handler,
+)
+from models.notification import create_all_tables
+
+load_dotenv()
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
+)
 
 app = Flask(__name__)
 
-@app.route('/api/v1/notification', methods=['GET', 'POST'])
+
+# ─── Notification routes ──────────────────────────────────────────────────────
+
+@app.route("/api/v1/notification", methods=["GET", "POST"])
 def notification():
-    if request.method == 'GET':
-        #obtener los query params page y page size
-        page = request.args.get('page')
-        page_size = request.args.get('page_size')
-        
-        #verificar si vienen vacios los params
-        if page is None:
-            page = 1
-        if page_size is None:
-            page_size = 10
-        notifications =  get_notificaions_handler(page, page_size)
-        return jsonify(notifications)
-    elif request.method == 'POST':
-        #obtener el body de la petición
-        body = request.json
-        #crear una notificación
-        try: 
-            response = create_notification_handler(body)
-            return jsonify(response), 200
-        except Exception as e:
-            print(e)
-            return jsonify({'error': str(e)}), 400
-        
-    else :
-        return jsonify({'error': 'Metodo no permitido'}), 405
-    
-@app.route('/api/v1/notification/<email>', methods=['GET'])
-def filter(email):
-    if request.method == 'GET':
-        #obtener los query params page y page size
-        page = request.args.get('page')
-        page_size = request.args.get('page_size')
-        
-        #verificar si vienen vacios los params
-        if page is None:
-            page = 1
-        if page_size is None:
-            page_size = 10
-        notifications =  get_notificaions_by_email_handler(page, page_size, email)
-        return (notifications)
-    else :
-        return jsonify({'error': 'Metodo no permitido'}), 405
-    
-@app.route('/api/v1/health', methods=['GET'])
+    if request.method == "GET":
+        page      = request.args.get("page",      1)
+        page_size = request.args.get("page_size", 10)
+        return jsonify(get_notificaions_handler(page, page_size))
+
+    body = request.get_json(silent=True)
+    if not body:
+        return jsonify({"error": "Request body must be JSON"}), 400
+    try:
+        response = create_notification_handler(body)
+        return jsonify(response), 201
+    except ValueError as exc:
+        return jsonify({"error": str(exc)}), 400
+    except Exception as exc:
+        return jsonify({"error": "Internal server error"}), 500
+
+
+@app.route("/api/v1/notification/<email>", methods=["GET"])
+def notification_by_email(email: str):
+    page      = request.args.get("page",      1)
+    page_size = request.args.get("page_size", 10)
+    return get_notificaions_by_email_handler(page, page_size, email)
+
+
+# ─── Health routes ────────────────────────────────────────────────────────────
+
+@app.route("/api/v1/health", methods=["GET"])
 def health():
-    body = verify_server_health()
-    return jsonify(body.to_dict())
+    return jsonify(verify_server_health().to_dict())
 
-@app.route('/api/v1/health/ready', methods=['GET'])
+
+@app.route("/api/v1/health/ready", methods=["GET"])
 def ready():
-    body = verify_server_ready()
-    return jsonify(body.to_dict())
+    return jsonify(verify_server_ready().to_dict())
 
-@app.route('/api/v1/health/live', methods=['GET'])
+
+@app.route("/api/v1/health/live", methods=["GET"])
 def live():
-    body = verify_server_live()
-    return jsonify(body.to_dict())
+    return jsonify(verify_server_live().to_dict())
 
 
-if __name__ == '__main__':
-    load_dotenv()
+# ─── Startup ──────────────────────────────────────────────────────────────────
+
+def init_app() -> None:
     create_all_tables()
-    app.run(host='0.0.0.0', port=9096)
+
+
+init_app()
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", "9096"))
+    app.run(host="0.0.0.0", port=port, debug=False)

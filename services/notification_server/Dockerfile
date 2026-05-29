@@ -1,13 +1,16 @@
-FROM python:latest
+FROM python:3.12-slim
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-RUN pip install flask
-RUN pip install sqlalchemy mysqlclient
-RUN pip install sqlalchemy requests
-RUN pip install python-dotenv
-RUN pip install nats-py
+EXPOSE 9096
 
-CMD ["python", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:9096", "--workers", "2", "--timeout", "60", "app:app"]

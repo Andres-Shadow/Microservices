@@ -64,6 +64,25 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA user_profile
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO profileuser;
 
 -- -----------------------------------------------
+-- Schema: notifications  (notification_server)
+-- -----------------------------------------------
+CREATE SCHEMA IF NOT EXISTS notifications;
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'notifuser') THEN
+        CREATE ROLE notifuser WITH LOGIN PASSWORD 'notifpassword';
+    END IF;
+END
+$$;
+
+GRANT CONNECT ON DATABASE appdb TO notifuser;
+GRANT USAGE ON SCHEMA notifications TO notifuser;
+GRANT CREATE ON SCHEMA notifications TO notifuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA notifications
+    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO notifuser;
+
+-- -----------------------------------------------
 -- Schema: health  (health_server)
 -- -----------------------------------------------
 CREATE SCHEMA IF NOT EXISTS health;

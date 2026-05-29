@@ -1,78 +1,81 @@
+import logging
+from flask import jsonify
 from models.notification import Notification
-from services.notification_service import get_notifications, create_notification, get_notifications_email, count_notifications
+from services.notification_service import (
+    get_notifications,
+    create_notification,
+    get_notifications_email,
+    count_notifications,
+)
 from communication.communication import create_log
+
+logger = logging.getLogger(__name__)
+
 
 def get_notificaions_handler(page, page_size):
     notifications = get_notifications(page, page_size)
-    
-    #mapear las notificaciones a un json
-    notifications_list = []
-    for notification in notifications:
-        notification_dict = {
-            'subject': notification.subject,
-            'message': notification.message,
-            'target': notification.target
-        }
-        notifications_list.append(notification_dict)
-        
     count = count_notifications()
-    
-    #unir las notificaciones con el total de notificaciones
-    notifications_list = {
-        'notifications': notifications_list,
-        'count': count
+
+    result = {
+        "notifications": [
+            {"subject": n.subject, "message": n.message, "target": n.target}
+            for n in notifications
+        ],
+        "count": count,
     }
-    
-    name = "User wanted to list all notificacion"
-    summary = "User listed all notifications"
-    description = "User listed all notifications"
-    log_type = "INFO"
-    create_log(name, summary, description, log_type)
-    
-    
-    return notifications_list
+
+    create_log(
+        "NOTIFICATION-API",
+        "Notifications listed",
+        "All notifications were listed",
+        "INFO",
+    )
+    return result
+
 
 def get_notificaions_by_email_handler(page, page_size, email):
     notifications = get_notifications_email(page, page_size, email)
-    
-    #mapear las notificaciones a un json
-    notifications_list = []
-    for notification in notifications:
-        notification_dict = {
-            'subject': notification.subject,
-            'message': notification.message,
-            'target': notification.target
-        }
-        notifications_list.append(notification_dict)
-        
-    name = "User wanted to list all notificacion by email"
-    summary = "User listed all notifications by email"
-    description = "User listed all notifications by email"
-    log_type = "INFO"
-    create_log(name, summary, description, log_type)
-    return notifications_list
 
-def create_notification_handler(notification):
-    
-    # Sanitizar los datos (evitar inyección de scripts u otros datos maliciosos)
-    new_notification = Notification()
-    new_notification.subject = str(notification['subject']).strip()
-    new_notification.message = str(notification['message']).strip()
-    new_notification.target = str(notification['target']).strip()
+    result = [
+        {"subject": n.subject, "message": n.message, "target": n.target}
+        for n in notifications
+    ]
+
+    create_log(
+        "NOTIFICATION-API",
+        "Notifications listed by email",
+        f"Notifications listed for {email}",
+        "INFO",
+    )
+    return jsonify(result)
+
+
+def create_notification_handler(body):
+    if not body:
+        raise ValueError("Request body is empty")
+
+    required = ["subject", "message", "target"]
+    for field in required:
+        if field not in body:
+            raise ValueError(f"Missing field: {field}")
+
+    new_notif = Notification(
+        subject=str(body["subject"]).strip(),
+        message=str(body["message"]).strip(),
+        target=str(body["target"]).strip(),
+    )
 
     try:
-        response = create_notification(new_notification)
-    except Exception as e:
-        name = "User wanted to create a notification"
-        summary = "Error creating a notification"
-        description = "Error creating a notification"
-        log_type = "ERROR"
-        create_log(name, summary, description, log_type)
-        return str(e)
-    
-    name = "User wanted to create a notification"
-    summary = "User sended an email to "+new_notification.target
-    description = "User sended an email to "+new_notification.target+" with the subject "+new_notification.subject+" and the message "+new_notification.message
-    log_type = "CREATION"
-    create_log(name, summary, description, log_type)
+        response = create_notification(new_notif)
+    except Exception as exc:
+        logger.error("Error creating notification: %s", exc)
+        create_log("NOTIFICATION-API", "Error creating notification", str(exc), "ERROR")
+        raise
+
+    create_log(
+        "NOTIFICATION-API",
+        "Notification created",
+        f"Email sent to {new_notif.target} — subject: {new_notif.subject}",
+        "CREATION",
+    )
     return response

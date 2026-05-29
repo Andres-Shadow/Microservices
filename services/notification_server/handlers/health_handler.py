@@ -1,19 +1,17 @@
-from services.health_service import *
 from models.data_check import HelathCheck
+from services.health_service import construct_ready_body, construct_alive_body
+
+
 def verify_server_ready():
-    body = construct_ready_body()
-    return body
+    return construct_ready_body()
+
 
 def verify_server_live():
-    body = construct_alive_body()
-    return body
+    return construct_alive_body()
+
 
 def verify_server_health():
-    ready_report = construct_ready_body()
-    alive_report = construct_alive_body()
-    
-    combined_report = HelathCheck(
-        ready=ready_report,
-        live=alive_report
+    return HelathCheck(
+        ready=construct_ready_body(),
+        live=construct_alive_body(),
     )
-    return combined_report
