@@ -12,16 +12,16 @@ Feature: la API provee al usuario la funcionalidad de ingresar con sus credencia
   Scenario: pepe quiere autenticarse dentro de la aplicación
     Given los datos diligenciados no existen en la base de datos
     When invoca el método de autenticación en /api/v1/login
-    Then se obtiene el mensaje de respuesta 404
+    Then se obtiene el mensaje de respuesta 401
     And se obtiene el mensaje de error "Usuario no encontrado"
 
   Scenario: pepe quiere autenticarse dentro de la aplicación
     Given la contraseña ingresada no coincide con los registrados en la base de datos
     When invoca el método de autenticación en /api/v1/login
-    Then se obtiene el mensaje de respuesta 404
+    Then se obtiene el mensaje de respuesta 401
 
   Scenario: pepe quiere autenticarse dentro de la aplicación
     Given los datos diligenciados no cumplen con el formato esperado
     When invoca el método de autenticación en /api/v1/login
-    Then se obtiene el mensaje de respuesta 404
+    Then se obtiene el mensaje de respuesta 401
     And se obtiene el mensaje de error "Datos no válidos"

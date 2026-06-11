@@ -4,7 +4,7 @@ Feature: El usuario desea agregar una aplicacion para ser monitoreada por el sis
     When el usuario ingresa todos requeridos en la peticion de monitoreo
     Given el usuario realiza una peticion POST a /api/v1/apps
     Then el sistema guarda la aplicacion en la base de datos
-    And el mensaje de respuesta contiene un codigo de repuesta 200
+    And el mensaje de respuesta contiene un codigo de repuesta 201
     And el servidor regresa un mensaje de respuesta
 
   Scenario: El usuario no completa el diligenciamiento de la peticion de la aplicacion

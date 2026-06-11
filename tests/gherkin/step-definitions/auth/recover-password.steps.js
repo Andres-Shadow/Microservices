@@ -36,7 +36,7 @@ When(
       const url = `${passwordRecoverUrl}?email=${email}`;
       const res = await axios.get(url);
       response = res;
-      token = res.data;
+      token = res.data.token;
       statusCode = res.status;
     } catch (error) {
       response = error.response;
@@ -54,7 +54,7 @@ Then('si existe un registro con ese correo', function () {
 Then(
   'la aplicación responde con un token jwt valido por {int} minutos',
   function (minutes) {
-    assert.ok(response.data, 'Expected a JWT token in the response');
+    assert.ok(response.data.token, 'Expected a JWT token in the response');
   }
 );
 

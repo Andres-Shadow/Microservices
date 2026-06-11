@@ -1,0 +1,7004 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-cambiar-de-contraseña;actualización-de-contraseña-exitosa",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "actualización de contraseña exitosa",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 157073600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 163399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 76300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47246900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 111400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45783600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 80899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23177000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 87700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 82499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 151800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 19499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 59900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5052999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha realizado el registro",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 103399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe quiere actualizar su contraseña a 12345",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 92900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "pepe diligencia su correo en el cuerpo de la petición",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "pepe hace una solicitud a la ruta PATCH /api/v1/users/password",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1911300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "la aplicación lo busca en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:74"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "si existe un registro con esos dados actauliza la contraseña",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "el servidor retorna un codigo de estado 200",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:82"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 833099,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\change-password.steps.js:83:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-cambiar-de-contraseña;actualización-de-contraseña-fallida",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "actualización de contraseña fallida",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 99490800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 116199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 50799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46346000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 50099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47252700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13709600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 92599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2118399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha realizado el registro",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe quiere actualizar su contraseña a 12345",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "pepe diligencia un correo que no está registrado en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:87"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 134599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "pepe hace una solicitud a la ruta PATCH /api/v1/users/password",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1671299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "la aplicación busca su registro en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "si no existe un registro con esos dados",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:98"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "el servidor retorna un codigo de estado 404",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:82"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 302000,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\change-password.steps.js:83:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-cambiar-de-contraseña;actualización-de-contraseña-sin-jwt",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "actualización de contraseña sin jwt",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95268500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 124600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45597100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 85199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47818700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11189300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 84000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 34200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3055899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha realizado el registro",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 83900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe quiere actualizar su contraseña a 12345",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "pepe hace una solicitud a la ruta PATCH /api/v1/users/password",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1454099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "But ",
+            "line": 23,
+            "name": "pepe no proporsiona el token de verificación jwt",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:103"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "el servidor retorna un codigo de estado 404",
+            "match": {
+              "location": "step-definitions\\auth\\change-password.steps.js:82"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 130100,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\change-password.steps.js:83:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-cambiar-de-contraseña",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "La API proporsional al usuario la funcinalidad de cambiar de contraseña",
+    "tags": [],
+    "uri": "features\\auth\\change-password.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase;pepe-intenta-registrarse-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "pepe intenta registrarse en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95236800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 288900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46867099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 88099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 34800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46701300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16985099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 90499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 32400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2123299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93999
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Name",
+                      "Email",
+                      "Password"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "pepe",
+                      "a@gmail.com",
+                      "1234"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ingresa los siguientes datos:",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 220100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "el cliente envia una solicitud POST a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48675799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "el codigo de respuesta debe ser 200",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:60"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 252199,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n201 !== 200\n\n    + expected - actual\n\n    -201\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\create-user.steps.js:61:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "el cuerpo de la respuesta debe contener los detalles del usuario registrado",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:64"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase;pepe-intenta-registrarse-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "pepe intenta registrarse en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 100034100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 127099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 38500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52437500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 82899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51258600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11092200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 85799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1687199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74999
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Name",
+                      "Email",
+                      "Password"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "pepe",
+                      "a@gmail.com",
+                      "1234"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ingresa los siguientes datos:",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "el cuerpo de la solicitud de creación no contiene los datos requeridos",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:74"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "el cliente envia una solicitud POST a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1598700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "el codigo de respuesta debe ser 400",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 79200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "el cuerpo de la respuesta debe contener un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 96399
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase;pepe-intenta-registrarse-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "pepe intenta registrarse en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 96326900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 114800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46085499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 36500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46941499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12961399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 86099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2494399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36299
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Name",
+                      "Email",
+                      "Password"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "pepe",
+                      "a@gmail.com",
+                      "1234"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ingresa los siguientes datos:",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 21,
+            "name": "en el cuerpo de la solicitud se ingresa un email ya registrado",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:89"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 64800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "el cliente envia una solicitud POST a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46354499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "el codigo de respuesta debe ser 400",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:60"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 184900,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n409 !== 400\n\n    + expected - actual\n\n    -409\n    +400\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\create-user.steps.js:61:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "el cuerpo de la respuesta debe contener un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:81"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase;pepe-intenta-registrarse-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "pepe intenta registrarse en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 96641000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 314599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47032900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 33199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48123400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17517800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 89399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 32100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1905799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe totalmente nuevo que no se ha registrado en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 186799
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Name",
+                      "Email",
+                      "Password"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "pepe",
+                      "a@gmail.com",
+                      "1234"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ingresa los siguientes datos:",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 105100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 27,
+            "name": "se crea un cuerpo de solicitud con datos que no coindicen con el esquema de la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:97"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 169399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "el cliente envia una solicitud POST a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4437699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "el codigo de respuesta debe ser 400",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 160399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "el cuerpo de la respuesta debe contener un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\create-user.steps.js:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-registrase",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "La API proporsional al usuario la funcinalidad de registrase",
+    "tags": [],
+    "uri": "features\\auth\\create-user.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-eliminar-un-usuario;pepe-desea-eliminar-un-registro-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "pepe desea eliminar un registro en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 100581600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 239400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48119200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47710599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22637000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 83299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 92700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2117900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48679600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47004900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "pepe proporsiona su correo electrónico en el parámetro de la URL",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:55"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "pepe hace una petición DELETE a /api/v1/users/:email",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2191200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "la aplicación encuentra su registro",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "la aplicación elimina el registro de la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "el mensaje de respuesta del servidor contiene un estado 200",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:85"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 125799,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\delete-user.steps.js:88:12)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-eliminar-un-usuario;pepe-desea-eliminar-un-registro-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "pepe desea eliminar un registro en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97524599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 103700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 24199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46429500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47554200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12408500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 90199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 155399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2982399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49883700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46914600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "pepe no proporsiona un correo electrónico valido en el parámetro de la URL",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "pepe hace una petición DELETE a /api/v1/users/:email",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2522799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "el mensaje de respuesta del servidor contiene un estado 404",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:85"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 249800,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\delete-user.steps.js:88:12)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-eliminar-un-usuario;pepe-desea-eliminar-un-registro-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "pepe desea eliminar un registro en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 100934499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 116200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48337899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46700199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14957300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 92599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2188900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49495899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47495999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "pepe no proporsiona un correo electrónico en el parámetro de la URL",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:101"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 126199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "pepe hace una petición DELETE a /api/v1/users/:email",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1682899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "el mensaje de respuesta del servidor contiene un estado 404",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 71100
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-eliminar-un-usuario;pepe-desea-eliminar-un-registro-de-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "pepe desea eliminar un registro de la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 93633399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 93800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45965699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47027100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 24900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11680399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 93100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2752400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51636599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49622199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "pepe ingresa un correo electrónico diferente al suyo",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:109"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 283600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "pepe hace una petición DELETE a /api/v1/users/:email",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3425699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "la aplicación no encuentra un registro con ese correo",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:113"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 85699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "el mensaje de respuesta del servidor contiene un estado 404",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:85"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 138200,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\delete-user.steps.js:88:12)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-eliminar-un-usuario;pepe-desea-eliminar-un-registro-de-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "pepe desea eliminar un registro de la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97708399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 102799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 36399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46485300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 50416799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18245699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 34500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2070999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya ha pasado por el proceso de registrarse",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50487500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45704200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 31,
+            "name": "pepe no proporsiona un token jwt de autenticación",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:118"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 106700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "pepe hace una petición DELETE a /api/v1/users/:email",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2067100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "el mensaje de respuesta del servidor contiene un estado 401",
+            "match": {
+              "location": "step-definitions\\auth\\delete-user.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-eliminar-un-usuario",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "La API proporsional al usuario la funcinalidad de eliminar un usuario",
+    "tags": [],
+    "uri": "features\\auth\\delete-user.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-listar-los-usuarios-dentro-de-la-base-de-datos-con-paginación;pepe-desea-listar-todos-los-usuarios-registrados-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "pepe desea listar todos los usuarios registrados en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95237699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 104099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46672600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 36500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46650700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15150300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 19299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 148799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2355800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 106499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "pepe hace un petición get a la ruta /api/v1/users?page=1&limit=10",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2593599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "la API le responde con una lista de usuarios registrados en la base de datos con paginación",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:61"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21986700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "la API le responde con un status code 200",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:70"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 348300,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\get-users.steps.js:71:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-listar-los-usuarios-dentro-de-la-base-de-datos-con-paginación;pepe-desea-listar-todos-los-usuarios-registrados-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "pepe desea listar todos los usuarios registrados en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 118301699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 99400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45954400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46286900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 108999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12701799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 83700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1672599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "pepe hace una petición get a la ruta /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1476400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "la aplicación internamente define el tamaño de la paginación a mostrar",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "la API le responde con una lista de usuarios registrados en la base de datos con paginación",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:61"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "la API le responde con un status code 200",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:70"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 112900,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\get-users.steps.js:71:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-listar-los-usuarios-dentro-de-la-base-de-datos-con-paginación;pepe-desea-listar-todos-los-usuarios-registrados-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "pepe desea listar todos los usuarios registrados en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 96268000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 96099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48230099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46248599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11227400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 79099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1705500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "la base de datos se encuentra vacía",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:102"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "pepe hace una petición get a la ruta /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1212000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "la API le responde con una lista vacía",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 64899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "la API le responde con un status code 200",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:70"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 114500,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\get-users.steps.js:71:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-listar-los-usuarios-dentro-de-la-base-de-datos-con-paginación;pepe-desea-listar-todos-los-usuarios-registrados-en-la-base-de-datos",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "pepe desea listar todos los usuarios registrados en la base de datos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94505999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 140599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48425200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55674899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18844000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 104100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3212599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "el token jwt ingresado se encuentra caducado",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:112"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 151400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "pepe hace una petición get a la ruta /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1961299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "la API le responde con un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:122"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "la API le responde con un status code 401",
+            "match": {
+              "location": "step-definitions\\auth\\get-users.steps.js:70"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60099
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Test",
+            "line": 24
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-listar-los-usuarios-dentro-de-la-base-de-datos-con-paginación",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "La API proporsional al usuario la funcinalidad de listar los usuarios dentro de la base de datos con paginación",
+    "tags": [],
+    "uri": "features\\auth\\get-users.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-provee-al-usuario-la-funcionalidad-de-ingresar-con-sus-credenciales-previamente-registradas;pepe-quiere-autenticarse-dentro-de-la-aplicación",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "pepe quiere autenticarse dentro de la aplicación",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 103448900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 165500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47518500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46020300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11836400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 119800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 24400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1692600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": ": un usuario ya registrado de forma exitosa en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "este usuario tiene por nombre pepe",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 127499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "invoca el método de autenticación en /api/v1/login",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46009900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "se obtiene el mensaje de respuesta 200",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "se obtiene el token jwt de autenticación",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29099
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-provee-al-usuario-la-funcionalidad-de-ingresar-con-sus-credenciales-previamente-registradas;pepe-quiere-autenticarse-dentro-de-la-aplicación",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "pepe quiere autenticarse dentro de la aplicación",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95643499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 114499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46072100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 24900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45917900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11386700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 71300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1892399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": ": un usuario ya registrado de forma exitosa en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "este usuario tiene por nombre pepe",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "los datos diligenciados no existen en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "invoca el método de autenticación en /api/v1/login",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1602100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "se obtiene el mensaje de respuesta 404",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:46"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 125100,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\login.steps.js:47:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "se obtiene el mensaje de error \"Usuario no encontrado\"",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:59"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-provee-al-usuario-la-funcionalidad-de-ingresar-con-sus-credenciales-previamente-registradas;pepe-quiere-autenticarse-dentro-de-la-aplicación",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "pepe quiere autenticarse dentro de la aplicación",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 93015600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 98899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46134199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47009500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12228699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 72199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1832900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": ": un usuario ya registrado de forma exitosa en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "este usuario tiene por nombre pepe",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "la contraseña ingresada no coincide con los registrados en la base de datos",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 56300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "invoca el método de autenticación en /api/v1/login",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46118900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "se obtiene el mensaje de respuesta 404",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:46"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 190899,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\login.steps.js:47:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-provee-al-usuario-la-funcionalidad-de-ingresar-con-sus-credenciales-previamente-registradas;pepe-quiere-autenticarse-dentro-de-la-aplicación",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "pepe quiere autenticarse dentro de la aplicación",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 96016200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 101000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46352899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45920699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12714499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 104099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 33500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1664199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": ": un usuario ya registrado de forma exitosa en la base de datos de la aplicación",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "este usuario tiene por nombre pepe",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "los datos diligenciados no cumplen con el formato esperado",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:70"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 56900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "invoca el método de autenticación en /api/v1/login",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1262900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "se obtiene el mensaje de respuesta 404",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:46"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 171299,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 404\n\n    + expected - actual\n\n    -400\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\login.steps.js:47:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "se obtiene el mensaje de error \"Datos no válidos\"",
+            "match": {
+              "location": "step-definitions\\auth\\login.steps.js:59"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-provee-al-usuario-la-funcionalidad-de-ingresar-con-sus-credenciales-previamente-registradas",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "la API provee al usuario la funcionalidad de ingresar con sus credenciales previamente registradas",
+    "tags": [],
+    "uri": "features\\auth\\login.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-recuperar-contraseña;pepe-desea-actualizar-su-contraseña",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "pepe desea actualizar su contraseña",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97897300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 128399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52210199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55070800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18913499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 83599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2169199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya se ha registrado",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 141200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe por correo electronico a@gmail.com",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 196900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "pepe hace una solicitud a la ruta GET /api/v1/users/password/?email=\"a@gmail.com\"",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1756400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "si existe un registro con ese correo",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "la aplicación responde con un token jwt valido por 30 minutos",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "la respuesta tendrá un código 200",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:61"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 117500,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\recover-password.steps.js:62:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-recuperar-contraseña;pepe-desea-actualizar-su-contraseña",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "pepe desea actualizar su contraseña",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97813499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 202000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45987600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47007099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12590199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 76900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22600
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2700
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 135899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3832999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya se ha registrado",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 83400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe por correo electronico a@gmail.com",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "pepe hace una solicitud a la ruta GET /api/v1/users/password/?email=\"z@gmail.com\"",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1574899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "si no existe un registro con esos datos",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:66"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 165299,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\recover-password.steps.js:67:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "la aplicación responde con un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:70"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "la respuesta envida tendrá un código 404",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:74"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-recuperar-contraseña;pepe-desea-actualizar-su-contraseña",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "pepe desea actualizar su contraseña",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 97697500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47268800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49289899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14873000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 81599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1745000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe que ya se ha registrado",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe por correo electronico a@gmail.com",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "pepe hace una solicitud a la ruta GET /api/v1/users/password/",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:79"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2700899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "se envía un correo electrónico no valido",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 166400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "la aplicación responde con un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:70"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 119099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "la respuesta envida tendrá un código 404",
+            "match": {
+              "location": "step-definitions\\auth\\recover-password.steps.js:74"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 171700,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\recover-password.steps.js:75:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-recuperar-contraseña",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "La API proporsional al usuario la funcinalidad de recuperar contraseña",
+    "tags": [],
+    "uri": "features\\auth\\recover-password.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-actualizar-los-datos-de-un-usuario;pepe-desea-actualizar-los-datos-de-un-usuario",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "pepe desea actualizar los datos de un usuario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 100651200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 213300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 143100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48925199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47899699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12567499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 113900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 32900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15999
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 77100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4974799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos que ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 122300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt en las cabeceras de las peticiones",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "el cuerpo de la petición corresponde a los datos almacenados en la base dedatos",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "pepe realiza una petición PUT a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1893099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "el servidor actualiza los datos del usuario",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:69"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 147699,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 200\n\n    + expected - actual\n\n    -401\n    +200\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\update-user.steps.js:70:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "el servidor responde con un mensaje de éxito",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:73"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-actualizar-los-datos-de-un-usuario;pepe-desea-actualizar-los-datos-de-un-usuario-que-no-existe",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "pepe desea actualizar los datos de un usuario que no existe",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 96306500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 110500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46625199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47735699
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14349899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 76800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2599
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1743800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos que ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt en las cabeceras de las peticiones",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "el cuerpo de la petición corresponde a los datos de un usuario que no existe",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 111799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "pepe realiza una petición PUT a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1490599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "el servidor responde con un json con un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "el servidor responde con un código de estado 404",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:89"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 130300,
+              "error_message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n401 !== 404\n\n    + expected - actual\n\n    -401\n    +404\n\n    at World.<anonymous> (C:\\Users\\User\\Documents\\Dev\\Microservices\\tests\\gherkin\\step-definitions\\auth\\update-user.steps.js:90:10)"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-actualizar-los-datos-de-un-usuario;pepe-desea-actualizar-los-datos-de-un-usuario",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "pepe desea actualizar los datos de un usuario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 105703199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 100399
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 22500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47116200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35299
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46232799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17499
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12969100
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10500
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 84899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21099
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3200
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2899
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3000
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3300
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1834899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "un usario llamado pepe registrado en la base de datos que ya se ha autenticado",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "pepe proporsiona el token jwt en las cabeceras de las peticiones",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "pepe realiza una petición PUT a /api/v1/users",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1364399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "el token jwt ingresado se encuentra vencido",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "el servidor responde con un json con un mensaje de error",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "el servidor responde con un código de estado 401",
+            "match": {
+              "location": "step-definitions\\auth\\update-user.steps.js:89"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "la-api-proporsional-al-usuario-la-funcinalidad-de-actualizar-los-datos-de-un-usuario",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "La API proporsional al usuario la funcinalidad de actualizar los datos de un usuario",
+    "tags": [],
+    "uri": "features\\auth\\update-user.feature"
+  }
+]

@@ -4,7 +4,7 @@ Feature: El usuario desea crear una notificacion
     Given el usuario define correctamente los campos de la peticion
     When el usuario envia una peticion post a /api/v1/notifications
     Then el sistema envia la notificacion
-    And responde con un codigo de estado 200
+    And responde con un codigo de estado 201
 
   Scenario: El usuario envia incorrectamente la peticion para crear la notificacion
     Given el usuario define incorrectamente los campos de la peticion

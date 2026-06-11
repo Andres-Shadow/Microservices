@@ -1,25 +1,47 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "clients": {
+    "users": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "ID": { "type": "integer" },
-          "CreatedAt": { "type": "string" },
-          "UpdatedAt": { "type": "string" },
-          "DeletedAt": {
-            "oneOf": [{ "type": "string" }, { "type": "null" }]
+          "ID": {
+            "type": "integer"
           },
-          "id": { "type": "integer" },
-          "username": { "type": "string" },
-          "password": { "type": "string" },
-          "email": { "type": "string" }
+          "CreatedAt": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string"
+          },
+          "DeletedAt": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
         }
       }
     },
-    "registros": { "type": "integer" }
+    "total": {
+      "type": "integer"
+    }
   }
 }

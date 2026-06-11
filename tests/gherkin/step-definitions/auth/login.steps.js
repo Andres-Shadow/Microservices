@@ -48,7 +48,7 @@ Then('se obtiene el mensaje de respuesta {int}', function (expectedStatus) {
 });
 
 Then('se obtiene el token jwt de autenticación', function () {
-  assert.ok(response.data, 'Expected a JWT token in the response body');
+  assert.ok(response.data.token, 'Expected a JWT token in the response body');
 });
 
 Given('los datos diligenciados no existen en la base de datos', function () {

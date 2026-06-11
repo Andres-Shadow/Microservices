@@ -31,7 +31,7 @@ Before(async function () {
 
   try {
     const res = await axios.post(loginUrl, userData);
-    token = res.data;
+    token = res.data.token;
     config = {
       headers: {
         Authorization: `Bearer ${token}`,

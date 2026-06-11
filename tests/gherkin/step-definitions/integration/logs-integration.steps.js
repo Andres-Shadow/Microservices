@@ -43,7 +43,7 @@ Given(
 );
 
 Given('Si el registro es exitoso', function () {
-  assert.strictEqual(statusCode, 200);
+  assert.strictEqual(statusCode, 201);
 });
 
 Then(
@@ -57,7 +57,7 @@ Then(
   'el usuario realiza una peticion get con ese correo al servidor de logs',
   async function () {
     try {
-      const url = `${logsUrl}/${userData.email}`;
+      const url = `${logsUrl}/by-email/${userData.email}`;
       const res = await axios.get(url);
       logsResponse = res;
       logsStatusCode = res.status;

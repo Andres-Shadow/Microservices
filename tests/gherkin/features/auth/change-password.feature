@@ -21,4 +21,4 @@ Feature: La API proporsional al usuario la funcinalidad de cambiar de contraseñ
   Scenario: actualización de contraseña sin jwt
     When pepe hace una solicitud a la ruta PATCH /api/v1/users/password
     But pepe no proporsiona el token de verificación jwt
-    Then el servidor retorna un codigo de estado 404
+    Then el servidor retorna un codigo de estado 401

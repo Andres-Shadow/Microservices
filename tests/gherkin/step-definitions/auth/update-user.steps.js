@@ -22,7 +22,7 @@ Before(async function () {
   // Authenticate to get a valid JWT
   try {
     const res = await axios.post(loginUrl, userData);
-    token = res.data;
+    token = res.data.token;
   } catch (error) {
     token = null;
   }
@@ -57,7 +57,8 @@ When(
 
 When('pepe realiza una petición PUT a \\/api\\/v1\\/users', async function () {
   try {
-    const res = await axios.put(usersUrl, userData, config);
+    const url = `${usersUrl}?oldEmail=${encodeURIComponent(userData.email)}`;
+    const res = await axios.put(url, userData, config);
     response = res;
     statusCode = res.status;
   } catch (error) {

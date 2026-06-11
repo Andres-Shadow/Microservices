@@ -20,4 +20,4 @@ Feature: La API proporsional al usuario la funcinalidad de recuperar contraseña
     When pepe hace una solicitud a la ruta GET /api/v1/users/password/
     And se envía un correo electrónico no valido
     Then la aplicación responde con un mensaje de error
-    And la respuesta envida tendrá un código 404
+    And la respuesta envida tendrá un código 400

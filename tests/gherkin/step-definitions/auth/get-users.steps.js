@@ -23,7 +23,7 @@ Before(async function () {
   // Authenticate to get a valid JWT token
   try {
     const res = await axios.post(loginUrl, userData);
-    token = res.data;
+    token = res.data.token;
   } catch (error) {
     token = null;
   }
