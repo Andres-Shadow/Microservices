@@ -21,7 +21,7 @@ from handlers.health_handler import (
 )
 from models.application import create_all_tables, create_sample_data
 from services.application_service import get_all_registered_applications
-from services.email_service import revisar_aplicaciones
+from services.email_service import check_application_status
 
 load_dotenv()
 
@@ -37,12 +37,12 @@ app = Flask(__name__)
 # ─── Monitoring threads ───────────────────────────────────────────────────────
 
 def _monitor_app(app_name: str, endpoint: str, frequency: int, email: str) -> None:
-    """Hilo de monitoreo para una aplicación registrada."""
+    """Monitoring thread for a registered application."""
     while True:
         try:
             result = requests.get(endpoint, timeout=5)
             result.raise_for_status()
-            revisar_aplicaciones(app_name, result.json(), email)
+            check_application_status(app_name, result.json(), email)
         except requests.exceptions.RequestException as exc:
             logger.warning("Monitor request failed for %s: %s", app_name, exc)
         time.sleep(frequency)
@@ -69,24 +69,34 @@ def start_monitoring() -> None:
         logger.info("Monitoring started for %s (every %ds)", app_entry.name, freq)
 
 
-# ─── Routes ───────────────────────────────────────────────────────────────────
+# ─── Application CRUD routes ─────────────────────────────────────────────────
 
-@app.route("/api/v1/apps", methods=["GET", "POST", "PUT", "DELETE"])
-def apps_route():
-    if request.method == "POST":
-        return create_application_handler()
-    if request.method == "GET":
-        return health_handler()
-    if request.method == "PUT":
-        return update_application_handler()
-    if request.method == "DELETE":
-        return delete_application_handler()
+@app.route("/api/v1/apps", methods=["GET"])
+def get_apps():
+    return health_handler()
 
 
-@app.route("/api/v1/apps/<application_name>", methods=["GET"])
-def app_by_name_route(application_name: str):
-    return get_application_by_name_handler(application_name)
+@app.route("/api/v1/apps", methods=["POST"])
+def create_app():
+    return create_application_handler()
 
+
+@app.route("/api/v1/apps", methods=["PUT"])
+def update_app():
+    return update_application_handler()
+
+
+@app.route("/api/v1/apps/<name>", methods=["GET"])
+def get_app_by_name(name: str):
+    return get_application_by_name_handler(name)
+
+
+@app.route("/api/v1/apps/<name>", methods=["DELETE"])
+def delete_app(name: str):
+    return delete_application_handler(name)
+
+
+# ─── Health routes ────────────────────────────────────────────────────────────
 
 @app.route("/api/v1/health/ready", methods=["GET"])
 def get_ready():
@@ -111,10 +121,8 @@ def init_app() -> None:
     start_monitoring()
 
 
-# Gunicorn calls this module — run init on import when not in __main__
 init_app()
 
 if __name__ == "__main__":
-    # Solo para desarrollo local; en producción se usa gunicorn
     port = int(os.getenv("PORT", "9092"))
     app.run(host="0.0.0.0", port=port, debug=False)

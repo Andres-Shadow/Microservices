@@ -5,8 +5,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-# Estado de alertas por aplicación (keyed by app name)
-# Evita reenviar el mismo correo mientras el servicio sigue caído.
+# Per-app alert state to avoid re-sending the same alert while the service is still down.
 _alert_sent: dict[str, dict[str, bool]] = {}
 
 
@@ -17,7 +16,7 @@ def _notification_url() -> str:
 
 
 def send_email(subject: str, body: str, to_email: str) -> None:
-    """Envía una notificación al notification_server vía HTTP."""
+    """Sends a notification to the notification_server via HTTP."""
     payload = {
         "subject": subject,
         "message": body,
@@ -31,11 +30,10 @@ def send_email(subject: str, body: str, to_email: str) -> None:
         logger.error("Failed to send notification to %s: %s", to_email, exc)
 
 
-def revisar_aplicaciones(app_name: str, result: dict, email: str) -> None:
+def check_application_status(app_name: str, result: dict, email: str) -> None:
     """
-    Revisa el resultado del health check de una aplicación y envía
-    alertas por correo cuando el estado cambia a DOWN.
-    Restablece el flag cuando el servicio se recupera.
+    Checks the health result of an application and sends alert emails
+    when the status transitions to DOWN. Resets the flag when the service recovers.
     """
     state = _alert_sent.setdefault(app_name, {"live": False, "ready": False})
 
@@ -47,11 +45,11 @@ def revisar_aplicaciones(app_name: str, result: dict, email: str) -> None:
         is_down = check.get("status") == "DOWN"
 
         if is_down and not state[check_key]:
-            subject = f"[{app_name}] Alerta: estado {check_key.upper()} en DOWN"
+            subject = f"[{app_name}] Alert: {check_key.upper()} status is DOWN"
             body    = json.dumps(check, indent=4)
             send_email(subject, body, email)
             state[check_key] = True
 
         elif not is_down and state[check_key]:
-            # Servicio recuperado — resetear flag
+            # Service recovered — reset flag
             state[check_key] = False

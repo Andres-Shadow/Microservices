@@ -20,7 +20,7 @@ def create_new_application(application_data: Application) -> None:
 
 
 def get_all_registered_applications(page: int = 1, page_size: int = 10) -> list:
-    """Devuelve aplicaciones con paginación real via query params."""
+    """Returns applications with real pagination via query params."""
     offset = (page - 1) * page_size
     with _get_session() as session:
         return (

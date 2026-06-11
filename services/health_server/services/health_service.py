@@ -29,7 +29,7 @@ def _build_report(checks: list[Check]) -> HealthReport:
 
 
 def _run_async(coro):
-    """Ejecuta una coroutine desde código síncrono de forma segura."""
+    """Safely runs an async coroutine from synchronous Flask context."""
     try:
         loop = asyncio.get_event_loop()
         if loop.is_running():
@@ -45,7 +45,7 @@ def _run_async(coro):
 # ─── database checks ──────────────────────────────────────────────────────────
 
 def verify_alive() -> bool:
-    """Verifica que la conexión a la DB esté activa (liveness)."""
+    """Checks that the database connection is active (liveness)."""
     try:
         engine = get_engine()
         with engine.connect():
@@ -56,7 +56,7 @@ def verify_alive() -> bool:
 
 
 def verify_ready() -> bool:
-    """Verifica que la DB esté lista para recibir queries (readiness)."""
+    """Checks that the database can execute queries (readiness)."""
     try:
         from sqlalchemy import text
         engine = get_engine()

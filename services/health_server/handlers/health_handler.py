@@ -16,10 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def health_handler():
-    """
-    Ejecuta el health check sobre las aplicaciones registradas.
-    Soporta paginación via ?page=&page_size= (elimina el magic number [:2]).
-    """
+    """Runs health check on registered applications. Supports ?page=&page_size= pagination."""
     try:
         page      = int(request.args.get("page",      1))
         page_size = int(request.args.get("page_size", 10))
@@ -79,11 +76,8 @@ def create_application_handler():
         return jsonify({"error": "Database error"}), 500
 
 
-def delete_application_handler():
-    name = request.args.get("name")
-    if not name:
-        return jsonify({"error": "Missing query param: name"}), 400
-
+def delete_application_handler(name: str):
+    """Delete application by name (path param)."""
     try:
         deleted = delete_application_by_name(name)
         if not deleted:
