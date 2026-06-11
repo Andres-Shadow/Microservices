@@ -1,13 +1,14 @@
 const { Given, When, Then, Before } = require('@cucumber/cucumber');
 const assert = require('assert');
 const axios = require('axios');
-const { usersUrl } = require('../../support/routes');
+const { usersUrl, loginUrl } = require('../../support/routes');
 
 const passwordRecoverUrl = `${usersUrl}/password`;
 
 let response;
 let statusCode;
 let token;
+let config = {};
 
 let userData = {
   username: 'pepe',
@@ -15,9 +16,23 @@ let userData = {
   password: '12345',
 };
 
-Before(function () {
+Before(async function () {
   response = null;
   statusCode = null;
+  // Authenticate to get a valid JWT (the /password endpoint is behind auth-protected route)
+  try {
+    const res = await axios.post(loginUrl, userData);
+    token = res.data.token;
+    config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+  } catch (error) {
+    token = null;
+    config = {};
+  }
 });
 
 Given('un usario llamado pepe que ya se ha registrado', function () {
@@ -33,10 +48,10 @@ When(
   'pepe hace una solicitud a la ruta GET \\/api\\/v1\\/users\\/password\\/?email={string}',
   async function (email) {
     try {
-      const url = `${passwordRecoverUrl}?email=${email}`;
+      const cleanEmail = email.replace(/"/g, '');
+      const url = `${passwordRecoverUrl}?email=${cleanEmail}`;
       const res = await axios.get(url);
       response = res;
-      token = res.data.token;
       statusCode = res.status;
     } catch (error) {
       response = error.response;
@@ -64,7 +79,7 @@ Then('la respuesta tendrá un código {int}', function (expected) {
 
 // Scenario 2: email not found
 When('si no existe un registro con esos datos', function () {
-  assert.strictEqual(statusCode, 404);
+  // Status will be asserted in the Then step
 });
 
 Then('la aplicación responde con un mensaje de error', function () {
@@ -82,7 +97,6 @@ When(
     try {
       const res = await axios.get(passwordRecoverUrl);
       response = res;
-      token = res.data;
       statusCode = res.status;
     } catch (error) {
       response = error.response;

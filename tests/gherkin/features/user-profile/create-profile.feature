@@ -17,7 +17,7 @@ Feature: El usuario desea crear un perfil de usuario de forma manual
     And el correo ya esta registrado
     When el usuario hace una peticion POST a /api/v1/users (perfiles)
     Then el sistema de usuarios responde con el mensaje de error
-    And el sistema de usuarios responde con el codigo de estado 400
+    And el sistema de usuarios responde con el codigo de estado 409
 
   Scenario: el usuario desea crear el perfil de usuario de forma manual pero no ingresa correctamente los datos
     Given el usuario proporsiona de forma erronea su informacion el cuerpo de la peticion

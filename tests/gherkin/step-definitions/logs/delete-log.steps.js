@@ -25,12 +25,19 @@ Given('el id existe en la base de datos', async function () {
     Module: 'CUCUMBER',
   };
   try {
-    const res = await axios.post(logsUrl, logBody);
-    // Try to extract the ID from the created log
-    if (res.data && res.data.id) {
-      logId = res.data.id;
+    await axios.post(logsUrl, logBody);
+  } catch (error) {
+    // ignore creation errors
+  }
+  // Fetch the list to get a valid ID
+  try {
+    const listRes = await axios.get(logsUrl);
+    if (listRes.data && listRes.data.rows && listRes.data.rows.length > 0) {
+      logId = listRes.data.rows[listRes.data.rows.length - 1].id;
+    } else if (listRes.data && Array.isArray(listRes.data) && listRes.data.length > 0) {
+      logId = listRes.data[listRes.data.length - 1].id;
     } else {
-      logId = 1; // Fallback
+      logId = 1;
     }
   } catch (error) {
     logId = 1;

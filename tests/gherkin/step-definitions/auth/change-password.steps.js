@@ -100,6 +100,6 @@ Then('si no existe un registro con esos dados', function () {
 });
 
 // Scenario 3: no JWT token
-When('pepe no proporsiona el token de verificación jwt', function () {
+Given('pepe no proporsiona el token de verificación jwt', function () {
   config = {};
 });

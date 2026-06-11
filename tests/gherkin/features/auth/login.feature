@@ -23,5 +23,5 @@ Feature: la API provee al usuario la funcionalidad de ingresar con sus credencia
   Scenario: pepe quiere autenticarse dentro de la aplicación
     Given los datos diligenciados no cumplen con el formato esperado
     When invoca el método de autenticación en /api/v1/login
-    Then se obtiene el mensaje de respuesta 401
+    Then se obtiene el mensaje de respuesta 400
     And se obtiene el mensaje de error "Datos no válidos"

@@ -92,7 +92,7 @@ Then('el servidor responde con un código de estado {int}', function (expected) 
 });
 
 // Scenario 3: expired token
-When('el token jwt ingresado se encuentra vencido', function () {
+Given('el token jwt ingresado se encuentra vencido', function () {
   token = 'expired-fake-token';
   config = {
     headers: {

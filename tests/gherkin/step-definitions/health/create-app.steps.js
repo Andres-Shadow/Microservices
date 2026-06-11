@@ -4,7 +4,7 @@ const axios = require('axios');
 const { healthAppsUrl } = require('../../support/routes');
 
 let monitorBody = {
-  name: 'users',
+  name: `test-app-${Date.now()}`,
   endpoint: 'http://localhost:9090/api/v1/health',
   frequency: '10',
   email: 'microservicios@gmail.com',
@@ -16,9 +16,9 @@ let statusCode;
 Before(function () {
   response = null;
   statusCode = null;
-  // Reset to valid body
+  // Reset to valid body with a unique name to avoid conflicts
   monitorBody = {
-    name: 'users',
+    name: `test-app-${Date.now()}`,
     endpoint: 'http://localhost:9090/api/v1/health',
     frequency: '10',
     email: 'microservicios@gmail.com',

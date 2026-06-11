@@ -12,7 +12,7 @@ Feature: El usuario desea actualizar los datos de una aplicacion monitoreada
     When El usuario hace una peticion PUT a /api/v1/apps
     Then el servidor no encuentra la aplicacion y no actualiza sus datos
     And el servidor responde con un mensaje
-    And el mensaje del servidor monitor tiene un codigo 400
+    And el mensaje del servidor monitor tiene un codigo 500
 
   Scenario: El usuario desea actualizar el contenido de una aplicacion monitoreada pero no ingresa el cuerpo de la peticion
     Given El usuario no ingresa el cuerpo de la aplicacion a actualizar

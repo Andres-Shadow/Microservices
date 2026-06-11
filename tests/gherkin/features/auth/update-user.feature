@@ -17,7 +17,7 @@ Feature: La API proporsional al usuario la funcinalidad de actualizar los datos 
     And el servidor responde con un código de estado 404
 
   Scenario: pepe desea actualizar los datos de un usuario
+    Given el token jwt ingresado se encuentra vencido
     When pepe realiza una petición PUT a /api/v1/users
-    And el token jwt ingresado se encuentra vencido
     Then el servidor responde con un json con un mensaje de error
     And el servidor responde con un código de estado 401

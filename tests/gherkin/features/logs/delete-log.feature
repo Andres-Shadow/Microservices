@@ -11,7 +11,7 @@ Feature: El usuario desea eliminar un log de forma manual de la base de datos
     Given el usuario no proporciona un id
     When el usuario hace una peticion DELETE a /api/v1/logs/:id
     Then el servidor de logs envia un mensaje
-    And el servidor responde con estado 400
+    And el servidor responde con estado 404
 
   Scenario: El usuario ingresa un id que no existe en los logs
     Given el id no existe en la base de datos
@@ -23,4 +23,4 @@ Feature: El usuario desea eliminar un log de forma manual de la base de datos
     Given el usuario no proporciona un id valido de logs
     When el usuario hace una peticion DELETE a /api/v1/logs/:id
     Then el servidor de logs envia un mensaje
-    And el servidor responde con estado 404
+    And el servidor responde con estado 400

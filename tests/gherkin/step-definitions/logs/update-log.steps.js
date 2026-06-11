@@ -16,12 +16,40 @@ let logBody = {
 let response;
 let statusCode;
 
-Before(function () {
+Before(async function () {
   response = null;
   statusCode = null;
-  // Reset to valid log body
+
+  // Create a log and retrieve its actual ID for the update test
+  const createBody = {
+    Name: 'Test from JS',
+    Summary: 'Test made with CucumberJS',
+    Description: 'Just a test made with cucumberJS',
+    Log_date: '2024-04-09 00:00:00',
+    Log_type: 'INFO',
+    Module: 'CUCUMBER',
+  };
+  try {
+    await axios.post(logsUrl, createBody);
+  } catch (error) {
+    // ignore
+  }
+  // Fetch list to get a valid ID
+  try {
+    const listRes = await axios.get(logsUrl);
+    if (listRes.data && listRes.data.rows && listRes.data.rows.length > 0) {
+      logBody.id = String(listRes.data.rows[listRes.data.rows.length - 1].id);
+    } else if (listRes.data && Array.isArray(listRes.data) && listRes.data.length > 0) {
+      logBody.id = String(listRes.data[listRes.data.length - 1].id);
+    }
+  } catch (error) {
+    // keep default id
+  }
+
+  // Reset to valid log body (keeping the fetched id)
+  const validId = logBody.id;
   logBody = {
-    id: '1',
+    id: validId,
     Name: 'Test from JS',
     Summary: 'Test made with CucumberJS',
     Description: 'Just a test made with cucumberJS',

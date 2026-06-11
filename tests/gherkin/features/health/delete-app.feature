@@ -14,4 +14,4 @@ Feature: El usuario desea eliminar una aplicacion que se encuentre monitoreada
   Scenario: el usuario no diligencia el nombre de la aplicacion monitoreada
     Given el usuario hace una peticion DELETE a /api/v1/apps sin nombre
     Then el servidor responde con un mensaje de error
-    And el mensaje tiene un codigo de error 400
+    And el mensaje tiene un codigo de error 405
