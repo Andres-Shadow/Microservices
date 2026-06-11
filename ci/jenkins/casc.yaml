@@ -1,0 +1,38 @@
+jenkins:
+  systemMessage: "Microservices Platform CI — configured automatically via JCasC"
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "${JENKINS_ADMIN_PASSWORD:-admin}"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+unclassified:
+  location:
+    url: "http://localhost:6432/"
+
+jobs:
+  - script: |
+      pipelineJob('microservices-e2e-tests') {
+        description('End-to-end test pipeline for the microservices platform')
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/YOUR_USERNAME/YOUR_REPO.git')
+                }
+                branches('*/main', '*/feat/*')
+              }
+            }
+            scriptPath('Jenkinsfile')
+          }
+        }
+        triggers {
+          scm('H/5 * * * *')
+        }
+      }

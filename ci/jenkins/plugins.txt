@@ -1,6 +1,11 @@
-git 
-github 
-github-branch-source 
-credentials 
-ssh-credentials 
-nodejs 
+git
+github
+github-branch-source
+credentials
+ssh-credentials
+nodejs
+workflow-aggregator
+pipeline-stage-view
+htmlpublisher
+blueocean
+docker-workflow

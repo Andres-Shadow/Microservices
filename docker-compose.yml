@@ -199,12 +199,17 @@ services:
     ports:
       - "6432:8080"
       - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - .:/workspace:ro
     environment:
       - USER_SERVER_HOST=server
       - LOGS_HOST=cliente
       - HEALTH_HOST=health_server
       - USER_PROFILE_HOST=user_profile
       - NOTIFICATION_HOST=notification_server
+      - JENKINS_ADMIN_PASSWORD=${JENKINS_ADMIN_PASSWORD:-admin}
 
 volumes:
   postgres_data:
+  jenkins_data:
