@@ -1,6 +1,6 @@
 module taller_apirest
 
-go 1.21.4
+go 1.25
 
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
