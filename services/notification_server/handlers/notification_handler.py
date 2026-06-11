@@ -6,9 +6,17 @@ from services.notification_service import (
     get_notifications_email,
     count_notifications,
 )
-from communication.communication import create_log
 
 logger = logging.getLogger(__name__)
+
+
+def _safe_log(name, summary, description, log_type):
+    """Send log to NATS without crashing if it fails."""
+    try:
+        from communication.communication import create_log
+        create_log(name, summary, description, log_type)
+    except Exception as exc:
+        logger.warning("Failed to send log to NATS: %s", exc)
 
 
 def get_notifications_handler(page, page_size):
@@ -23,7 +31,7 @@ def get_notifications_handler(page, page_size):
         "total": count,
     }
 
-    create_log(
+    _safe_log(
         "NOTIFICATION-API",
         "Notifications listed",
         "All notifications listed successfully",
@@ -40,7 +48,7 @@ def get_notifications_by_email_handler(page, page_size, email):
         for n in notifications
     ]
 
-    create_log(
+    _safe_log(
         "NOTIFICATION-API",
         "Notifications listed by email",
         f"Notifications listed for {email}",
@@ -68,10 +76,10 @@ def create_notification_handler(body):
         create_notification(new_notif)
     except Exception as exc:
         logger.error("Error creating notification: %s", exc)
-        create_log("NOTIFICATION-API", "Notification creation failed", str(exc), "ERROR")
+        _safe_log("NOTIFICATION-API", "Notification creation failed", str(exc), "ERROR")
         raise
 
-    create_log(
+    _safe_log(
         "NOTIFICATION-API",
         "Notification created",
         f"Notification sent to {new_notif.target} — subject: {new_notif.subject}",

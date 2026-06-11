@@ -15,7 +15,10 @@ def get_notifications(page: int, page_size: int) -> list:
     offset = (max(1, int(page)) - 1) * max(1, int(page_size))
     try:
         with _session() as session:
-            return session.query(Notification).offset(offset).limit(int(page_size)).all()
+            results = session.query(Notification).offset(offset).limit(int(page_size)).all()
+            # Expunge objects so they remain accessible after session closes
+            session.expunge_all()
+            return results
     except Exception as exc:
         logger.error("Error fetching notifications: %s", exc)
         return []
@@ -25,13 +28,15 @@ def get_notifications_email(page: int, page_size: int, email: str) -> list:
     offset = (max(1, int(page)) - 1) * max(1, int(page_size))
     try:
         with _session() as session:
-            return (
+            results = (
                 session.query(Notification)
                 .filter(Notification.target == email)
                 .offset(offset)
                 .limit(int(page_size))
                 .all()
             )
+            session.expunge_all()
+            return results
     except Exception as exc:
         logger.error("Error fetching notifications by email: %s", exc)
         return []
@@ -56,5 +61,10 @@ def create_notification(notification: Notification) -> str:
         session.add(new_notif)
         session.commit()
 
-    send_email(notification.subject, notification.message, notification.target)
-    return "Notification created and email sent successfully"
+    # Send email (non-blocking — failure doesn't prevent notification creation)
+    try:
+        send_email(notification.subject, notification.message, notification.target)
+    except Exception as exc:
+        logger.warning("Email sending failed (notification still created): %s", exc)
+
+    return "Notification created successfully"
