@@ -55,7 +55,7 @@ func GetUserById(id string) (*models.User, error) {
 	return &user, nil
 }
 
-func PostUser(user models.User) (*models.User, error) {
+func CreateUser(user models.User) (*models.User, error) {
 	hashed, err := hashPassword(user.Password)
 	if err != nil {
 		return nil, err

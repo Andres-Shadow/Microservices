@@ -31,7 +31,7 @@ func ConnectToNATS() *NatsLogger {
 	once.Do(func() {
 		nc, err := nats.Connect(url)
 		if err != nil {
-			log.Fatalf("Error al conectar con NATS: %v", err)
+			log.Fatalf("Error while connecting with NATS: %v", err)
 		}
 		instance = nc
 	})
@@ -48,7 +48,7 @@ func (nl *NatsLogger) SendLog(newLog *models.LogResponse) {
 
 	jsonData, err := json.Marshal(newLog)
 	if err != nil {
-		log.Printf("Error serializando log: %v", err)
+		log.Printf("Error serializing log: %v", err)
 		return
 	}
 

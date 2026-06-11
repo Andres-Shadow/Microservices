@@ -13,36 +13,34 @@ import (
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	var user models.User
 	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
-		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		respondJSON(w, http.StatusBadRequest, map[string]string{"error": "Invalid request body"})
 		return
 	}
 
 	if user.Username == "" || user.Password == "" {
-		http.Error(w, "Username and password are required", http.StatusBadRequest)
-		utilities.SendLogToNats(user.Username, "Login attempt", "Login failed: missing credentials", "ERROR")
+		respondJSON(w, http.StatusBadRequest, map[string]string{"error": "Username and password are required"})
+		utilities.SendLogToNats(user.Username, "Login failed", "Login attempt with missing credentials", "ERROR")
 		return
 	}
 
 	if _, err := utilities.SearchUser(&user); err != nil {
-		w.WriteHeader(http.StatusUnauthorized)
-		w.Write([]byte("Invalid credentials"))
 		utilities.SendLogToNats(
 			user.Username,
-			"Login attempt",
-			fmt.Sprintf("User %s failed to log in with email %s", user.Username, user.Email),
+			"Login failed",
+			fmt.Sprintf("User %s failed authentication", user.Username),
 			"ERROR",
 		)
+		respondJSON(w, http.StatusUnauthorized, map[string]string{"error": "Invalid credentials"})
 		return
 	}
 
 	utilities.SendLogToNats(
 		user.Username,
-		"User logged in",
-		fmt.Sprintf("User %s logged in with email %s", user.Username, user.Email),
+		"Login successful",
+		fmt.Sprintf("User %s logged in successfully", user.Username),
 		"INFO",
 	)
 
 	tokenString := security.LoginHandler(&user)
-	w.Header().Set("Content-Type", "text/plain")
-	fmt.Fprint(w, tokenString)
+	respondJSON(w, http.StatusOK, map[string]string{"token": tokenString})
 }

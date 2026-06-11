@@ -27,7 +27,7 @@ func main() {
 	api := r.PathPrefix("/api/v1").Subrouter()
 	defineLoginEndpoints(api)
 	defineHealthEndpoints(api)
-	defineUserEndpoints(r.PathPrefix("/api/v1/users").Subrouter())
+	defineUserEndpoints(api.PathPrefix("/users").Subrouter())
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -42,7 +42,6 @@ func main() {
 		IdleTimeout:  60 * time.Second,
 	}
 
-	// Arrancar el servidor en una goroutine para no bloquear el signal handler
 	go func() {
 		log.Printf("Auth server listening on :%s", port)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
@@ -50,7 +49,6 @@ func main() {
 		}
 	}()
 
-	// Graceful shutdown: esperar señal de OS
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
@@ -71,12 +69,12 @@ func initServer() {
 }
 
 func defineUserEndpoints(userRouter *mux.Router) {
-	userRouter.HandleFunc("/", handlers.GetUsersHandler).Methods(http.MethodGet)
-	userRouter.HandleFunc("/", handlers.PostUserHandler).Methods(http.MethodPost)
-	userRouter.HandleFunc("/", handlers.DeleteUserHandler).Methods(http.MethodDelete)
-	userRouter.HandleFunc("/", handlers.UpdateUserHandler).Methods(http.MethodPut)
+	userRouter.HandleFunc("", handlers.GetUsersHandler).Methods(http.MethodGet)
+	userRouter.HandleFunc("", handlers.CreateUserHandler).Methods(http.MethodPost)
+	userRouter.HandleFunc("", handlers.UpdateUserHandler).Methods(http.MethodPut)
 	userRouter.HandleFunc("/{email}", handlers.GetUserHandlerByEmail).Methods(http.MethodGet)
-	userRouter.HandleFunc("/password/", handlers.RecoverPassword).Methods(http.MethodGet)
+	userRouter.HandleFunc("/{email}", handlers.DeleteUserHandler).Methods(http.MethodDelete)
+	userRouter.HandleFunc("/password", handlers.RecoverPassword).Methods(http.MethodGet)
 	userRouter.HandleFunc("/password", handlers.UpdateUserPassword).Methods(http.MethodPatch)
 }
 
@@ -86,6 +84,6 @@ func defineLoginEndpoints(loginRouter *mux.Router) {
 
 func defineHealthEndpoints(healthRouter *mux.Router) {
 	healthRouter.HandleFunc("/health", handlers.CheckHealth).Methods(http.MethodGet)
-	healthRouter.HandleFunc("/health/ready", handlers.CheackReadyHealth).Methods(http.MethodGet)
+	healthRouter.HandleFunc("/health/ready", handlers.CheckReadyHealth).Methods(http.MethodGet)
 	healthRouter.HandleFunc("/health/live", handlers.CheckLive).Methods(http.MethodGet)
 }
