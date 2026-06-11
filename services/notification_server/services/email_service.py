@@ -6,7 +6,11 @@ logger = logging.getLogger(__name__)
 
 
 def send_email(subject: str, body: str, to_email: str) -> None:
-    """Envía un email vía Mailgun. Requiere API_KEY y DOMAIN en env vars."""
+    """
+    Sends an email via the configured email provider (currently Mailgun).
+    Requires MAILGUN_API_KEY and MAILGUN_DOMAIN env vars.
+    If not configured, the email is skipped gracefully.
+    """
     api_key = os.getenv("MAILGUN_API_KEY")
     domain  = os.getenv("MAILGUN_DOMAIN")
 
@@ -22,7 +26,7 @@ def send_email(subject: str, body: str, to_email: str) -> None:
             url,
             auth=("api", api_key),
             data={
-                "from":    f"Monitor Service <monitor@{domain}>",
+                "from":    f"Notification Service <notifications@{domain}>",
                 "to":      [to_email],
                 "subject": subject,
                 "text":    body,

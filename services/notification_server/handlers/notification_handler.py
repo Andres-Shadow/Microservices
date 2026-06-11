@@ -1,5 +1,4 @@
 import logging
-from flask import jsonify
 from models.notification import Notification
 from services.notification_service import (
     get_notifications,
@@ -12,7 +11,7 @@ from communication.communication import create_log
 logger = logging.getLogger(__name__)
 
 
-def get_notificaions_handler(page, page_size):
+def get_notifications_handler(page, page_size):
     notifications = get_notifications(page, page_size)
     count = count_notifications()
 
@@ -21,19 +20,19 @@ def get_notificaions_handler(page, page_size):
             {"subject": n.subject, "message": n.message, "target": n.target}
             for n in notifications
         ],
-        "count": count,
+        "total": count,
     }
 
     create_log(
         "NOTIFICATION-API",
         "Notifications listed",
-        "All notifications were listed",
+        "All notifications listed successfully",
         "INFO",
     )
     return result
 
 
-def get_notificaions_by_email_handler(page, page_size, email):
+def get_notifications_by_email_handler(page, page_size, email):
     notifications = get_notifications_email(page, page_size, email)
 
     result = [
@@ -47,7 +46,7 @@ def get_notificaions_by_email_handler(page, page_size, email):
         f"Notifications listed for {email}",
         "INFO",
     )
-    return jsonify(result)
+    return result
 
 
 def create_notification_handler(body):
@@ -66,16 +65,16 @@ def create_notification_handler(body):
     )
 
     try:
-        response = create_notification(new_notif)
+        create_notification(new_notif)
     except Exception as exc:
         logger.error("Error creating notification: %s", exc)
-        create_log("NOTIFICATION-API", "Error creating notification", str(exc), "ERROR")
+        create_log("NOTIFICATION-API", "Notification creation failed", str(exc), "ERROR")
         raise
 
     create_log(
         "NOTIFICATION-API",
         "Notification created",
-        f"Email sent to {new_notif.target} — subject: {new_notif.subject}",
+        f"Notification sent to {new_notif.target} — subject: {new_notif.subject}",
         "CREATION",
     )
-    return response
+    return {"message": "Notification created successfully"}

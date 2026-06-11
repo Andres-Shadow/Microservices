@@ -1,4 +1,4 @@
-from models.data_check import HelathCheck
+from models.data_check import HealthCheck
 from services.health_service import construct_ready_body, construct_alive_body
 
 
@@ -11,7 +11,7 @@ def verify_server_live():
 
 
 def verify_server_health():
-    return HelathCheck(
+    return HealthCheck(
         ready=construct_ready_body(),
         live=construct_alive_body(),
     )
