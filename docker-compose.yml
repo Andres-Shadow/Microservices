@@ -1,0 +1,215 @@
+services:
+  # ─────────────────────────────────────────────
+  # SHARED DATABASE (PostgreSQL — schema-per-service)
+  # ─────────────────────────────────────────────
+  database:
+    build: ./database/shared_postgres
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_DB=appdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ─────────────────────────────────────────────
+  # AUTH SERVICE
+  # ─────────────────────────────────────────────
+  server:
+    build: ./services/auth_server
+    ports:
+      - "9090:9090"
+    expose:
+      - "9090"
+    environment:
+      - DATABASE=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=devuser
+      - DATABASE_PASSWORD=devpassword
+      - DATABASE_NAME=appdb
+      - DATABASE_SCHEMA=auth
+      - NATS_SERVER=nats
+      - NATS_SUBJECT=MicroservicesLogs
+      - JWT_SECRET=changeme_use_a_strong_secret_in_production
+    depends_on:
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+
+  # ─────────────────────────────────────────────
+  # LOGS MANAGER SERVICE
+  # ─────────────────────────────────────────────
+  cliente:
+    build: ./services/logs_manager_server
+    ports:
+      - "9091:9091"
+    expose:
+      - "9091"
+    environment:
+      - NATS_SERVER=nats
+      - DATABASE=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=logsuser
+      - DATABASE_PASSWORD=logspassword
+      - DATABASE_NAME=appdb
+      - DATABASE_SCHEMA=logs
+      - PUERTO=9091
+    depends_on:
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+
+  # ─────────────────────────────────────────────
+  # HEALTH MONITOR SERVICE
+  # ─────────────────────────────────────────────
+  health_server:
+    build: ./services/health_server
+    ports:
+      - "9092:9092"
+    expose:
+      - "9092"
+    environment:
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_USER=healthuser
+      - DB_PASSWORD=healthpassword
+      - DB_NAME=appdb
+      - DB_SCHEMA=health
+      - NATS_SERVER=nats
+      - NOTIFICATION_HOST=notification_server
+      - NOTIFICATION_PORT=9096
+    depends_on:
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+      notification_server:
+        condition: service_started
+
+  # ─────────────────────────────────────────────
+  # USER PROFILE SERVICE
+  # ─────────────────────────────────────────────
+  user_profile:
+    build: ./services/user_profile_server
+    ports:
+      - "9094:9094"
+    expose:
+      - "9094"
+    environment:
+      - DATABASE=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=profileuser
+      - DATABASE_PASSWORD=profilepassword
+      - DATABASE_NAME=appdb
+      - DATABASE_SCHEMA=user_profile
+      - NATS_SERVER=nats
+      - NATS_SUBJECT=MicroservicesLogs
+    depends_on:
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+
+  # ─────────────────────────────────────────────
+  # NOTIFICATION SERVICE
+  # ─────────────────────────────────────────────
+  notification_server:
+    build: ./services/notification_server
+    ports:
+      - "9096:9096"
+    expose:
+      - "9096"
+    environment:
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_USER=notifuser
+      - DB_PASSWORD=notifpassword
+      - DB_NAME=appdb
+      - DB_SCHEMA=notifications
+      - NATS_SERVER=nats
+      - NATS_SUBJECT=MicroservicesLogs
+      - MAILGUN_API_KEY=${MAILGUN_API_KEY:-}
+      - MAILGUN_DOMAIN=${MAILGUN_DOMAIN:-}
+    depends_on:
+      database:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+
+  # ─────────────────────────────────────────────
+  # GATEWAY SERVICE
+  # ─────────────────────────────────────────────
+  gateway_server:
+    build: ./services/gateway_server
+    ports:
+      - "9095:9095"
+    expose:
+      - "9095"
+    environment:
+      - USER_SERVER_HOST=server
+      - LOGS_HOST=cliente
+      - HEALTH_HOST=health_server
+      - USER_PROFILE_HOST=user_profile
+      - NOTIFICATION_HOST=notification_server
+      - NATS_SERVER=nats
+      - JWT_SECRET=changeme_use_a_strong_secret_in_production
+    depends_on:
+      nats:
+        condition: service_healthy
+      server:
+        condition: service_started
+      cliente:
+        condition: service_started
+      user_profile:
+        condition: service_started
+      notification_server:
+        condition: service_started
+      health_server:
+        condition: service_started
+
+  # ─────────────────────────────────────────────
+  # INFRASTRUCTURE
+  # ─────────────────────────────────────────────
+  nats:
+    image: nats:2.10-alpine
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    command: ["--http_port", "8222"]
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8222/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 3s
+
+  jenkins:
+    build: ./ci/jenkins
+    ports:
+      - "6432:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - .:/workspace:ro
+    environment:
+      - USER_SERVER_HOST=server
+      - LOGS_HOST=cliente
+      - HEALTH_HOST=health_server
+      - USER_PROFILE_HOST=user_profile
+      - NOTIFICATION_HOST=notification_server
+      - JENKINS_ADMIN_PASSWORD=${JENKINS_ADMIN_PASSWORD:-admin}
+
+volumes:
+  postgres_data:
+  jenkins_data:

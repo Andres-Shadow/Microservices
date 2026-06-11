@@ -1,0 +1,31 @@
+{
+  "name": "gherkin-e2e-tests",
+  "version": "1.0.0",
+  "description": "End-to-end Gherkin/Cucumber tests for the microservices platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --exit",
+    "test:auth": "cucumber-js features/auth/",
+    "test:logs": "cucumber-js features/logs/",
+    "test:health": "cucumber-js features/health/",
+    "test:notifications": "cucumber-js features/notifications/",
+    "test:profiles": "cucumber-js features/user-profile/",
+    "test:integration": "cucumber-js features/integration/",
+    "test:report": "cucumber-js --exit & node index.js",
+    "report": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.3.1",
+    "@faker-js/faker": "^8.4.1"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "axios": "^1.6.8",
+    "chai": "^5.1.0",
+    "cucumber-html-reporter": "^7.1.1",
+    "pg": "^8.11.5"
+  }
+}
