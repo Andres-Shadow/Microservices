@@ -1,70 +1,57 @@
-const axios = require("axios");
+const axios = require('axios');
 
-const healthUrl = require("../configuracion/routesConfiguration").healthServer;
+const healthUrl = require('../configuracion/routesConfiguration').healthServer;
 
 class HealthMonitorHandler {
-  static async getMonitoredAps(request, reply) {
+  static async getMonitoredApps(request, reply) {
     try {
-      // Realizar la petición GET con node-fetch y pasar el token en el encabezado de autorización
       const response = await axios.get(healthUrl);
-      // Si la petición se realiza con éxito, devolver la respuesta
       reply.code(200).send(response.data);
     } catch (error) {
-      // Si ocurre algún error durante la petición, devolver un error
-      console.error("Error al realizar la petición GET:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      console.error('getMonitoredApps error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
   }
 
-  static async createMonitoredAp(request, reply) {
-    //obtener el body de la peticion
-    const monitoredAp = request.body;
-    let respuesta;
+  static async createMonitoredApp(request, reply) {
     try {
-      respuesta = await axios.post(healthUrl, monitoredAp);
+      const response = await axios.post(healthUrl, request.body);
+      reply.code(201).send(response.data);
     } catch (error) {
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      console.error('createMonitoredApp error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
-  static async deleteMonitoredAp(request, reply) {
-    //obtener el nombre de la aplicacion a eliminar desde el query param
-    const appName = request.query.name;
-    let respuesta;
+  static async deleteMonitoredApp(request, reply) {
+    const name = request.params.name;
     try {
-      respuesta = await axios.delete(healthUrl + "?name=" + appName);
+      const response = await axios.delete(`${healthUrl}/${name}`);
+      reply.code(200).send(response.data);
     } catch (error) {
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      console.error('deleteMonitoredApp error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
-  static async updateMonitoredAp(request, reply) {
-    const monitoredAp = request.body;
-    let respuesta;
+  static async updateMonitoredApp(request, reply) {
     try {
-      respuesta = await axios.put(healthUrl, monitoredAp);
+      const response = await axios.put(healthUrl, request.body);
+      reply.code(200).send(response.data);
     } catch (error) {
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      console.error('updateMonitoredApp error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
   static async getAppByName(request, reply) {
-    const appName = request.params.name;
+    const name = request.params.name;
     try {
-      const response = await axios.get(healthUrl + "/" + appName);
+      const response = await axios.get(`${healthUrl}/${name}`);
       reply.code(200).send(response.data);
     } catch (error) {
-      console.error("Error al realizar la petición GET:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      console.error('getAppByName error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
   }
 }

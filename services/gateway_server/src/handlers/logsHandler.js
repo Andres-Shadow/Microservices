@@ -1,61 +1,54 @@
-const axios = require("axios");
+const axios = require('axios');
 
-const logsUrl = require("../configuracion/routesConfiguration").logsManager;
+const logsUrl = require('../configuracion/routesConfiguration').logsManager;
 
 class LogsHandler {
   static async getLogs(request, reply) {
     try {
-      // Realizar la petición GET con node-fetch y pasar el token en el encabezado de autorización
-      const response = await axios.get(logsUrl);
-      // Si la petición se realiza con éxito, devolver la respuesta
+      const { page, pageSize, startDate, logType } = request.query;
+      const params = {};
+      if (page) params.page = page;
+      if (pageSize) params.pageSize = pageSize;
+      if (startDate) params.startDate = startDate;
+      if (logType) params.logType = logType;
+
+      const response = await axios.get(logsUrl, { params });
       reply.code(200).send(response.data);
     } catch (error) {
-      // Si ocurre algún error durante la petición, devolver un error
-      console.error("Error al realizar la petición GET:", error.message);
-      reply.code(500).send({ message: "Internal Server Error" });
+      console.error('getLogs error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
   }
 
   static async createLog(request, reply) {
-    //obtener el body de la peticion
-    const log = request.body;
-    let respuesta;
     try {
-      respuesta = await axios.post(logsUrl, log);
+      const response = await axios.post(logsUrl, request.body);
+      reply.code(201).send(response.data);
     } catch (error) {
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      console.error('createLog error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
   static async deleteLog(request, reply) {
-    //obtener el body de la peticion
-    const logId = request.params.id;
-    let respuesta;
+    const id = request.params.id;
     try {
-      respuesta = await axios.delete(logsUrl + "?id=" + logId);
+      const response = await axios.delete(`${logsUrl}/${id}`);
+      reply.code(200).send(response.data);
     } catch (error) {
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      console.error('deleteLog error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 
-  static async upateLog(request, reply) {
-    //obtener el body de la peticion
-    const log = request.body;
-    let respuesta;
+  static async updateLog(request, reply) {
     try {
-      respuesta = await axios.put(logsUrl, log);
+      const response = await axios.put(logsUrl, request.body);
+      reply.code(200).send(response.data);
     } catch (error) {
-      console.error("Error al verificar el token JWT:", error);
-      reply.code(500).send({ message: "Internal Server Error" });
-      return null;
+      console.error('updateLog error:', error.message);
+      reply.code(error.response?.status || 500).send(error.response?.data || { error: 'Internal server error' });
     }
-    reply.code(200).send({ message: respuesta.data });
   }
 }
 

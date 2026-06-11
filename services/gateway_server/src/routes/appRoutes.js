@@ -1,48 +1,48 @@
-const mainHandler        = require('../handlers/mainHandler');
-const logsHandler        = require('../handlers/logsHandler');
+const mainHandler          = require('../handlers/mainHandler');
+const logsHandler          = require('../handlers/logsHandler');
 const healthMonitorHandler = require('../handlers/healthMonitorHandler');
-const healthHandler      = require('../handlers/healthHandler');
-const notiHandler        = require('../handlers/notificationHandler');
+const healthHandler        = require('../handlers/healthHandler');
+const notificationHandler  = require('../handlers/notificationHandler');
 
 const API = '/api/v1';
 
-async function routes(fastify, options) {
+async function routes(fastify) {
   // Auth
-  fastify.post(`${API}/user/login`,    mainHandler.userLogin);
-  fastify.post(`${API}/user/register`, mainHandler.userRegister);
+  fastify.post(`${API}/auth/login`,       mainHandler.userLogin);
+  fastify.post(`${API}/auth/register`,    mainHandler.userRegister);
 
   // Users
-  fastify.get(`${API}/user`,           mainHandler.getUsers);
-  fastify.delete(`${API}/user`,        mainHandler.deleteUser);
-  fastify.get(`${API}/user/:email`,    mainHandler.getUserInfo);
-  fastify.put(`${API}/user/:email`,    mainHandler.updateUserInformation);
+  fastify.get(`${API}/users`,             mainHandler.getUsers);
+  fastify.get(`${API}/users/:email`,      mainHandler.getUserInfo);
+  fastify.put(`${API}/users/:email`,      mainHandler.updateUserInformation);
+  fastify.delete(`${API}/users/:email`,   mainHandler.deleteUser);
 
   // Password
-  fastify.get(`${API}/password`,       mainHandler.recoverPassword);
-  fastify.patch(`${API}/password`,     mainHandler.updateUserPassword);
+  fastify.get(`${API}/users/password`,    mainHandler.recoverPassword);
+  fastify.patch(`${API}/users/password`,  mainHandler.updateUserPassword);
 
   // Logs
-  fastify.get(`${API}/logs`,           logsHandler.getLogs);
-  fastify.post(`${API}/logs`,          logsHandler.createLog);
-  fastify.delete(`${API}/logs`,        logsHandler.deleteLog);
-  fastify.put(`${API}/logs`,           logsHandler.upateLog);
+  fastify.get(`${API}/logs`,              logsHandler.getLogs);
+  fastify.post(`${API}/logs`,             logsHandler.createLog);
+  fastify.put(`${API}/logs`,              logsHandler.updateLog);
+  fastify.delete(`${API}/logs/:id`,       logsHandler.deleteLog);
 
   // Health monitor (apps)
-  fastify.get(`${API}/apps`,           healthMonitorHandler.getMonitoredAps);
-  fastify.post(`${API}/apps`,          healthMonitorHandler.createMonitoredAp);
-  fastify.delete(`${API}/apps`,        healthMonitorHandler.deleteMonitoredAp);
-  fastify.put(`${API}/apps`,           healthMonitorHandler.updateMonitoredAp);
-  fastify.get(`${API}/apps/:name`,     healthMonitorHandler.getAppByName);
+  fastify.get(`${API}/apps`,              healthMonitorHandler.getMonitoredApps);
+  fastify.post(`${API}/apps`,             healthMonitorHandler.createMonitoredApp);
+  fastify.put(`${API}/apps`,              healthMonitorHandler.updateMonitoredApp);
+  fastify.get(`${API}/apps/:name`,        healthMonitorHandler.getAppByName);
+  fastify.delete(`${API}/apps/:name`,     healthMonitorHandler.deleteMonitoredApp);
 
   // Gateway health
-  fastify.get(`${API}/health/ready`,   healthHandler.readyVerification);
-  fastify.get(`${API}/health/live`,    healthHandler.liveVerification);
-  fastify.get(`${API}/health`,         healthHandler.verifyHealth);
+  fastify.get(`${API}/health`,            healthHandler.verifyHealth);
+  fastify.get(`${API}/health/ready`,      healthHandler.readyVerification);
+  fastify.get(`${API}/health/live`,       healthHandler.liveVerification);
 
   // Notifications
-  fastify.post(`${API}/notification`,          notiHandler.sendNotification);
-  fastify.get(`${API}/notification`,           notiHandler.getNotifications);
-  fastify.get(`${API}/notification/:email`,    notiHandler.getNotificationsByEMail);
+  fastify.get(`${API}/notifications`,           notificationHandler.getNotifications);
+  fastify.post(`${API}/notifications`,          notificationHandler.sendNotification);
+  fastify.get(`${API}/notifications/:email`,    notificationHandler.getNotificationsByEmail);
 }
 
 module.exports = routes;

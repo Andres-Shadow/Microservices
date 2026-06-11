@@ -1,9 +1,6 @@
-const fastify = require("fastify")({ logger: true });
+const fastify = require('fastify')({ logger: true });
+const appRoutes = require('./appRoutes');
 
-// Importar rutas
-const exampleRoutes = require("./appRoutes");
-
-// Registrar rutas
-fastify.register(exampleRoutes);
+fastify.register(appRoutes);
 
 module.exports = fastify;
