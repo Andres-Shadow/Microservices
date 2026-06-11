@@ -1,100 +1,73 @@
 import { DataLog } from '../database/database';
 
 class logsServices {
-    // Method for casting logs that came from nats server communication to JSON 
-    // so, it can be stored in the database
-    static async mapJSONToDataLogs(jsonData: any): Promise<String> {
+    /**
+     * Maps incoming NATS JSON payload to a DataLog record and persists it.
+     */
+    static async mapJSONToDataLogs(jsonData: any): Promise<string> {
         try {
-            // Crea una nueva instancia de DataLogs con los datos del JSON
-            const newDataLogs = await DataLog.create({
-                Name: jsonData.name,
-                Summary: jsonData.summary,
+            const newDataLog = await DataLog.create({
+                Name:        jsonData.name,
+                Summary:     jsonData.summary,
                 Description: jsonData.description,
-                Log_date: jsonData.log_date,
-                Log_type: jsonData.log_type,
-                Module: jsonData.module,
+                Log_date:    jsonData.log_date,
+                Log_type:    jsonData.log_type,
+                Module:      jsonData.module,
             });
-            return "Log created successfully!" + newDataLogs.toJSON();
+            return 'Log created successfully: ' + JSON.stringify(newDataLog.toJSON());
         } catch (error: any) {
-            throw new Error('Error while mapping JSON atributes: ' + error.message);
+            throw new Error('Error mapping JSON to DataLog: ' + error.message);
         }
     }
 
-    static async createInDatabase(data: any) {
+    static async createInDatabase(data: any): Promise<void> {
         await DataLog.create(data);
     }
 
     static async getLogs(pageNumber: number, size: number, filter: any) {
         const offset = (pageNumber - 1) * size;
 
-        // Crea un objeto de opciones para la consulta
         const options: any = {
-            limit: size,
-            offset: offset
+            limit:  size,
+            offset,
         };
 
-        // Si se proporciona un filtro, agrégalo a las opciones de consulta
-        if (filter) {
+        if (filter && Object.keys(filter).length > 0) {
             options.where = filter;
         }
 
-        // Consulta los logs utilizando las opciones de consulta
-        const logs_stored = await DataLog.findAndCountAll(options);
-
-        return logs_stored;
+        return DataLog.findAndCountAll(options);
     }
 
-    static async deleteLog(id: number) {
-        await DataLog.destroy({
-            where: {
-                id: id
-            }
-        });
+    static async deleteLog(id: number): Promise<void> {
+        await DataLog.destroy({ where: { id } });
     }
 
     static async getLog(id: string) {
-        const log = await DataLog.findByPk(id);
-        if (!log) {
-            return null;
-        } else {
-            return log;
-        }
+        return DataLog.findByPk(id) ?? null;
     }
 
     static async getLogsByName(name: string) {
-        const logs = await DataLog.findAll({
+        return DataLog.findAll({
             where: {
-                Name: name,
-                Log_type: 'CREATION'
-            }
+                Name:     name,
+                Log_type: 'CREATION',
+            },
         });
-
-        return logs;
     }
 
-    static async updateLog(id: string, data: any) {
-        await DataLog.update(data, {
-            where: {
-                id: id
-            }
-        });
+    static async updateLog(id: string, data: any): Promise<void> {
+        await DataLog.update(data, { where: { id } });
     }
 
     static async getLogsByApplication(application: string, pageNumber: number, size: number) {
         const offset = (pageNumber - 1) * size;
-
-        // Consulta los comentarios utilizando la paginación
-        const logs_stored = await DataLog.findAndCountAll({
-            where: {
-                Module: application
-            },
-            limit: size,
-            offset: offset
+        return DataLog.findAndCountAll({
+            where:  { Module: application },
+            limit:  size,
+            offset,
         });
-
-        return logs_stored;
     }
 }
-
 
 export default logsServices;

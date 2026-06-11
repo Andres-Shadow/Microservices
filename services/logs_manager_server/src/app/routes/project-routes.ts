@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import {
-    getLog,
+    getLogs,
     createLog,
     deleteLog,
     updateLog,
@@ -14,12 +14,12 @@ const apiUrl    = '/api/v1/logs';
 const healthUrl = '/api/v1/health';
 
 // Logs routes
-router.get(apiUrl,                        getLog);
+router.get(apiUrl,                        getLogs);
 router.post(apiUrl,                       createLog);
-router.delete(apiUrl,                     deleteLog);
 router.put(apiUrl,                        updateLog);
+router.delete(`${apiUrl}/:id`,            deleteLog);
 
-// Rutas con parámetro — separadas por prefijo para evitar conflicto
+// Filtered routes
 router.get(`${apiUrl}/by-email/:email`,   getLogsByEmail);
 router.get(`${apiUrl}/by-app/:module`,    getLogsByApplication);
 
