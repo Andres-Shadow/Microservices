@@ -4,7 +4,13 @@
   "description": "End-to-end Gherkin/Cucumber tests for the microservices platform",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js features/",
+    "test": "cucumber-js",
+    "test:auth": "cucumber-js features/auth/",
+    "test:logs": "cucumber-js features/logs/",
+    "test:health": "cucumber-js features/health/",
+    "test:notifications": "cucumber-js features/notifications/",
+    "test:profiles": "cucumber-js features/user-profile/",
+    "test:integration": "cucumber-js features/integration/",
     "report": "node index.js"
   },
   "keywords": [],
