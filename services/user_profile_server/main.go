@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -10,52 +9,60 @@ import (
 	"users_api/database"
 	"users_api/handlers"
 	"users_api/models"
+	"users_api/services"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	connectDatabase()
-	r := gin.Default()
-	url := "/api/v1/users"
-	// Rutas de la API
-	r.GET(url, handlers.GetUsers)      // Obtener todos los usuarios
-	r.POST(url, handlers.CreateUser)   // Crear un nuevo usuario
-	r.PUT(url, handlers.UpdateUser)    // Actualizar un usuario
-	r.DELETE(url, handlers.DeleteUser) // Eliminar un usuario
-	r.GET(url+"/:email", handlers.GetUser) // Obtener un usuario por ID
-	//rutas de la salud
-	r.GET("/health/live", handlers.CheckLive)
-	r.GET("/health/ready", handlers.CheackReadyHealth)
-	r.GET("/api/v1/health", handlers.CheckHealth)
 
-	// Canales para controlar la aplicación
+	r := gin.Default()
+
+	api := r.Group("/api/v1")
+	defineUserRoutes(api)
+	defineHealthRoutes(api)
+
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 
-	// Iniciar la suscripción a NATS en segundo plano
-	done := make(chan struct{}) // Canales para cerrar la suscripción
-	go communication.SubscribeToNATS( done)
+	done := make(chan struct{})
+	go communication.SubscribeToNATS(done)
 
-	// Iniciar el servidor en el puerto 9094
+	services.StartTime = services.Now()
+
 	go func() {
 		if err := r.Run(":9094"); err != nil {
-			log.Fatalf("Error al iniciar el servidor: %v", err)
+			log.Fatalf("Server error: %v", err)
 		}
 	}()
 
-	// Esperar a que se reciba una señal para cerrar correctamente
-	<-quit
-	fmt.Println("Señal recibida, cerrando aplicación...")
+	log.Println("User profile server listening on :9094")
 
-	// Cerrar el canal done para detener la suscripción a NATS
+	<-quit
+	log.Println("Shutdown signal received, closing application...")
 	close(done)
 }
 
 func connectDatabase() {
-	fmt.Println("=====================================")
-	fmt.Println("Conectando a la base de datos...")
+	log.Println("Connecting to database...")
 	database.DBConnection()
 	database.DB.AutoMigrate(&models.User{})
-	fmt.Println("=====================================")
+	log.Println("Database connected and migrated.")
+}
+
+func defineUserRoutes(api *gin.RouterGroup) {
+	users := api.Group("/users")
+	users.GET("", handlers.GetUsers)
+	users.POST("", handlers.CreateUser)
+	users.PUT("", handlers.UpdateUser)
+	users.DELETE("/:id", handlers.DeleteUser)
+	users.GET("/:email", handlers.GetUser)
+}
+
+func defineHealthRoutes(api *gin.RouterGroup) {
+	health := api.Group("/health")
+	health.GET("", handlers.CheckHealth)
+	health.GET("/live", handlers.CheckLive)
+	health.GET("/ready", handlers.CheckReadyHealth)
 }

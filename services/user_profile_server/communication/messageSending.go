@@ -15,12 +15,12 @@ var (
 	instance *nats.Conn
 )
 
-// NatsLogger encapsula la conexión singleton a NATS.
+// NatsLogger wraps the singleton NATS connection.
 type NatsLogger struct {
 	conn *nats.Conn
 }
 
-// ConnectToNATS devuelve el singleton de NatsLogger.
+// ConnectToNATS returns the singleton NatsLogger instance.
 func ConnectToNATS() *NatsLogger {
 	natsHost := os.Getenv("NATS_SERVER")
 	if natsHost == "" {
@@ -31,7 +31,7 @@ func ConnectToNATS() *NatsLogger {
 	once.Do(func() {
 		nc, err := nats.Connect(url)
 		if err != nil {
-			log.Fatalf("Error al conectar con NATS: %v", err)
+			log.Fatalf("Failed to connect to NATS: %v", err)
 		}
 		instance = nc
 	})
@@ -39,7 +39,7 @@ func ConnectToNATS() *NatsLogger {
 	return &NatsLogger{conn: instance}
 }
 
-// SendLog publica un Message serializado en JSON al subject de logs.
+// SendLog publishes a Message as JSON to the configured NATS subject.
 func (nl *NatsLogger) SendLog(newLog *models.Message) {
 	subject := os.Getenv("NATS_SUBJECT")
 	if subject == "" {
@@ -48,26 +48,26 @@ func (nl *NatsLogger) SendLog(newLog *models.Message) {
 
 	jsonData, err := json.Marshal(newLog)
 	if err != nil {
-		log.Printf("Error serializando log: %v", err)
+		log.Printf("Error serializing log message: %v", err)
 		return
 	}
 
 	if err := nl.conn.Publish(subject, jsonData); err != nil {
-		log.Printf("Error publicando log en NATS: %v", err)
+		log.Printf("Error publishing log to NATS: %v", err)
 	}
 }
 
-// SendSampleMessage publica un mensaje de prueba al subject "test".
+// SendSampleMessage publishes a test message to the "test" subject.
 func (nl *NatsLogger) SendSampleMessage() bool {
 	return nl.conn.Publish("test", []byte("Sample message")) == nil
 }
 
-// HealthCheckNATS verifica si la conexión a NATS está activa.
+// HealthCheckNATS verifies that the NATS connection is active.
 func (nl *NatsLogger) HealthCheckNATS() bool {
 	return nl.conn != nil && nl.conn.Status() == nats.CONNECTED
 }
 
-// ReadyNats verifica si se puede publicar en NATS.
+// ReadyNats verifies that publishing to NATS works.
 func (nl *NatsLogger) ReadyNats() bool {
 	return nl.SendSampleMessage()
 }

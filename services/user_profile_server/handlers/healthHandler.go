@@ -8,15 +8,12 @@ import (
 )
 
 func CheckLive(c *gin.Context) {
-	
 	report := services.VerifyHealth()
-	// enviar el arreglo de checks
 	c.JSON(http.StatusOK, report)
 }
 
-func CheackReadyHealth(c *gin.Context) {
+func CheckReadyHealth(c *gin.Context) {
 	report := services.VerifyReadyHealth()
-	// enviar el arreglo de checks
 	c.JSON(http.StatusOK, report)
 }
 
@@ -24,11 +21,8 @@ func CheckHealth(c *gin.Context) {
 	live := services.VerifyHealth()
 	ready := services.VerifyReadyHealth()
 
-	// Concatenar los resultados en un solo mapa
-	response := map[string]interface{}{
+	c.JSON(http.StatusOK, gin.H{
 		"live":  live,
 		"ready": ready,
-	}
-
-	c.JSON(http.StatusOK, response)
+	})
 }

@@ -9,136 +9,62 @@ import (
 
 var StartTime time.Time
 
+func Now() time.Time {
+	return time.Now()
+}
+
 func VerifyHealth() models.GeneralCheck {
-	
-	databaseConnection := database.VerifyDatabaseConnection()
-	natsConnection := communication.ConnectToNATS().HealthCheckNATS()
+	dbOk := database.VerifyDatabaseConnection()
+	natsOk := communication.ConnectToNATS().HealthCheckNATS()
 	fromTime := time.Now()
-	checks := []models.HealthCheck{}
-	var checkStatus string
-	// Crear un nuevo objeto HealthData
-	var dbStatus string = "DOWN"
-	if databaseConnection {
-		dbStatus = "READY"
-	}
-	DatabaseData := models.HealthData{
-		From:   fromTime,
-		Status: dbStatus,
+
+	checks := []models.HealthCheck{
+		buildCheck("User Profile Service — Database liveness check", dbOk, fromTime),
+		buildCheck("User Profile Service — NATS liveness check", natsOk, fromTime),
 	}
 
-	checkStatus = "DOWN"
-
-	if dbStatus == "READY" {
-		checkStatus = "UP"
-	}
-	healthCheck := models.HealthCheck{
-		Data:   DatabaseData,
-		Name:   "User service Databse live connection check",
-		Status: checkStatus,
-	}
-
-	checks = append(checks, healthCheck)
-	// Crear un nuevo objeto HealthData
-	var natsStatus string = "DOWN"
-	if natsConnection {
-		natsStatus = "READY"
-	}
-
-	checkStatus = "DOWN"
-
-	if natsStatus == "READY" {
-		checkStatus = "UP"
-	}
-	NatsData := models.HealthData{
-		From:   fromTime,
-		Status: natsStatus,
-	}
-
-	natsHealthCheck := models.HealthCheck{
-		Data:   NatsData,
-		Name:   "User service Nats live connection check",
-		Status: checkStatus,
-	}
-
-	checks = append(checks, natsHealthCheck)
-
-	var reportStatus string
-	report := models.GeneralCheck{}
-
-	reportStatus = "DOWN"
-	if natsStatus == "READY" && dbStatus == "READY" {
-		reportStatus = "UP"
-	}
-
-	report.Status = reportStatus
-	report.Checks = checks
-	report.Version = "1.0.0"
-	report.Uptime = time.Since(StartTime).String()
-
-	return report
+	return buildReport(checks)
 }
 
 func VerifyReadyHealth() models.GeneralCheck {
-	var databaseReady string = "DOWN"
-	var checkStatus string = "DOWN"
-	checks := []models.HealthCheck{}
+	dbOk := database.VerifyDatabaseReady()
+	natsOk := communication.ConnectToNATS().ReadyNats()
 	fromTime := time.Now()
 
-	// database readyness check
-	aux := database.VerifyDatabaseReady()
-
-	if aux {
-		databaseReady = "READY"
-		checkStatus = "UP"
+	checks := []models.HealthCheck{
+		buildCheck("User Profile Service — Database readiness check", dbOk, fromTime),
+		buildCheck("User Profile Service — NATS readiness check", natsOk, fromTime),
 	}
 
-	DatabaseData := models.HealthData{
-		From:   fromTime,
-		Status: databaseReady,
+	return buildReport(checks)
+}
+
+func buildCheck(name string, isUp bool, from time.Time) models.HealthCheck {
+	status := "DOWN"
+	dataStatus := "DOWN"
+	if isUp {
+		status = "UP"
+		dataStatus = "READY"
 	}
-
-	healthCheck := models.HealthCheck{
-		Data:   DatabaseData,
-		Name:   "User service Databse ready connection check",
-		Status: checkStatus,
+	return models.HealthCheck{
+		Data:   models.HealthData{From: from, Status: dataStatus},
+		Name:   name,
+		Status: status,
 	}
+}
 
-	checks = append(checks, healthCheck)
-	// nats readyness check
-	checkStatus = "DOWN"
-	natsConnection := communication.ConnectToNATS().ReadyNats()
-	var natsReady string = "DOWN"
-
-	if natsConnection {
-		natsReady = "READY"
-		checkStatus = "UP"
+func buildReport(checks []models.HealthCheck) models.GeneralCheck {
+	overall := "UP"
+	for _, c := range checks {
+		if c.Status != "UP" {
+			overall = "DOWN"
+			break
+		}
 	}
-
-	NatsData := models.HealthData{
-		From:   fromTime,
-		Status: natsReady,
+	return models.GeneralCheck{
+		Status:  overall,
+		Checks:  checks,
+		Version: "1.0.0",
+		Uptime:  time.Since(StartTime).String(),
 	}
-
-	natsHealthCheck := models.HealthCheck{
-		Data:   NatsData,
-		Name:   "User service Nats ready connection check",
-		Status: checkStatus,
-	}
-
-	checks = append(checks, natsHealthCheck)
-	var reportStatus string
-	report := models.GeneralCheck{}
-
-	reportStatus = "DOWN"
-	if natsReady == "READY" && databaseReady == "READY" {
-		reportStatus = "UP"
-	}
-
-	report.Status = reportStatus
-	report.Checks = checks
-	report.Version = "1.0.0"
-	report.Uptime = time.Since(StartTime).String()
-
-	return report
-
 }
